@@ -46,29 +46,17 @@
           rgba(168, 85, 247, 0.2),
           transparent 80%
         );
-        animation: roam 40s infinite alternate ease-in-out;
+        animation: flow-background 30s infinite alternate ease-in-out;
       }
       
-      @keyframes roam {
+      @keyframes flow-background {
         0% {
           --x: 0%;
-          --y: 20%;
-        }
-        25% {
-          --x: 100%;
-          --y: 70%;
-        }
-        50% {
-          --x: 40%;
           --y: 100%;
         }
-        75% {
-          --x: 80%;
-          --y: 0%;
-        }
         100% {
-          --x: 0%;
-          --y: 20%;
+          --x: 100%;
+          --y: 0%;
         }
       }
 
