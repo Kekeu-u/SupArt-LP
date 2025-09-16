@@ -41,13 +41,13 @@ const Header: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (isMobile) return;
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Check on initial load
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMobile]);
+  }, []);
 
-  // Scrollspy logic
+  // Scrollspy logic for mobile
   useEffect(() => {
     if (!isMobile) return;
     const handleScrollSpy = () => {
@@ -78,12 +78,22 @@ const Header: React.FC = () => {
     document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
   };
   
-  // Mobile Bottom Navigation
+  // Mobile: Top logo + Bottom Navigation
   if (isMobile) {
     return (
-        <header className="fixed bottom-4 left-0 w-full z-50 flex justify-center px-4">
-            <nav className="bg-black/20 backdrop-blur-lg border border-white/10 rounded-full shadow-2xl shadow-purple-500/10">
-                <ul className="flex justify-around items-center gap-x-1 p-1.5">
+        <>
+            <div className={`fixed top-0 left-0 w-full z-40 flex justify-center p-4 transition-all duration-500 ease-in-out ${isScrolled ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`}>
+                 <a 
+                  href="#home" 
+                  onClick={(e) => handleLinkClick(e, '#home')} 
+                  className="text-3xl font-bold text-white transition-transform duration-300 hover:scale-105"
+                  aria-label="Voltar para o topo"
+                >
+                  Sup<span className="text-purple-400">Art</span>
+                </a>
+            </div>
+            <nav className="fixed bottom-4 left-0 w-full z-50 flex justify-center px-4">
+                <ul className="flex justify-around items-center gap-x-1 p-1.5 bg-black/20 backdrop-blur-lg border border-white/10 rounded-full shadow-2xl shadow-purple-500/10">
                     {mobileNavLinks.map((link) => (
                         <li key={link.href}>
                             <a
@@ -100,26 +110,26 @@ const Header: React.FC = () => {
                     ))}
                 </ul>
             </nav>
-        </header>
+        </>
     );
   }
 
-  // Desktop Top Navigation
+  // Desktop: Top logo + Centered Navigation
   const isIconOnly = isScrolled;
   return (
     <header className="fixed top-0 left-0 w-full z-50 p-4 transition-all duration-300">
       <div className="container mx-auto">
-        <div className="flex justify-center">
-            <div className={`flex justify-between items-center bg-black/20 backdrop-blur-lg rounded-full border border-white/10 shadow-lg px-4 transition-all duration-300 ${isIconOnly ? 'py-2' : 'py-4'}`}>
-                <a 
-                  href="#home" 
-                  onClick={(e) => handleLinkClick(e, '#home')} 
-                  className="text-3xl font-bold text-white transition-transform duration-300 hover:scale-105 mr-4"
-                  aria-label="Voltar para o topo"
-                >
-                  Sup<span className="text-purple-400">Art</span>
-                </a>
-              
+        <div className="flex flex-col items-center gap-y-3">
+            <a 
+              href="#home" 
+              onClick={(e) => handleLinkClick(e, '#home')} 
+              className={`text-3xl font-bold text-white transition-all duration-500 ease-in-out hover:scale-105 ${isScrolled ? 'opacity-0 scale-95 h-0 invisible' : 'opacity-100 scale-100 h-auto visible'}`}
+              aria-label="Voltar para o topo"
+            >
+              Sup<span className="text-purple-400">Art</span>
+            </a>
+          
+            <div className={`flex justify-center items-center bg-black/20 backdrop-blur-lg rounded-full border border-white/10 shadow-lg px-4 transition-all duration-300 ${isIconOnly ? 'py-2' : 'py-4'}`}>
                 <nav className={`flex items-center justify-center transition-all duration-300 ${isIconOnly ? 'gap-x-2' : 'gap-x-4'}`}>
                     {desktopNavLinks.map((link) => (
                       <a
