@@ -1,6 +1,7 @@
 import React, { useEffect, Suspense, lazy } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import ScrollspyNav from './components/ScrollspyNav';
 
 // Inform TypeScript that new global libraries are available
 declare var gsap: any;
@@ -69,6 +70,7 @@ const App: React.FC = () => {
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden">
         <Header />
+        <ScrollspyNav />
         <main>
           <Hero />
           <Suspense fallback={<Loader />}>

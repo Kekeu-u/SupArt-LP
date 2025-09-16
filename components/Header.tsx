@@ -52,7 +52,7 @@ const Header: React.FC = () => {
             <a 
               href="#home" 
               onClick={(e) => handleLinkClick(e, '#home')} 
-              className="text-2xl sm:text-3xl font-bold text-white transition-all duration-300 hover:scale-105 md:hidden mb-2"
+              className="text-2xl sm:text-3xl font-bold text-white transition-all duration-300 hover:scale-105 md:hidden mb-3"
               aria-label="Voltar para o topo"
             >
               Sup<span className="text-violet-400">Art</span>

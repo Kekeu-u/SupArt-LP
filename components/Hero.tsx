@@ -37,7 +37,7 @@ const Hero: React.FC = () => {
 
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center text-center px-4 sm:px-6 pt-32 pb-16">
+    <section id="home" className="relative min-h-screen flex items-center justify-center text-center px-4 sm:px-6 pt-28 md:pt-32 pb-16">
       <div className="container mx-auto relative z-10">
         <h1 className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4 text-pretty">
           Sua Landing Page de Alta Conversão,
