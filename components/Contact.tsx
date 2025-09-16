@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import WhatsAppIcon from './icons/WhatsAppIcon';
 
 const Contact: React.FC = () => {
   const [name, setName] = useState('');
@@ -64,13 +65,31 @@ const Contact: React.FC = () => {
             <div className="text-center">
               <button
                 type="submit"
-                className="bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105"
+                className="bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
               >
                 Enviar Mensagem
               </button>
             </div>
             {status && <p className="text-center mt-4 text-green-400">{status}</p>}
           </form>
+
+          <div className="flex items-center justify-center my-6">
+            <div className="flex-grow border-t border-white/20"></div>
+            <span className="flex-shrink mx-4 text-gray-400">ou</span>
+            <div className="flex-grow border-t border-white/20"></div>
+          </div>
+          
+          <div className="text-center">
+            <a
+              href="https://wa.link/r35utl"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center w-full md:w-auto bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-3 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105"
+            >
+              <WhatsAppIcon className="w-6 h-6 mr-3" />
+              Chamar no WhatsApp
+            </a>
+          </div>
         </div>
       </div>
     </section>
