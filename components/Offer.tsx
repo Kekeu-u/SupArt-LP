@@ -5,11 +5,11 @@ const Offer: React.FC = () => {
     <section id="servicos" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
       <div className="container mx-auto grid lg:grid-cols-2 gap-12 items-center">
         <div className="text-center lg:text-left">
-          <h2 className="text-4xl font-bold mb-4 text-pretty">O que está incluso no seu projeto?</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-pretty">O que está incluso no seu projeto?</h2>
           <p className="text-lg text-gray-300 mb-8 text-pretty">
             Nosso pacote foi desenhado para ser completo e direto ao ponto. Por um valor fixo, você recebe uma landing page profissional com tudo que precisa para lançar sua campanha e começar a vender.
           </p>
-          <ul className="space-y-4 text-left">
+          <ul className="space-y-4 text-left max-w-lg mx-auto lg:mx-0">
             {['Design Personalizado e Moderno', 'Até 10 Seções de Conteúdo', 'Totalmente Responsivo (Desktop, Tablet e Mobile)', 'Formulário de Contato Integrado', 'Otimização SEO Básica', 'Integração com Redes Sociais'].map((item, index) => (
               <li key={index} className="flex items-center text-lg text-white">
                 <svg className="w-6 h-6 mr-3 text-violet-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -23,7 +23,7 @@ const Offer: React.FC = () => {
             <h3 className="text-2xl font-bold text-center text-white mb-2">Landing Page Profissional</h3>
             <p className="text-center text-violet-400 text-lg font-semibold mb-6">Plano Único</p>
             <div className="text-center my-8">
-              <span className="text-5xl font-extrabold text-white">R$1.890</span>
+              <span className="text-4xl sm:text-5xl font-extrabold text-white">R$1.890</span>
               <span className="text-gray-300">,00</span>
             </div>
             <p className="text-center text-gray-300 mb-8">Pagamento único. Sem mensalidades.</p>

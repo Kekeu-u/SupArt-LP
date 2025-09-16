@@ -22,7 +22,7 @@ const FeatureCard: React.FC<{ title: string; description: string }> = ({ title, 
 const StatItem: React.FC<{ value: number; label: string; prefix?: string; suffix?: string }> = ({ value, label, prefix, suffix }) => {
     return (
         <div className="text-center bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-500/10">
-            <h3 className="text-4xl md:text-5xl font-extrabold text-white">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white">
                 {prefix || ''}{value}{suffix || ''}
             </h3>
             <p className="text-violet-300 mt-2 text-sm md:text-base">{label}</p>
@@ -37,7 +37,7 @@ const About: React.FC = () => {
   return (
     <section id="sobre" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
       <div className="container mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-4 text-pretty">Por que escolher a Sup<span className="text-violet-400">Art</span>?</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-pretty">Por que escolher a Sup<span className="text-violet-400">Art</span>?</h2>
         <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-12 text-pretty">
           Somos especialistas em criar landing pages que não apenas impressionam visualmente, mas que são projetadas para converter visitantes em clientes. Entregamos qualidade e agilidade para o seu negócio decolar.
         </p>

@@ -4,19 +4,19 @@ const Pricing: React.FC = () => {
   return (
     <section id="precos" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
       <div className="container mx-auto max-w-4xl text-center">
-        <h2 className="text-4xl font-bold mb-4 text-pretty">Um Investimento Inteligente para o seu Negócio</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-pretty">Um Investimento Inteligente para o seu Negócio</h2>
         <p className="text-lg text-gray-300 mb-10 text-pretty">
           Chega de orçamentos complicados e taxas escondidas. Oferecemos um pacote completo por um preço único e transparente.
         </p>
         <div className="bg-slate-900/50 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-violet-400/50 shadow-2xl shadow-violet-400/20 transition-all duration-300 hover:border-violet-400/80 hover:-translate-y-2">
           <div className="md:flex justify-between items-center">
             <div className="text-left mb-8 md:mb-0">
-              <h3 className="text-3xl font-bold text-white text-pretty">Landing Page de Alta Performance</h3>
+              <h3 className="text-2xl sm:text-3xl font-bold text-white text-pretty">Landing Page de Alta Performance</h3>
               <p className="text-violet-300 mt-1">Design, desenvolvimento e lançamento inclusos.</p>
             </div>
             <div className="text-left md:text-right">
               <p className="text-gray-300 text-lg">Investimento único de</p>
-              <p className="text-5xl font-extrabold text-white">R$1.890,00</p>
+              <p className="text-4xl sm:text-5xl font-extrabold text-white">R$1.890,00</p>
             </div>
           </div>
           <div className="border-t border-white/10 my-8"></div>

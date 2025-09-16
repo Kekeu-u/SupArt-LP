@@ -1,7 +1,7 @@
 import React from 'react';
 
 const StepCard: React.FC<{ number: string; title: string; description: string }> = ({ number, title, description }) => (
-    <div className="relative pl-12">
+    <div className="relative pl-16">
         <div className="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-violet-600 text-white font-bold text-xl border-4 border-slate-700">
            {number}
         </div>
@@ -16,13 +16,13 @@ const Process: React.FC = () => {
   return (
     <section id="processo" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
       <div className="container mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-4 text-pretty">Nosso Processo é Simples e Transparente</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-pretty">Nosso Processo é Simples e Transparente</h2>
         <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-16 text-pretty">
           Em apenas 4 passos, tiramos sua ideia do papel e a colocamos no ar, pronta para gerar resultados.
         </p>
-        <div className="relative max-w-2xl mx-auto">
+        <div className="relative max-w-2xl mx-auto text-left">
             {/* Connecting line */}
-            <div className="hidden sm:block absolute top-6 left-6 w-1 h-full bg-slate-700 -translate-x-1/2"></div>
+            <div className="hidden sm:block absolute top-6 left-6 w-1 h-[calc(100%-3rem)] bg-slate-700 -translate-x-1/2"></div>
             
             <div className="space-y-12">
                 <StepCard number="1" title="Reunião de Briefing" description="Entendemos seus objetivos, público-alvo e identidade visual para alinhar o projeto." />
