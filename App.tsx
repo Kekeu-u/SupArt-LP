@@ -58,6 +58,7 @@ const App: React.FC = () => {
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden pb-28 sm:pb-0">
+        <div id="cursor-glow"></div>
         <Header />
         <main>
           <Hero />
