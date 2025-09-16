@@ -83,13 +83,13 @@ const Header: React.FC = () => {
     return (
         <header className="fixed bottom-4 left-0 w-full z-50 flex justify-center px-4">
             <nav className="bg-black/50 backdrop-blur-lg border border-white/10 rounded-full shadow-2xl shadow-purple-500/10">
-                <ul className="flex justify-around items-center gap-x-1 p-2">
+                <ul className="flex justify-around items-center gap-x-1 p-1.5">
                     {mobileNavLinks.map((link) => (
                         <li key={link.href}>
                             <a
                                 href={link.href}
                                 onClick={(e) => handleLinkClick(e, link.href)}
-                                className={`flex flex-col items-center justify-center text-center w-16 h-16 p-1 rounded-full transition-all duration-300 transform hover:scale-105 ${activeSection === link.href.substring(1) ? 'text-purple-400 bg-white/10 scale-105' : 'text-gray-400 hover:text-white'}`}
+                                className={`flex flex-col items-center justify-center text-center w-14 h-14 p-1 rounded-full transition-all duration-300 transform hover:scale-105 ${activeSection === link.href.substring(1) ? 'text-purple-400 bg-white/10 scale-105' : 'text-gray-400 hover:text-white'}`}
                                 aria-current={activeSection === link.href.substring(1) ? 'page' : undefined}
                                 aria-label={link.label}
                             >
