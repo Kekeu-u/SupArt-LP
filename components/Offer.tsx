@@ -2,7 +2,7 @@ import React from 'react';
 
 const Offer: React.FC = () => {
   return (
-    <section id="servicos" className="py-16 sm:py-20 px-4 sm:px-6">
+    <section id="servicos" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
       <div className="container mx-auto grid lg:grid-cols-2 gap-12 items-center">
         <div className="text-center lg:text-left">
           <h2 className="text-4xl font-bold mb-4 text-pretty">O que está incluso no seu projeto?</h2>

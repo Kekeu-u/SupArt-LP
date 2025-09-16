@@ -39,10 +39,10 @@ const Hero: React.FC = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center text-center px-4 sm:px-6 pt-24 overflow-hidden">
       <div className="container mx-auto relative z-10">
-        <h1 className="hero-title text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-loose mb-4 text-pretty">
+        <h1 className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight md:leading-loose mb-4 text-pretty">
           Sua Landing Page de Alta Conversão,
           <br />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-purple-500 min-h-[80px] md:min-h-[100px] inline-block">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-purple-500 min-h-[70px] sm:min-h-[80px] md:min-h-[100px] inline-block">
             <span ref={typedEl}></span>
           </span>
         </h1>

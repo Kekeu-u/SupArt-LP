@@ -51,7 +51,7 @@ const Faq: React.FC = () => {
   };
 
   return (
-    <section id="faq" className="py-16 sm:py-20 px-4 sm:px-6">
+    <section id="faq" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
       <div className="container mx-auto max-w-3xl">
         <h2 className="text-4xl font-bold text-center mb-4 text-pretty">Dúvidas Frequentes</h2>
         <p className="text-lg text-gray-300 text-center max-w-2xl mx-auto mb-12 text-pretty">

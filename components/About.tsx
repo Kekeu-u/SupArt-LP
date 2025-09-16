@@ -35,7 +35,7 @@ const StatItem: React.FC<{ value: number; label: string; prefix?: string; suffix
 
 const About: React.FC = () => {
   return (
-    <section id="sobre" className="py-16 sm:py-20 px-4 sm:px-6">
+    <section id="sobre" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
       <div className="container mx-auto text-center">
         <h2 className="text-4xl font-bold mb-4 text-pretty">Por que escolher a Sup<span className="text-violet-400">Art</span>?</h2>
         <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-12 text-pretty">

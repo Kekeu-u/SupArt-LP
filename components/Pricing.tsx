@@ -2,7 +2,7 @@ import React from 'react';
 
 const Pricing: React.FC = () => {
   return (
-    <section id="precos" className="py-16 sm:py-20 px-4 sm:px-6">
+    <section id="precos" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
       <div className="container mx-auto max-w-4xl text-center">
         <h2 className="text-4xl font-bold mb-4 text-pretty">Um Investimento Inteligente para o seu Negócio</h2>
         <p className="text-lg text-gray-300 mb-10 text-pretty">
