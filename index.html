@@ -41,22 +41,22 @@
         inset: 0;
         pointer-events: none;
         z-index: -1; /* Place it behind all content */
-        background: radial-gradient(
-          circle 800px at var(--x, 50%) var(--y, 50%),
-          rgba(168, 85, 247, 0.2),
-          transparent 80%
+        background: linear-gradient(
+          135deg, /* Diagonal angle to match the movement */
+          transparent 40%,
+          rgba(168, 85, 247, 0.15), /* A soft purple beam */
+          transparent 60%
         );
-        animation: flow-background 30s infinite alternate ease-in-out;
+        background-size: 300% 300%; /* Make the gradient very large for a soft, wide beam */
+        animation: flow-background 40s infinite alternate ease-in-out;
       }
       
       @keyframes flow-background {
         0% {
-          --x: 0%;
-          --y: 100%;
+          background-position: 0% 100%;
         }
         100% {
-          --x: 100%;
-          --y: 0%;
+          background-position: 100% 0%;
         }
       }
 
