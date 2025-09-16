@@ -82,7 +82,7 @@ const Header: React.FC = () => {
   if (isMobile) {
     return (
         <header className="fixed bottom-4 left-0 w-full z-50 flex justify-center px-4">
-            <nav className="bg-black/50 backdrop-blur-lg border border-white/10 rounded-full shadow-2xl shadow-purple-500/10">
+            <nav className="bg-black/20 backdrop-blur-lg border border-white/10 rounded-full shadow-2xl shadow-purple-500/10">
                 <ul className="flex justify-around items-center gap-x-1 p-1.5">
                     {mobileNavLinks.map((link) => (
                         <li key={link.href}>
