@@ -1,7 +1,6 @@
 import React, { useEffect, Suspense, lazy } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import CustomCursor from './components/CustomCursor';
 
 // Inform TypeScript that new global libraries are available
 declare var gsap: any;
@@ -69,7 +68,6 @@ const App: React.FC = () => {
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden">
-        <CustomCursor />
         <Header />
         <main>
           <Hero />

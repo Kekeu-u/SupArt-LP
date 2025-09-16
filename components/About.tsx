@@ -1,10 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import StarIcon from './icons/StarIcon';
-
-// Inform TypeScript that GSAP, ScrollTrigger, and CountUp are available globally
-declare var gsap: any;
-declare var ScrollTrigger: any;
-declare var CountUp: any;
 
 const CheckIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-violet-500 dark:text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -25,31 +20,11 @@ const FeatureCard: React.FC<{ title: string; description: string }> = ({ title, 
 );
 
 const StatItem: React.FC<{ value: number; label: string; prefix?: string; suffix?: string }> = ({ value, label, prefix, suffix }) => {
-    const countRef = useRef(null);
-
-    useEffect(() => {
-        if (!countRef.current || typeof CountUp === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-
-        const countUp = new CountUp(countRef.current, value, {
-            duration: 2.5,
-            prefix: prefix || '',
-            suffix: suffix || '',
-            useEasing: true,
-        });
-
-        ScrollTrigger.create({
-            trigger: countRef.current,
-            start: 'top 90%',
-            onEnter: () => {
-                countUp.start();
-            },
-            once: true,
-        });
-    }, [value, prefix, suffix]);
-
     return (
-        <div className="text-center">
-            <h3 ref={countRef} className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white">0</h3>
+        <div className="text-center bg-white/30 dark:bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-slate-200 dark:border-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-500/10">
+            <h3 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white">
+                {prefix || ''}{value}{suffix || ''}
+            </h3>
             <p className="text-violet-600 dark:text-violet-300 mt-2 text-sm md:text-base">{label}</p>
             <div className="flex justify-center mt-2 space-x-1">
                 {Array(5).fill(0).map((_, i) => <StarIcon key={i} className="w-5 h-5 text-violet-500 dark:text-violet-400" />)}
@@ -67,7 +42,7 @@ const About: React.FC = () => {
           Somos especialistas em criar landing pages que não apenas impressionam visualmente, mas que são projetadas para converter visitantes em clientes. Entregamos qualidade e agilidade para o seu negócio decolar.
         </p>
         
-        <div className="my-16 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div className="my-16 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
             <StatItem value={55} prefix="+" label="Projetos Entregues" />
             <StatItem value={55} prefix="+" label="Clientes Satisfeitos" />
             <StatItem value={5} label="Dias para Entrega" />

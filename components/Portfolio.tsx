@@ -40,7 +40,7 @@ const Portfolio: React.FC = () => {
   }, []);
   
   return (
-    <section id="portfolio" className="py-20 px-6 bg-slate-100 dark:bg-white/5">
+    <section id="portfolio" className="py-20 px-6">
       <div className="container mx-auto text-center">
         <h2 className="text-4xl font-bold mb-4">Resultados que Falam por Si</h2>
         <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12">

@@ -17,17 +17,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
 
     <style>
-      :root {
-        --cursor-size: 8px;
-        --cursor-scale: 3.5;
-      }
-      
       body {
         font-family: 'Inter', sans-serif;
         position: relative;
         overflow-x: hidden;
         transition: background-color 0.3s ease, color 0.3s ease;
-        cursor: none;
       }
       
       h1, h2, h3, h4, h5, h6 {
@@ -79,30 +73,6 @@
       .swiper-button-next, .swiper-button-prev {
         color: #8b5cf6 !important;
       }
-
-      /* Custom Cursor */
-      .cursor, .cursor-follower {
-        position: fixed;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-        border-radius: 50%;
-        z-index: 9999;
-      }
-      .cursor {
-        width: var(--cursor-size);
-        height: var(--cursor-size);
-        background-color: #8b5cf6;
-        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      }
-      .cursor-follower {
-        width: calc(var(--cursor-size) * var(--cursor-scale));
-        height: calc(var(--cursor-size) * var(--cursor-scale));
-        border: 2px solid #8b5cf6;
-        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s ease;
-      }
-      .cursor-hover { transform: scale(1.5); }
-      .cursor-follower-hover { transform: scale(1.5); opacity: 0.5; }
 
     </style>
     <script>

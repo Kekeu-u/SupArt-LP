@@ -4,33 +4,6 @@ import React, { useEffect, useRef } from 'react';
 declare var gsap: any;
 declare var Typed: any;
 
-const HeroShapes: React.FC = () => {
-    useEffect(() => {
-        gsap.to(".hero-shape", {
-            duration: 4,
-            y: "-=20",
-            x: "+=15",
-            rotation: "+=30",
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-            stagger: {
-                each: 0.5,
-                from: "random"
-            }
-        });
-    }, []);
-
-    return (
-        <div className="absolute inset-0 z-0 opacity-50 dark:opacity-100 overflow-hidden">
-            <div className="hero-shape absolute top-[10%] left-[10%] w-24 h-24 bg-violet-400/30 dark:bg-violet-500/20 rounded-full blur-xl"></div>
-            <div className="hero-shape absolute top-[20%] right-[15%] w-32 h-32 bg-purple-400/30 dark:bg-purple-500/20 rounded-3xl blur-xl"></div>
-            <div className="hero-shape absolute bottom-[15%] left-[25%] w-20 h-20 bg-violet-400/30 dark:bg-violet-500/20 transform rotate-45 blur-xl"></div>
-            <div className="hero-shape absolute bottom-[20%] right-[20%] w-28 h-28 bg-purple-400/30 dark:bg-purple-500/20 rounded-full blur-xl"></div>
-        </div>
-    );
-}
-
 const Hero: React.FC = () => {
   const typedEl = useRef(null);
 
@@ -65,7 +38,6 @@ const Hero: React.FC = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center text-center px-6 pt-24 overflow-hidden">
-      <HeroShapes />
       <div className="container mx-auto relative z-10">
         <h1 className="hero-title text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 dark:text-white leading-loose mb-4">
           Sua Landing Page de Alta Conversão,
