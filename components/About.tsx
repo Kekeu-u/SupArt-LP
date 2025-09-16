@@ -33,12 +33,14 @@ const StatItem: React.FC<{ value: number; label: string; prefix?: string; suffix
 const About: React.FC = () => {
   return (
     <section id="sobre" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
+      {/* Star Divider - Repositioned between sections for better flow */}
+      <div className="flex justify-center items-center gap-x-1 sm:gap-x-2 -mt-24 sm:-mt-28 md:-mt-32 mb-12 sm:mb-16">
+          {Array(5).fill(0).map((_, i) => (
+              <StarIcon key={i} className="w-9 h-9 sm:w-12 sm:h-12 text-purple-400" />
+          ))}
+      </div>
+      
       <div className="container mx-auto text-center">
-        <div className="flex justify-center items-center gap-x-1 mb-4">
-            {Array(5).fill(0).map((_, i) => (
-                <StarIcon key={i} className="w-8 h-8 text-purple-400" />
-            ))}
-        </div>
         <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-pretty">Por que escolher a Sup<span className="text-glass-art">Art</span>?</h2>
         <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-12 text-pretty">
           Somos especialistas em criar landing pages que não apenas impressionam visualmente, mas que são projetadas para converter visitantes em clientes. Entregamos qualidade e agilidade para o seu negócio decolar.
