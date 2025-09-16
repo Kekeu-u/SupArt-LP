@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale-1.0" />
     <meta name="description" content="SupArt - Agência premium especializada em landing pages de alta conversão. Transformamos sua visão em realidade com design de ponta e performance recorde." />
     <title>SupArt - Landing Pages de Alta Conversão</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -28,19 +28,8 @@
         font-family: 'Poppins', sans-serif;
       }
 
-      /* Light Mode Styles */
+      /* Dark Mode Styles (Default) */
       body {
-        background-color: #f8fafc; /* slate-50 */
-        color: #1f2937;
-        background-image: radial-gradient(
-          circle 800px at var(--x, 50%) var(--y, 50%),
-          rgba(196, 181, 253, 0.4),
-          transparent 80%
-        );
-      }
-
-      /* Dark Mode Styles */
-      html.dark body {
         background-color: #020617;
         color: #f3f4f6;
         background-image: radial-gradient(
@@ -50,16 +39,11 @@
         );
       }
 
-      /* Custom Scrollbar - Light mode */
+      /* Custom Scrollbar */
       ::-webkit-scrollbar { width: 8px; }
-      ::-webkit-scrollbar-track { background: #e0e7ff; }
-      ::-webkit-scrollbar-thumb { background: #a5b4fc; border-radius: 10px; }
-      ::-webkit-scrollbar-thumb:hover { background: #818cf8; }
-
-      /* Custom Scrollbar - Dark mode */
-      html.dark ::-webkit-scrollbar-track { background: #1e1b4b; }
-      html.dark ::-webkit-scrollbar-thumb { background: #6d28d9; }
-      html.dark ::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
+      ::-webkit-scrollbar-track { background: #1e1b4b; }
+      ::-webkit-scrollbar-thumb { background: #6d28d9; }
+      ::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
 
       /* Swiper Customization */
       .swiper-pagination-bullet {
@@ -73,16 +57,7 @@
       .swiper-button-next, .swiper-button-prev {
         color: #8b5cf6 !important;
       }
-
     </style>
-    <script>
-      // Apply theme from local storage before page load to prevent FOUC
-      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark')
-      } else {
-        document.documentElement.classList.remove('dark')
-      }
-    </script>
   <script type="importmap">
 {
   "imports": {
@@ -100,6 +75,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/CountUp.js/2.8.0/countUp.umd.js"></script>
+
+  <!-- 3D Model Viewer -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 
 </head>
   <body>

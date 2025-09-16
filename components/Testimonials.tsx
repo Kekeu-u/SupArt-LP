@@ -31,19 +31,19 @@ const testimonialsData = [
 ];
 
 const TestimonialCard: React.FC<{ quote: string; name: string; company: string; avatarUrl: string }> = ({ quote, name, company, avatarUrl }) => (
-    <div className="bg-white/30 dark:bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-slate-200 dark:border-white/10 text-center h-full flex flex-col justify-between">
-        <p className="text-gray-600 dark:text-gray-300 italic mb-6">"{quote}"</p>
+    <div className="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-white/10 text-center h-full flex flex-col justify-between">
+        <p className="text-gray-300 italic mb-6 text-pretty">"{quote}"</p>
         <div>
             <img 
                 src={avatarUrl} 
                 alt={name} 
-                className="w-16 h-16 rounded-full mx-auto mb-4 border-2 border-violet-500 dark:border-violet-400"
+                className="w-16 h-16 rounded-full mx-auto mb-4 border-2 border-violet-400"
                 loading="lazy"
                 width="200"
                 height="200"
             />
-            <h4 className="font-bold text-lg text-slate-900 dark:text-white">{name}</h4>
-            <p className="text-violet-500 dark:text-violet-400">{company}</p>
+            <h4 className="font-bold text-lg text-white">{name}</h4>
+            <p className="text-violet-400">{company}</p>
         </div>
     </div>
 );
@@ -79,10 +79,10 @@ const Testimonials: React.FC = () => {
     }, []);
 
   return (
-    <section id="depoimentos" className="py-20 px-6">
+    <section id="depoimentos" className="py-16 sm:py-20 px-4 sm:px-6">
       <div className="container mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-4">O que Nossos Clientes Dizem</h2>
-        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12">
+        <h2 className="text-4xl font-bold mb-4 text-pretty">O que Nossos Clientes Dizem</h2>
+        <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-12 text-pretty">
           A satisfação de quem confia em nosso trabalho é a nossa maior recompensa.
         </p>
         <div className="swiper" ref={swiperRef}>

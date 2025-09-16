@@ -37,16 +37,16 @@ const Hero: React.FC = () => {
 
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center text-center px-6 pt-24 overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center text-center px-4 sm:px-6 pt-24 overflow-hidden">
       <div className="container mx-auto relative z-10">
-        <h1 className="hero-title text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 dark:text-white leading-loose mb-4">
+        <h1 className="hero-title text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-loose mb-4 text-pretty">
           Sua Landing Page de Alta Conversão,
           <br />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-purple-600 dark:from-violet-400 dark:to-purple-500 min-h-[80px] md:min-h-[100px] inline-block">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-purple-500 min-h-[80px] md:min-h-[100px] inline-block">
             <span ref={typedEl}></span>
           </span>
         </h1>
-        <p className="hero-subtitle text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+        <p className="hero-subtitle text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 text-pretty">
           Transformamos suas ideias em uma poderosa ferramenta de vendas. Crie uma presença online impactante por um preço imbatível.
         </p>
         <div className="hero-buttons flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -63,7 +63,7 @@ const Hero: React.FC = () => {
                 e.preventDefault();
                 document.querySelector('#servicos')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="w-full sm:w-auto bg-slate-800/10 hover:bg-slate-800/20 dark:bg-white/10 dark:hover:bg-white/20 text-slate-800 dark:text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 backdrop-blur-sm border border-slate-800/20 dark:border-white/20"
+            className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 backdrop-blur-sm border border-white/20"
           >
             Ver Detalhes
           </a>

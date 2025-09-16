@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 declare var gsap: any;
 
 const PortfolioCard: React.FC<{ imgUrl: string; title: string; category: string }> = ({ imgUrl, title, category }) => (
-    <div className="group relative overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900/50 shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-violet-500/20 hover:-translate-y-2">
+    <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-900/50 shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-violet-500/20 hover:-translate-y-2">
         <div className="overflow-hidden">
             <img 
                 src={imgUrl} 
@@ -40,10 +40,10 @@ const Portfolio: React.FC = () => {
   }, []);
   
   return (
-    <section id="portfolio" className="py-20 px-6">
+    <section id="portfolio" className="py-16 sm:py-20 px-4 sm:px-6">
       <div className="container mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-4">Resultados que Falam por Si</h2>
-        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12">
+        <h2 className="text-4xl font-bold mb-4 text-pretty">Resultados que Falam por Si</h2>
+        <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-12 text-pretty">
           Confira alguns dos projetos que criamos para clientes de diversos setores.
         </p>
         <div className="grid md:grid-cols-2 gap-8">
