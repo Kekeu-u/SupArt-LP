@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="SupArt - Agência premium especializada em landing pages de alta conversão. Transformamos sua visão em realidade com design de ponta e performance recorde." />
+    <title>SupArt - Landing Pages de Alta Conversão</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter & Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Swiper JS for Carousels -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
+
+    <style>
+      body {
+        /* Switched font to Inter */
+        font-family: 'Inter', sans-serif;
+        background-color: #020617;
+        position: relative;
+        overflow-x: hidden;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        /* Using Poppins for headings for a premium feel */
+        font-family: 'Poppins', sans-serif;
+      }
+
+      #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 0;
+      }
+      
+      #root {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #1e1b4b; }
+      ::-webkit-scrollbar-thumb { background: #6d28d9; border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
+
+      /* Swiper Customization */
+      .swiper-pagination-bullet {
+        background-color: rgba(255, 255, 255, 0.5) !important;
+        width: 10px !important;
+        height: 10px !important;
+      }
+      .swiper-pagination-bullet-active {
+        background-color: #8b5cf6 !important; /* violet-500 */
+      }
+      .swiper-button-next, .swiper-button-prev {
+        color: #8b5cf6 !important;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/"
+  }
+}
+</script>
+  <!-- GSAP Core & Plugins -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  
+  <!-- Premium Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/CountUp.js/2.8.0/countUp.umd.js"></script>
+
+</head>
+  <body>
+    <!-- Particle.js container -->
+    <div id="particles-js"></div>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
