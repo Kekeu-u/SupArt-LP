@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import StarIcon from './icons/StarIcon';
 
 // Inform TypeScript that GSAP, ScrollTrigger, and CountUp are available globally
 declare var gsap: any;
@@ -6,24 +7,24 @@ declare var ScrollTrigger: any;
 declare var CountUp: any;
 
 const CheckIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-violet-500 dark:text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
     </svg>
 );
 
 const FeatureCard: React.FC<{ title: string; description: string }> = ({ title, description }) => (
-    <div className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 flex items-start space-x-4 transition-all duration-300 hover:-translate-y-2 hover:border-violet-400/50 hover:shadow-2xl hover:shadow-violet-500/10">
+    <div className="bg-white/30 dark:bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-slate-200 dark:border-white/10 flex items-start space-x-4 transition-all duration-300 hover:-translate-y-2 hover:border-violet-400/50 hover:shadow-2xl hover:shadow-violet-500/10">
         <div className="flex-shrink-0 bg-violet-500/20 p-2 rounded-full">
             <CheckIcon />
         </div>
         <div>
-            <h3 className="font-bold text-xl text-white mb-1">{title}</h3>
-            <p className="text-gray-300">{description}</p>
+            <h3 className="font-bold text-xl text-slate-900 dark:text-white mb-1">{title}</h3>
+            <p className="text-gray-600 dark:text-gray-300">{description}</p>
         </div>
     </div>
 );
 
-const StatItem: React.FC<{ value: number; label: string; suffix?: string }> = ({ value, label, suffix }) => {
+const StatItem: React.FC<{ value: number; label: string; prefix?: string; suffix?: string }> = ({ value, label, prefix, suffix }) => {
     const countRef = useRef(null);
 
     useEffect(() => {
@@ -31,6 +32,7 @@ const StatItem: React.FC<{ value: number; label: string; suffix?: string }> = ({
 
         const countUp = new CountUp(countRef.current, value, {
             duration: 2.5,
+            prefix: prefix || '',
             suffix: suffix || '',
             useEasing: true,
         });
@@ -43,12 +45,15 @@ const StatItem: React.FC<{ value: number; label: string; suffix?: string }> = ({
             },
             once: true,
         });
-    }, [value, suffix]);
+    }, [value, prefix, suffix]);
 
     return (
         <div className="text-center">
-            <h3 ref={countRef} className="text-4xl md:text-5xl font-extrabold text-white">0</h3>
-            <p className="text-violet-300 mt-2 text-sm md:text-base">{label}</p>
+            <h3 ref={countRef} className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white">0</h3>
+            <p className="text-violet-600 dark:text-violet-300 mt-2 text-sm md:text-base">{label}</p>
+            <div className="flex justify-center mt-2 space-x-1">
+                {Array(5).fill(0).map((_, i) => <StarIcon key={i} className="w-5 h-5 text-violet-500 dark:text-violet-400" />)}
+            </div>
         </div>
     );
 };
@@ -57,15 +62,15 @@ const About: React.FC = () => {
   return (
     <section id="sobre" className="py-20 px-6">
       <div className="container mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-4">Por que escolher a Sup<span className="text-violet-400">Art</span>?</h2>
-        <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-12">
+        <h2 className="text-4xl font-bold mb-4">Por que escolher a Sup<span className="text-violet-500 dark:text-violet-400">Art</span>?</h2>
+        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12">
           Somos especialistas em criar landing pages que não apenas impressionam visualmente, mas que são projetadas para converter visitantes em clientes. Entregamos qualidade e agilidade para o seu negócio decolar.
         </p>
         
         <div className="my-16 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <StatItem value={50} suffix="+" label="Projetos Entregues" />
-            <StatItem value={98} suffix="%" label="Clientes Satisfeitos" />
-            <StatItem value={7} label="Dias para Entrega" />
+            <StatItem value={55} prefix="+" label="Projetos Entregues" />
+            <StatItem value={55} prefix="+" label="Clientes Satisfeitos" />
+            <StatItem value={5} label="Dias para Entrega" />
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">

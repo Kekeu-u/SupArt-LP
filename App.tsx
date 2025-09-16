@@ -1,52 +1,38 @@
-
-
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import About from './components/About';
-import Offer from './components/Offer';
-import Process from './components/Process';
-import Portfolio from './components/Portfolio';
-import Testimonials from './components/Testimonials';
-import Pricing from './components/Pricing';
-import Faq from './components/Faq';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import CustomCursor from './components/CustomCursor';
 
 // Inform TypeScript that new global libraries are available
 declare var gsap: any;
 declare var ScrollTrigger: any;
-declare var particlesJS: any;
+
+// Lazy-load components for better performance
+const About = lazy(() => import('./components/About'));
+const Offer = lazy(() => import('./components/Offer'));
+const Process = lazy(() => import('./components/Process'));
+const Portfolio = lazy(() => import('./components/Portfolio'));
+const Testimonials = lazy(() => import('./components/Testimonials'));
+const Pricing = lazy(() => import('./components/Pricing'));
+const Faq = lazy(() => import('./components/Faq'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
+
+const Loader: React.FC = () => (
+    <div className="w-full py-20 flex justify-center items-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-violet-400"></div>
+    </div>
+);
 
 const App: React.FC = () => {
   useEffect(() => {
-    // Initialize Particles.js background
-    if (typeof particlesJS !== 'undefined') {
-      particlesJS('particles-js', {
-        particles: {
-          number: { value: 60, density: { enable: true, value_area: 800 } },
-          color: { value: '#4f46e5' },
-          shape: { type: 'circle', stroke: { width: 0, color: '#000000' }, polygon: { nb_sides: 5 }, image: { src: 'img/github.svg', width: 100, height: 100 } },
-          opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
-          size: { value: 3, random: true, anim: { enable: false, speed: 40, size_min: 0.1, sync: false } },
-          line_linked: { enable: true, distance: 150, color: '#3730a3', opacity: 0.4, width: 1 },
-          move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false, attract: { enable: false, rotateX: 600, rotateY: 1200 } },
-        },
-        interactivity: {
-          detect_on: 'canvas',
-          events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' }, resize: true },
-          modes: {
-            grab: { distance: 140, line_linked: { opacity: 1 } },
-            bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
-            repulse: { distance: 200, duration: 0.4 },
-            push: { particles_nb: 4 },
-            remove: { particles_nb: 2 },
-          },
-        },
-        retina_detect: true,
-      });
-    }
-
+    // Lightweight background effect that follows the mouse
+    const handleMouseMove = (e: MouseEvent) => {
+      document.body.style.setProperty('--x', `${e.clientX}px`);
+      document.body.style.setProperty('--y', `${e.clientY}px`);
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    
     gsap.registerPlugin(ScrollTrigger);
 
     // Animate sections with a staggered effect on their inner elements
@@ -75,23 +61,32 @@ const App: React.FC = () => {
         stagger: 0.2, // Stagger the animation of each element
       });
     });
+
+    return () => {
+       window.removeEventListener('mousemove', handleMouseMove);
+    };
   }, []);
 
   return (
-    <div className="relative min-h-screen w-full text-white overflow-x-hidden">
+    <div className="relative min-h-screen w-full overflow-x-hidden">
+        <CustomCursor />
         <Header />
         <main>
           <Hero />
-          <About />
-          <Offer />
-          <Process />
-          <Portfolio />
-          <Testimonials />
-          <Pricing />
-          <Faq />
-          <Contact />
+          <Suspense fallback={<Loader />}>
+            <About />
+            <Offer />
+            <Process />
+            <Portfolio />
+            <Testimonials />
+            <Pricing />
+            <Faq />
+            <Contact />
+          </Suspense>
         </main>
-        <Footer />
+        <Suspense fallback={null}>
+          <Footer />
+        </Suspense>
     </div>
   );
 };
