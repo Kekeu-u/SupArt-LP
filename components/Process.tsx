@@ -2,7 +2,7 @@ import React from 'react';
 
 const StepCard: React.FC<{ number: string; title: string; description: string }> = ({ number, title, description }) => (
     <div className="relative pl-16">
-        <div className="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-violet-600 text-white font-bold text-xl border-4 border-slate-700">
+        <div className="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-purple-600 text-white font-bold text-xl border-4 border-purple-800">
            {number}
         </div>
         <div className="ml-4">
@@ -22,7 +22,7 @@ const Process: React.FC = () => {
         </p>
         <div className="relative max-w-2xl mx-auto text-left">
             {/* Connecting line */}
-            <div className="hidden sm:block absolute top-6 left-6 w-1 h-[calc(100%-3rem)] bg-slate-700 -translate-x-1/2"></div>
+            <div className="hidden sm:block absolute top-6 left-6 w-1 h-[calc(100%-3rem)] bg-purple-800 -translate-x-1/2"></div>
             
             <div className="space-y-12">
                 <StepCard number="1" title="Reunião de Briefing" description="Entendemos seus objetivos, público-alvo e identidade visual para alinhar o projeto." />

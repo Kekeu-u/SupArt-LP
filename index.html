@@ -30,20 +30,53 @@
 
       /* Dark Mode Styles (Default) */
       body {
-        background-color: #020617;
+        background-color: #000000; /* Fallback color */
         color: #f3f4f6;
-        background-image: radial-gradient(
+        background-image: linear-gradient(to bottom, #0f051e, #000000);
+        min-height: 100vh; /* Ensure gradient covers the full height */
+      }
+
+      #cursor-glow {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: -1; /* Place it behind all content */
+        background: radial-gradient(
           circle 800px at var(--x, 50%) var(--y, 50%),
-          rgba(124, 58, 237, 0.15),
+          rgba(168, 85, 247, 0.2),
           transparent 80%
         );
+        animation: roam 40s infinite alternate ease-in-out;
+      }
+      
+      @keyframes roam {
+        0% {
+          --x: 0%;
+          --y: 20%;
+        }
+        25% {
+          --x: 100%;
+          --y: 70%;
+        }
+        50% {
+          --x: 40%;
+          --y: 100%;
+        }
+        75% {
+          --x: 80%;
+          --y: 0%;
+        }
+        100% {
+          --x: 0%;
+          --y: 20%;
+        }
       }
 
       /* Custom Scrollbar */
       ::-webkit-scrollbar { width: 8px; }
-      ::-webkit-scrollbar-track { background: #1e1b4b; }
-      ::-webkit-scrollbar-thumb { background: #6d28d9; }
-      ::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
+      ::-webkit-scrollbar-track { background: #111111; } /* Darker track for the new theme */
+      ::-webkit-scrollbar-thumb { background: #a855f7; }
+      ::-webkit-scrollbar-thumb:hover { background: #9333ea; }
 
       /* Swiper Customization */
       .swiper-pagination-bullet {
@@ -52,10 +85,19 @@
         height: 10px !important;
       }
       .swiper-pagination-bullet-active {
-        background-color: #8b5cf6 !important;
+        background-color: #a855f7 !important;
       }
       .swiper-button-next, .swiper-button-prev {
-        color: #8b5cf6 !important;
+        color: #a855f7 !important;
+      }
+
+      /* Scrollbar Hide Utility */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
       }
     </style>
   <script type="importmap">
@@ -77,6 +119,7 @@
 
 </head>
   <body>
+    <div id="cursor-glow"></div>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

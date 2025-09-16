@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
         <h1 className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4 text-pretty">
           Sua Landing Page de Alta Conversão,
           <br />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-purple-500 min-h-[60px] sm:min-h-[80px] md:min-h-[100px] inline-block">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500 min-h-[60px] sm:min-h-[80px] md:min-h-[100px] inline-block">
             <span ref={typedEl}></span>
           </span>
         </h1>
@@ -53,7 +53,7 @@ const Hero: React.FC = () => {
           <a 
             href="#contato" 
             onClick={handleScrollToContact}
-            className="w-full sm:w-auto bg-violet-600 hover:bg-violet-700 text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg shadow-violet-500/40 hover:shadow-violet-400/60"
+            className="w-full sm:w-auto bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg shadow-purple-500/40 hover:shadow-purple-400/60"
           >
             Quero Minha Landing Page
           </a>

@@ -31,19 +31,19 @@ const testimonialsData = [
 ];
 
 const TestimonialCard: React.FC<{ quote: string; name: string; company: string; avatarUrl: string }> = ({ quote, name, company, avatarUrl }) => (
-    <div className="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-white/10 text-center h-full flex flex-col justify-between">
+    <div className="bg-black/20 backdrop-blur-md p-8 rounded-2xl border border-white/10 text-center h-full flex flex-col justify-between">
         <p className="text-gray-300 italic mb-6 text-pretty">"{quote}"</p>
         <div>
             <img 
                 src={avatarUrl} 
                 alt={name} 
-                className="w-16 h-16 rounded-full mx-auto mb-4 border-2 border-violet-400"
+                className="w-16 h-16 rounded-full mx-auto mb-4 border-2 border-purple-400"
                 loading="lazy"
                 width="128"
                 height="128"
             />
             <h4 className="font-bold text-lg text-white">{name}</h4>
-            <p className="text-violet-400">{company}</p>
+            <p className="text-purple-400">{company}</p>
         </div>
     </div>
 );

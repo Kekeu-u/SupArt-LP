@@ -8,11 +8,11 @@ const Pricing: React.FC = () => {
         <p className="text-lg text-gray-300 mb-10 text-pretty">
           Chega de orçamentos complicados e taxas escondidas. Oferecemos um pacote completo por um preço único e transparente.
         </p>
-        <div className="bg-slate-900/50 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-violet-400/50 shadow-2xl shadow-violet-400/20 transition-all duration-300 hover:border-violet-400/80 hover:-translate-y-2">
+        <div className="bg-black/30 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-purple-500/50 shadow-2xl shadow-purple-400/20 transition-all duration-300 hover:border-purple-400/80 hover:-translate-y-2">
           <div className="md:flex justify-between items-center">
             <div className="text-left mb-8 md:mb-0">
               <h3 className="text-2xl sm:text-3xl font-bold text-white text-pretty">Landing Page de Alta Performance</h3>
-              <p className="text-violet-300 mt-1">Design, desenvolvimento e lançamento inclusos.</p>
+              <p className="text-purple-300 mt-1">Design, desenvolvimento e lançamento inclusos.</p>
             </div>
             <div className="text-left md:text-right">
               <p className="text-gray-300 text-lg">Investimento único de</p>
@@ -32,7 +32,7 @@ const Pricing: React.FC = () => {
                   e.preventDefault();
                   document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="block md:inline-block w-full md:w-auto text-center bg-violet-600 hover:bg-violet-700 text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105"
+              className="block md:inline-block w-full md:w-auto text-center bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105"
             >
               Iniciar Projeto
             </a>

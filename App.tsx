@@ -26,13 +26,6 @@ const Loader: React.FC = () => (
 
 const App: React.FC = () => {
   useEffect(() => {
-    // Lightweight background effect that follows the mouse
-    const handleMouseMove = (e: MouseEvent) => {
-      document.body.style.setProperty('--x', `${e.clientX}px`);
-      document.body.style.setProperty('--y', `${e.clientY}px`);
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    
     gsap.registerPlugin(ScrollTrigger);
 
     // Animate sections with a staggered effect on their inner elements
@@ -62,9 +55,6 @@ const App: React.FC = () => {
       });
     });
 
-    return () => {
-       window.removeEventListener('mousemove', handleMouseMove);
-    };
   }, []);
 
   return (

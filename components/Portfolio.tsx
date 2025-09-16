@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 declare var gsap: any;
 
 const PortfolioCard: React.FC<{ imgUrl: string; title: string; category: string }> = ({ imgUrl, title, category }) => (
-    <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-900/50 shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-violet-500/20 hover:-translate-y-2">
+    <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-black/30 shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20 hover:-translate-y-2">
         <div className="overflow-hidden">
             <img 
                 src={imgUrl} 
@@ -18,7 +18,7 @@ const PortfolioCard: React.FC<{ imgUrl: string; title: string; category: string 
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
         <div className="absolute bottom-0 left-0 p-6">
             <h3 className="text-2xl font-bold text-white mb-1">{title}</h3>
-            <p className="text-violet-400">{category}</p>
+            <p className="text-purple-400">{category}</p>
         </div>
     </div>
 );
