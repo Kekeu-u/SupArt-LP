@@ -36,10 +36,10 @@ const About: React.FC = () => {
       <div className="container mx-auto text-center">
         <div className="flex justify-center items-center gap-x-1 mb-4">
             {Array(5).fill(0).map((_, i) => (
-                <StarIcon key={i} className="w-6 h-6 text-purple-400" />
+                <StarIcon key={i} className="w-8 h-8 text-purple-400" />
             ))}
         </div>
-        <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-pretty">Por que escolher a Sup<span className="text-purple-400">Art</span>?</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-pretty">Por que escolher a Sup<span className="text-glass-art">Art</span>?</h2>
         <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-12 text-pretty">
           Somos especialistas em criar landing pages que não apenas impressionam visualmente, mas que são projetadas para converter visitantes em clientes. Entregamos qualidade e agilidade para o seu negócio decolar.
         </p>

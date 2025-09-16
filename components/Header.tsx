@@ -89,7 +89,7 @@ const Header: React.FC = () => {
                   className="text-3xl font-bold text-white transition-transform duration-300 hover:scale-105"
                   aria-label="Voltar para o topo"
                 >
-                  Sup<span className="text-purple-400">Art</span>
+                  Sup<span className="text-glass-art">Art</span>
                 </a>
             </div>
             <nav className="fixed bottom-4 left-0 w-full z-50 flex justify-center px-4">
@@ -126,7 +126,7 @@ const Header: React.FC = () => {
               className={`text-3xl font-bold text-white transition-all duration-500 ease-in-out hover:scale-105 ${isScrolled ? 'opacity-0 scale-95 h-0 invisible' : 'opacity-100 scale-100 h-auto visible'}`}
               aria-label="Voltar para o topo"
             >
-              Sup<span className="text-purple-400">Art</span>
+              Sup<span className="text-glass-art">Art</span>
             </a>
           
             <div className={`flex justify-center items-center bg-black/20 backdrop-blur-lg rounded-full border border-white/10 shadow-lg px-4 transition-all duration-300 ${isIconOnly ? 'py-2' : 'py-4'}`}>
