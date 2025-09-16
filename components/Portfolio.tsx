@@ -9,7 +9,7 @@ const PortfolioCard: React.FC<{ imgUrl: string; title: string; category: string 
             <img 
                 src={imgUrl} 
                 alt={title} 
-                className="portfolio-card-img w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                className="portfolio-card-img w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-110"
                 loading="lazy"
                 width="800"
                 height="600"
@@ -22,6 +22,16 @@ const PortfolioCard: React.FC<{ imgUrl: string; title: string; category: string 
         </div>
     </div>
 );
+
+const portfolioItems = [
+    { imgUrl: "https://picsum.photos/seed/tech/800/600", title: "TechFlow", category: "SaaS / Tecnologia" },
+    { imgUrl: "https://picsum.photos/seed/realestate/800/600", title: "Imóvel Certo", category: "Imobiliário" },
+    { imgUrl: "https://picsum.photos/seed/consulting/800/600", title: "Foco Consultoria", category: "Serviços / Consultoria" },
+    { imgUrl: "https://picsum.photos/seed/ecommerce/800/600", title: "Bella Moda", category: "E-commerce" },
+    { imgUrl: "https://picsum.photos/seed/fitness/800/600", title: "Corpo em Foco", category: "Fitness / Saúde" },
+    { imgUrl: "https://picsum.photos/seed/food/800/600", title: "Sabor Divino", category: "Restaurante / Gourmet" },
+];
+
 
 const Portfolio: React.FC = () => {
   useEffect(() => {
@@ -40,18 +50,38 @@ const Portfolio: React.FC = () => {
   }, []);
   
   return (
-    <section id="portfolio" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
-      <div className="container mx-auto text-center">
+    <section id="portfolio" className="py-12 sm:py-16 md:py-20 overflow-hidden">
+      <div className="container mx-auto text-center px-4 sm:px-6">
         <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-pretty">Resultados que Falam por Si</h2>
         <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-12 text-pretty">
           Confira alguns dos projetos que criamos para clientes de diversos setores.
         </p>
-        <div className="grid md:grid-cols-2 gap-8">
-            <PortfolioCard imgUrl="https://picsum.photos/seed/tech/800/600" title="TechFlow" category="SaaS / Tecnologia" />
-            <PortfolioCard imgUrl="https://picsum.photos/seed/realestate/800/600" title="Imóvel Certo" category="Imobiliário" />
-            <PortfolioCard imgUrl="https://picsum.photos/seed/consulting/800/600" title="Foco Consultoria" category="Serviços / Consultoria" />
-            <PortfolioCard imgUrl="https://picsum.photos/seed/ecommerce/800/600" title="Bella Moda" category="E-commerce" />
+      </div>
+      
+      <div className="flex flex-col gap-y-8 -rotate-2 scale-105">
+        
+        {/* Row 1 */}
+        <div className="relative flex overflow-x-hidden">
+          <div className="animate-marquee flex whitespace-nowrap will-change-transform">
+            {[...portfolioItems, ...portfolioItems].map((item, index) => (
+              <div key={index} className="w-[300px] sm:w-[400px] mx-4 flex-shrink-0">
+                <PortfolioCard {...item} />
+              </div>
+            ))}
+          </div>
         </div>
+
+        {/* Row 2 - reverse */}
+        <div className="relative flex overflow-x-hidden">
+          <div className="animate-marquee-reverse flex whitespace-nowrap will-change-transform">
+            {[...portfolioItems.slice().reverse(), ...portfolioItems.slice().reverse()].map((item, index) => (
+              <div key={index} className="w-[300px] sm:w-[400px] mx-4 flex-shrink-0">
+                <PortfolioCard {...item} />
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );

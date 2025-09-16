@@ -2,7 +2,7 @@ import React from 'react';
 import StarIcon from './icons/StarIcon';
 
 const CheckIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-400" fill="none" viewBox="0 0 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
     </svg>
 );
@@ -26,9 +26,6 @@ const StatItem: React.FC<{ value: number; label: string; prefix?: string; suffix
                 {prefix || ''}{value}{suffix || ''}
             </h3>
             <p className="text-purple-300 mt-2 text-sm md:text-base">{label}</p>
-            <div className="flex justify-center mt-2 space-x-1">
-                {Array(5).fill(0).map((_, i) => <StarIcon key={i} className="w-5 h-5 text-purple-400" />)}
-            </div>
         </div>
     );
 };
@@ -37,6 +34,11 @@ const About: React.FC = () => {
   return (
     <section id="sobre" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
       <div className="container mx-auto text-center">
+        <div className="flex justify-center items-center gap-x-1 mb-4">
+            {Array(5).fill(0).map((_, i) => (
+                <StarIcon key={i} className="w-6 h-6 text-purple-400" />
+            ))}
+        </div>
         <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-pretty">Por que escolher a Sup<span className="text-purple-400">Art</span>?</h2>
         <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-12 text-pretty">
           Somos especialistas em criar landing pages que não apenas impressionam visualmente, mas que são projetadas para converter visitantes em clientes. Entregamos qualidade e agilidade para o seu negócio decolar.
