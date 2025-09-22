@@ -1,29 +1,21 @@
 import React, { useState, useEffect } from 'react';
-
-// Icons
-import AboutIcon from './icons/AboutIcon';
-import ServicesIcon from './icons/ServicesIcon';
-import PortfolioIcon from './icons/PortfolioIcon';
-import PricingIcon from './icons/PricingIcon';
-import FaqIcon from './icons/FaqIcon';
-import HomeIcon from './icons/HomeIcon';
-import ContactIcon from './icons/ContactIcon';
+import { FaInfoCircle, FaBriefcase, FaImages, FaTags, FaQuestionCircle, FaHome, FaEnvelope } from 'react-icons/fa';
 
 // Nav Links Data
 const desktopNavLinks = [
-  { href: '#sobre', label: 'Sobre', icon: <AboutIcon /> },
-  { href: '#servicos', label: 'Serviços', icon: <ServicesIcon /> },
-  { href: '#portfolio', label: 'Portfolio', icon: <PortfolioIcon /> },
-  { href: '#precos', label: 'Preços', icon: <PricingIcon /> },
-  { href: '#faq', label: 'FAQ', icon: <FaqIcon /> },
+  { href: '#sobre', label: 'Sobre', icon: <FaInfoCircle className="h-5 w-5" /> },
+  { href: '#servicos', label: 'Serviços', icon: <FaBriefcase className="h-5 w-5" /> },
+  { href: '#portfolio', label: 'Portfolio', icon: <FaImages className="h-5 w-5" /> },
+  { href: '#precos', label: 'Preços', icon: <FaTags className="h-5 w-5" /> },
+  { href: '#faq', label: 'FAQ', icon: <FaQuestionCircle className="h-5 w-5" /> },
 ];
 
 const mobileNavLinks = [
-  { href: '#home', label: 'Início', icon: <HomeIcon className="h-6 w-6" /> },
-  { href: '#servicos', label: 'Serviços', icon: <ServicesIcon className="h-6 w-6" /> },
-  { href: '#portfolio', label: 'Portfolio', icon: <PortfolioIcon className="h-6 w-6" /> },
-  { href: '#precos', label: 'Preços', icon: <PricingIcon className="h-6 w-6" /> },
-  { href: '#contato', label: 'Contato', icon: <ContactIcon className="h-6 w-6" /> },
+  { href: '#home', label: 'Início', icon: <FaHome className="h-6 w-6" /> },
+  { href: '#servicos', label: 'Serviços', icon: <FaBriefcase className="h-6 w-6" /> },
+  { href: '#portfolio', label: 'Portfolio', icon: <FaImages className="h-6 w-6" /> },
+  { href: '#precos', label: 'Preços', icon: <FaTags className="h-6 w-6" /> },
+  { href: '#contato', label: 'Contato', icon: <FaEnvelope className="h-6 w-6" /> },
 ];
 
 const allSectionIds = ['home', 'sobre', 'servicos', 'portfolio', 'depoimentos', 'precos', 'faq', 'contato'];
@@ -93,7 +85,7 @@ const Header: React.FC = () => {
                 </a>
             </div>
             <nav className="fixed bottom-4 left-0 w-full z-50 flex justify-center px-4">
-                <ul className="flex justify-around items-center gap-x-1 p-1.5 bg-black/20 backdrop-blur-lg border border-white/10 rounded-full shadow-2xl shadow-purple-500/10">
+                <ul className="flex justify-around items-center gap-x-1 p-1.5 bg-black/50 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl shadow-purple-500/10">
                     {mobileNavLinks.map((link) => (
                         <li key={link.href}>
                             <a
@@ -129,7 +121,7 @@ const Header: React.FC = () => {
               Sup<span className="text-glass-art">Art</span>
             </a>
           
-            <div className={`flex justify-center items-center bg-black/20 backdrop-blur-lg rounded-full border border-white/10 shadow-lg px-4 transition-all duration-300 ${isIconOnly ? 'py-2' : 'py-4'}`}>
+            <div className={`flex justify-center items-center bg-black/30 backdrop-blur-xl rounded-full border border-white/10 shadow-lg px-4 transition-all duration-300 ${isIconOnly ? 'py-2' : 'py-4'}`}>
                 <nav className={`flex items-center justify-center transition-all duration-300 ${isIconOnly ? 'gap-x-2' : 'gap-x-4'}`}>
                     {desktopNavLinks.map((link) => (
                       <a

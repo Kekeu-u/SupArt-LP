@@ -53,7 +53,7 @@ const Hero: React.FC = () => {
           <a 
             href="#contato" 
             onClick={handleScrollToContact}
-            className="w-full sm:w-auto bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg shadow-purple-500/40 hover:shadow-purple-400/60"
+            className="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg shadow-purple-500/40 hover:shadow-purple-400/60"
           >
             Quero Minha Landing Page
           </a>
@@ -63,7 +63,7 @@ const Hero: React.FC = () => {
                 e.preventDefault();
                 document.querySelector('#servicos')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 backdrop-blur-sm border border-white/20"
+            className="w-full sm:w-auto bg-white/5 hover:bg-white/10 text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 backdrop-blur-md border border-white/10"
           >
             Ver Detalhes
           </a>

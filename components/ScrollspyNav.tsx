@@ -1,22 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
-import HomeIcon from './icons/HomeIcon';
-import AboutIcon from './icons/AboutIcon';
-import ServicesIcon from './icons/ServicesIcon';
-import PortfolioIcon from './icons/PortfolioIcon';
-import TestimonialsIcon from './icons/TestimonialsIcon';
-import PricingIcon from './icons/PricingIcon';
-import FaqIcon from './icons/FaqIcon';
-import ContactIcon from './icons/ContactIcon';
+import { 
+  FaHome, 
+  FaInfoCircle, 
+  FaBriefcase, 
+  FaImages, 
+  FaCommentDots, 
+  FaTags, 
+  FaQuestionCircle, 
+  FaEnvelope 
+} from 'react-icons/fa';
 
 const navItems = [
-  { id: 'home', label: 'Início', icon: <HomeIcon /> },
-  { id: 'sobre', label: 'Sobre', icon: <AboutIcon /> },
-  { id: 'servicos', label: 'Serviços', icon: <ServicesIcon /> },
-  { id: 'portfolio', label: 'Portfolio', icon: <PortfolioIcon /> },
-  { id: 'depoimentos', label: 'Depoimentos', icon: <TestimonialsIcon /> },
-  { id: 'precos', label: 'Preços', icon: <PricingIcon /> },
-  { id: 'faq', label: 'FAQ', icon: <FaqIcon /> },
-  { id: 'contato', label: 'Contato', icon: <ContactIcon /> },
+  { id: 'home', label: 'Início', icon: <FaHome className="h-6 w-6" /> },
+  { id: 'sobre', label: 'Sobre', icon: <FaInfoCircle className="h-5 w-5" /> },
+  { id: 'servicos', label: 'Serviços', icon: <FaBriefcase className="h-5 w-5" /> },
+  { id: 'portfolio', label: 'Portfolio', icon: <FaImages className="h-5 w-5" /> },
+  { id: 'depoimentos', label: 'Depoimentos', icon: <FaCommentDots className="h-5 w-5" /> },
+  { id: 'precos', label: 'Preços', icon: <FaTags className="h-5 w-5" /> },
+  { id: 'faq', label: 'FAQ', icon: <FaQuestionCircle className="h-5 w-5" /> },
+  { id: 'contato', label: 'Contato', icon: <FaEnvelope className="h-5 w-5" /> },
 ];
 
 const ScrollspyNav: React.FC = () => {
@@ -87,7 +89,6 @@ const ScrollspyNav: React.FC = () => {
         className="flex flex-col items-center justify-start gap-y-1 bg-black/20 backdrop-blur-lg p-2 rounded-full border border-white/10 max-h-[50vh] sm:max-h-[60vh] overflow-y-scroll no-scrollbar"
       >
         {navItems.map((item, index) => (
-          // FIX: The ref callback should not return a value. Enclosed assignment in braces to prevent implicit return.
           <li key={item.id} ref={el => { itemRefs.current[index] = el; }} className="group relative">
             <a
               href={`#${item.id}`}

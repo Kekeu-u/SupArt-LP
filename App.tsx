@@ -16,6 +16,8 @@ const Pricing = lazy(() => import('./components/Pricing'));
 const Faq = lazy(() => import('./components/Faq'));
 const Contact = lazy(() => import('./components/Contact'));
 const Footer = lazy(() => import('./components/Footer'));
+const ScrollspyNav = lazy(() => import('./components/ScrollspyNav'));
+
 
 const Loader: React.FC = () => (
     <div className="w-full py-20 flex justify-center items-center">
@@ -36,7 +38,7 @@ const App: React.FC = () => {
       // Select key elements inside the section for a more granular animation
       const headline = section.querySelector('h2');
       const paragraph = section.querySelector('p');
-      const content = section.querySelectorAll('.grid, .relative, form, ul');
+      const content = section.querySelectorAll('.grid, .relative, form, ul, .swiper');
 
       const elementsToAnimate = [headline, paragraph, ...Array.from(content)].filter(Boolean);
 
@@ -44,7 +46,8 @@ const App: React.FC = () => {
         scrollTrigger: {
           trigger: section,
           start: 'top 85%',
-          toggleActions: 'play none none none',
+          end: 'bottom 20%',
+          toggleActions: 'play none none reverse',
         },
         opacity: 0,
         y: 50,
@@ -58,8 +61,11 @@ const App: React.FC = () => {
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden pb-28 sm:pb-0">
-        <div id="cursor-glow"></div>
+        <div id="aurora-background"></div>
         <Header />
+        <Suspense fallback={null}>
+            <ScrollspyNav />
+        </Suspense>
         <main>
           <Hero />
           <Suspense fallback={<Loader />}>

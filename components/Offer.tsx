@@ -1,5 +1,6 @@
 import React from 'react';
-import PackageIcon from './icons/PackageIcon';
+import { FiPackage } from 'react-icons/fi';
+import { FaCheckCircle } from 'react-icons/fa';
 
 const Offer: React.FC = () => {
   return (
@@ -8,7 +9,7 @@ const Offer: React.FC = () => {
         
         <div className="flex justify-center mb-6">
             <div className="p-3 sm:p-4 bg-purple-500/10 rounded-full border-2 border-purple-500/20">
-                <PackageIcon className="h-10 w-10 sm:h-12 sm:w-12 text-purple-400" />
+                <FiPackage className="h-10 w-10 sm:h-12 sm:w-12 text-purple-400" />
             </div>
         </div>
 
@@ -19,7 +20,7 @@ const Offer: React.FC = () => {
         <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-5 text-left max-w-5xl mx-auto">
           {['Design Personalizado e Moderno', 'Até 10 Seções de Conteúdo', 'Totalmente Responsivo', 'Formulário de Contato Integrado', 'Otimização SEO Básica', 'Integração com Redes Sociais', '1 Ano de Domínio .com Grátis'].map((item, index) => (
             <li key={index} className="flex items-center text-lg text-white">
-              <svg className="w-6 h-6 mr-3 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <FaCheckCircle className="w-5 h-5 mr-3 text-purple-400 flex-shrink-0" />
               <span>{item}</span>
             </li>
           ))}

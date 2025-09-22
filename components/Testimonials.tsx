@@ -31,7 +31,7 @@ const testimonialsData = [
 ];
 
 const TestimonialCard: React.FC<{ quote: string; name: string; company: string; avatarUrl: string }> = ({ quote, name, company, avatarUrl }) => (
-    <div className="bg-black/20 backdrop-blur-md p-8 rounded-2xl border border-white/10 text-center h-full flex flex-col justify-between">
+    <div className="bg-white/[.03] backdrop-blur-xl p-8 rounded-2xl border border-white/10 text-center h-full flex flex-col justify-between">
         <p className="text-gray-300 italic mb-6 text-pretty">"{quote}"</p>
         <div>
             <img 

@@ -15,7 +15,7 @@ const PortfolioCard: React.FC<{ imgUrl: string; title: string; category: string 
                 height="600"
             />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
         <div className="absolute bottom-0 left-0 p-6">
             <h3 className="text-2xl font-bold text-white mb-1">{title}</h3>
             <p className="text-purple-400">{category}</p>

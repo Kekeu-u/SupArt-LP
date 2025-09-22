@@ -21,55 +21,69 @@
         font-family: 'Inter', sans-serif;
         position: relative;
         overflow-x: hidden;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        background-color: #000000;
+        color: #f3f4f6;
+        min-height: 100vh;
       }
       
       h1, h2, h3, h4, h5, h6 {
         font-family: 'Poppins', sans-serif;
       }
-
-      /* Dark Mode Styles (Default) */
-      body {
-        background-color: #000000; /* Fallback color */
-        color: #f3f4f6;
-        background-image: linear-gradient(to bottom, #0f051e, #000000);
-        min-height: 100vh; /* Ensure gradient covers the full height */
-      }
-
-      .text-glass-art {
-        color: rgba(192, 132, 252, 0.85); /* Semi-transparent purple for a glass effect */
-        text-shadow: 0 0 8px rgba(168, 85, 247, 0.3); /* Soft glow to enhance the look */
-        transition: all 0.3s ease;
-      }
-
-      #cursor-glow {
+      
+      /* New Aurora Background */
+      #aurora-background {
         position: fixed;
-        inset: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
         pointer-events: none;
-        z-index: -1; /* Place it behind all content */
-        background: linear-gradient(
-          135deg, /* Diagonal angle to match the movement */
-          transparent 40%,
-          rgba(168, 85, 247, 0.15), /* A soft purple beam */
-          transparent 60%
-        );
-        background-size: 300% 300%; /* Make the gradient very large for a soft, wide beam */
-        animation: flow-background 40s infinite alternate ease-in-out;
+      }
+      #aurora-background::before, #aurora-background::after {
+        content: '';
+        position: absolute;
+        width: 100vmin;
+        height: 100vmin;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.15;
+        will-change: transform, opacity;
+      }
+      #aurora-background::before {
+        background: radial-gradient(circle at center, #a855f7, transparent 60%);
+        top: -20vmin;
+        left: -20vmin;
+        animation: move-glow-1 25s infinite alternate ease-in-out;
+      }
+      #aurora-background::after {
+        background: radial-gradient(circle at center, #ec4899, transparent 60%);
+        bottom: -20vmin;
+        right: -20vmin;
+        animation: move-glow-2 30s infinite alternate-reverse ease-in-out;
       }
       
-      @keyframes flow-background {
-        0% {
-          background-position: 0% 100%;
-        }
-        100% {
-          background-position: 100% 0%;
-        }
+      @keyframes move-glow-1 {
+        0% { transform: translate(0, 0) scale(1); }
+        100% { transform: translate(50vw, 50vh) scale(1.5); }
+      }
+      @keyframes move-glow-2 {
+        0% { transform: translate(0, 0) scale(1.2); }
+        100% { transform: translate(-50vw, -50vh) scale(0.8); }
+      }
+
+
+      .text-glass-art {
+        color: rgba(216, 180, 254, 0.9);
+        text-shadow: 0 0 12px rgba(168, 85, 247, 0.4);
+        transition: all 0.3s ease;
       }
 
       /* Custom Scrollbar */
       ::-webkit-scrollbar { width: 8px; }
-      ::-webkit-scrollbar-track { background: #111111; } /* Darker track for the new theme */
-      ::-webkit-scrollbar-thumb { background: #a855f7; }
+      ::-webkit-scrollbar-track { background: #0a0a0a; }
+      ::-webkit-scrollbar-thumb { background: #a855f7; border-radius: 4px; }
       ::-webkit-scrollbar-thumb:hover { background: #9333ea; }
 
       /* Swiper Customization */
@@ -115,7 +129,9 @@
   "imports": {
     "react/": "https://aistudiocdn.com/react@^19.1.1/",
     "react": "https://aistudiocdn.com/react@^19.1.1",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/"
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "@once-ui-system/core": "https://cdn.jsdelivr.net/npm/@once-ui-system/core@latest/dist/index.mjs",
+    "react-icons/": "https://esm.sh/react-icons@5/"
   }
 }
 </script>

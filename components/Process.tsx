@@ -2,10 +2,10 @@ import React from 'react';
 
 const StepCard: React.FC<{ number: string; title: string; description: string }> = ({ number, title, description }) => (
     <div className="relative pl-16">
-        <div className="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-purple-600 text-white font-bold text-xl border-4 border-purple-800">
+        <div className="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-pink-600 text-white font-bold text-xl border-2 border-purple-500/50">
            {number}
         </div>
-        <div className="ml-4">
+        <div className="bg-white/[.03] backdrop-blur-xl p-6 rounded-2xl border border-white/10 transition-all duration-300 hover:border-purple-400/50">
             <h3 className="font-bold text-xl text-white mb-1 text-pretty">{title}</h3>
             <p className="text-gray-300 text-pretty">{description}</p>
         </div>
@@ -22,7 +22,7 @@ const Process: React.FC = () => {
         </p>
         <div className="relative max-w-2xl mx-auto text-left">
             {/* Connecting line */}
-            <div className="hidden sm:block absolute top-6 left-6 w-1 h-[calc(100%-3rem)] bg-purple-800 -translate-x-1/2"></div>
+            <div className="hidden sm:block absolute top-6 left-6 w-0.5 h-[calc(100%-3rem)] bg-gradient-to-b from-purple-600 via-purple-800 to-transparent -translate-x-1/2"></div>
             
             <div className="space-y-12">
                 <StepCard number="1" title="Reunião de Briefing" description="Entendemos seus objetivos, público-alvo e identidade visual para alinhar o projeto." />

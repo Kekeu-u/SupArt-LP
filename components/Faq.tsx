@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaChevronDown } from 'react-icons/fa';
 
 const faqData = [
   {
@@ -34,7 +35,7 @@ const FaqItem: React.FC<{
       >
         <span className="text-lg font-semibold text-white text-pretty">{question}</span>
         <span className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
-          <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+          <FaChevronDown className="w-5 h-5 text-purple-400" />
         </span>
       </button>
       <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-96' : 'max-h-0'}`}>
@@ -58,7 +59,7 @@ const Faq: React.FC = () => {
         <p className="text-lg text-gray-300 text-center max-w-2xl mx-auto mb-12 text-pretty">
           Respondemos algumas das perguntas mais comuns para te ajudar a decidir.
         </p>
-        <div className="bg-black/20 backdrop-blur-md p-4 sm:p-8 rounded-2xl border border-white/10">
+        <div className="bg-white/[.03] backdrop-blur-xl p-4 sm:p-8 rounded-2xl border border-white/10">
           {faqData.map((item, index) => (
             <FaqItem
               key={index}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import WhatsAppIcon from './icons/WhatsAppIcon';
+import { FaWhatsapp } from 'react-icons/fa';
 
 const Contact: React.FC = () => {
   const [name, setName] = useState('');
@@ -50,7 +50,7 @@ const Contact: React.FC = () => {
         <p className="text-lg text-gray-300 mb-10 text-pretty">
           Preencha o formulário abaixo ou entre em contato pelo WhatsApp. Estamos prontos para transformar sua ideia em realidade.
         </p>
-        <div className="bg-black/20 backdrop-blur-md rounded-2xl border border-white/10 p-8 md:p-12 text-left">
+        <div className="bg-white/[.03] backdrop-blur-xl rounded-2xl border border-white/10 p-8 md:p-12 text-left">
           <form onSubmit={handleSubmit}>
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
@@ -61,7 +61,7 @@ const Contact: React.FC = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
-                  className="w-full bg-white/10 border border-white/20 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="w-full bg-white/5 border border-white/20 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
                 />
               </div>
               <div>
@@ -72,7 +72,7 @@ const Contact: React.FC = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full bg-white/10 border border-white/20 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="w-full bg-white/5 border border-white/20 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
                 />
               </div>
             </div>
@@ -84,14 +84,14 @@ const Contact: React.FC = () => {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 required
-                className="w-full bg-white/10 border border-white/20 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full bg-white/5 border border-white/20 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
               ></textarea>
             </div>
             <div className="text-center">
               <button
                 type="submit"
                 disabled={submission.loading}
-                className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {submission.loading ? 'Enviando...' : 'Enviar Mensagem'}
               </button>
@@ -116,7 +116,7 @@ const Contact: React.FC = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center w-full md:w-auto bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-3 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105"
             >
-              <WhatsAppIcon className="w-6 h-6 mr-3" />
+              <FaWhatsapp className="w-6 h-6 mr-3" />
               Chamar no WhatsApp
             </a>
           </div>
