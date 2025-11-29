@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #f3f4f6;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow-x: hidden;
+  background-color: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* New Aurora Background */
+#aurora-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+#aurora-background::before,
+#aurora-background::after {
+  content: '';
+  position: absolute;
+  width: 100vmin;
+  height: 100vmin;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.15;
+  will-change: transform, opacity;
+}
+
+#aurora-background::before {
+  background: radial-gradient(circle at center, #a855f7, transparent 60%);
+  top: -20vmin;
+  left: -20vmin;
+  animation: move-glow-1 25s infinite alternate ease-in-out;
+}
+
+#aurora-background::after {
+  background: radial-gradient(circle at center, #ec4899, transparent 60%);
+  bottom: -20vmin;
+  right: -20vmin;
+  animation: move-glow-2 30s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes move-glow-1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(50vw, 50vh) scale(1.5);
+  }
+}
+
+@keyframes move-glow-2 {
+  0% {
+    transform: translate(0, 0) scale(1.2);
+  }
+
+  100% {
+    transform: translate(-50vw, -50vh) scale(0.8);
+  }
+}
+
+
+.text-glass-art {
+  color: rgba(216, 180, 254, 0.9);
+  text-shadow: 0 0 12px rgba(168, 85, 247, 0.4);
+  transition: all 0.3s ease;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a855f7;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9333ea;
+}
+
+/* Swiper Customization */
+.swiper-pagination-bullet {
+  background-color: #9ca3af !important;
+  width: 10px !important;
+  height: 10px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #a855f7 !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #a855f7 !important;
+}
+
+/* Scrollbar Hide Utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* Marquee Animation for Portfolio */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 60s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 60s linear infinite;
+}
