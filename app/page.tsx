@@ -3,7 +3,6 @@
 import React, { useEffect, Suspense, lazy } from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
-import ScrollspyNav from '../components/ScrollspyNav';
 import Footer from '../components/Footer';
 
 // Inform TypeScript that new global libraries are available
@@ -65,9 +64,6 @@ export default function Home() {
         <div className="relative min-h-screen w-full overflow-x-hidden pb-28 sm:pb-0">
             <div id="aurora-background"></div>
             <Header />
-            <Suspense fallback={null}>
-                <ScrollspyNav />
-            </Suspense>
             <main>
                 <Hero />
                 <Suspense fallback={<Loader />}>

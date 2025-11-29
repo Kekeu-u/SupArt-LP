@@ -69,40 +69,40 @@ const Header: React.FC = () => {
     setActiveSection(targetId);
     document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
   };
-  
+
   // Mobile: Top logo + Bottom Navigation
   if (isMobile) {
     return (
-        <>
-            <div className={`fixed top-0 left-0 w-full z-40 flex justify-center p-4 transition-all duration-500 ease-in-out ${isScrolled ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`}>
-                 <a 
-                  href="#home" 
-                  onClick={(e) => handleLinkClick(e, '#home')} 
-                  className="text-3xl font-bold text-white transition-transform duration-300 hover:scale-105"
-                  aria-label="Voltar para o topo"
+      <>
+        <div className={`fixed top-0 left-0 w-full z-40 flex justify-center p-4 transition-all duration-500 ease-in-out ${isScrolled ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`}>
+          <a
+            href="#home"
+            onClick={(e) => handleLinkClick(e, '#home')}
+            className="transition-transform duration-300 hover:scale-105"
+            aria-label="Voltar para o topo"
+          >
+            <img src="/assets/logo.jpg" alt="SupArt Logo" className="h-12 w-auto rounded-full border-2 border-white/10 shadow-lg" />
+          </a>
+        </div>
+        <nav className="fixed bottom-4 left-0 w-full z-50 flex justify-center px-4">
+          <ul className="flex justify-around items-center gap-x-1 p-1.5 bg-black/50 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl shadow-purple-500/10">
+            {mobileNavLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={(e) => handleLinkClick(e, link.href)}
+                  className={`flex flex-col items-center justify-center text-center w-14 h-14 p-1 rounded-full transition-all duration-300 transform hover:scale-105 ${activeSection === link.href.substring(1) ? 'text-purple-400 bg-white/10 scale-105' : 'text-gray-400 hover:text-white'}`}
+                  aria-current={activeSection === link.href.substring(1) ? 'page' : undefined}
+                  aria-label={link.label}
                 >
-                  Sup<span className="text-glass-art">Art</span>
+                  {link.icon}
+                  <span className="text-xs mt-1 truncate">{link.label}</span>
                 </a>
-            </div>
-            <nav className="fixed bottom-4 left-0 w-full z-50 flex justify-center px-4">
-                <ul className="flex justify-around items-center gap-x-1 p-1.5 bg-black/50 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl shadow-purple-500/10">
-                    {mobileNavLinks.map((link) => (
-                        <li key={link.href}>
-                            <a
-                                href={link.href}
-                                onClick={(e) => handleLinkClick(e, link.href)}
-                                className={`flex flex-col items-center justify-center text-center w-14 h-14 p-1 rounded-full transition-all duration-300 transform hover:scale-105 ${activeSection === link.href.substring(1) ? 'text-purple-400 bg-white/10 scale-105' : 'text-gray-400 hover:text-white'}`}
-                                aria-current={activeSection === link.href.substring(1) ? 'page' : undefined}
-                                aria-label={link.label}
-                            >
-                                {link.icon}
-                                <span className="text-xs mt-1 truncate">{link.label}</span>
-                            </a>
-                        </li>
-                    ))}
-                </ul>
-            </nav>
-        </>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </>
     );
   }
 
@@ -112,42 +112,42 @@ const Header: React.FC = () => {
     <header className="fixed top-0 left-0 w-full z-50 p-4 transition-all duration-300">
       <div className="container mx-auto">
         <div className="flex flex-col items-center gap-y-3">
-            <a 
-              href="#home" 
-              onClick={(e) => handleLinkClick(e, '#home')} 
-              className={`text-3xl font-bold text-white transition-all duration-500 ease-in-out hover:scale-105 ${isScrolled ? 'opacity-0 scale-95 h-0 invisible' : 'opacity-100 scale-100 h-auto visible'}`}
-              aria-label="Voltar para o topo"
-            >
-              Sup<span className="text-glass-art">Art</span>
-            </a>
-          
-            <div className={`flex justify-center items-center bg-black/30 backdrop-blur-xl rounded-full border border-white/10 shadow-lg px-4 transition-all duration-300 ${isIconOnly ? 'py-2' : 'py-4'}`}>
-                <nav className={`flex items-center justify-center transition-all duration-300 ${isIconOnly ? 'gap-x-2' : 'gap-x-4'}`}>
-                    {desktopNavLinks.map((link) => (
-                      <a
-                        key={link.href}
-                        href={link.href}
-                        onClick={(e) => handleLinkClick(e, link.href)}
-                        className="flex items-center gap-x-2 text-gray-300 hover:text-white transition-all duration-300 rounded-full px-3 py-2 hover:bg-white/10"
-                        title={link.label}
-                        aria-label={link.label}
-                      >
-                        {link.icon}
-                        <span className={`origin-left transition-all duration-300 ${!isIconOnly ? 'max-w-xs scale-x-100 opacity-100' : 'max-w-0 scale-x-0 opacity-0'} overflow-hidden whitespace-nowrap`}>
-                          {link.label}
-                        </span>
-                      </a>
-                    ))}
-                </nav>
+          <a
+            href="#home"
+            onClick={(e) => handleLinkClick(e, '#home')}
+            className={`transition-all duration-500 ease-in-out hover:scale-105 ${isScrolled ? 'opacity-0 scale-95 h-0 invisible' : 'opacity-100 scale-100 h-auto visible'}`}
+            aria-label="Voltar para o topo"
+          >
+            <img src="/assets/logo.jpg" alt="SupArt Logo" className="h-16 w-auto rounded-full border-2 border-white/10 shadow-lg" />
+          </a>
 
-                <a 
-                    href="#contato" 
-                    onClick={(e) => handleLinkClick(e, '#contato')} 
-                    className={`bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition-all duration-300 transform hover:scale-105 whitespace-nowrap ml-4 ${isIconOnly ? 'px-3 py-2 text-sm' : 'px-6 py-3 text-base'}`}
+          <div className={`flex justify-center items-center bg-black/30 backdrop-blur-xl rounded-full border border-white/10 shadow-lg px-4 transition-all duration-300 ${isIconOnly ? 'py-2' : 'py-4'}`}>
+            <nav className={`flex items-center justify-center transition-all duration-300 ${isIconOnly ? 'gap-x-2' : 'gap-x-4'}`}>
+              {desktopNavLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => handleLinkClick(e, link.href)}
+                  className="flex items-center gap-x-2 text-gray-300 hover:text-white transition-all duration-300 rounded-full px-3 py-2 hover:bg-white/10"
+                  title={link.label}
+                  aria-label={link.label}
                 >
-                    Orçamento
+                  {link.icon}
+                  <span className={`origin-left transition-all duration-300 ${!isIconOnly ? 'max-w-xs scale-x-100 opacity-100' : 'max-w-0 scale-x-0 opacity-0'} overflow-hidden whitespace-nowrap`}>
+                    {link.label}
+                  </span>
                 </a>
-            </div>
+              ))}
+            </nav>
+
+            <a
+              href="#contato"
+              onClick={(e) => handleLinkClick(e, '#contato')}
+              className={`bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition-all duration-300 transform hover:scale-105 whitespace-nowrap ml-4 ${isIconOnly ? 'px-3 py-2 text-sm' : 'px-6 py-3 text-base'}`}
+            >
+              Orçamento
+            </a>
+          </div>
         </div>
       </div>
     </header>
