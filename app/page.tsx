@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { ProjectShowcase } from "@/components/ProjectShowcase";
+import { TechStackMarquee } from "@/components/TechStackMarquee";
 
 export default function Home() {
     return (
@@ -10,8 +11,16 @@ export default function Home() {
             {/* Hero Section */}
             <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-20">
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] bg-[var(--color-apple-blue)] rounded-full blur-[120px] opacity-20 animate-pulse" />
-                    <div className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-[var(--color-apple-red)] rounded-full blur-[120px] opacity-15 animate-pulse delay-1000" />
+                    <div className="spline-container absolute top-0 left-0 w-full h-full">
+                        <iframe
+                            src="https://my.spline.design/herolightcopy-HWuYMA6IdNGk0VGuyvrItNGB"
+                            frameBorder="0"
+                            width="100%"
+                            height="100%"
+                            id="aura-spline"
+                            className="w-full h-full"
+                        />
+                    </div>
                 </div>
 
                 <motion.div
@@ -36,6 +45,9 @@ export default function Home() {
                     </motion.button>
                 </motion.div>
             </section>
+
+            {/* Tech Stack Marquee */}
+            <TechStackMarquee />
 
             {/* Project Showcase Section */}
             <ProjectShowcase />
