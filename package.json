@@ -13,11 +13,14 @@
   "dependencies": {
     "@once-ui-system/core": "latest",
     "@tailwindcss/postcss": "^4.1.17",
+    "clsx": "^2.1.1",
     "eslint-config-next": "^16.0.5",
+    "framer-motion": "^12.23.25",
     "next": "^16.0.5",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-icons": "5"
+    "react-icons": "5",
+    "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
