@@ -38,15 +38,19 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
         }
     }, [messages, chatState]);
 
-    // Travar scroll da página quando chat ativo
+    // Travar scroll da página APENAS quando chat ativo
     useEffect(() => {
         if (chatState === "active") {
             document.body.style.overflow = "hidden";
+            document.documentElement.style.overflow = "hidden";
         } else {
             document.body.style.overflow = "";
+            document.documentElement.style.overflow = "";
         }
+        // Cleanup garantido
         return () => {
             document.body.style.overflow = "";
+            document.documentElement.style.overflow = "";
         };
     }, [chatState]);
 
@@ -235,8 +239,8 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
                                     >
                                         <div
                                             className={`max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${message.role === "user"
-                                                    ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-br-md"
-                                                    : "bg-white text-gray-700 shadow-md rounded-bl-md border border-gray-100"
+                                                ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-br-md"
+                                                : "bg-white text-gray-700 shadow-md rounded-bl-md border border-gray-100"
                                                 }`}
                                         >
                                             {getMessageText(message)}
