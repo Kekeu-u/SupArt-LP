@@ -1,11 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { ProjectShowcase } from "@/components/ProjectShowcase";
 import { TechStackMarquee } from "@/components/TechStackMarquee";
+import { RotatingHeadline } from "@/components/RotatingHeadline";
+import { HeroChat } from "@/components/HeroChat";
+import { services, footerLinks, siteConfig } from "@/data";
 
 export default function Home() {
+    const [isChatActive, setIsChatActive] = useState(false);
+
     return (
         <main className="min-h-screen bg-[var(--color-apple-off-white)] text-[var(--color-apple-black)] overflow-x-hidden selection:bg-[var(--color-apple-blue)] selection:text-white">
             {/* Hero Section */}
@@ -23,30 +29,29 @@ export default function Home() {
                     </div>
                 </div>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="relative z-10 text-center max-w-5xl mx-auto space-y-8"
-                >
-                    <h1 className="text-6xl md:text-8xl font-semibold tracking-tight text-balance leading-[0.95]">
-                        Design que converte pela <span className="text-[var(--color-apple-gray)]">autoridade estética.</span>
-                    </h1>
-                    <p className="text-xl md:text-2xl text-[var(--color-apple-gray)] max-w-2xl mx-auto font-medium">
-                        Transformamos sua presença digital em uma experiência cinematográfica de alta fidelidade.
-                    </p>
-
-                    <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className="mt-8 px-8 py-4 bg-[var(--color-apple-black)] text-white rounded-full text-lg font-medium hover:bg-black/90 transition-colors shadow-lg shadow-black/10"
+                <div className="relative z-10 text-center max-w-5xl mx-auto">
+                    {/* Texto do Hero - some quando chat abre */}
+                    <motion.div
+                        initial={{ opacity: 1, y: 0 }}
+                        animate={{
+                            opacity: isChatActive ? 0 : 1,
+                            y: isChatActive ? -30 : 0,
+                            scale: isChatActive ? 0.95 : 1,
+                        }}
+                        transition={{ duration: 0.4, ease: "easeOut" }}
                     >
-                        Inicie seu Projeto
-                    </motion.button>
-                </motion.div>
+                        <RotatingHeadline />
+                        <p className="text-lead text-[var(--color-apple-gray)] max-w-2xl mx-auto mt-6">
+                            Transformamos sua presença digital em uma experiência cinematográfica de alta fidelidade.
+                        </p>
+                    </motion.div>
+
+                    {/* Chat integrado no hero */}
+                    <HeroChat onStateChange={setIsChatActive} />
+                </div>
             </section>
 
-            {/* Tech Stack Marquee */}
+            {/* Tech Stack - Logo + Marquee + Cards + Stats */}
             <TechStackMarquee />
 
             {/* Project Showcase Section */}
@@ -65,26 +70,7 @@ export default function Home() {
                     </motion.h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {[
-                            {
-                                title: "O Acelerador de Leads",
-                                desc: "Landing pages de alta conversão com copy persuasiva e design hipnótico.",
-                                price: "A partir de R$ 5k",
-                                gradient: "from-blue-500/10 to-purple-500/10"
-                            },
-                            {
-                                title: "Identidade Visual 360",
-                                desc: "Rebranding completo. Logo, tipografia, cores e manual de marca.",
-                                price: "A partir de R$ 8k",
-                                gradient: "from-orange-500/10 to-red-500/10"
-                            },
-                            {
-                                title: "Ecosistema Digital",
-                                desc: "Site institucional, blog e integrações CRM. A presença completa.",
-                                price: "Sob Consulta",
-                                gradient: "from-green-500/10 to-emerald-500/10"
-                            }
-                        ].map((service, i) => (
+                        {services.map((service, i) => (
                             <motion.div
                                 key={i}
                                 initial={{ opacity: 0, y: 20 }}
@@ -121,24 +107,20 @@ export default function Home() {
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
                         <div className="col-span-2 md:col-span-1">
-                            <h4 className="font-semibold mb-6">SupArt Agency</h4>
+                            <h4 className="font-semibold mb-6">{siteConfig.name}</h4>
                             <p className="text-sm text-[var(--color-apple-gray)] leading-relaxed max-w-xs">
-                                Criando o futuro das interfaces digitais com precisão e arte.
+                                {siteConfig.description}
                             </p>
                         </div>
 
-                        {[
-                            { title: "Serviços", links: ["Design System", "Web Development", "Mobile Apps", "Consultoria"] },
-                            { title: "Empresa", links: ["Sobre", "Carreiras", "Blog", "Contato"] },
-                            { title: "Legal", links: ["Privacidade", "Termos", "Cookies"] }
-                        ].map((col, i) => (
+                        {footerLinks.map((col, i) => (
                             <div key={i}>
                                 <h4 className="font-semibold mb-6 text-sm">{col.title}</h4>
                                 <ul className="space-y-4">
                                     {col.links.map((link) => (
-                                        <li key={link}>
-                                            <a href="#" className="text-sm text-[var(--color-apple-gray)] hover:text-[var(--color-apple-black)] transition-colors">
-                                                {link}
+                                        <li key={link.label}>
+                                            <a href={link.href} className="text-sm text-[var(--color-apple-gray)] hover:text-[var(--color-apple-black)] transition-colors">
+                                                {link.label}
                                             </a>
                                         </li>
                                     ))}
@@ -149,10 +131,10 @@ export default function Home() {
 
                     <div className="pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-4">
                         <p className="text-xs text-[var(--color-apple-gray)]">
-                            © 2025 SupArt Agency. Todos os direitos reservados.
+                            {siteConfig.copyright}
                         </p>
                         <p className="text-xs text-[var(--color-apple-gray)]">
-                            São Paulo, Brasil
+                            {siteConfig.location}
                         </p>
                     </div>
                 </div>

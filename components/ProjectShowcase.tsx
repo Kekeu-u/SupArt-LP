@@ -142,83 +142,142 @@ export const ProjectShowcase = () => {
                 </p>
             </motion.div>
 
-            <BentoGrid className="auto-rows-[400px]">
-                {/* Site 1 - Large Tilt Card - ADESP/RS */}
-                <BentoCard colSpan={2} className="p-0 overflow-visible bg-transparent border-none shadow-none group/card">
+            <BentoGrid className="auto-rows-[550px]">
+                {/* Site 1 - Large Card - ADESP/RS */}
+                <BentoCard colSpan={2} className="p-0 overflow-hidden bg-transparent border-none shadow-none group/card">
                     <a href="https://adesprs.org.br/" target="_blank" rel="noopener noreferrer" className="block h-full w-full">
-                        <TiltCard className="relative overflow-hidden bg-gradient-to-br from-[#0a2e1d] via-[#1a1a1a] to-[#3d0a0a]"> {/* Darker, richer gradient */}
-                            {/* Background Noise/Texture */}
-                            <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
+                        <div className="relative h-full w-full overflow-hidden rounded-2xl bg-gradient-to-br from-[#0d3320] via-[#1a1a1a] to-[#2d1515]">
+                            {/* Background Noise */}
+                            <div className="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
-                            <div className="relative z-10 h-full flex flex-col justify-between p-8">
-                                {/* Header Content */}
-                                <div className="flex justify-between items-start">
-                                    <div>
-                                        <div className="flex items-center gap-2 mb-2">
-                                            <span className="px-2 py-1 rounded-full bg-white/10 border border-white/5 text-[10px] font-medium text-white/80 uppercase tracking-wider">
-                                                Non-Profit
-                                            </span>
-                                            <span className="px-2 py-1 rounded-full bg-white/10 border border-white/5 text-[10px] font-medium text-white/80 uppercase tracking-wider">
-                                                Institutional
-                                            </span>
-                                        </div>
-                                        <h3 className="text-4xl font-bold text-white tracking-tight mb-2">ADESP/RS</h3>
-                                        <p className="text-white/60 text-sm max-w-sm leading-relaxed">
-                                            Transformando vidas através do esporte e educação. Uma plataforma digital robusta para uma missão nobre.
-                                        </p>
+                            {/* Content Container */}
+                            <div className="relative z-10 h-full flex flex-col p-5 md:p-6">
+
+                                {/* Top Row: Tags + Arrow */}
+                                <div className="flex items-center justify-between mb-3">
+                                    <div className="flex items-center gap-2">
+                                        <span className="px-2.5 py-1 rounded-full bg-white/10 text-[10px] font-medium text-white/70 uppercase tracking-wider">
+                                            Non-Profit
+                                        </span>
+                                        <span className="px-2.5 py-1 rounded-full bg-white/10 text-[10px] font-medium text-white/70 uppercase tracking-wider">
+                                            Institucional
+                                        </span>
                                     </div>
-
-                                    {/* Arrow Icon */}
-                                    <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover/card:bg-white group-hover/card:text-black transition-colors duration-300">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                                            <polyline points="7 7 17 7 17 17"></polyline>
+                                    <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center group-hover/card:bg-white group-hover/card:text-black transition-all duration-300">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                                            <line x1="7" y1="17" x2="17" y2="7" />
+                                            <polyline points="7 7 17 7 17 17" />
                                         </svg>
                                     </div>
                                 </div>
 
-                                {/* Browser Mockup Image */}
-                                <div className="mt-8 relative w-full flex-1 min-h-[200px] rounded-t-xl overflow-hidden shadow-2xl border border-white/10 bg-black/50 backdrop-blur-sm group-hover/card:translate-y-[-10px] transition-transform duration-500">
+                                {/* Title + Description */}
+                                <div className="mb-4">
+                                    <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-1.5">ADESP/RS</h3>
+                                    <p className="text-white/50 text-sm leading-relaxed">
+                                        Transformando vidas através do esporte e educação.
+                                    </p>
+                                </div>
+
+                                {/* Browser Mockup - Flex grow */}
+                                <div className="relative flex-1 rounded-lg overflow-hidden border border-white/10 bg-black/40 group-hover/card:border-white/20 transition-colors duration-300">
                                     {/* Browser Header */}
-                                    <div className="h-8 bg-white/5 border-b border-white/5 flex items-center px-4 gap-2">
-                                        <div className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
-                                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
-                                        <div className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
-                                        <div className="ml-4 h-4 w-32 rounded-full bg-white/5" />
+                                    <div className="h-7 bg-[#1a1a1a] border-b border-white/5 flex items-center px-3 gap-2">
+                                        <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+                                        <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+                                        <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+                                        <div className="ml-3 flex-1 max-w-[200px] h-4 rounded bg-white/5 flex items-center justify-center">
+                                            <span className="text-[9px] text-white/30">adesprs.org.br</span>
+                                        </div>
                                     </div>
-                                    {/* Image */}
-                                    <div className="relative w-full h-full overflow-hidden">
+                                    {/* Site Screenshot */}
+                                    <div className="relative w-full h-[calc(100%-1.75rem)] overflow-hidden">
                                         <img
                                             src="/adesp-preview.png"
-                                            alt="ADESP/RS Website Preview"
-                                            className="w-full h-full object-cover object-top transform group-hover/card:scale-105 transition-transform duration-700"
+                                            alt="ADESP/RS Website"
+                                            className="w-full h-full object-cover object-top group-hover/card:scale-[1.03] transition-transform duration-700"
                                         />
-                                        {/* Shine Effect */}
-                                        <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
                                     </div>
                                 </div>
                             </div>
-                        </TiltCard>
+                        </div>
                     </a>
                 </BentoCard>
-
-                {/* Presentation - Interactive Deck */}
-                <BentoCard colSpan={1} className="bg-[var(--color-apple-off-white)] border border-black/5 overflow-visible">
-                    <DeckCard />
-                </BentoCard>
-
-                {/* Site 2 - Vertical Tilt Card */}
-                <BentoCard colSpan={1} className="p-0 overflow-visible bg-transparent border-none shadow-none">
-                    <TiltCard className="bg-gradient-to-br from-emerald-500 to-teal-600">
-                        <div className="text-white text-center">
-                            <h3 className="text-2xl font-bold mb-2">SaaS Dashboard</h3>
-                            <p className="opacity-80">React + Tailwind</p>
-                            {/* Placeholder for Site Screenshot */}
-                            <div className="mt-4 w-full h-32 bg-white/20 rounded-lg backdrop-blur-md" />
-                        </div>
-                    </TiltCard>
-                </BentoCard>
             </BentoGrid>
+
+            {/* Segunda linha - Dunga + Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 max-w-7xl mx-auto px-6">
+                {/* Parceria Estratégica Dunga - Ocupa 2 colunas */}
+                <div className="md:col-span-2 h-80 rounded-2xl overflow-hidden bg-gradient-to-br from-amber-900 via-[#1a1a1a] to-stone-900 group/card">
+                    <div className="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+                    <div className="relative h-full flex p-5 md:p-6 gap-6">
+                        {/* Left: Info */}
+                        <div className="flex flex-col justify-between shrink-0 w-48 md:w-64">
+                            <div>
+                                <div className="flex items-center gap-2 mb-3">
+                                    <span className="px-2.5 py-1 rounded-full bg-white/10 text-[10px] font-medium text-white/70 uppercase tracking-wider">
+                                        Parceria
+                                    </span>
+                                    <span className="px-2.5 py-1 rounded-full bg-amber-500/20 text-[10px] font-medium text-amber-300 uppercase tracking-wider">
+                                        Estratégica
+                                    </span>
+                                </div>
+                                <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-2">Dunga</h3>
+                                <p className="text-white/50 text-sm leading-relaxed">
+                                    Identidade visual premium e narrativa esportiva para o tetracampeão.
+                                </p>
+                            </div>
+                            <p className="text-white/30 text-xs italic">
+                                "Com garra, tudo é possível."
+                            </p>
+                        </div>
+
+                        {/* Right: Browser Preview */}
+                        <div className="flex-1 rounded-lg overflow-hidden border border-white/10 bg-black/40 group-hover/card:border-white/20 transition-colors">
+                            <div className="h-7 bg-[#1a1a1a] border-b border-white/5 flex items-center px-3 gap-2">
+                                <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+                                <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+                                <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+                                <div className="ml-3 flex-1 max-w-[140px] h-4 rounded bg-white/5 flex items-center justify-center">
+                                    <span className="text-[9px] text-white/30">dunga.com.br</span>
+                                </div>
+                            </div>
+                            <div className="relative w-full h-[calc(100%-1.75rem)] overflow-hidden">
+                                <img
+                                    src="/dunga-preview.png"
+                                    alt="Parceria Dunga"
+                                    className="w-full h-full object-cover object-top group-hover/card:scale-[1.03] transition-transform duration-700"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Stats Card */}
+                <div className="h-80 rounded-2xl bg-gradient-to-br from-purple-600 to-blue-600 p-6 flex flex-col justify-center items-center">
+                    <span className="text-5xl md:text-6xl font-bold text-white">+15</span>
+                    <p className="text-white/70 text-sm mt-2">Projetos Entregues</p>
+                    <div className="mt-4 flex gap-2">
+                        <span className="px-3 py-1 rounded-full bg-white/20 text-xs text-white">Design</span>
+                        <span className="px-3 py-1 rounded-full bg-white/20 text-xs text-white">Dev</span>
+                    </div>
+                </div>
+            </div>
+
+            {/* Terceira linha - SaaS Dashboard */}
+            <div className="grid grid-cols-1 gap-4 mt-4 max-w-7xl mx-auto px-6">
+                <div className="h-48 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 p-6 flex items-center justify-between">
+                    <div className="text-white">
+                        <span className="px-2.5 py-1 rounded-full bg-white/20 text-[10px] font-medium uppercase tracking-wider mb-3 inline-block">
+                            Em Desenvolvimento
+                        </span>
+                        <h3 className="text-2xl md:text-3xl font-bold mb-1">SaaS Dashboard</h3>
+                        <p className="opacity-70 text-sm">React + Tailwind + Supabase</p>
+                    </div>
+                    <div className="w-32 h-20 bg-white/20 rounded-lg" />
+                </div>
+            </div>
         </section>
     );
 };

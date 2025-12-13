@@ -7,7 +7,7 @@
   --color-apple-gray: oklch(0.55 0 0);
   --color-apple-blue: oklch(0.55 0.2 250);
   --color-apple-red: oklch(0.6 0.2 20);
-  
+
   /* Semantic Colors */
   --color-background: var(--color-apple-off-white);
   --color-foreground: var(--color-apple-black);
@@ -15,13 +15,15 @@
 
   /* Border Radius */
   --radius-apple: 32px;
-  
+
   /* Fonts */
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Custom Utilities for "Liquid Glass" and Depth */
+/* Typography Utilities */
 @layer utilities {
+
+  /* Glass Panel */
   .glass-panel {
     @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-lg;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
@@ -30,9 +32,73 @@
   .text-balance {
     text-wrap: balance;
   }
-  
-  .font-feature-settings {
-    font-feature-settings: 'ss01', 'cv11';
+
+  /* Headlines - Fluid scaling with clamp */
+  .headline-hero {
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .headline-section {
+    font-size: clamp(1.75rem, 5vw, 3.5rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .headline-card {
+    font-size: clamp(1.125rem, 3vw, 1.75rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  /* Body Text - Fluid */
+  .text-lead {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.5;
+  }
+
+  .text-body {
+    @apply text-base md:text-lg font-normal;
+    letter-spacing: 0;
+    line-height: 1.6;
+  }
+
+  .text-small {
+    @apply text-sm font-normal;
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+  }
+
+  /* Labels & Captions */
+  .text-label {
+    @apply text-xs font-medium uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.4;
+  }
+
+  .text-caption {
+    @apply text-xs font-normal;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+  }
+
+  /* Optical adjustments */
+  .tracking-tighter-optical {
+    letter-spacing: -0.04em;
+  }
+
+  .tracking-tight-optical {
+    letter-spacing: -0.02em;
+  }
+
+  .tracking-wide-optical {
+    letter-spacing: 0.05em;
   }
 }
 
@@ -47,6 +113,7 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'ss01' 1, 'cv11' 1;
 }
 
 /* Smooth Scrolling */
