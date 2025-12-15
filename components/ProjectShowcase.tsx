@@ -209,11 +209,11 @@ export const ProjectShowcase = () => {
             {/* Segunda linha - Dunga + Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 max-w-7xl mx-auto px-6">
                 {/* Parceria Estratégica Dunga - Ocupa 2 colunas */}
-                <div className="md:col-span-2 h-80 rounded-2xl overflow-hidden bg-gradient-to-br from-amber-900 via-[#1a1a1a] to-stone-900 group/card">
+                <div className="md:col-span-2 min-h-[320px] md:h-80 rounded-2xl overflow-hidden bg-gradient-to-br from-amber-900 via-[#1a1a1a] to-stone-900 group/card relative">
                     <div className="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-                    <div className="relative h-full flex p-5 md:p-6 gap-6">
+                    <div className="relative h-full flex flex-col md:flex-row p-5 md:p-6 gap-4 md:gap-6">
                         {/* Left: Info */}
-                        <div className="flex flex-col justify-between shrink-0 w-48 md:w-64">
+                        <div className="flex flex-col justify-between md:shrink-0 md:w-64">
                             <div>
                                 <div className="flex items-center gap-2 mb-3">
                                     <span className="px-2.5 py-1 rounded-full bg-white/10 text-[10px] font-medium text-white/70 uppercase tracking-wider">
@@ -223,18 +223,18 @@ export const ProjectShowcase = () => {
                                         Estratégica
                                     </span>
                                 </div>
-                                <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-2">Dunga</h3>
+                                <h3 className="text-2xl md:text-4xl font-bold text-white tracking-tight mb-2">Dunga</h3>
                                 <p className="text-white/50 text-sm leading-relaxed">
-                                    Identidade visual premium e narrativa esportiva para o tetracampeão.
+                                    Identidade visual premium para o tetracampeão.
                                 </p>
                             </div>
-                            <p className="text-white/30 text-xs italic">
+                            <p className="text-white/30 text-xs italic hidden md:block">
                                 "Com garra, tudo é possível."
                             </p>
                         </div>
 
-                        {/* Right: Browser Preview */}
-                        <div className="flex-1 rounded-lg overflow-hidden border border-white/10 bg-black/40 group-hover/card:border-white/20 transition-colors">
+                        {/* Right: Browser Preview - ocupa mais espaço em mobile */}
+                        <div className="flex-1 min-h-[180px] rounded-lg overflow-hidden border border-white/10 bg-black/40 group-hover/card:border-white/20 transition-colors">
                             <div className="h-7 bg-[#1a1a1a] border-b border-white/5 flex items-center px-3 gap-2">
                                 <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
                                 <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />

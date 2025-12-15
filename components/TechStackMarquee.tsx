@@ -257,51 +257,38 @@ export const TechStackMarquee = () => {
                                 >
                                     <img src={company.logo} alt={company.name} className="max-h-7 max-w-full w-auto object-contain" />
                                 </a>
-                            ))}
-                        </motion.div>
-                    </div>
-                </div>
-
-                {/* Tech Cards Grid */}
-                <div ref={cardsRef} className="grid grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 mb-8">
-                    {technologies.map((tech, index) => (
-                        <TechCard
-                            key={tech.name}
-                            tech={tech}
-                            index={index}
-                            isExpanded={expandedIndex === index}
-                            onToggle={() => handleToggle(index)}
+                            onToggle = {() => handleToggle(index)}
                         />
                     ))}
-                </div>
+                    </div>
 
-                {/* Stats */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="flex justify-center gap-8 sm:gap-16 pt-6 border-t border-black/5"
-                >
-                    {[
-                        { value: "99.9%", label: "Uptime" },
-                        { value: "<50ms", label: "Resposta" },
-                        { value: "100%", label: "SEO" }
-                    ].map((stat) => (
-                        <motion.div
-                            key={stat.label}
-                            className="text-center group cursor-default"
-                            whileHover={{ scale: 1.1 }}
-                            transition={{ duration: 0.3, ease }}
-                        >
-                            <div className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--color-apple-black)] group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
-                                {stat.value}
-                            </div>
-                            <div className="text-[10px] sm:text-xs text-[var(--color-apple-gray)]">{stat.label}</div>
-                        </motion.div>
-                    ))}
-                </motion.div>
-            </div>
+                    {/* Stats */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                        className="flex justify-center gap-8 sm:gap-16 pt-6 border-t border-black/5"
+                    >
+                        {[
+                            { value: "99.9%", label: "Uptime" },
+                            { value: "<50ms", label: "Resposta" },
+                            { value: "100%", label: "SEO" }
+                        ].map((stat) => (
+                            <motion.div
+                                key={stat.label}
+                                className="text-center group cursor-default"
+                                whileHover={{ scale: 1.1 }}
+                                transition={{ duration: 0.3, ease }}
+                            >
+                                <div className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--color-apple-black)] group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+                                    {stat.value}
+                                </div>
+                                <div className="text-[10px] sm:text-xs text-[var(--color-apple-gray)]">{stat.label}</div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
         </section>
     );
 };
