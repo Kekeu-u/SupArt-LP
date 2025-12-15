@@ -174,16 +174,16 @@ export default function Home() {
                     {/* Animated Gradient Background */}
                     <div className="absolute inset-0 bg-gradient-mesh opacity-50" />
 
-                    {/* Floating Orbs - Leves e Impressionantes */}
+                    {/* Floating Orbs - Tamanhos responsivos para não causar overflow */}
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
                         {/* Orb 1 - Roxo grande */}
-                        <div className="orb-1 absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-gradient-radial from-purple-400/30 via-purple-500/10 to-transparent blur-3xl transform-gpu" />
+                        <div className="orb-1 absolute top-1/4 left-1/4 w-[min(600px,80vw)] h-[min(600px,80vw)] rounded-full bg-gradient-radial from-purple-400/30 via-purple-500/10 to-transparent blur-3xl transform-gpu" />
 
                         {/* Orb 2 - Azul médio */}
-                        <div className="orb-2 absolute top-1/2 right-1/4 w-[450px] h-[450px] rounded-full bg-gradient-radial from-blue-400/25 via-cyan-400/10 to-transparent blur-3xl transform-gpu" />
+                        <div className="orb-2 absolute top-1/2 right-1/4 w-[min(450px,60vw)] h-[min(450px,60vw)] rounded-full bg-gradient-radial from-blue-400/25 via-cyan-400/10 to-transparent blur-3xl transform-gpu" />
 
                         {/* Orb 3 - Rosa pequeno */}
-                        <div className="orb-3 absolute bottom-1/4 left-1/3 w-[300px] h-[300px] rounded-full bg-gradient-radial from-pink-400/20 to-transparent blur-2xl transform-gpu" />
+                        <div className="orb-3 absolute bottom-1/4 left-1/3 w-[min(300px,50vw)] h-[min(300px,50vw)] rounded-full bg-gradient-radial from-pink-400/20 to-transparent blur-2xl transform-gpu" />
                     </div>
 
                     {/* Noise Grain Texture */}
