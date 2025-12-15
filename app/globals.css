@@ -100,6 +100,62 @@
   .tracking-wide-optical {
     letter-spacing: 0.05em;
   }
+
+  /* ═══════════════════════════════════════════
+     GPU ACCELERATION & PERFORMANCE
+     ═══════════════════════════════════════════ */
+  .transform-gpu {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
+  /* Gradiente radial para orbs */
+  .bg-gradient-radial {
+    background: radial-gradient(circle at center, var(--tw-gradient-from), var(--tw-gradient-via, transparent), var(--tw-gradient-to, transparent));
+  }
+
+  /* ═══════════════════════════════════════════
+     ANIMATED GRADIENT MESH BACKGROUND
+     ═══════════════════════════════════════════ */
+  .bg-gradient-mesh {
+    background:
+      linear-gradient(135deg,
+        oklch(0.96 0.03 280) 0%,
+        oklch(0.98 0.01 220) 25%,
+        oklch(0.97 0.02 200) 50%,
+        oklch(0.99 0.01 180) 75%,
+        oklch(0.95 0.02 260) 100%);
+    background-size: 400% 400%;
+    animation: gradient-mesh-flow 20s ease infinite;
+  }
+
+  @keyframes gradient-mesh-flow {
+
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    25% {
+      background-position: 50% 0%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    75% {
+      background-position: 50% 100%;
+    }
+  }
+
+  /* ═══════════════════════════════════════════
+     NOISE GRAIN TEXTURE
+     ═══════════════════════════════════════════ */
+  .noise-texture {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
 }
 
 :root {
@@ -108,7 +164,7 @@
 }
 
 /* ═══════════════════════════════════════════
-   SMOOTH SCROLLING COM PESO/INÉRCIA
+   SMOOTH SCROLLING
    ═══════════════════════════════════════════ */
 html {
   scroll-behavior: smooth;
@@ -124,7 +180,9 @@ body {
   overflow-x: hidden;
 }
 
-/* Scrollbar customizada minimalista */
+/* ═══════════════════════════════════════════
+   CUSTOM SCROLLBAR
+   ═══════════════════════════════════════════ */
 ::-webkit-scrollbar {
   width: 8px;
 }
