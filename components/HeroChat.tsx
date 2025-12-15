@@ -3,7 +3,7 @@
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 
 type ChatState = "idle" | "active" | "minimized";
 
@@ -12,7 +12,7 @@ interface HeroChatProps {
 }
 
 // Animação simétrica para entrada/saída do popup
-const popupVariants = {
+const popupVariants: Variants = {
     hidden: {
         opacity: 0,
         scale: 0.85,
@@ -40,14 +40,14 @@ const popupVariants = {
 };
 
 // Animação do backdrop
-const backdropVariants = {
+const backdropVariants: Variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { duration: 0.2 } },
     exit: { opacity: 0, transition: { duration: 0.2 } }
 };
 
 // Animação do ícone minimizado
-const minimizedIconVariants = {
+const minimizedIconVariants: Variants = {
     hidden: {
         opacity: 0,
         scale: 0,
