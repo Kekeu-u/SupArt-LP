@@ -14,9 +14,9 @@ export default function MaintenancePage() {
 
             {/* Content Card */}
             <div className="glass-panel rounded-[32px] p-8 md:p-12 max-w-lg mx-4 text-center relative z-10">
-                {/* Logo */}
+                {/* Logo - SupIArt */}
                 <h1 className="headline-hero text-foreground mb-2">
-                    Sup<span className="text-apple-blue">Art</span>
+                    Sup<span className="bg-gradient-to-r from-purple-600 via-blue-500 to-cyan-400 bg-clip-text text-transparent italic font-bold">IA</span>rt
                 </h1>
 
                 {/* Subtitle */}
