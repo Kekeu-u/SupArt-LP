@@ -195,8 +195,8 @@ export const TechStackMarquee = () => {
     };
 
     return (
-        <section className="py-12 md:py-16 bg-[var(--color-apple-off-white)] overflow-hidden">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-12 md:py-16 bg-[var(--color-apple-off-white)] overflow-x-hidden">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
 
                 {/* Header */}
                 <motion.div
