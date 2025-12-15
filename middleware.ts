@@ -36,8 +36,8 @@ export function middleware(request: NextRequest) {
         return NextResponse.next();
     }
 
-    // 🚧 Redireciona todo o resto para /maintenance
-    return NextResponse.redirect(new URL('/maintenance', request.url));
+    // 🚧 Rewrite (mantém a URL original) para mostrar a página de manutenção
+    return NextResponse.rewrite(new URL('/maintenance', request.url));
 }
 
 export const config = {
