@@ -113,7 +113,7 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20, scale: 0.95 }}
                         transition={{ duration: 0.4, ease: "easeOut" }}
-                        className="w-[min(88vw,28rem)] mx-auto"
+                        className="w-full max-w-md mx-auto px-4"
                         style={{ marginTop: 'clamp(1.5rem, 4vw, 2.5rem)' }}
                     >
                         <form
@@ -182,7 +182,7 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: 20 }}
                             transition={{ duration: 0.4, ease: "easeOut" }}
-                            className="w-[min(92vw,28rem)] max-h-[75vh] flex flex-col"
+                            className="w-full max-w-md mx-4 max-h-[75vh] flex flex-col"
                         >
                             {/* Header */}
                             <motion.div
