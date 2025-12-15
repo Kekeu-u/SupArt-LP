@@ -11,6 +11,69 @@ interface HeroChatProps {
     onStateChange?: (isActive: boolean) => void;
 }
 
+// Animação simétrica para entrada/saída do popup
+const popupVariants = {
+    hidden: {
+        opacity: 0,
+        scale: 0.85,
+        y: 40,
+    },
+    visible: {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        transition: {
+            type: "spring",
+            damping: 25,
+            stiffness: 300,
+        }
+    },
+    exit: {
+        opacity: 0,
+        scale: 0.85,
+        y: 40,
+        transition: {
+            duration: 0.25,
+            ease: "easeIn",
+        }
+    }
+};
+
+// Animação do backdrop
+const backdropVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.2 } },
+    exit: { opacity: 0, transition: { duration: 0.2 } }
+};
+
+// Animação do ícone minimizado
+const minimizedIconVariants = {
+    hidden: {
+        opacity: 0,
+        scale: 0,
+        x: 100,
+    },
+    visible: {
+        opacity: 1,
+        scale: 1,
+        x: 0,
+        transition: {
+            type: "spring",
+            damping: 20,
+            stiffness: 400,
+            delay: 0.1,
+        }
+    },
+    exit: {
+        opacity: 0,
+        scale: 0.5,
+        x: 50,
+        transition: {
+            duration: 0.2,
+        }
+    }
+};
+
 export const HeroChat = ({ onStateChange }: HeroChatProps) => {
     const [chatState, setChatState] = useState<ChatState>("idle");
     const [input, setInput] = useState("");
@@ -31,14 +94,14 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
         onStateChange?.(chatState === "active");
     }, [chatState, onStateChange]);
 
-    // Scroll só dentro do container de mensagens
+    // Scroll no container de mensagens
     useEffect(() => {
         if (chatState === "active" && messagesEndRef.current) {
             messagesEndRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
         }
     }, [messages, chatState]);
 
-    // Travar scroll da página APENAS quando chat ativo
+    // Travar scroll quando chat ativo
     useEffect(() => {
         if (chatState === "active") {
             document.body.style.overflow = "hidden";
@@ -47,20 +110,20 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
             document.body.style.overflow = "";
             document.documentElement.style.overflow = "";
         }
-        // Cleanup garantido
         return () => {
             document.body.style.overflow = "";
             document.documentElement.style.overflow = "";
         };
     }, [chatState]);
 
-    // Autofocus no input após enviar ou mudar estado
+    // Autofocus no input
     useEffect(() => {
         if (chatState === "active" && inputRef.current) {
-            inputRef.current.focus();
+            setTimeout(() => inputRef.current?.focus(), 100);
         }
     }, [chatState, messages]);
 
+    // Fechar ao clicar fora do popup
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
             if (chatState === "active" && chatRef.current && !chatRef.current.contains(e.target as Node)) {
@@ -71,6 +134,7 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, [chatState]);
 
+    // Fechar com ESC
     useEffect(() => {
         const handleEsc = (e: KeyboardEvent) => {
             if (e.key === "Escape" && chatState === "active") {
@@ -87,7 +151,6 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
             sendMessage({ text: input });
             setInput("");
             setHasMessages(true);
-            // Refoca no input após enviar
             setTimeout(() => inputRef.current?.focus(), 50);
         }
     };
@@ -100,7 +163,7 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
             .join("");
     };
 
-    const glass = "bg-white/80 backdrop-blur-2xl border border-white/40 shadow-xl shadow-black/5";
+    const glass = "bg-white/90 backdrop-blur-2xl border border-white/50 shadow-2xl shadow-black/10";
 
     return (
         <>
@@ -111,8 +174,8 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
                         key="idle-input"
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                        transition={{ duration: 0.4, ease: "easeOut" }}
+                        exit={{ opacity: 0, y: -10, scale: 0.98 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
                         className="w-full max-w-md mx-auto px-4"
                         style={{ marginTop: 'clamp(1.5rem, 4vw, 2.5rem)' }}
                     >
@@ -139,7 +202,7 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
                                         className="flex-1 bg-transparent text-gray-800 placeholder-gray-400 outline-none text-base"
                                         style={{
                                             padding: 'clamp(1rem, 2.5vw, 1.25rem) clamp(1.25rem, 3vw, 1.5rem)',
-                                            fontSize: '16px', // Evita zoom no iOS
+                                            fontSize: '16px',
                                         }}
                                     />
                                     <button
@@ -165,54 +228,49 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
                 )}
             </AnimatePresence>
 
-            {/* ===== CHAT ATIVO ===== */}
+            {/* ===== POPUP CHAT ATIVO ===== */}
             <AnimatePresence>
                 {chatState === "active" && (
                     <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="fixed inset-0 z-50 flex items-center justify-center"
-                        style={{ backgroundColor: 'rgba(255,255,255,0.92)' }}
+                        key="chat-backdrop"
+                        variants={backdropVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                        className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/30 backdrop-blur-sm"
                     >
                         <motion.div
                             ref={chatRef}
-                            initial={{ opacity: 0, scale: 0.9, y: 30 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                            transition={{ duration: 0.4, ease: "easeOut" }}
-                            className="w-full max-w-md mx-4 max-h-[75vh] flex flex-col"
+                            variants={popupVariants}
+                            initial="hidden"
+                            animate="visible"
+                            exit="exit"
+                            className={`${glass} w-full max-w-md mx-4 max-h-[80vh] flex flex-col rounded-3xl overflow-hidden`}
                         >
                             {/* Header */}
-                            <motion.div
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.1, duration: 0.3 }}
-                                className="flex items-center justify-between mb-4 px-1"
-                            >
+                            <div className="flex items-center justify-between p-4 border-b border-gray-100">
                                 <div className="flex items-center gap-2">
                                     <motion.div
                                         animate={{ scale: [1, 1.2, 1] }}
                                         transition={{ repeat: Infinity, duration: 2 }}
                                         className="w-2 h-2 rounded-full bg-emerald-500"
                                     />
-                                    <span className="text-sm text-gray-500">
-                                        {isStreaming ? 'Pensando...' : 'Online'}
+                                    <span className="text-sm text-gray-500 font-medium">
+                                        {isStreaming ? 'Pensando...' : 'SupArt AI'}
                                     </span>
                                 </div>
                                 <button
                                     onClick={() => setChatState("minimized")}
-                                    className="w-8 h-8 rounded-full hover:bg-black/5 flex items-center justify-center transition-colors"
+                                    className="w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center transition-colors"
                                 >
                                     <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                                     </svg>
                                 </button>
-                            </motion.div>
+                            </div>
 
                             {/* Messages */}
-                            <div className="flex-1 overflow-y-auto space-y-4 pr-2 scrollbar-hide">
+                            <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-hide">
                                 <style jsx>{`
                                     .scrollbar-hide::-webkit-scrollbar { display: none; }
                                     .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
@@ -222,7 +280,6 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
                                     <motion.p
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
-                                        transition={{ delay: 0.2, duration: 0.4 }}
                                         className="text-center text-gray-400 text-sm py-8"
                                     >
                                         Me conte sobre seu projeto.
@@ -232,15 +289,15 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
                                 {messages.map((message) => (
                                     <motion.div
                                         key={message.id}
-                                        initial={{ opacity: 0, scale: 0.95, y: 10 }}
-                                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                                        transition={{ duration: 0.5, ease: "easeOut" }}
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.3 }}
                                         className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
                                     >
                                         <div
                                             className={`max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${message.role === "user"
                                                 ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-br-md"
-                                                : "bg-white text-gray-700 shadow-md rounded-bl-md border border-gray-100"
+                                                : "bg-gray-100 text-gray-700 rounded-bl-md"
                                                 }`}
                                         >
                                             {getMessageText(message)}
@@ -250,28 +307,15 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
 
                                 {isStreaming && (
                                     <motion.div
-                                        initial={{ opacity: 0, scale: 0.95 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        transition={{ duration: 0.3 }}
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
                                         className="flex justify-start"
                                     >
-                                        <div className="bg-white px-4 py-3 rounded-2xl rounded-bl-md shadow-md border border-gray-100">
+                                        <div className="bg-gray-100 px-4 py-3 rounded-2xl rounded-bl-md">
                                             <div className="flex gap-1.5">
-                                                <motion.span
-                                                    animate={{ opacity: [0.3, 1, 0.3] }}
-                                                    transition={{ repeat: Infinity, duration: 1.2, delay: 0 }}
-                                                    className="w-1.5 h-1.5 bg-gray-400 rounded-full"
-                                                />
-                                                <motion.span
-                                                    animate={{ opacity: [0.3, 1, 0.3] }}
-                                                    transition={{ repeat: Infinity, duration: 1.2, delay: 0.2 }}
-                                                    className="w-1.5 h-1.5 bg-gray-400 rounded-full"
-                                                />
-                                                <motion.span
-                                                    animate={{ opacity: [0.3, 1, 0.3] }}
-                                                    transition={{ repeat: Infinity, duration: 1.2, delay: 0.4 }}
-                                                    className="w-1.5 h-1.5 bg-gray-400 rounded-full"
-                                                />
+                                                <motion.span animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1.2, delay: 0 }} className="w-1.5 h-1.5 bg-gray-400 rounded-full" />
+                                                <motion.span animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1.2, delay: 0.2 }} className="w-1.5 h-1.5 bg-gray-400 rounded-full" />
+                                                <motion.span animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1.2, delay: 0.4 }} className="w-1.5 h-1.5 bg-gray-400 rounded-full" />
                                             </div>
                                         </div>
                                     </motion.div>
@@ -280,63 +324,76 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
                             </div>
 
                             {/* Input */}
-                            <motion.form
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.15, duration: 0.3 }}
-                                onSubmit={handleSubmit}
-                                className="mt-4"
-                            >
-                                <div className={`${glass} rounded-2xl`}>
-                                    <div className="flex items-center">
-                                        <input
-                                            ref={inputRef}
-                                            type="text"
-                                            value={input}
-                                            onChange={(e) => setInput(e.target.value)}
-                                            placeholder="Escreva aqui..."
-                                            className="flex-1 bg-transparent text-gray-800 placeholder-gray-400 outline-none px-5 py-4"
-                                            style={{ fontSize: '16px' }}
-                                            disabled={!isReady}
-                                            autoFocus
-                                        />
-                                        <button
-                                            type="submit"
-                                            disabled={!isReady || !input.trim()}
-                                            className="shrink-0 mr-3 w-10 h-10 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl flex items-center justify-center text-white disabled:opacity-30 transition-opacity"
-                                        >
-                                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M12 5l7 7-7 7" />
-                                            </svg>
-                                        </button>
-                                    </div>
+                            <form onSubmit={handleSubmit} className="p-4 border-t border-gray-100">
+                                <div className="flex items-center gap-2 bg-gray-50 rounded-2xl px-4">
+                                    <input
+                                        ref={inputRef}
+                                        type="text"
+                                        value={input}
+                                        onChange={(e) => setInput(e.target.value)}
+                                        placeholder="Escreva aqui..."
+                                        className="flex-1 bg-transparent text-gray-800 placeholder-gray-400 outline-none py-3"
+                                        style={{ fontSize: '16px' }}
+                                        disabled={!isReady}
+                                    />
+                                    <button
+                                        type="submit"
+                                        disabled={!isReady || !input.trim()}
+                                        className="shrink-0 w-9 h-9 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl flex items-center justify-center text-white disabled:opacity-30 transition-opacity"
+                                    >
+                                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M12 5l7 7-7 7" />
+                                        </svg>
+                                    </button>
                                 </div>
-                            </motion.form>
+                            </form>
                         </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>
 
-            {/* ===== BOTÃO FLUTUANTE ===== */}
+            {/* ===== ÍCONE MINIMIZADO - Canto inferior esquerdo ===== */}
             <AnimatePresence>
                 {chatState === "minimized" && (
                     <motion.button
-                        initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.8, y: 10 }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
+                        key="minimized-icon"
+                        variants={minimizedIconVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
                         onClick={() => setChatState("active")}
-                        className={`fixed bottom-5 left-5 z-50 ${glass} rounded-full px-4 py-2.5 flex items-center gap-2.5 hover:bg-white/90 transition-all cursor-pointer`}
+                        className="fixed bottom-6 left-6 z-[9999] w-14 h-14 rounded-full bg-white shadow-lg shadow-black/20 border border-gray-200 flex items-center justify-center hover:scale-110 transition-transform cursor-pointer group"
                     >
-                        <div className="relative">
-                            <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-purple-600 to-blue-600" />
-                            <motion.span
-                                animate={{ scale: [1, 1.3, 1] }}
-                                transition={{ repeat: Infinity, duration: 2 }}
-                                className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"
-                            />
-                        </div>
-                        <span className="text-sm text-gray-600 font-medium">Chat</span>
+                        {/* Ícone de mensagem cinza */}
+                        <svg
+                            className="w-6 h-6 text-gray-400 group-hover:text-gray-600 transition-colors"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                        </svg>
+
+                        {/* Pulso azul lento */}
+                        <motion.div
+                            animate={{
+                                scale: [1, 1.5, 1],
+                                opacity: [0.6, 0, 0.6],
+                            }}
+                            transition={{
+                                repeat: Infinity,
+                                duration: 3,
+                                ease: "easeInOut",
+                            }}
+                            className="absolute inset-0 rounded-full bg-blue-500/30"
+                        />
+
+                        {/* Indicador de nova mensagem / online */}
+                        <motion.div
+                            animate={{ scale: [1, 1.2, 1] }}
+                            transition={{ repeat: Infinity, duration: 2 }}
+                            className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-blue-500 rounded-full border-2 border-white"
+                        />
                     </motion.button>
                 )}
             </AnimatePresence>
