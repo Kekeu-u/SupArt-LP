@@ -31,14 +31,14 @@ const TechCard = ({ tech, index, isExpanded, onToggle }: {
             <div
                 className={`
                     relative bg-white rounded-xl border overflow-hidden
-                    transition-all duration-300
+                    transition-all duration-300 h-full min-h-[100px] sm:min-h-[120px]
                     ${isExpanded
                         ? 'border-gray-200 shadow-xl'
                         : 'border-gray-100 group-hover:border-gray-200 group-hover:shadow-lg'}
                 `}
             >
                 {/* Content */}
-                <div className="p-3 sm:p-4">
+                <div className="p-3 sm:p-4 h-full flex flex-col">
                     {/* Shimmer */}
                     <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/60 to-transparent pointer-events-none" />
 

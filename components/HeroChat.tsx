@@ -136,10 +136,10 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
                                         value={input}
                                         onChange={(e) => setInput(e.target.value)}
                                         placeholder="Descreva seu projeto..."
-                                        className="flex-1 bg-transparent text-gray-800 placeholder-gray-400 outline-none"
+                                        className="flex-1 bg-transparent text-gray-800 placeholder-gray-400 outline-none text-base"
                                         style={{
                                             padding: 'clamp(1rem, 2.5vw, 1.25rem) clamp(1.25rem, 3vw, 1.5rem)',
-                                            fontSize: 'clamp(0.875rem, 1.8vw, 1rem)',
+                                            fontSize: '16px', // Evita zoom no iOS
                                         }}
                                     />
                                     <button
@@ -295,7 +295,8 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
                                             value={input}
                                             onChange={(e) => setInput(e.target.value)}
                                             placeholder="Escreva aqui..."
-                                            className="flex-1 bg-transparent text-gray-800 placeholder-gray-400 outline-none px-5 py-4 text-sm"
+                                            className="flex-1 bg-transparent text-gray-800 placeholder-gray-400 outline-none px-5 py-4"
+                                            style={{ fontSize: '16px' }}
                                             disabled={!isReady}
                                             autoFocus
                                         />
