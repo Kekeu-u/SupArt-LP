@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { LenisProvider } from "@/components/LenisProvider";
-import { CustomCursor } from "@/components/CustomCursor";
+// CustomCursor removido temporariamente - causando bug de cursor invisível
+// import { CustomCursor } from "@/components/CustomCursor";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -24,8 +25,8 @@ export default function RootLayout({
         <html lang="pt-BR" className={`${inter.variable} antialiased`} suppressHydrationWarning>
             <body>
                 <LenisProvider>
-                    {/* Cursor customizado global */}
-                    <CustomCursor />
+                    {/* CustomCursor desabilitado - causava cursor invisível */}
+                    {/* <CustomCursor /> */}
                     {children}
                 </LenisProvider>
             </body>
