@@ -157,8 +157,43 @@ export default function Home() {
         { scope: mainRef, dependencies: [] }
     );
 
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "O que a SupArt faz?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Somos uma agência especializada em unir Design Premium, Inteligência Artificial e Estratégia de Marketing para escalar negócios."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Como a IA pode ajudar minha empresa?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Utilizamos IA para automatizar vendas (SDR), gerar conteúdo em escala e criar visuais únicos, reduzindo custos e aumentando a eficiência."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Vocês atendem todo o Brasil?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sim, nossa operação é 100% digital e atendemos clientes em todo o Brasil e no exterior."
+                }
+            }
+        ]
+    };
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
             {/* DevPanel - só aparece em desenvolvimento */}
             <DevPanel />
 
