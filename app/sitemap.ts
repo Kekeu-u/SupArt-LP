@@ -1,4 +1,3 @@
-```typescript
 import { MetadataRoute } from 'next';
 import { servicesSEO } from '@/data/services-seo';
 import { aiTools } from '@/data/ai-tools';
@@ -10,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     '',
   ].map((route) => ({
-    url: `${ baseUrl }${ route } `,
+    url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: route === '' ? 1 : 0.8,
@@ -18,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Páginas de Serviços
   const serviceRoutes = servicesSEO.map((service) => ({
-    url: `${ baseUrl } /servicos/${ service.slug } `,
+    url: `${baseUrl}/servicos/${service.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.9,
@@ -26,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Páginas de Ferramentas
   const toolRoutes = aiTools.map((tool) => ({
-    url: `${ baseUrl } /ferramentas/${ tool.slug } `,
+    url: `${baseUrl}/ferramentas/${tool.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.8,
@@ -34,4 +33,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [...staticRoutes, ...serviceRoutes, ...toolRoutes];
 }
-```
