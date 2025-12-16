@@ -3,6 +3,7 @@
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 
 type ChatState = "idle" | "active" | "minimized";
@@ -15,8 +16,8 @@ interface HeroChatProps {
 const popupVariants: Variants = {
     hidden: {
         opacity: 0,
-        scale: 0.85,
-        y: 40,
+        scale: 0.9,
+        y: 20,
     },
     visible: {
         opacity: 1,
@@ -30,10 +31,10 @@ const popupVariants: Variants = {
     },
     exit: {
         opacity: 0,
-        scale: 0.85,
-        y: 40,
+        scale: 0.9,
+        y: 20,
         transition: {
-            duration: 0.25,
+            duration: 0.2,
             ease: "easeIn",
         }
     }
@@ -79,8 +80,14 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
     const [input, setInput] = useState("");
     const [hasMessages, setHasMessages] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
+    const messagesContainerRef = useRef<HTMLDivElement>(null);
     const chatRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const { messages, sendMessage, status } = useChat({
         transport: new DefaultChatTransport({ api: "/api/chat" }),
@@ -94,42 +101,58 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
         onStateChange?.(chatState === "active");
     }, [chatState, onStateChange]);
 
-    // Scroll no container de mensagens
+    // Scroll inteligente
     useEffect(() => {
         if (chatState === "active" && messagesEndRef.current) {
-            messagesEndRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
+            // Se estiver streamando, usa scroll instantâneo (auto) para evitar stutter
+            // Se for nova mensagem completa, usa smooth
+            const behavior = isStreaming ? "auto" : "smooth";
+
+            // Verifica se o usuário está perto do fundo antes de scrollar
+            const container = messagesContainerRef.current;
+            if (container) {
+                const isNearBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 100;
+                if (isNearBottom || messages.length === 1) { // Sempre scrolla na primeira mensagem
+                    messagesEndRef.current.scrollIntoView({ behavior, block: "end" });
+                }
+            } else {
+                messagesEndRef.current.scrollIntoView({ behavior, block: "end" });
+            }
         }
-    }, [messages, chatState]);
+    }, [messages, chatState, isStreaming]);
 
     // Travar scroll quando chat ativo
     useEffect(() => {
         if (chatState === "active") {
             document.body.style.overflow = "hidden";
-            document.documentElement.style.overflow = "hidden";
         } else {
             document.body.style.overflow = "";
-            document.documentElement.style.overflow = "";
         }
         return () => {
             document.body.style.overflow = "";
-            document.documentElement.style.overflow = "";
         };
     }, [chatState]);
 
     // Autofocus no input
     useEffect(() => {
         if (chatState === "active" && inputRef.current) {
-            setTimeout(() => inputRef.current?.focus(), 100);
+            // Pequeno delay para garantir que a animação terminou
+            setTimeout(() => inputRef.current?.focus(), 300);
         }
-    }, [chatState, messages]);
+    }, [chatState]);
 
     // Fechar ao clicar fora do popup
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
+            // Verifica se o clique foi no backdrop (que é o pai do chatRef)
+            // ou se foi fora do chatRef mas dentro do portal
             if (chatState === "active" && chatRef.current && !chatRef.current.contains(e.target as Node)) {
                 setChatState("minimized");
             }
         };
+        // Usar mousedown no document para capturar cliques fora, mas precisamos ter cuidado com o portal
+        // O backdrop cobre tudo, então clicar nele deve fechar
+        // O evento é adicionado ao document, então vai pegar
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, [chatState]);
@@ -165,6 +188,140 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
 
     const glass = "bg-white/90 backdrop-blur-2xl border border-white/50 shadow-2xl shadow-black/10";
 
+    const ChatModal = (
+        <AnimatePresence>
+            {chatState === "active" && (
+                <motion.div
+                    key="chat-backdrop"
+                    variants={backdropVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/30 backdrop-blur-sm p-4"
+                >
+                    <motion.div
+                        ref={chatRef}
+                        variants={popupVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                        className={`${glass} w-full max-w-md flex flex-col rounded-3xl overflow-hidden shadow-2xl`}
+                        style={{
+                            height: 'min(600px, 80vh)', // Altura fixa máxima, mas responsiva
+                            maxHeight: '80vh'
+                        }}
+                    >
+                        {/* Header */}
+                        <div className="flex items-center justify-between p-4 border-b border-gray-100 shrink-0 bg-white/50">
+                            <div className="flex items-center gap-2">
+                                <motion.div
+                                    animate={{ scale: [1, 1.2, 1] }}
+                                    transition={{ repeat: Infinity, duration: 2 }}
+                                    className="w-2 h-2 rounded-full bg-emerald-500"
+                                />
+                                <span className="text-sm text-gray-500 font-medium">
+                                    {isStreaming ? 'Pensando...' : 'SupArt AI'}
+                                </span>
+                            </div>
+                            <button
+                                onClick={() => setChatState("minimized")}
+                                className="w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center transition-colors"
+                            >
+                                <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        {/* Messages Container - Flex grow para ocupar espaço disponível */}
+                        <div
+                            ref={messagesContainerRef}
+                            className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-hide overscroll-contain"
+                        >
+                            <style jsx>{`
+                                .scrollbar-hide::-webkit-scrollbar { display: none; }
+                                .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+                            `}</style>
+
+                            {messages.length === 0 && !isStreaming && (
+                                <motion.p
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    className="text-center text-gray-400 text-sm py-8"
+                                >
+                                    Me conte sobre seu projeto.
+                                </motion.p>
+                            )}
+
+                            {messages.map((message) => (
+                                <motion.div
+                                    key={message.id}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.3 }}
+                                    className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
+                                >
+                                    <div
+                                        className={`max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${message.role === "user"
+                                            ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-br-md"
+                                            : "bg-gray-100 text-gray-700 rounded-bl-md"
+                                            }`}
+                                    >
+                                        {getMessageText(message)}
+                                    </div>
+                                </motion.div>
+                            ))}
+
+                            {isStreaming && (
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    className="flex justify-start"
+                                >
+                                    <div className="bg-gray-100 px-4 py-3 rounded-2xl rounded-bl-md">
+                                        <div className="flex gap-1.5">
+                                            <motion.span animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1.2, delay: 0 }} className="w-1.5 h-1.5 bg-gray-400 rounded-full" />
+                                            <motion.span animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1.2, delay: 0.2 }} className="w-1.5 h-1.5 bg-gray-400 rounded-full" />
+                                            <motion.span animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1.2, delay: 0.4 }} className="w-1.5 h-1.5 bg-gray-400 rounded-full" />
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            )}
+                            <div ref={messagesEndRef} />
+                        </div>
+
+                        {/* Input Area - Shrink 0 para nunca encolher */}
+                        <div className="shrink-0 p-4 border-t border-gray-100 bg-white/50">
+                            <form onSubmit={handleSubmit}>
+                                <div className="flex items-center gap-2 bg-gray-50 rounded-2xl px-4 border border-gray-100 focus-within:border-purple-200 transition-colors">
+                                    <input
+                                        ref={inputRef}
+                                        type="text"
+                                        value={input}
+                                        onChange={(e) => setInput(e.target.value)}
+                                        placeholder="Escreva aqui..."
+                                        className="flex-1 bg-transparent text-gray-800 placeholder-gray-400 outline-none py-3"
+                                        style={{ fontSize: '16px' }} // Evita zoom no iOS
+                                        disabled={!isReady}
+                                    />
+                                    <button
+                                        type="submit"
+                                        disabled={!isReady || !input.trim()}
+                                        className="shrink-0 w-9 h-9 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl flex items-center justify-center text-white disabled:opacity-30 transition-opacity shadow-sm"
+                                    >
+                                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M12 5l7 7-7 7" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </motion.div>
+                </motion.div>
+            )}
+        </AnimatePresence>
+    );
+
     return (
         <>
             {/* ===== INPUT NO HERO ===== */}
@@ -184,15 +341,16 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
                                 e.preventDefault();
                                 if (input.trim()) {
                                     setChatState("active");
+                                    // Pequeno delay para a transição visual
                                     setTimeout(() => {
                                         sendMessage({ text: input });
                                         setInput("");
                                         setHasMessages(true);
-                                    }, 200);
+                                    }, 300);
                                 }
                             }}
                         >
-                            <div className={`${glass} rounded-2xl`}>
+                            <div className={`${glass} rounded-2xl hover:shadow-xl transition-shadow duration-300`}>
                                 <div className="flex items-center">
                                     <input
                                         type="text"
@@ -207,7 +365,7 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
                                     />
                                     <button
                                         type="submit"
-                                        className="shrink-0 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center text-white hover:opacity-90 transition-opacity"
+                                        className="shrink-0 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center text-white hover:opacity-90 transition-opacity shadow-lg shadow-purple-500/20"
                                         style={{
                                             width: 'clamp(2.5rem, 5vw, 2.75rem)',
                                             height: 'clamp(2.5rem, 5vw, 2.75rem)',
@@ -228,129 +386,8 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
                 )}
             </AnimatePresence>
 
-            {/* ===== POPUP CHAT ATIVO ===== */}
-            <AnimatePresence>
-                {chatState === "active" && (
-                    <motion.div
-                        key="chat-backdrop"
-                        variants={backdropVariants}
-                        initial="hidden"
-                        animate="visible"
-                        exit="exit"
-                        className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/30 backdrop-blur-sm"
-                    >
-                        <motion.div
-                            ref={chatRef}
-                            variants={popupVariants}
-                            initial="hidden"
-                            animate="visible"
-                            exit="exit"
-                            className={`${glass} w-full max-w-md mx-4 max-h-[80vh] flex flex-col rounded-3xl overflow-hidden`}
-                        >
-                            {/* Header */}
-                            <div className="flex items-center justify-between p-4 border-b border-gray-100">
-                                <div className="flex items-center gap-2">
-                                    <motion.div
-                                        animate={{ scale: [1, 1.2, 1] }}
-                                        transition={{ repeat: Infinity, duration: 2 }}
-                                        className="w-2 h-2 rounded-full bg-emerald-500"
-                                    />
-                                    <span className="text-sm text-gray-500 font-medium">
-                                        {isStreaming ? 'Pensando...' : 'SupArt AI'}
-                                    </span>
-                                </div>
-                                <button
-                                    onClick={() => setChatState("minimized")}
-                                    className="w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center transition-colors"
-                                >
-                                    <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </button>
-                            </div>
-
-                            {/* Messages */}
-                            <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-hide">
-                                <style jsx>{`
-                                    .scrollbar-hide::-webkit-scrollbar { display: none; }
-                                    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-                                `}</style>
-
-                                {messages.length === 0 && !isStreaming && (
-                                    <motion.p
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        className="text-center text-gray-400 text-sm py-8"
-                                    >
-                                        Me conte sobre seu projeto.
-                                    </motion.p>
-                                )}
-
-                                {messages.map((message) => (
-                                    <motion.div
-                                        key={message.id}
-                                        initial={{ opacity: 0, y: 10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.3 }}
-                                        className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
-                                    >
-                                        <div
-                                            className={`max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${message.role === "user"
-                                                ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-br-md"
-                                                : "bg-gray-100 text-gray-700 rounded-bl-md"
-                                                }`}
-                                        >
-                                            {getMessageText(message)}
-                                        </div>
-                                    </motion.div>
-                                ))}
-
-                                {isStreaming && (
-                                    <motion.div
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        className="flex justify-start"
-                                    >
-                                        <div className="bg-gray-100 px-4 py-3 rounded-2xl rounded-bl-md">
-                                            <div className="flex gap-1.5">
-                                                <motion.span animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1.2, delay: 0 }} className="w-1.5 h-1.5 bg-gray-400 rounded-full" />
-                                                <motion.span animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1.2, delay: 0.2 }} className="w-1.5 h-1.5 bg-gray-400 rounded-full" />
-                                                <motion.span animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1.2, delay: 0.4 }} className="w-1.5 h-1.5 bg-gray-400 rounded-full" />
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                )}
-                                <div ref={messagesEndRef} />
-                            </div>
-
-                            {/* Input */}
-                            <form onSubmit={handleSubmit} className="p-4 border-t border-gray-100">
-                                <div className="flex items-center gap-2 bg-gray-50 rounded-2xl px-4">
-                                    <input
-                                        ref={inputRef}
-                                        type="text"
-                                        value={input}
-                                        onChange={(e) => setInput(e.target.value)}
-                                        placeholder="Escreva aqui..."
-                                        className="flex-1 bg-transparent text-gray-800 placeholder-gray-400 outline-none py-3"
-                                        style={{ fontSize: '16px' }}
-                                        disabled={!isReady}
-                                    />
-                                    <button
-                                        type="submit"
-                                        disabled={!isReady || !input.trim()}
-                                        className="shrink-0 w-9 h-9 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl flex items-center justify-center text-white disabled:opacity-30 transition-opacity"
-                                    >
-                                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M12 5l7 7-7 7" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </form>
-                        </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            {/* ===== PORTAL DO CHAT ATIVO ===== */}
+            {mounted && createPortal(ChatModal, document.body)}
 
             {/* ===== ÍCONE MINIMIZADO - Canto inferior esquerdo ===== */}
             <AnimatePresence>
