@@ -13,6 +13,7 @@ import { HeroChat } from "@/components/HeroChat";
 import { DevPanel } from "@/components/DevPanel";
 import { Solutions } from "@/components/Solutions";
 import { siteConfig, footerLinks } from "@/data";
+import { HeroLogo } from "@/components/HeroLogo";
 
 // Registrar plugin
 if (typeof window !== "undefined") {
@@ -196,7 +197,7 @@ export default function Home() {
                     ═══════════════════════════════════════════ */}
                 <section
                     ref={heroRef}
-                    className="hero-section relative min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-20 overflow-hidden"
+                    className="hero-section relative min-h-screen flex flex-col items-center justify-center px-6 pb-24 overflow-hidden"
                 >
                     {/* Animated Gradient Background */}
                     <div className="absolute inset-0 bg-gradient-mesh opacity-50" />
@@ -218,6 +219,20 @@ export default function Home() {
 
                     {/* Conteúdo Hero */}
                     <div className="relative z-10 text-center max-w-5xl mx-auto">
+                        {/* Logo Animada */}
+                        <motion.div
+                            className="mb-6 flex justify-center"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{
+                                opacity: isChatActive ? 0 : 1,
+                                y: isChatActive ? -20 : 0,
+                                scale: isChatActive ? 0.8 : 1,
+                            }}
+                            transition={{ duration: 0.4, ease: "easeOut" }}
+                        >
+                            <HeroLogo size={140} />
+                        </motion.div>
+
                         {/* Texto do Hero */}
                         <motion.div
                             className="hero-text"
@@ -230,7 +245,7 @@ export default function Home() {
                             transition={{ duration: 0.4, ease: "easeOut" }}
                         >
                             <RotatingHeadline />
-                            <p className="text-lead text-[var(--color-apple-gray)] max-w-2xl mx-auto mt-6">
+                            <p className="text-lead text-[var(--color-apple-gray)] max-w-2xl mx-auto mt-5">
                                 Transformamos sua presença digital em uma experiência cinematográfica de alta fidelidade.
                             </p>
                         </motion.div>

@@ -16,7 +16,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://supart.agency"),
-    title: "SupArt Agency",
+    title: "SupArt / Agência de MKT",
     description: "Agência de IA e Curadoria de Dados",
     keywords: seoKeywords,
     alternates: {
