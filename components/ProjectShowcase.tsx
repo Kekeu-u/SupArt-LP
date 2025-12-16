@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { BentoGrid, BentoCard } from "./BentoGrid";
@@ -192,10 +193,12 @@ export const ProjectShowcase = () => {
                                     </div>
                                     {/* Site Screenshot */}
                                     <div className="relative w-full h-[calc(100%-1.75rem)] overflow-hidden">
-                                        <img
+                                        <Image
                                             src="/adesp-preview.png"
                                             alt="ADESP/RS Website"
-                                            className="w-full h-full object-cover object-top group-hover/card:scale-[1.03] transition-transform duration-700"
+                                            fill
+                                            className="object-cover object-top group-hover/card:scale-[1.03] transition-transform duration-700"
+                                            sizes="(max-width: 768px) 100vw, 50vw"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
                                     </div>
@@ -244,10 +247,12 @@ export const ProjectShowcase = () => {
                                 </div>
                             </div>
                             <div className="relative w-full h-[calc(100%-1.75rem)] overflow-hidden">
-                                <img
+                                <Image
                                     src="/dunga-preview.png"
                                     alt="Parceria Dunga"
-                                    className="w-full h-full object-cover object-top group-hover/card:scale-[1.03] transition-transform duration-700"
+                                    fill
+                                    className="object-cover object-top group-hover/card:scale-[1.03] transition-transform duration-700"
+                                    sizes="(max-width: 768px) 100vw, 33vw"
                                 />
                             </div>
                         </div>

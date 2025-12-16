@@ -13,11 +13,9 @@ import { HeroChat } from "@/components/HeroChat";
 import { DevPanel } from "@/components/DevPanel";
 import { services, footerLinks, siteConfig } from "@/data";
 
-// Registrar plugin e configurar para FPS ilimitado
+// Registrar plugin
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
-    // FPS ilimitado - sem limites para monitores de alta taxa
-    gsap.ticker.fps(-1);
 }
 
 export default function Home() {
@@ -105,33 +103,37 @@ export default function Home() {
                 // Section reveals com perspectiva 3D
                 gsap.utils.toArray<HTMLElement>(".section-reveal").forEach((section) => {
                     gsap.from(section, {
-                        y: 80,
+                        y: 50, // Reduzido de 80 para menos movimento
                         opacity: 0,
-                        scale: 0.95,
-                        duration: 1,
-                        ease: "power3.out",
+                        duration: 0.8,
+                        ease: "power2.out",
                         scrollTrigger: {
                             trigger: section,
-                            start: "top 85%",
+                            start: "top 90%", // Começa mais cedo
                             end: "top 20%",
-                            toggleActions: "play none none none",
+                            toggleActions: "play none none reverse", // Permite reverter suavemente
                         },
                     });
                 });
 
-                // Service cards stagger reveal
-                gsap.from(".service-card", {
-                    y: 60,
-                    opacity: 0,
-                    scale: 0.95,
-                    duration: 0.8,
-                    stagger: 0.12,
-                    ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: ".services-grid",
-                        start: "top 80%",
-                        toggleActions: "play none none none",
+                // Service cards stagger reveal - OTIMIZADO
+                // Usando batch para melhor performance se houver muitos cards
+                ScrollTrigger.batch(".service-card", {
+                    onEnter: (batch) => {
+                        gsap.to(batch, {
+                            opacity: 1,
+                            y: 0,
+                            scale: 1,
+                            stagger: 0.1,
+                            duration: 0.6,
+                            ease: "power2.out",
+                            overwrite: true
+                        });
                     },
+                    onLeaveBack: (batch) => {
+                        gsap.set(batch, { opacity: 0, y: 50, scale: 0.95, overwrite: true });
+                    },
+                    start: "top 85%",
                 });
             });
 
@@ -152,7 +154,16 @@ export default function Home() {
                 });
             });
 
-            return () => mm.revert();
+            // Forçar recálculo após montagem para garantir precisão
+            // Útil se houver imagens carregando acima que mudam o layout
+            const timer = setTimeout(() => {
+                ScrollTrigger.refresh();
+            }, 1000);
+
+            return () => {
+                mm.revert();
+                clearTimeout(timer);
+            };
         },
         { scope: mainRef, dependencies: [] }
     );
