@@ -22,7 +22,7 @@ interface MagneticButtonProps {
     /** Tipo do botão */
     type?: "button" | "submit" | "reset";
     /** Handler de click */
-    onClick?: () => void;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
     /** Desabilitado */
     disabled?: boolean;
     /** Atributo href para links */
@@ -113,6 +113,7 @@ export const MagneticButton = forwardRef<
                 className={baseClasses}
                 onMouseMove={handleAnchorMouseMove}
                 onMouseLeave={onMouseLeave}
+                onClick={onClick}
                 data-cursor={dataCursor}
             >
                 {content}

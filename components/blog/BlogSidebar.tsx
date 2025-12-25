@@ -21,7 +21,10 @@ async function getSidebarData() {
         .select('name, slug, posts(count)');
 
     return {
-        recentPosts: recentPosts || [],
+        recentPosts: recentPosts?.map(post => ({
+            ...post,
+            author: Array.isArray(post.author) ? post.author[0] : post.author
+        })) || [],
         categories: categories?.map(c => ({
             name: c.name,
             slug: c.slug,

@@ -23,7 +23,13 @@ async function getPost(slug: string) {
         .eq('slug', slug)
         .single();
 
-    return post;
+    if (!post) return null;
+
+    return {
+        ...post,
+        author: Array.isArray(post.author) ? post.author[0] : post.author,
+        category: Array.isArray(post.category) ? post.category[0] : post.category
+    };
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {

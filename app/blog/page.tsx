@@ -20,7 +20,11 @@ async function getPosts() {
         return [];
     }
 
-    return posts;
+    return posts?.map(post => ({
+        ...post,
+        author: Array.isArray(post.author) ? post.author[0] : post.author,
+        category: Array.isArray(post.category) ? post.category[0] : post.category
+    })) || [];
 }
 
 export default async function BlogPage() {
