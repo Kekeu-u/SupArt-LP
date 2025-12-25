@@ -28,14 +28,14 @@ export const RotatingHeadline = () => {
     return (
         <div className="relative">
             {/* Main line */}
-            <h1 className="headline-hero text-balance text-center">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-[var(--color-apple-black)] leading-tight mb-2 text-balance text-center tracking-tight">
                 {prefix}
             </h1>
 
             {/* Rotating word */}
-            <div className="text-center mt-2">
+            <div className="text-center">
                 <span
-                    className={`headline-section text-[var(--color-apple-gray)] inline-block transition-all ${isExiting
+                    className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[var(--color-apple-gray)] inline-block transition-all ${isExiting
                         ? 'opacity-0 -translate-y-4 blur-[3px]'
                         : 'opacity-100 translate-y-0 blur-0'
                         }`}

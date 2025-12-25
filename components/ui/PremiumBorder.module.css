@@ -1,0 +1,33 @@
+@property --angle-1 {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: -75deg;
+}
+
+.borderWrapper {
+    position: relative;
+    /* Allows the wrapper to fit its content */
+    display: inline-block;
+}
+
+.borderWrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Inherit border-radius from the parent/wrapper, which should match the child */
+    border-radius: inherit;
+    padding: 1px;
+    /* Fine border width */
+    background:
+        conic-gradient(from var(--angle-1) at 50% 50%, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0) 5% 40%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0) 60% 95%, rgba(0, 0, 0, 0.1)),
+        linear-gradient(180deg, rgba(200, 200, 200, 0.5), rgba(200, 200, 200, 0.5));
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+    transition: --angle-1 500ms ease;
+    z-index: 10;
+}
+
+.borderWrapper:hover::after {
+    --angle-1: -125deg;
+}

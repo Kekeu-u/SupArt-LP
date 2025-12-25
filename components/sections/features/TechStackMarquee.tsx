@@ -4,11 +4,22 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import { companies, technologies, techStats } from "@/data/tech-stack";
 import { useI18n } from "@/lib/i18n";
+import { SiNextdotjs, SiTypescript, SiTailwindcss, SiFramer, SiVercel } from "react-icons/si";
+import { FaReact } from "react-icons/fa";
 
 const marqueeCompanies = [...companies, ...companies, ...companies];
 
 // Easing suave
 const ease: [number, number, number, number] = [0.32, 0.72, 0, 1];
+
+const iconMap: Record<string, React.ElementType> = {
+    "Next.js": SiNextdotjs,
+    "React": FaReact,
+    "TypeScript": SiTypescript,
+    "Tailwind": SiTailwindcss,
+    "Framer": SiFramer,
+    "Vercel": SiVercel,
+};
 
 // Card simples sem glow para evitar bugs
 const TechCard = ({ tech, index, isExpanded, onToggle, locale }: {
@@ -19,6 +30,7 @@ const TechCard = ({ tech, index, isExpanded, onToggle, locale }: {
     locale: "en" | "pt"
 }) => {
     const closeText = locale === "en" ? "Tap outside to close" : "Toque fora para fechar";
+    const Icon = iconMap[tech.name];
 
     return (
         <motion.div
@@ -49,25 +61,21 @@ const TechCard = ({ tech, index, isExpanded, onToggle, locale }: {
                     {/* Icon */}
                     <motion.div
                         animate={{
-                            width: isExpanded ? 48 : 32,
-                            height: isExpanded ? 48 : 32,
+                            width: isExpanded ? 48 : 40,
+                            height: isExpanded ? 48 : 40,
                         }}
                         transition={{ duration: 0.3, ease }}
-                        className={`rounded-xl flex items-center justify-center bg-gradient-to-br ${tech.gradient} group-hover:scale-105 transition-transform duration-300`}
+                        className={`rounded-xl flex items-center justify-center bg-gradient-to-br ${tech.gradient} group-hover:scale-110 transition-transform duration-300 shadow-md`}
                     >
-                        <motion.span
-                            animate={{ fontSize: isExpanded ? 20 : 12 }}
-                            transition={{ duration: 0.3, ease }}
-                            className="font-bold text-white"
-                        >
-                            {tech.letter}
-                        </motion.span>
+                        {Icon && (
+                            <Icon className="text-white w-1/2 h-1/2" />
+                        )}
                     </motion.div>
 
                     {/* Title & Description */}
-                    <div className="mt-2">
+                    <div className="mt-3">
                         <motion.h3
-                            animate={{ fontSize: isExpanded ? 18 : 11 }}
+                            animate={{ fontSize: isExpanded ? 18 : 13 }}
                             transition={{ duration: 0.3, ease }}
                             className="font-semibold text-gray-900 leading-tight"
                         >
@@ -75,9 +83,9 @@ const TechCard = ({ tech, index, isExpanded, onToggle, locale }: {
                         </motion.h3>
 
                         <motion.p
-                            animate={{ fontSize: isExpanded ? 13 : 9 }}
+                            animate={{ fontSize: isExpanded ? 13 : 10 }}
                             transition={{ duration: 0.3, ease }}
-                            className="text-gray-500 leading-tight"
+                            className="text-gray-500 leading-tight mt-0.5"
                         >
                             {tech.description[locale]}
                         </motion.p>

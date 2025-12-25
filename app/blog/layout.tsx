@@ -1,4 +1,4 @@
-import { BlogHeader } from "@/components/blog/BlogHeader";
+import BlogHeader from "@/components/blog/BlogHeader";
 import Footer from "@/components/layout/Footer";
 
 import Script from "next/script";
@@ -9,10 +9,10 @@ export default function BlogLayout({
     children: React.ReactNode;
 }) {
     return (
-        <div className="min-h-screen relative text-gray-900 font-sans selection:bg-blue-100 selection:text-blue-900">
+        <div className="min-h-screen relative text-gray-900 font-sans selection:bg-purple-100 selection:text-purple-900">
             <div data-us-project="qTiAlX0sxkuBOAiL7qHL" className="fixed top-0 left-0 -z-10 w-full h-full"></div>
             {/* White overlay for better readability */}
-            <div className="fixed top-0 left-0 -z-[9] w-full h-full bg-white/60"></div>
+            <div className="fixed top-0 left-0 -z-[9] w-full h-full bg-white/85"></div>
             <Script
                 id="unicorn-studio"
                 strategy="afterInteractive"

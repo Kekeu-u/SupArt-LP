@@ -11,11 +11,13 @@ import { RotatingHeadline } from "@/components/sections/hero/RotatingHeadline";
 import { HeroChat } from "@/components/sections/hero/HeroChat";
 import { DevPanel } from "@/components/layout/DevPanel";
 import { Solutions } from "@/components/sections/features/Solutions";
+import { BlogPreview } from "@/components/sections/features/BlogPreview";
 import { Testimonials } from "@/components/sections/social/Testimonials";
 import { ShinyButton } from "@/components/sections/hero/ShinyButton";
 import { siteConfig, footerLinks } from "@/data";
 import { HeroLogo } from "@/components/sections/hero/HeroLogo";
 import { useI18n } from "@/lib/i18n";
+import { PremiumDivider } from "@/components/ui/PremiumDivider";
 
 // Registrar plugin
 if (typeof window !== "undefined") {
@@ -213,23 +215,12 @@ export default function Home() {
                             </p>
                         </motion.div>
 
-                        {/* Shiny CTA */}
-                        <motion.div
-                            className="hero-cta pointer-events-auto flex justify-center"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.5, duration: 0.5 }}
-                        >
-                            <ShinyButton
-                                text={ctaText}
-                                onClick={() => setIsChatActive(true)}
-                            />
-                        </motion.div>
+                        {/* Shiny CTA Removed as per user request */}
                     </div>
 
                     {/* Scroll Indicator */}
                     <motion.div
-                        className="absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-auto"
+                        className="absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-auto hidden md:block"
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1.5, duration: 0.5 }}
@@ -247,9 +238,14 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     TECH STACK SECTION
                     ═══════════════════════════════════════════ */}
+                {/* ═══════════════════════════════════════════
+                    TECH STACK SECTION
+                    ═══════════════════════════════════════════ */}
                 <div className="section-reveal relative z-10 bg-[var(--color-apple-off-white)]/80 backdrop-blur-sm">
                     <TechStackMarquee />
                 </div>
+
+                <PremiumDivider className="my-0" />
 
                 {/* ═══════════════════════════════════════════
                     PROJECT SHOWCASE SECTION
@@ -258,6 +254,8 @@ export default function Home() {
                     <ProjectShowcase />
                 </div>
 
+                <PremiumDivider className="my-0" />
+
                 {/* ═══════════════════════════════════════════
                     TESTIMONIALS SECTION
                     ═══════════════════════════════════════════ */}
@@ -265,11 +263,22 @@ export default function Home() {
                     <Testimonials />
                 </div>
 
+                <PremiumDivider className="my-0" />
+
                 {/* ═══════════════════════════════════════════
                     SOLUTIONS SECTION
                     ═══════════════════════════════════════════ */}
                 <div className="section-reveal relative z-10 bg-[var(--color-apple-off-white)]/80 backdrop-blur-sm">
                     <Solutions />
+                </div>
+
+                <PremiumDivider className="my-0" />
+
+                {/* ═══════════════════════════════════════════
+                    BLOG PREVIEW
+                    ═══════════════════════════════════════════ */}
+                <div className="section-reveal relative z-10">
+                    <BlogPreview />
                 </div>
 
                 {/* ═══════════════════════════════════════════

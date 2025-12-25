@@ -35,10 +35,18 @@ export default async function BlogPage() {
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             {/* Page Header */}
-            <div className="text-center mb-16">
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">Blog</h1>
-                <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-                    Insights sobre design, tecnologia e o futuro digital.
+            <div className="text-center mb-16 space-y-4">
+                <div className="inline-block">
+                    <span className="text-xs font-bold uppercase tracking-wider text-purple-600 bg-purple-50 px-3 py-1 rounded-full mb-4 inline-block">
+                        Impulsionado por IA
+                    </span>
+                </div>
+                <h1 className="text-5xl md:text-6xl font-bold mb-4 tracking-tight bg-gradient-to-r from-gray-900 via-purple-900 to-pink-900 bg-clip-text text-transparent">
+                    Insights & Inovação
+                </h1>
+                <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
+                    Explore o futuro do design digital, tecnologia e inteligência artificial.
+                    <span className="block mt-1 text-purple-600 font-semibold">Conteúdo premium para mentes criativas.</span>
                 </p>
             </div>
 

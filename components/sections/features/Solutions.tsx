@@ -8,6 +8,8 @@ import { useGSAP } from "@gsap/react";
 import { cn } from "@/lib/utils";
 import { services } from "@/data";
 import { useI18n } from "@/lib/i18n";
+import { PremiumCard } from "@/components/ui/PremiumCard";
+import { ShinyButton } from "@/components/ui/ShinyButton";
 
 // Registrar plugin
 if (typeof window !== "undefined") {
@@ -23,23 +25,34 @@ export function Solutions() {
             const mm = gsap.matchMedia();
 
             mm.add("(min-width: 768px)", () => {
-                // Service cards stagger reveal - OTIMIZADO
-                ScrollTrigger.batch(".service-card", {
-                    onEnter: (batch) => {
-                        gsap.to(batch, {
-                            opacity: 1,
+                mm.add("(min-width: 768px)", () => {
+                    // Tracking Responsivo Vinculado à Rolagem (Scrubbing)
+                    const tl = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: sectionRef.current,
+                            start: "top 90%", // Começa quando o topo da seção entra na viewport
+                            end: "center 50%", // Termina quando o centro da seção está no meio da tela
+                            scrub: 0.5, // Suavização do tracking (responsivo mas suave)
+                            toggleActions: "play reverse play reverse"
+                        }
+                    });
+
+                    tl.fromTo(".service-card",
+                        {
+                            y: 100,
+                            opacity: 0,
+                            scale: 0.8,
+                            rotateX: 15 // Leve inclinação inicial para efeito 3D ao subir
+                        },
+                        {
                             y: 0,
+                            opacity: 1,
                             scale: 1,
-                            stagger: 0.1,
-                            duration: 0.6,
-                            ease: "power2.out",
-                            overwrite: true,
-                        });
-                    },
-                    onLeaveBack: (batch) => {
-                        gsap.set(batch, { opacity: 0, y: 50, scale: 0.95, overwrite: true });
-                    },
-                    start: "top 85%",
+                            rotateX: 0,
+                            stagger: 0.1, // Efeito cascata entre os cards
+                            ease: "power2.out"
+                        }
+                    );
                 });
             });
 
@@ -56,10 +69,9 @@ export function Solutions() {
         <section
             ref={sectionRef}
             id="solutions"
-            className="section-reveal px-6 py-32 bg-white relative overflow-hidden"
+            className="section-reveal px-6 py-32 bg-[#F5F5F7] relative overflow-hidden"
         >
-            {/* Background Gradient Sutil */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-50/30 to-transparent pointer-events-none" />
+            {/* Background Sólido - Sem Animações/Gradientes */}
 
             <div className="max-w-7xl mx-auto relative">
                 <motion.h2
@@ -72,17 +84,21 @@ export function Solutions() {
                     {sectionTitle}
                 </motion.h2>
 
-                <div className="services-grid grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="services-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {services.map((service, i) => (
-                        <div
+                        <PremiumCard
                             key={i}
+                            variant="transparent"
                             className={cn(
-                                "service-card group relative p-8 rounded-[32px] border border-black/5 bg-gradient-to-br hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 will-change-transform",
-                                service.gradient
+                                "service-card group relative p-6 transition-all duration-500 will-change-transform bg-white border border-black/5 shadow-lg hover:shadow-2xl hover:-translate-y-2",
+                                "hover:border-purple-500/30" // Adiciona cor na borda ao passar o mouse
                             )}
                             style={{ opacity: 0, transform: "translateY(50px) scale(0.95)" }}
                         >
-                            <div className="h-48 mb-8 rounded-2xl bg-white/50 backdrop-blur-sm shadow-inner flex items-center justify-center overflow-hidden relative">
+                            {/* Gradiente de fundo sutil que aparece no hover */}
+                            <div className={cn("absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br rounded-3xl pointer-events-none", service.gradient)} />
+
+                            <div className="h-40 mb-6 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden relative border border-black/5 group-hover:border-transparent transition-colors">
                                 {/* Animated gradient on hover */}
                                 <div
                                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-white/0 via-white/40 to-white/0 -translate-x-full group-hover:translate-x-full"
@@ -109,8 +125,14 @@ export function Solutions() {
                                     →
                                 </button>
                             </div>
-                        </div>
+                        </PremiumCard>
                     ))}
+                </div>
+
+                <div className="mt-16 flex justify-center">
+                    <ShinyButton href="#contact">
+                        {locale === "en" ? "Talk to us" : "Fale com a gente"}
+                    </ShinyButton>
                 </div>
             </div>
         </section>

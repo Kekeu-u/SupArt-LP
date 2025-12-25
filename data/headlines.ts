@@ -19,5 +19,5 @@ export const headlines = {
 
 export const headlinePrefix = {
     en: "Design that converts through",
-    pt: "Design que converte pela",
+    pt: "Excelência que converte pela",
 };

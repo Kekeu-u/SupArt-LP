@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { PremiumCard } from "@/components/ui/PremiumCard";
 
 interface BentoGridProps {
     children: ReactNode;
@@ -40,18 +41,24 @@ export const BentoCard = ({
             transition={{ duration: 0.5, ease: "easeOut" }}
             viewport={{ once: true }}
             className={cn(
-                "glass-panel rounded-[var(--radius-apple)] p-8 flex flex-col justify-between overflow-hidden relative group",
                 colSpan === 2 && "md:col-span-2",
-                colSpan === 3 && "md:col-span-2 lg:col-span-3", // Adjust for 2-col grid on md
+                colSpan === 3 && "md:col-span-2 lg:col-span-3",
                 colSpan === 4 && "md:col-span-2 lg:col-span-4",
-                rowSpan === 2 && "row-span-2",
-                className
+                rowSpan === 2 && "row-span-2"
             )}
         >
-            {/* Hover Effect Layer */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            <PremiumCard
+                variant="transparent"
+                className={cn(
+                    "h-full p-8 flex flex-col justify-between overflow-hidden relative group",
+                    className
+                )}
+            >
+                {/* Hover Effect Layer */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-            {children}
+                {children}
+            </PremiumCard>
         </motion.div>
     );
 };

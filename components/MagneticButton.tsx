@@ -178,11 +178,12 @@ function getVariantClasses(variant: string): string {
             );
         case "secondary":
             return cn(
-                "bg-white/10 backdrop-blur-xl",
-                "hover:bg-white/20",
+                "bg-gradient-to-r from-gray-800/95 via-gray-900/95 to-gray-800/95 backdrop-blur-xl",
+                "hover:from-gray-700/95 hover:via-gray-800/95 hover:to-gray-700/95",
                 "text-white",
-                "border border-white/20",
-                "hover:border-white/40",
+                "border border-white/30",
+                "hover:border-white/50",
+                "shadow-lg shadow-black/20",
                 "rounded-full"
             );
         case "ghost":

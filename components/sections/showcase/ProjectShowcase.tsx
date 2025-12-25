@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { BentoGrid, BentoCard } from "./BentoGrid";
-import { MagneticButton } from "@/components/MagneticButton";
+import { ShinyButton } from "@/components/ui/ShinyButton";
 import { useI18n } from "@/lib/i18n";
 import { projectsSection } from "@/data/projects";
 
@@ -216,40 +216,8 @@ export const ProjectShowcase = () => {
                     </a>
                 </BentoCard>
 
-                {/* Stats Card - Compact */}
-                <BentoCard colSpan={1} className="p-0 overflow-hidden bg-transparent border-none shadow-none">
-                    <div className="h-full w-full rounded-2xl bg-gradient-to-br from-purple-600 to-blue-600 p-5 flex flex-col justify-center items-center relative overflow-hidden group/stats">
-                        <div className="absolute inset-0 bg-white/10 opacity-0 group-hover/stats:opacity-100 transition-opacity duration-500" />
-                        <span className="text-3xl md:text-4xl font-bold text-white mb-1">{content.stats[locale].count}</span>
-                        <p className="text-white/80 text-[10px] md:text-xs text-center leading-tight">{content.stats[locale].label}</p>
-                        <div className="mt-3 w-full h-px bg-white/20" />
-                        <p className="text-white/60 text-[9px] mt-3 text-center">
-                            {locale === "en" ? "Global Clients" : "Clientes Globais"}
-                        </p>
-                    </div>
-                </BentoCard>
-
-                {/* New CTA Card - Fill the gap */}
-                <BentoCard colSpan={1} className="p-0 overflow-hidden bg-transparent border-none shadow-none">
-                    <a href="https://wa.me/5551999999999" target="_blank" rel="noopener noreferrer" className="block h-full w-full">
-                        <div className="h-full w-full rounded-2xl bg-[#1a1a1a] border border-white/10 p-5 flex flex-col justify-center items-center group/cta hover:border-white/30 transition-colors">
-                            <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center mb-3 group-hover/cta:bg-white/10 group-hover/cta:scale-110 transition-all">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white/70 group-hover/cta:text-white">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                                </svg>
-                            </div>
-                            <p className="text-white font-medium text-sm text-center">
-                                {locale === "en" ? "Book a Call" : "Agendar Reunião"}
-                            </p>
-                            <p className="text-white/40 text-[10px] text-center mt-1">
-                                {locale === "en" ? "Start your project" : "Inicie seu projeto"}
-                            </p>
-                        </div>
-                    </a>
-                </BentoCard>
-
                 {/* SaaS Dashboard */}
-                <BentoCard colSpan={2} className="p-0 overflow-hidden bg-transparent border-none shadow-none">
+                <BentoCard colSpan={2} className="p-0 overflow-hidden bg-transparent border-none shadow-none lg:col-start-2">
                     <div className="h-full w-full rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 p-6 flex flex-col justify-center relative overflow-hidden">
                         <div className="relative z-10 text-white">
                             <span className="px-2.5 py-1 rounded-full bg-white/20 text-[10px] font-medium uppercase tracking-wider mb-3 inline-block">
@@ -264,15 +232,10 @@ export const ProjectShowcase = () => {
             </BentoGrid>
 
 
-            <div className="mt-12 flex justify-center">
-                <MagneticButton
-                    href="/portfolio"
-                    variant="secondary"
-                    size="lg"
-                    strength={0.3}
-                >
+            <div className="mt-16 pb-8 flex justify-center">
+                <ShinyButton href="/portfolio">
                     {locale === "en" ? "View More Projects" : "Ver Mais Projetos"}
-                </MagneticButton>
+                </ShinyButton>
             </div>
         </section >
     );

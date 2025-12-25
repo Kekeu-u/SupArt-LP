@@ -9,50 +9,69 @@ export interface Service {
 export const services: Service[] = [
     {
         title: {
-            en: "High-Converting Landing Pages",
-            pt: "O Acelerador de Leads",
+            en: "Performance Media",
+            pt: "Mídia de Performance",
         },
         desc: {
-            en: "Conversion-focused landing pages with persuasive copy and hypnotic design that turn visitors into customers.",
-            pt: "Landing pages de alta conversão com copy persuasiva e design hipnótico.",
+            en: "Conversion-focused campaigns and ads for traffic, sales, and lead generation.",
+            pt: "Criação de campanhas e anúncios focados em tráfego, vendas, geração e nutrição de leads.",
         },
         price: {
-            en: "From $1,500",
-            pt: "A partir de R$ 5k",
+            en: "Custom Quote",
+            pt: "Sob Consulta",
         },
-        gradient: "from-blue-500/10 to-purple-500/10",
+        gradient: "from-blue-500/10 to-cyan-500/10",
         features: {
-            en: ["A/B Testing Ready", "Mobile-First", "SEO Optimized", "Analytics Dashboard"],
-            pt: ["Pronto para Testes A/B", "Mobile-First", "SEO Otimizado", "Dashboard Analytics"],
+            en: ["Inbound Marketing", "Media Strategy", "Ecommerce Sales", "Google/Meta/LinkedIn Ads"],
+            pt: ["Inbound Marketing", "Estratégia de Mídia", "Vendas em Ecommerce", "Google/Meta/LinkedIn Ads"],
         },
     },
     {
         title: {
-            en: "Complete Brand Identity",
-            pt: "Identidade Visual 360",
+            en: "Project Management",
+            pt: "Gestão de Projetos",
         },
         desc: {
-            en: "Full rebranding package. Logo, typography, colors, and comprehensive brand guidelines.",
-            pt: "Rebranding completo. Logo, tipografia, cores e manual de marca.",
+            en: "Custom communication projects. Strong brands with solid positioning.",
+            pt: "Projetos de comunicação customizados. Marcas fortes em posicionamento.",
         },
         price: {
-            en: "From $2,500",
-            pt: "A partir de R$ 8k",
+            en: "Custom Quote",
+            pt: "Sob Consulta",
+        },
+        gradient: "from-purple-500/10 to-pink-500/10",
+        features: {
+            en: ["Websites & Landing Pages", "Brand Creation", "Visual Identity", "SEO Strategies"],
+            pt: ["Criação de Sites e LPs", "Criação de Marcas", "Identidades Visuais", "Estratégias de SEO"],
+        },
+    },
+    {
+        title: {
+            en: "Social Media",
+            pt: "Redes Sociais",
+        },
+        desc: {
+            en: "Social media management focused on branding. Make your brand known and admired.",
+            pt: "Gestão de redes sociais com foco em branding. Sua marca mais conhecida e admirada.",
+        },
+        price: {
+            en: "Custom Quote",
+            pt: "Sob Consulta",
         },
         gradient: "from-orange-500/10 to-red-500/10",
         features: {
-            en: ["Logo Design", "Brand Guidelines", "Social Media Kit", "Stationery Design"],
-            pt: ["Design de Logo", "Manual de Marca", "Kit Redes Sociais", "Papelaria"],
+            en: ["Content Marketing", "Influencers", "Funnel Strategy", "Multi-platform Management"],
+            pt: ["Marketing de Conteúdo", "Influenciadores", "Topo de Funil", "Gestão Multiplataforma"],
         },
     },
     {
         title: {
-            en: "Full Digital Ecosystem",
-            pt: "Ecosistema Digital",
+            en: "360º Marketing",
+            pt: "MKT 360º",
         },
         desc: {
-            en: "Corporate website, blog, and CRM integrations. Your complete digital presence.",
-            pt: "Site institucional, blog e integrações CRM. A presença completa.",
+            en: "Development of Strategy and Execution of Omnichannel campaigns.",
+            pt: "Desenvolvimento de Estratégia e Execução de campanhas Omnichannel.",
         },
         price: {
             en: "Custom Quote",
@@ -60,8 +79,8 @@ export const services: Service[] = [
         },
         gradient: "from-green-500/10 to-emerald-500/10",
         features: {
-            en: ["Custom CMS", "CRM Integration", "Analytics", "24/7 Support"],
-            pt: ["CMS Customizado", "Integração CRM", "Analytics", "Suporte 24/7"],
+            en: ["Omnichannel Campaigns", "Live Marketing", "Events & Experiences", "OOH & TV/Radio"],
+            pt: ["Campanhas Omnichannel", "Live Marketing", "Eventos e Experiências", "OOH e Mídia Tradicional"],
         },
     },
 ];
