@@ -2,11 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { seoKeywords } from "@/data/seo-keywords";
-
-// LenisProvider removido - causando travamentos no scroll
-// import { LenisProvider } from "@/components/LenisProvider";
-// CustomCursor removido - causando cursor invisível
-// import { CustomCursor } from "@/components/CustomCursor";
+import { I18nProvider } from "@/lib/i18n";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -16,11 +12,24 @@ const inter = Inter({
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://supart.agency"),
-    title: "SupArt / Agência de MKT",
-    description: "Agência de IA e Curadoria de Dados",
+    title: "SupArt Agency | Premium Digital Experiences",
+    description: "AI-powered design & development agency. We create high-converting landing pages, brand identities, and digital ecosystems for clients worldwide.",
     keywords: seoKeywords,
     alternates: {
         canonical: "/",
+    },
+    openGraph: {
+        type: "website",
+        locale: "en_US",
+        alternateLocale: "pt_BR",
+        siteName: "SupArt Agency",
+        title: "SupArt Agency | Premium Digital Experiences",
+        description: "AI-powered design & development agency creating high-converting digital experiences.",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "SupArt Agency",
+        description: "Premium digital experiences that convert.",
     },
 };
 
@@ -32,17 +41,28 @@ export default function RootLayout({
     const jsonLd = {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "SupArt",
-        "url": "https://supart.agency", // Substitua pelo URL real se diferente
-        "logo": "https://supart.agency/logo.png", // Substitua pelo URL real do logo
-        "alternateName": seoKeywords,
+        "name": "SupArt Agency",
+        "url": "https://supart.agency",
+        "logo": "https://supart.agency/logo.png",
+        "description": "Premium AI-powered design & development agency",
+        "foundingDate": "2024",
+        "areaServed": "Worldwide",
+        "serviceType": ["Web Design", "Brand Identity", "Digital Marketing", "AI Solutions"],
+        "priceRange": "$$$",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "São Paulo",
+            "addressCountry": "BR"
+        },
         "sameAs": [
-            // Adicione links de redes sociais aqui se houver
+            "https://instagram.com/supartagency",
+            "https://linkedin.com/company/supart",
+            "https://twitter.com/supartagency"
         ]
     };
 
     return (
-        <html lang="pt-BR" className={`${inter.variable} antialiased`} suppressHydrationWarning>
+        <html lang="en" className={`${inter.variable} antialiased`} suppressHydrationWarning>
             <head>
                 <script
                     type="application/ld+json"
@@ -50,8 +70,9 @@ export default function RootLayout({
                 />
             </head>
             <body>
-                {/* LenisProvider e CustomCursor desabilitados para performance */}
-                {children}
+                <I18nProvider>
+                    {children}
+                </I18nProvider>
             </body>
         </html>
     );

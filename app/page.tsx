@@ -1,19 +1,21 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { cn } from "@/lib/utils";
 import { ProjectShowcase } from "@/components/ProjectShowcase";
 import { TechStackMarquee } from "@/components/TechStackMarquee";
 import { RotatingHeadline } from "@/components/RotatingHeadline";
 import { HeroChat } from "@/components/HeroChat";
 import { DevPanel } from "@/components/DevPanel";
 import { Solutions } from "@/components/Solutions";
+import { Testimonials } from "@/components/Testimonials";
+import { ShinyButton } from "@/components/ShinyButton";
 import { siteConfig, footerLinks } from "@/data";
 import { HeroLogo } from "@/components/HeroLogo";
+import { useI18n } from "@/lib/i18n";
 
 // Registrar plugin
 if (typeof window !== "undefined") {
@@ -21,6 +23,7 @@ if (typeof window !== "undefined") {
 }
 
 export default function Home() {
+    const { locale, t } = useI18n();
     const [isChatActive, setIsChatActive] = useState(false);
     const mainRef = useRef<HTMLElement>(null);
     const heroRef = useRef<HTMLElement>(null);
@@ -36,45 +39,6 @@ export default function Home() {
             // ANIMAÇÕES DESKTOP
             // ─────────────────────────────────────
             mm.add("(min-width: 768px)", () => {
-                // Floating Orbs parallax suave
-                gsap.to(".orb-1", {
-                    y: "30%",
-                    x: "10%",
-                    scale: 1.1,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: mainRef.current,
-                        start: "top top",
-                        end: "50% top",
-                        scrub: 0.5,
-                    },
-                });
-
-                gsap.to(".orb-2", {
-                    y: "50%",
-                    x: "-15%",
-                    scale: 0.9,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: mainRef.current,
-                        start: "top top",
-                        end: "60% top",
-                        scrub: 0.7,
-                    },
-                });
-
-                gsap.to(".orb-3", {
-                    y: "40%",
-                    x: "20%",
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: mainRef.current,
-                        start: "top top",
-                        end: "70% top",
-                        scrub: 0.6,
-                    },
-                });
-
                 // Hero text parallax + fade
                 gsap.to(".hero-text", {
                     y: "-15%",
@@ -105,15 +69,15 @@ export default function Home() {
                 // Section reveals com perspectiva 3D
                 gsap.utils.toArray<HTMLElement>(".section-reveal").forEach((section) => {
                     gsap.from(section, {
-                        y: 50, // Reduzido de 80 para menos movimento
+                        y: 50,
                         opacity: 0,
                         duration: 0.8,
                         ease: "power2.out",
                         scrollTrigger: {
                             trigger: section,
-                            start: "top 90%", // Começa mais cedo
+                            start: "top 90%",
                             end: "top 20%",
-                            toggleActions: "play none none reverse", // Permite reverter suavemente
+                            toggleActions: "play none none reverse",
                         },
                     });
                 });
@@ -123,7 +87,6 @@ export default function Home() {
             // ANIMAÇÕES MOBILE (simplificadas)
             // ─────────────────────────────────────
             mm.add("(max-width: 767px)", () => {
-                // Apenas fade simples no hero
                 gsap.to(".hero-text", {
                     opacity: 0.5,
                     ease: "none",
@@ -136,8 +99,6 @@ export default function Home() {
                 });
             });
 
-            // Forçar recálculo após montagem para garantir precisão
-            // Útil se houver imagens carregando acima que mudam o layout
             const timer = setTimeout(() => {
                 ScrollTrigger.refresh();
             }, 1000);
@@ -156,30 +117,37 @@ export default function Home() {
         "mainEntity": [
             {
                 "@type": "Question",
-                "name": "O que a SupArt faz?",
+                "name": "What does SupArt do?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Somos uma agência especializada em unir Design Premium, Inteligência Artificial e Estratégia de Marketing para escalar negócios."
+                    "text": "We are an agency specialized in combining Premium Design, Artificial Intelligence, and Marketing Strategy to scale businesses worldwide."
                 }
             },
             {
                 "@type": "Question",
-                "name": "Como a IA pode ajudar minha empresa?",
+                "name": "How can AI help my business?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Utilizamos IA para automatizar vendas (SDR), gerar conteúdo em escala e criar visuais únicos, reduzindo custos e aumentando a eficiência."
+                    "text": "We use AI to automate sales (SDR), generate content at scale, and create unique visuals, reducing costs and increasing efficiency."
                 }
             },
             {
                 "@type": "Question",
-                "name": "Vocês atendem todo o Brasil?",
+                "name": "Do you work with international clients?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Sim, nossa operação é 100% digital e atendemos clientes em todo o Brasil e no exterior."
+                    "text": "Yes, our operation is 100% remote and we serve clients across Brazil, USA, Europe, and worldwide."
                 }
             }
         ]
     };
+
+    const heroSubtitle = t(
+        "We transform your digital presence into a high-fidelity cinematic experience.",
+        "Transformamos sua presença digital em uma experiência cinematográfica de alta fidelidade."
+    );
+
+    const ctaText = t("Start Project", "Iniciar Projeto");
 
     return (
         <>
@@ -190,38 +158,33 @@ export default function Home() {
             {/* DevPanel - só aparece em desenvolvimento */}
             <DevPanel />
 
-            <main ref={mainRef} className="min-h-screen bg-[var(--color-apple-off-white)] text-[var(--color-apple-black)] overflow-x-hidden selection:bg-[var(--color-apple-blue)] selection:text-white">
+            <main ref={mainRef} className="min-h-screen bg-transparent text-[var(--color-apple-black)] overflow-x-hidden selection:bg-[var(--color-apple-blue)] selection:text-white">
 
                 {/* ═══════════════════════════════════════════
-                    HERO SECTION - Com Floating Orbs
+                    HERO SECTION - Com Spline 3D Background
                     ═══════════════════════════════════════════ */}
                 <section
                     ref={heroRef}
                     className="hero-section relative min-h-screen flex flex-col items-center justify-center px-6 pb-24 overflow-hidden"
                 >
-                    {/* Animated Gradient Background */}
-                    <div className="absolute inset-0 bg-gradient-mesh opacity-50" />
-
-                    {/* Floating Orbs - Tamanhos responsivos para não causar overflow */}
-                    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                        {/* Orb 1 - Roxo grande */}
-                        <div className="orb-1 absolute top-1/4 left-1/4 w-[min(600px,80vw)] h-[min(600px,80vw)] rounded-full bg-gradient-radial from-purple-400/30 via-purple-500/10 to-transparent blur-3xl transform-gpu" />
-
-                        {/* Orb 2 - Azul médio */}
-                        <div className="orb-2 absolute top-1/2 right-1/4 w-[min(450px,60vw)] h-[min(450px,60vw)] rounded-full bg-gradient-radial from-blue-400/25 via-cyan-400/10 to-transparent blur-3xl transform-gpu" />
-
-                        {/* Orb 3 - Rosa pequeno */}
-                        <div className="orb-3 absolute bottom-1/4 left-1/3 w-[min(300px,50vw)] h-[min(300px,50vw)] rounded-full bg-gradient-radial from-pink-400/20 to-transparent blur-2xl transform-gpu" />
+                    {/* Spline 3D Background - Fixed Position to stay visible */}
+                    <div className="fixed top-0 left-0 w-full h-full -z-50 pointer-events-none">
+                        <iframe
+                            src="https://my.spline.design/flowingribbon-TlkEaNrvCCNZuJBNJN3LXpRF"
+                            frameBorder="0"
+                            width="100%"
+                            height="100%"
+                            id="aura-spline"
+                            title="Spline 3D Background"
+                            style={{ pointerEvents: 'none' }}
+                        />
                     </div>
 
-                    {/* Noise Grain Texture */}
-                    <div className="absolute inset-0 opacity-[0.015] pointer-events-none noise-texture" />
-
                     {/* Conteúdo Hero */}
-                    <div className="relative z-10 text-center max-w-5xl mx-auto">
+                    <div className="relative z-10 text-center max-w-5xl mx-auto pointer-events-none">
                         {/* Logo Animada */}
                         <motion.div
-                            className="mb-6 flex justify-center"
+                            className="mb-6 flex justify-center pointer-events-auto"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{
                                 opacity: isChatActive ? 0 : 1,
@@ -235,7 +198,7 @@ export default function Home() {
 
                         {/* Texto do Hero */}
                         <motion.div
-                            className="hero-text"
+                            className="hero-text pointer-events-auto"
                             initial={{ opacity: 1, y: 0 }}
                             animate={{
                                 opacity: isChatActive ? 0 : 1,
@@ -245,20 +208,28 @@ export default function Home() {
                             transition={{ duration: 0.4, ease: "easeOut" }}
                         >
                             <RotatingHeadline />
-                            <p className="text-lead text-[var(--color-apple-gray)] max-w-2xl mx-auto mt-5">
-                                Transformamos sua presença digital em uma experiência cinematográfica de alta fidelidade.
+                            <p className="text-lead text-[var(--color-apple-gray)] max-w-2xl mx-auto mt-5 mb-8">
+                                {heroSubtitle}
                             </p>
                         </motion.div>
 
-                        {/* Chat CTA */}
-                        <div className="hero-cta">
-                            <HeroChat onStateChange={setIsChatActive} />
-                        </div>
+                        {/* Shiny CTA */}
+                        <motion.div
+                            className="hero-cta pointer-events-auto flex justify-center"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.5, duration: 0.5 }}
+                        >
+                            <ShinyButton
+                                text={ctaText}
+                                onClick={() => setIsChatActive(true)}
+                            />
+                        </motion.div>
                     </div>
 
                     {/* Scroll Indicator */}
                     <motion.div
-                        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+                        className="absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-auto"
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1.5, duration: 0.5 }}
@@ -276,21 +247,28 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     TECH STACK SECTION
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal">
+                <div className="section-reveal relative z-10 bg-[var(--color-apple-off-white)]/80 backdrop-blur-sm">
                     <TechStackMarquee />
                 </div>
 
                 {/* ═══════════════════════════════════════════
                     PROJECT SHOWCASE SECTION
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal">
+                <div className="section-reveal relative z-10 bg-[var(--color-apple-off-white)]/80 backdrop-blur-sm">
                     <ProjectShowcase />
+                </div>
+
+                {/* ═══════════════════════════════════════════
+                    TESTIMONIALS SECTION
+                    ═══════════════════════════════════════════ */}
+                <div className="section-reveal relative z-10">
+                    <Testimonials />
                 </div>
 
                 {/* ═══════════════════════════════════════════
                     SOLUTIONS SECTION
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal">
+                <div className="section-reveal relative z-10 bg-[var(--color-apple-off-white)]/80 backdrop-blur-sm">
                     <Solutions />
                 </div>
 
@@ -303,18 +281,23 @@ export default function Home() {
                             <div className="col-span-2 md:col-span-1">
                                 <h4 className="font-semibold mb-6">{siteConfig.name}</h4>
                                 <p className="text-sm text-[var(--color-apple-gray)] leading-relaxed max-w-xs">
-                                    {siteConfig.description}
+                                    {siteConfig.description[locale]}
                                 </p>
+                                {/* Availability Badge */}
+                                <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-xs font-medium">
+                                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                    {siteConfig.availability[locale]}
+                                </div>
                             </div>
 
                             {footerLinks.map((col, i) => (
                                 <div key={i}>
-                                    <h4 className="font-semibold mb-6 text-sm">{col.title}</h4>
+                                    <h4 className="font-semibold mb-6 text-sm">{col.title[locale]}</h4>
                                     <ul className="space-y-4">
                                         {col.links.map((link) => (
-                                            <li key={link.label}>
+                                            <li key={link.label.en}>
                                                 <a href={link.href} className="text-sm text-[var(--color-apple-gray)] hover:text-[var(--color-apple-black)] transition-colors">
-                                                    {link.label}
+                                                    {link.label[locale]}
                                                 </a>
                                             </li>
                                         ))}
@@ -325,7 +308,7 @@ export default function Home() {
 
                         <div className="pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-4">
                             <p className="text-xs text-[var(--color-apple-gray)]">
-                                {siteConfig.copyright}
+                                {siteConfig.copyright[locale]}
                             </p>
                             <p className="text-xs text-[var(--color-apple-gray)]">
                                 {siteConfig.location}

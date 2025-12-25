@@ -1,45 +1,45 @@
 export interface NavLink {
-    label: string;
+    label: { en: string; pt: string };
     href: string;
 }
 
 export interface NavSection {
-    title: string;
+    title: { en: string; pt: string };
     links: NavLink[];
 }
 
 export const footerLinks: NavSection[] = [
     {
-        title: "Serviços",
+        title: { en: "Services", pt: "Serviços" },
         links: [
-            { label: "Design System", href: "#" },
-            { label: "Web Development", href: "#" },
-            { label: "Mobile Apps", href: "#" },
-            { label: "Consultoria", href: "#" },
-        ]
+            { label: { en: "Design System", pt: "Design System" }, href: "#" },
+            { label: { en: "Web Development", pt: "Desenvolvimento Web" }, href: "#" },
+            { label: { en: "Mobile Apps", pt: "Apps Mobile" }, href: "#" },
+            { label: { en: "Consulting", pt: "Consultoria" }, href: "#" },
+        ],
     },
     {
-        title: "Empresa",
+        title: { en: "Company", pt: "Empresa" },
         links: [
-            { label: "Sobre", href: "#" },
-            { label: "Carreiras", href: "#" },
-            { label: "Blog", href: "#" },
-            { label: "Contato", href: "#" },
-        ]
+            { label: { en: "About", pt: "Sobre" }, href: "#" },
+            { label: { en: "Careers", pt: "Carreiras" }, href: "#" },
+            { label: { en: "Blog", pt: "Blog" }, href: "#" },
+            { label: { en: "Contact", pt: "Contato" }, href: "#" },
+        ],
     },
     {
-        title: "Legal",
+        title: { en: "Legal", pt: "Legal" },
         links: [
-            { label: "Privacidade", href: "/privacidade" },
-            { label: "Termos", href: "/termos" },
-            { label: "Cookies", href: "#" },
-        ]
-    }
+            { label: { en: "Privacy", pt: "Privacidade" }, href: "/privacidade" },
+            { label: { en: "Terms", pt: "Termos" }, href: "/termos" },
+            { label: { en: "Cookies", pt: "Cookies" }, href: "#" },
+        ],
+    },
 ];
 
 export const headerLinks: NavLink[] = [
-    { label: "Serviços", href: "#servicos" },
-    { label: "Portfolio", href: "#portfolio" },
-    { label: "Sobre", href: "#sobre" },
-    { label: "Contato", href: "#contato" },
+    { label: { en: "Services", pt: "Serviços" }, href: "#servicos" },
+    { label: { en: "Portfolio", pt: "Portfolio" }, href: "#portfolio" },
+    { label: { en: "About", pt: "Sobre" }, href: "#sobre" },
+    { label: { en: "Contact", pt: "Contato" }, href: "#contato" },
 ];

@@ -1,10 +1,18 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
+// 🔐 Modo de manutenção DESATIVADO para produção internacional
+const MAINTENANCE_MODE_ENABLED = false;
+
 // 🔐 Bypass secreto: acesse qualquer página com ?bypass=supart2024
 const BYPASS_SECRET = 'supart2024';
 
 export function middleware(request: NextRequest) {
+    // Se manutenção está desativada, permite tudo
+    if (!MAINTENANCE_MODE_ENABLED) {
+        return NextResponse.next();
+    }
+
     const { pathname, searchParams } = request.nextUrl;
 
     // ✅ Permite bypass secreto (salva em cookie por 1 hora)

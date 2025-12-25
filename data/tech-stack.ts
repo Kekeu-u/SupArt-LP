@@ -8,8 +8,8 @@ export interface Technology {
     name: string;
     letter: string;
     gradient: string;
-    description: string;
-    detail: string;
+    description: { en: string; pt: string };
+    detail: { en: string; pt: string };
     stats: {
         performance: number;
         adoption: number;
@@ -33,54 +33,85 @@ export const technologies: Technology[] = [
         name: "Next.js",
         letter: "N",
         gradient: "from-black via-gray-800 to-black",
-        description: "Framework React",
-        detail: "Server-side rendering, rotas automáticas, otimização de imagens.",
+        description: { en: "React Framework", pt: "Framework React" },
+        detail: {
+            en: "Server-side rendering, automatic routes, image optimization.",
+            pt: "Server-side rendering, rotas automáticas, otimização de imagens.",
+        },
         stats: { performance: 98, adoption: 95, dx: 92 },
-        features: ["SSR/SSG", "App Router", "Edge"]
+        features: ["SSR/SSG", "App Router", "Edge"],
     },
     {
         name: "React",
         letter: "R",
         gradient: "from-cyan-500 via-blue-500 to-cyan-400",
-        description: "UI Library",
-        detail: "Biblioteca declarativa para interfaces interativas e reativas.",
+        description: { en: "UI Library", pt: "Biblioteca UI" },
+        detail: {
+            en: "Declarative library for interactive and reactive interfaces.",
+            pt: "Biblioteca declarativa para interfaces interativas e reativas.",
+        },
         stats: { performance: 94, adoption: 99, dx: 90 },
-        features: ["Hooks", "Virtual DOM", "Ecosistema"]
+        features: ["Hooks", "Virtual DOM", "Ecosystem"],
     },
     {
         name: "TypeScript",
         letter: "T",
         gradient: "from-blue-600 via-blue-500 to-blue-400",
-        description: "Type Safety",
-        detail: "Superset tipado que previne bugs e melhora produtividade.",
+        description: { en: "Type Safety", pt: "Type Safety" },
+        detail: {
+            en: "Typed superset that prevents bugs and improves productivity.",
+            pt: "Superset tipado que previne bugs e melhora produtividade.",
+        },
         stats: { performance: 100, adoption: 92, dx: 88 },
-        features: ["Types", "IntelliSense", "Refactor"]
+        features: ["Types", "IntelliSense", "Refactor"],
     },
     {
         name: "Tailwind",
         letter: "T",
         gradient: "from-teal-500 via-cyan-500 to-teal-400",
-        description: "Styling",
-        detail: "Framework CSS utility-first para desenvolvimento rápido.",
+        description: { en: "Styling", pt: "Estilização" },
+        detail: {
+            en: "Utility-first CSS framework for rapid development.",
+            pt: "Framework CSS utility-first para desenvolvimento rápido.",
+        },
         stats: { performance: 96, adoption: 88, dx: 95 },
-        features: ["Utility-First", "JIT", "Dark Mode"]
+        features: ["Utility-First", "JIT", "Dark Mode"],
     },
     {
         name: "Framer",
         letter: "F",
         gradient: "from-purple-600 via-pink-500 to-purple-400",
-        description: "Animations",
-        detail: "Animações fluidas e gestos para React com API declarativa.",
+        description: { en: "Animations", pt: "Animações" },
+        detail: {
+            en: "Fluid animations and gestures for React with declarative API.",
+            pt: "Animações fluidas e gestos para React com API declarativa.",
+        },
         stats: { performance: 90, adoption: 78, dx: 94 },
-        features: ["Gestures", "Layout", "Variants"]
+        features: ["Gestures", "Layout", "Variants"],
     },
     {
         name: "Vercel",
         letter: "V",
         gradient: "from-gray-900 via-gray-700 to-gray-800",
-        description: "Deploy",
-        detail: "Plataforma de deploy com edge network global.",
+        description: { en: "Deploy", pt: "Deploy" },
+        detail: {
+            en: "Deployment platform with global edge network.",
+            pt: "Plataforma de deploy com edge network global.",
+        },
         stats: { performance: 99, adoption: 85, dx: 97 },
-        features: ["Edge", "Analytics", "Previews"]
+        features: ["Edge", "Analytics", "Previews"],
     },
 ];
+
+export const techStats = {
+    en: [
+        { value: "99.9%", label: "Uptime" },
+        { value: "<50ms", label: "Response" },
+        { value: "100%", label: "SEO Score" },
+    ],
+    pt: [
+        { value: "99.9%", label: "Uptime" },
+        { value: "<50ms", label: "Resposta" },
+        { value: "100%", label: "SEO" },
+    ],
+};

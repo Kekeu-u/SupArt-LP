@@ -2,7 +2,8 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
-import { companies, technologies } from "@/data/tech-stack";
+import { companies, technologies, techStats } from "@/data/tech-stack";
+import { useI18n } from "@/lib/i18n";
 
 const marqueeCompanies = [...companies, ...companies, ...companies];
 
@@ -10,19 +11,22 @@ const marqueeCompanies = [...companies, ...companies, ...companies];
 const ease: [number, number, number, number] = [0.32, 0.72, 0, 1];
 
 // Card simples sem glow para evitar bugs
-const TechCard = ({ tech, index, isExpanded, onToggle }: {
+const TechCard = ({ tech, index, isExpanded, onToggle, locale }: {
     tech: typeof technologies[0],
     index: number,
     isExpanded: boolean,
-    onToggle: () => void
+    onToggle: () => void,
+    locale: "en" | "pt"
 }) => {
+    const closeText = locale === "en" ? "Tap outside to close" : "Toque fora para fechar";
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.05, ease }}
             onClick={(e) => {
-                e.stopPropagation(); // Previne propagação para o backdrop
+                e.stopPropagation();
                 onToggle();
             }}
             className="relative cursor-pointer group"
@@ -75,7 +79,7 @@ const TechCard = ({ tech, index, isExpanded, onToggle }: {
                             transition={{ duration: 0.3, ease }}
                             className="text-gray-500 leading-tight"
                         >
-                            {tech.description}
+                            {tech.description[locale]}
                         </motion.p>
                     </div>
 
@@ -92,7 +96,7 @@ const TechCard = ({ tech, index, isExpanded, onToggle }: {
                             >
                                 <div className="mt-3 pt-3 border-t border-gray-100 space-y-3">
                                     <p className="text-xs text-gray-600 leading-relaxed">
-                                        {tech.detail}
+                                        {tech.detail[locale]}
                                     </p>
 
                                     {/* Stats */}
@@ -136,7 +140,7 @@ const TechCard = ({ tech, index, isExpanded, onToggle }: {
                                     </div>
 
                                     <p className="text-[9px] text-gray-300 text-center pt-1">
-                                        Toque fora para fechar
+                                        {closeText}
                                     </p>
                                 </div>
                             </motion.div>
@@ -158,8 +162,15 @@ const TechCard = ({ tech, index, isExpanded, onToggle }: {
 };
 
 export const TechStackMarquee = () => {
+    const { locale } = useI18n();
     const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
     const cardsRef = useRef<HTMLDivElement>(null);
+
+    const headerText = locale === "en"
+        ? "The same technology chosen by global leaders."
+        : "A mesma tecnologia escolhida pelos líderes globais.";
+
+    const stats = techStats[locale];
 
     // Fechar ao clicar fora (estilo Apple)
     useEffect(() => {
@@ -169,7 +180,6 @@ export const TechStackMarquee = () => {
             }
         };
 
-        // Adiciona listeners para mouse e touch
         document.addEventListener('mousedown', handleClickOutside);
         document.addEventListener('touchstart', handleClickOutside);
 
@@ -195,10 +205,10 @@ export const TechStackMarquee = () => {
     };
 
     return (
-        <section className="py-12 md:py-16 bg-[var(--color-apple-off-white)] overflow-x-hidden">
+        <section className="py-12 bg-[var(--color-apple-off-white)] overflow-x-hidden">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
 
-                {/* Header */}
+                {/* Header Compacto */}
                 <motion.div
                     initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -206,11 +216,11 @@ export const TechStackMarquee = () => {
                     transition={{ duration: 0.5 }}
                     className="text-center mb-6"
                 >
-                    <div className="flex items-center justify-center gap-4 mb-3">
-                        <span className="text-xs font-medium text-[var(--color-apple-gray)] uppercase tracking-widest">
+                    <div className="flex items-center justify-center gap-3 mb-2">
+                        <span className="text-[10px] font-medium text-[var(--color-apple-gray)] uppercase tracking-widest">
                             Powered by
                         </span>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" className="h-8 w-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" className="h-6 w-auto">
                             <mask height="180" id="nextjs-mask" maskUnits="userSpaceOnUse" width="180" x="0" y="0" style={{ maskType: "alpha" }}>
                                 <circle cx="90" cy="90" fill="black" r="90" />
                             </mask>
@@ -231,19 +241,19 @@ export const TechStackMarquee = () => {
                             </defs>
                         </svg>
                     </div>
-                    <p className="text-base md:text-lg text-[var(--color-apple-gray)]">
-                        A mesma tecnologia escolhida pelos líderes globais.
+                    <p className="text-sm md:text-base text-[var(--color-apple-gray)]">
+                        {headerText}
                     </p>
                 </motion.div>
 
-                {/* Marquee de Logos */}
-                <div className="relative overflow-hidden mb-8 -mx-4 sm:-mx-6 lg:-mx-8">
+                {/* Marquee de Logos - Altura Reduzida */}
+                <div className="relative overflow-hidden mb-6 -mx-4 sm:-mx-6 lg:-mx-8">
                     <div className="absolute inset-y-0 left-0 w-16 md:w-24 bg-gradient-to-r from-[var(--color-apple-off-white)] to-transparent z-10 pointer-events-none" />
                     <div className="absolute inset-y-0 right-0 w-16 md:w-24 bg-gradient-to-l from-[var(--color-apple-off-white)] to-transparent z-10 pointer-events-none" />
 
                     <div className="flex overflow-hidden">
                         <motion.div
-                            className="flex gap-10 md:gap-16 items-center py-3"
+                            className="flex gap-10 md:gap-16 items-center py-2"
                             animate={{ x: "-50%" }}
                             transition={{ duration: 35, ease: "linear", repeat: Infinity }}
                         >
@@ -253,17 +263,17 @@ export const TechStackMarquee = () => {
                                     href={company.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="shrink-0 h-10 w-28 flex items-center justify-center grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+                                    className="shrink-0 h-8 w-24 flex items-center justify-center grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
                                 >
-                                    <img src={company.logo} alt={company.name} className="max-h-7 max-w-full w-auto object-contain" />
+                                    <img src={company.logo} alt={company.name} className="max-h-6 max-w-full w-auto object-contain" />
                                 </a>
                             ))}
                         </motion.div>
                     </div>
                 </div>
 
-                {/* Tech Cards Grid - auto-rows-fr para altura uniforme */}
-                <div ref={cardsRef} className="grid grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 mb-8 auto-rows-fr">
+                {/* Tech Cards Grid - Mais compacto */}
+                <div ref={cardsRef} className="grid grid-cols-3 lg:grid-cols-6 gap-2 mb-6 auto-rows-fr">
                     {technologies.map((tech, index) => (
                         <TechCard
                             key={tech.name}
@@ -271,33 +281,30 @@ export const TechStackMarquee = () => {
                             index={index}
                             isExpanded={expandedIndex === index}
                             onToggle={() => handleToggle(index)}
+                            locale={locale}
                         />
                     ))}
                 </div>
 
-                {/* Stats */}
+                {/* Stats - Mais compacto */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="flex justify-center gap-8 sm:gap-16 pt-6 border-t border-black/5"
+                    className="flex justify-center gap-8 sm:gap-16 pt-4 border-t border-black/5"
                 >
-                    {[
-                        { value: "99.9%", label: "Uptime" },
-                        { value: "<50ms", label: "Resposta" },
-                        { value: "100%", label: "SEO" }
-                    ].map((stat) => (
+                    {stats.map((stat) => (
                         <motion.div
                             key={stat.label}
                             className="text-center group cursor-default"
                             whileHover={{ scale: 1.1 }}
                             transition={{ duration: 0.3, ease }}
                         >
-                            <div className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--color-apple-black)] group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+                            <div className="text-lg sm:text-xl md:text-2xl font-bold text-[var(--color-apple-black)] group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
                                 {stat.value}
                             </div>
-                            <div className="text-[10px] sm:text-xs text-[var(--color-apple-gray)]">{stat.label}</div>
+                            <div className="text-[9px] sm:text-[10px] text-[var(--color-apple-gray)] uppercase tracking-wide">{stat.label}</div>
                         </motion.div>
                     ))}
                 </motion.div>

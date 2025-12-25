@@ -1,103 +1,73 @@
-import React, { useEffect, useRef } from 'react';
+"use client";
 
-// Inform TypeScript that Swiper is available globally
-declare var Swiper: any;
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { useI18n } from "@/lib/i18n";
+import { testimonials } from "@/data/testimonials";
 
-const testimonialsData = [
-  {
-    quote: "A velocidade de entrega da SupArt é surreal. Nossa landing page ficou pronta em 3 dias e o resultado superou todas as expectativas. As vendas aumentaram 30%!",
-    name: "João Silva",
-    company: "CEO, TechInova",
-    avatarUrl: "https://picsum.photos/seed/person1/200"
-  },
-  {
-    quote: "Estava com um orçamento apertado e precisava de um resultado profissional. A SupArt foi a escolha perfeita. Design incrível e um ótimo custo-benefício.",
-    name: "Maria Oliveira",
-    company: "Fundadora, Doce Encanto",
-    avatarUrl: "https://picsum.photos/seed/person2/200"
-  },
-  {
-    quote: "O processo foi muito simples e a equipe é extremamente atenciosa. Eles realmente entendem de conversão. Recomendo fortemente a todos que precisam de uma LP de qualidade.",
-    name: "Carlos Pereira",
-    company: "Diretor de Marketing, Veloce Log",
-    avatarUrl: "https://picsum.photos/seed/person3/200"
-  },
-   {
-    quote: "Fiquei impressionado com a qualidade do código e a performance da página. Além de bonita, é extremamente rápida. Um trabalho de primeira linha!",
-    name: "Ana Costa",
-    company: "CTO, Digital Solutions",
-    avatarUrl: "https://picsum.photos/seed/person4/200"
-  }
-];
-
-const TestimonialCard: React.FC<{ quote: string; name: string; company: string; avatarUrl: string }> = ({ quote, name, company, avatarUrl }) => (
-    <div className="bg-white/[.03] backdrop-blur-xl p-8 rounded-2xl border border-white/10 text-center h-full flex flex-col justify-between">
-        <p className="text-gray-300 italic mb-6 text-pretty">"{quote}"</p>
-        <div>
-            <img 
-                src={avatarUrl} 
-                alt={name} 
-                className="w-16 h-16 rounded-full mx-auto mb-4 border-2 border-purple-400"
-                loading="lazy"
-                width="128"
-                height="128"
-            />
-            <h4 className="font-bold text-lg text-white">{name}</h4>
-            <p className="text-purple-400">{company}</p>
-        </div>
-    </div>
-);
-
-const Testimonials: React.FC = () => {
-    const swiperRef = useRef(null);
-
-    useEffect(() => {
-        if (!swiperRef.current || typeof Swiper === 'undefined') return;
-
-        const swiper = new Swiper(swiperRef.current, {
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            slidesPerView: 1,
-            spaceBetween: 30,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            breakpoints: {
-                640: { slidesPerView: 1, spaceBetween: 20 },
-                768: { slidesPerView: 2, spaceBetween: 40 },
-                1024: { slidesPerView: 3, spaceBetween: 50 },
-            },
-        });
-
-        return () => {
-            swiper.destroy(true, true);
-        };
-    }, []);
+export const Testimonials = () => {
+  const { locale, t } = useI18n();
 
   return (
-    <section id="depoimentos" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
-      <div className="container mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-pretty">O que Nossos Clientes Dizem</h2>
-        <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-12 text-pretty">
-          A satisfação de quem confia em nosso trabalho é a nossa maior recompensa.
-        </p>
-        <div className="swiper" ref={swiperRef}>
-            <div className="swiper-wrapper py-12">
-                {testimonialsData.map((testimonial, index) => (
-                    <div key={index} className="swiper-slide">
-                        <TestimonialCard {...testimonial} />
-                    </div>
-                ))}
-            </div>
-            <div className="swiper-pagination !relative mt-8"></div>
+    <section className="py-24 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            {t("Client Highlights", "Destaques dos Clientes")}
+          </h2>
+          <p className="text-[var(--color-apple-gray)] max-w-2xl mx-auto">
+            {t(
+              "See what our partners say about our work.",
+              "Veja o que nossos parceiros dizem sobre nosso trabalho."
+            )}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={testimonial.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.2, duration: 0.5 }}
+              className="group relative p-8 rounded-3xl border border-white/20 bg-white/10 backdrop-blur-md shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+            >
+              {/* Glassmorphism Gradient Overlay */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+              <div className="relative z-10 flex flex-col h-full">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white/20">
+                    <Image
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-sm">{testimonial.name}</h4>
+                    <p className="text-xs text-[var(--color-apple-gray)]">
+                      {testimonial.role[locale]}
+                    </p>
+                  </div>
+                </div>
+
+                <p className="text-sm leading-relaxed text-[var(--color-apple-gray)] mb-6 flex-grow">
+                  "{testimonial.content[locale]}"
+                </p>
+
+                <div className="flex gap-1 text-yellow-400 text-xs">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <span key={i}>★</span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
   );
 };
-
-export default Testimonials;
