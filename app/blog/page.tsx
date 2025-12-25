@@ -10,8 +10,8 @@ async function getPosts() {
         .from('posts')
         .select(`
             *,
-            author:authors(name, avatar_url, role),
-            category:categories(name, slug)
+            author:authors(name, avatar_url),
+            category:categories!posts_category_id_fkey(name, slug)
         `)
         .eq('status', 'published')
         .order('published_at', { ascending: false });

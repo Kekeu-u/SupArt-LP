@@ -17,8 +17,8 @@ async function getPost(slug: string) {
         .from('posts')
         .select(`
             *,
-            author:authors(name, avatar_url, role, bio),
-            category:categories(name, slug)
+            author:authors(name, avatar_url, bio),
+            category:categories!posts_category_id_fkey(name, slug)
         `)
         .eq('slug', slug)
         .single();
