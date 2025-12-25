@@ -8,7 +8,6 @@ const Footer: React.FC = () => {
         <a href="#home" className="text-2xl font-bold text-white mb-4 inline-block">
           Sup<span className="text-glass-art">Art</span>
         </a>
-        <p>Criando landing pages que convertem.</p>
         <p className="mt-4 text-sm">&copy; {currentYear} SupArt. Todos os direitos reservados.</p>
       </div>
     </footer>

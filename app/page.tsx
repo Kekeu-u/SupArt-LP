@@ -5,16 +5,16 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { ProjectShowcase } from "@/components/ProjectShowcase";
-import { TechStackMarquee } from "@/components/TechStackMarquee";
-import { RotatingHeadline } from "@/components/RotatingHeadline";
-import { HeroChat } from "@/components/HeroChat";
-import { DevPanel } from "@/components/DevPanel";
-import { Solutions } from "@/components/Solutions";
-import { Testimonials } from "@/components/Testimonials";
-import { ShinyButton } from "@/components/ShinyButton";
+import { ProjectShowcase } from "@/components/sections/showcase/ProjectShowcase";
+import { TechStackMarquee } from "@/components/sections/features/TechStackMarquee";
+import { RotatingHeadline } from "@/components/sections/hero/RotatingHeadline";
+import { HeroChat } from "@/components/sections/hero/HeroChat";
+import { DevPanel } from "@/components/layout/DevPanel";
+import { Solutions } from "@/components/sections/features/Solutions";
+import { Testimonials } from "@/components/sections/social/Testimonials";
+import { ShinyButton } from "@/components/sections/hero/ShinyButton";
 import { siteConfig, footerLinks } from "@/data";
-import { HeroLogo } from "@/components/HeroLogo";
+import { HeroLogo } from "@/components/sections/hero/HeroLogo";
 import { useI18n } from "@/lib/i18n";
 
 // Registrar plugin

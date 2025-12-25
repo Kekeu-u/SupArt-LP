@@ -1,5 +1,5 @@
 import { google } from '@ai-sdk/google';
-import { streamText, convertToModelMessages, UIMessage } from 'ai';
+import { streamText } from 'ai';
 
 export const maxDuration = 30;
 
@@ -191,13 +191,13 @@ Isso mantém a conversa produtiva e coleta info útil.
 - Se o lead não for qualificado, seja educada mas não insista`;
 
 export async function POST(req: Request) {
-   const { messages }: { messages: UIMessage[] } = await req.json();
+   const { messages } = await req.json();
 
    const result = streamText({
       model: google('gemini-2.0-flash'),
       system: systemPrompt,
-      messages: convertToModelMessages(messages),
+      messages: messages as any,
    });
 
-   return result.toUIMessageStreamResponse();
+   return result.toTextStreamResponse();
 }

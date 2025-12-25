@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { MagneticButton } from "@/components/MagneticButton";
 
 // Inform TypeScript that GSAP and Typed.js are available globally
 declare var gsap: any;
@@ -49,24 +50,25 @@ const Hero: React.FC = () => {
         <p className="hero-subtitle text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 text-pretty">
           Transformamos suas ideias em uma poderosa ferramenta de vendas. Crie uma presença online impactante por um preço imbatível.
         </p>
-        <div className="hero-buttons flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a 
-            href="#contato" 
+        <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <MagneticButton
+            href="#contato"
             onClick={handleScrollToContact}
-            className="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg shadow-purple-500/40 hover:shadow-purple-400/60"
+            variant="primary"
+            size="lg"
+            strength={0.4}
           >
             Quero Minha Landing Page
-          </a>
-          <a 
-            href="#servicos"
-            onClick={(e) => {
-                e.preventDefault();
-                document.querySelector('#servicos')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="w-full sm:w-auto bg-white/5 hover:bg-white/10 text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 backdrop-blur-md border border-white/10"
+          </MagneticButton>
+
+          <MagneticButton
+            href="/blog"
+            variant="secondary"
+            size="lg"
+            strength={0.4}
           >
-            Ver Detalhes
-          </a>
+            Visitar Blog
+          </MagneticButton>
         </div>
       </div>
     </section>

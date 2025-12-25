@@ -12,7 +12,7 @@ export const footerLinks: NavSection[] = [
     {
         title: { en: "Services", pt: "Serviços" },
         links: [
-            { label: { en: "Design System", pt: "Design System" }, href: "#" },
+            { label: { en: "Excellence", pt: "Excelência" }, href: "#" },
             { label: { en: "Web Development", pt: "Desenvolvimento Web" }, href: "#" },
             { label: { en: "Mobile Apps", pt: "Apps Mobile" }, href: "#" },
             { label: { en: "Consulting", pt: "Consultoria" }, href: "#" },
@@ -23,7 +23,7 @@ export const footerLinks: NavSection[] = [
         links: [
             { label: { en: "About", pt: "Sobre" }, href: "#" },
             { label: { en: "Careers", pt: "Carreiras" }, href: "#" },
-            { label: { en: "Blog", pt: "Blog" }, href: "#" },
+            { label: { en: "Blog", pt: "Blog" }, href: "/blog" },
             { label: { en: "Contact", pt: "Contato" }, href: "#" },
         ],
     },

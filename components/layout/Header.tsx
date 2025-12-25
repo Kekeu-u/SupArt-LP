@@ -4,17 +4,18 @@ import { FaInfoCircle, FaBriefcase, FaImages, FaTags, FaQuestionCircle, FaHome, 
 // Nav Links Data
 const desktopNavLinks = [
   { href: '#sobre', label: 'Sobre', icon: <FaInfoCircle className="h-5 w-5" /> },
-  { href: '#servicos', label: 'Serviços', icon: <FaBriefcase className="h-5 w-5" /> },
+  { href: '#servicos', label: 'Excelência', icon: <FaBriefcase className="h-5 w-5" /> },
   { href: '#portfolio', label: 'Portfolio', icon: <FaImages className="h-5 w-5" /> },
+  { href: '/blog', label: 'Blog', icon: <FaTags className="h-5 w-5" /> },
   { href: '#precos', label: 'Preços', icon: <FaTags className="h-5 w-5" /> },
   { href: '#faq', label: 'FAQ', icon: <FaQuestionCircle className="h-5 w-5" /> },
 ];
 
 const mobileNavLinks = [
   { href: '#home', label: 'Início', icon: <FaHome className="h-6 w-6" /> },
-  { href: '#servicos', label: 'Serviços', icon: <FaBriefcase className="h-6 w-6" /> },
+  { href: '#servicos', label: 'Excelência', icon: <FaBriefcase className="h-6 w-6" /> },
   { href: '#portfolio', label: 'Portfolio', icon: <FaImages className="h-6 w-6" /> },
-  { href: '#precos', label: 'Preços', icon: <FaTags className="h-6 w-6" /> },
+  { href: '/blog', label: 'Blog', icon: <FaTags className="h-6 w-6" /> },
   { href: '#contato', label: 'Contato', icon: <FaEnvelope className="h-6 w-6" /> },
 ];
 
@@ -64,10 +65,13 @@ const Header: React.FC = () => {
   }, [isMobile]);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
-    e.preventDefault();
-    const targetId = href.substring(1);
-    setActiveSection(targetId);
-    document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const targetId = href.substring(1);
+      setActiveSection(targetId);
+      document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+    }
+    // If it's not an anchor link (like /blog), let the default behavior happen
   };
 
   // Mobile: Top logo + Bottom Navigation

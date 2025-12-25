@@ -13,8 +13,8 @@ let lenisInstance: Lenis | null = null;
 // CONFIGURAÇÃO PADRÃO - Otimizada para performance e fluidez
 // ─────────────────────────────────────────────────────────────────────────────
 export const LENIS_CONFIG = {
-    // Duração do scroll (quanto maior, mais suave)
-    duration: 1.2,
+    // Duração do scroll (quanto maior, mais suave/pesado)
+    duration: 2.0,
 
     // Easing function (lerp é mais natural)
     easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -25,11 +25,12 @@ export const LENIS_CONFIG = {
     // Suavização do gesto
     gestureOrientation: "vertical" as const,
 
-    // Multiplicador de velocidade da roda do mouse
+    // Multiplicador de velocidade da roda do mouse (menor = mais pesado)
     smoothWheel: true,
+    wheelMultiplier: 0.8,
 
     // Touch suave
-    touchMultiplier: 2,
+    touchMultiplier: 1.5,
 
     // Limitar para não ultrapassar os bounds
     infinite: false,

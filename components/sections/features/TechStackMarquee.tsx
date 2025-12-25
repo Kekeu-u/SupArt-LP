@@ -273,7 +273,7 @@ export const TechStackMarquee = () => {
                 </div>
 
                 {/* Tech Cards Grid - Mais compacto */}
-                <div ref={cardsRef} className="grid grid-cols-3 lg:grid-cols-6 gap-2 mb-6 auto-rows-fr">
+                <div ref={cardsRef} className="grid grid-cols-3 lg:grid-cols-6 gap-2 mb-6 items-start">
                     {technologies.map((tech, index) => (
                         <TechCard
                             key={tech.name}
