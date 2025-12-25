@@ -35,7 +35,7 @@ const BlogHeader: React.FC = () => {
                     {/* Minimalist Nav */}
                     <nav className="flex items-center gap-4">
                         <a
-                            href="/"
+                            href="/blog"
                             className="text-sm font-medium text-gray-600 hover:text-black transition-colors flex items-center gap-2"
                         >
                             <FaHome className="w-4 h-4" />
