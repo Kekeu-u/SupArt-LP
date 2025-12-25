@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 // 🔐 Modo de manutenção DESATIVADO para produção internacional
-const MAINTENANCE_MODE_ENABLED = false;
+const MAINTENANCE_MODE_ENABLED = true;
 
 // 🔐 Bypass secreto: acesse qualquer página com ?bypass=supart2024
 const BYPASS_SECRET = 'supart2024';
