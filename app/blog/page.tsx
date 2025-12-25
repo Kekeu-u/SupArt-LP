@@ -13,6 +13,7 @@ async function getPosts() {
             author:authors(name, avatar_url, role),
             category:categories(name, slug)
         `)
+        .eq('status', 'published')
         .order('published_at', { ascending: false });
 
     if (error) {
