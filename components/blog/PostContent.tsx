@@ -96,8 +96,7 @@ export const PostContent = ({ post }: { post: Post }) => {
                     </button>
                 </div>
 
-                <div className="flex items-center gap-4">
-                    <span className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Dev Tools:</span>
+                <div className="flex items-center gap-3">
                     <CopyButton htmlContent={post.content} />
                 </div>
             </div>
