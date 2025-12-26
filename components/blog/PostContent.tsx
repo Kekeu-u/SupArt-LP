@@ -28,7 +28,7 @@ export const PostContent = ({ post }: { post: Post }) => {
             {/* Header */}
             <header className="not-prose mb-10">
                 <div className="flex items-center gap-2 mb-4">
-                    <span className="px-3 py-1.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-[10px] font-bold rounded-full uppercase tracking-wider shadow-lg">
+                    <span className="px-3 py-1.5 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-[10px] font-bold rounded-full uppercase tracking-wider shadow-lg">
                         {post.category?.name}
                     </span>
                     <span className="text-gray-300 text-sm">•</span>
@@ -102,13 +102,13 @@ export const PostContent = ({ post }: { post: Post }) => {
             </div>
 
             {/* Author Bio with glassmorphism */}
-            <div className="not-prose mt-12 p-8 rounded-2xl bg-gradient-to-br from-purple-50/50 via-white/80 to-pink-50/50 backdrop-blur-sm border border-purple-500/20 flex gap-6 items-start relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-pink-500/5 pointer-events-none" />
+            <div className="not-prose mt-12 p-8 rounded-2xl bg-gradient-to-br from-purple-50/50 via-white/80 to-blue-50/50 backdrop-blur-sm border border-purple-500/20 flex gap-6 items-start relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-blue-500/5 pointer-events-none" />
                 <div className="relative w-24 h-24 rounded-full overflow-hidden shrink-0 ring-4 ring-purple-500/20">
                     <Image src={post.author?.avatar_url || '/placeholder-avatar.jpg'} alt={post.author?.name} fill className="object-cover" />
                 </div>
                 <div className="relative flex-1">
-                    <h3 className="text-xl font-bold bg-gradient-to-r from-purple-900 to-pink-900 bg-clip-text text-transparent mb-3">
+                    <h3 className="text-xl font-bold bg-gradient-to-r from-purple-900 to-blue-900 bg-clip-text text-transparent mb-3">
                         Sobre {post.author?.name}
                     </h3>
                     <p className="text-sm text-gray-700 leading-relaxed mb-4">

@@ -43,16 +43,16 @@ export const NewsletterWidget = () => {
     };
 
     return (
-        <div className="relative rounded-2xl border border-purple-500/20 bg-gradient-to-br from-purple-50/50 via-white/80 to-pink-50/50 backdrop-blur-sm p-6 overflow-hidden">
+        <div className="relative rounded-2xl border border-purple-500/20 bg-gradient-to-br from-purple-50/50 via-white/80 to-blue-50/50 backdrop-blur-sm p-6 overflow-hidden">
             {/* Animated gradient background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-pink-500/5 animate-pulse pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-blue-500/5 animate-pulse pointer-events-none" />
 
             <div className="relative">
                 <div className="flex items-center gap-2 mb-2">
                     <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
-                    <h3 className="text-lg font-bold bg-gradient-to-r from-purple-900 to-pink-900 bg-clip-text text-transparent">Newsletter Premium</h3>
+                    <h3 className="text-lg font-bold bg-gradient-to-r from-purple-900 to-blue-900 bg-clip-text text-transparent">Newsletter Premium</h3>
                 </div>
                 <p className="text-sm text-gray-600 mb-4 leading-relaxed">
                     <span className="font-semibold text-purple-700">Insights de IA</span> direto no seu inbox.
@@ -72,7 +72,7 @@ export const NewsletterWidget = () => {
                     <button
                         type="submit"
                         disabled={status === "loading" || status === "success"}
-                        className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-xl text-sm font-bold hover:from-purple-500 hover:to-pink-500 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg shadow-purple-500/25 flex items-center justify-center gap-2"
+                        className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-xl text-sm font-bold hover:from-purple-500 hover:to-blue-500 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg shadow-purple-500/25 flex items-center justify-center gap-2"
                     >
                         {status === "loading" && (
                             <svg className="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">
@@ -85,8 +85,8 @@ export const NewsletterWidget = () => {
 
                     {message && (
                         <div className={`text-xs text-center py-2 px-3 rounded-lg ${status === "success"
-                                ? "bg-green-50 text-green-700 border border-green-200"
-                                : "bg-red-50 text-red-700 border border-red-200"
+                            ? "bg-green-50 text-green-700 border border-green-200"
+                            : "bg-red-50 text-red-700 border border-red-200"
                             }`}>
                             {message}
                         </div>

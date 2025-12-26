@@ -38,16 +38,16 @@ export default async function BlogPage() {
             {/* Page Header */}
             <div className="text-center mb-16 space-y-4">
                 <div className="inline-block">
-                    <span className="text-xs font-bold uppercase tracking-wider text-purple-600 bg-purple-50 px-3 py-1 rounded-full mb-4 inline-block">
+                    <span className="text-xs font-bold uppercase tracking-wider text-purple-300 bg-purple-900/50 backdrop-blur-sm px-3 py-1 rounded-full mb-4 inline-block">
                         Impulsionado por IA
                     </span>
                 </div>
-                <h1 className="text-5xl md:text-6xl font-bold mb-4 tracking-tight bg-gradient-to-r from-gray-900 via-purple-900 to-pink-900 bg-clip-text text-transparent">
+                <h1 className="text-5xl md:text-6xl font-bold mb-4 tracking-tight bg-gradient-to-r from-white via-purple-300 to-pink-300 bg-clip-text text-transparent">
                     Insights & Inovação
                 </h1>
-                <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
+                <p className="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">
                     Explore o futuro do design digital, tecnologia e inteligência artificial.
-                    <span className="block mt-1 text-purple-600 font-semibold">Conteúdo premium para mentes criativas.</span>
+                    <span className="block mt-1 text-purple-400 font-semibold">Conteúdo premium para mentes criativas.</span>
                 </p>
             </div>
 
@@ -69,17 +69,17 @@ export default async function BlogPage() {
                                 </div>
                             </div>
                             <div className="space-y-3">
-                                <h2 className="text-3xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors leading-tight">
+                                <h2 className="text-3xl font-bold text-white group-hover:text-purple-300 transition-colors leading-tight">
                                     {featuredPost.title}
                                 </h2>
-                                <p className="text-gray-500 leading-relaxed line-clamp-3">
+                                <p className="text-gray-300 leading-relaxed line-clamp-3">
                                     {featuredPost.excerpt}
                                 </p>
                                 <div className="flex items-center gap-3 pt-2">
                                     <img src={featuredPost.author?.avatar_url || '/placeholder-avatar.jpg'} alt={featuredPost.author?.name} className="w-8 h-8 rounded-full" />
-                                    <span className="text-sm font-medium text-gray-900">{featuredPost.author?.name}</span>
-                                    <span className="text-gray-300">•</span>
-                                    <span className="text-sm text-gray-500">{new Date(featuredPost.published_at).toLocaleDateString('pt-BR')}</span>
+                                    <span className="text-sm font-medium text-gray-200">{featuredPost.author?.name}</span>
+                                    <span className="text-gray-600">•</span>
+                                    <span className="text-sm text-gray-400">{new Date(featuredPost.published_at).toLocaleDateString('pt-BR')}</span>
                                     <span className="ml-auto px-3 py-1 bg-blue-50 text-blue-600 text-xs font-medium rounded-full">
                                         {featuredPost.category?.name}
                                     </span>

@@ -26,7 +26,7 @@ export const BlogCard = ({ post }: { post: Post }) => {
             <div className="relative h-full flex flex-col rounded-2xl overflow-hidden border border-gray-200/50 bg-white/80 backdrop-blur-sm hover:bg-white/90 transition-all duration-500 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:border-purple-500/30 hover:-translate-y-1">
 
                 {/* Animated gradient border effect */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500/0 via-pink-500/0 to-blue-500/0 group-hover:from-purple-500/20 group-hover:via-pink-500/20 group-hover:to-blue-500/20 transition-all duration-500 pointer-events-none" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500/0 via-blue-500/0 to-blue-600/0 group-hover:from-purple-500/20 group-hover:via-blue-500/20 group-hover:to-blue-600/20 transition-all duration-500 pointer-events-none" />
 
                 {/* Image */}
                 <div className="relative h-48 w-full overflow-hidden">
@@ -41,7 +41,7 @@ export const BlogCard = ({ post }: { post: Post }) => {
 
                     {/* Category tag with gradient */}
                     <div className="absolute top-3 right-3">
-                        <span className="px-3 py-1.5 bg-gradient-to-r from-purple-600/90 to-pink-600/90 backdrop-blur-md text-[10px] font-bold text-white rounded-full shadow-lg uppercase tracking-wider border border-white/20">
+                        <span className="px-3 py-1.5 bg-gradient-to-r from-purple-600/90 to-blue-600/90 backdrop-blur-md text-[10px] font-bold text-white rounded-full shadow-lg uppercase tracking-wider border border-white/20">
                             {post.category?.name}
                         </span>
                     </div>
@@ -62,7 +62,7 @@ export const BlogCard = ({ post }: { post: Post }) => {
                         <span className="text-xs text-gray-400">{new Date(post.published_at).toLocaleDateString('pt-BR')}</span>
                     </div>
 
-                    <h3 className="text-lg font-bold text-gray-900 leading-tight mb-3 group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-pink-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+                    <h3 className="text-lg font-bold text-gray-900 leading-tight mb-3 group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
                         {post.title}
                     </h3>
 
@@ -77,7 +77,7 @@ export const BlogCard = ({ post }: { post: Post }) => {
                             </svg>
                             {post.read_time}
                         </span>
-                        <span className="text-xs font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent flex items-center gap-1.5 group-hover:gap-2.5 transition-all duration-300">
+                        <span className="text-xs font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent flex items-center gap-1.5 group-hover:gap-2.5 transition-all duration-300">
                             Ler mais
                             <svg className="w-3 h-3 text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M5 12h14" />
