@@ -7,7 +7,7 @@ interface Post {
     title: string;
     slug: string;
     content: string;
-    cover_image_url: string;
+    featured_image: string;
     published_at: string;
     read_time: string;
     category: {
@@ -64,13 +64,13 @@ export const PostContent = ({ post }: { post: Post }) => {
 
             {/* Cover Image */}
             <div className="not-prose relative w-full h-[500px] rounded-2xl overflow-hidden mb-12 shadow-2xl">
-                <Image src={post.cover_image_url || '/placeholder-blog.jpg'} alt={post.title} fill className="object-cover" />
+                <Image src={post.featured_image || '/placeholder-blog.jpg'} alt={post.title} fill className="object-cover" />
                 <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl" />
             </div>
 
-            {/* Content with custom prose styles */}
+            {/* Content with premium blog typography */}
             <div
-                className="prose-headings:font-bold prose-headings:bg-gradient-to-r prose-headings:from-gray-900 prose-headings:to-purple-900 prose-headings:bg-clip-text prose-headings:text-transparent prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-purple-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-strong:font-bold prose-code:text-purple-600 prose-code:bg-purple-50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-code:text-sm prose-ul:list-disc prose-ul:pl-6 prose-ol:list-decimal prose-ol:pl-6 prose-li:text-gray-700 prose-li:marker:text-purple-500 prose-blockquote:border-l-4 prose-blockquote:border-purple-500 prose-blockquote:bg-purple-50/50 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r-lg prose-blockquote:italic prose-blockquote:text-gray-800 prose-img:rounded-xl prose-img:shadow-lg prose-iframe:w-full prose-iframe:aspect-video prose-iframe:rounded-xl prose-iframe:shadow-lg"
+                className="blog-article"
                 dangerouslySetInnerHTML={{ __html: post.content || "" }}
             />
 

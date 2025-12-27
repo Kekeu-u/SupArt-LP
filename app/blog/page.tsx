@@ -22,8 +22,6 @@ async function getPosts() {
         return [];
     }
 
-    console.log('Fetched posts:', JSON.stringify(posts, null, 2)); // Debug log
-
     return posts?.map(post => ({
         ...post,
         author: Array.isArray(post.author) ? post.author[0] : post.author,
@@ -61,7 +59,7 @@ export default async function BlogPage() {
                         <Link href={`/blog/${featuredPost.slug}`} className="group block cursor-pointer">
                             <div className="relative h-[400px] w-full rounded-2xl overflow-hidden mb-6">
                                 <Image
-                                    src={featuredPost.cover_image_url || '/placeholder-blog.jpg'}
+                                    src={featuredPost.featured_image || '/placeholder-blog.jpg'}
                                     alt={featuredPost.title}
                                     fill
                                     className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700"

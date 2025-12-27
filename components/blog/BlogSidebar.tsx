@@ -10,7 +10,7 @@ async function getSidebarData() {
         .select(`
             title,
             slug,
-            cover_image_url,
+            featured_image,
             published_at,
             author:authors(name)
         `)
@@ -48,7 +48,7 @@ export const BlogSidebar = async () => {
                         <Link key={post.slug} href={`/blog/${post.slug}`} className="flex gap-3 group">
                             <PremiumBorder className="relative w-20 h-20 rounded-xl overflow-hidden shrink-0">
                                 <Image
-                                    src={post.cover_image_url || '/placeholder-blog.jpg'}
+                                    src={post.featured_image || '/placeholder-blog.jpg'}
                                     alt={post.title}
                                     fill
                                     className="object-cover group-hover:scale-110 transition-transform duration-500"

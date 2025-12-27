@@ -7,7 +7,7 @@ interface Post {
     title: string;
     slug: string;
     excerpt: string;
-    cover_image_url: string;
+    featured_image: string;
     published_at: string;
     read_time: string;
     category: {
@@ -31,7 +31,7 @@ export const BlogCard = ({ post }: { post: Post }) => {
                 {/* Image */}
                 <div className="relative h-48 w-full overflow-hidden">
                     <Image
-                        src={post.cover_image_url || '/placeholder-blog.jpg'}
+                        src={post.featured_image || '/placeholder-blog.jpg'}
                         alt={post.title}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
