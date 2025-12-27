@@ -3,14 +3,14 @@ import { BlogSidebar } from "@/components/blog/BlogSidebar";
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 0; // Disable cache for debugging
 
 async function getPosts() {
     const { data: posts, error } = await supabase
         .from('posts')
         .select(`
             *,
-            author:authors(name, avatar_url),
+            author:authors!posts_author_id_fkey(name, avatar_url),
             category:categories!posts_category_id_fkey(name, slug)
         `)
         .eq('status', 'published')
@@ -20,6 +20,8 @@ async function getPosts() {
         console.error('Error fetching posts:', error);
         return [];
     }
+
+    console.log('Fetched posts:', JSON.stringify(posts, null, 2)); // Debug log
 
     return posts?.map(post => ({
         ...post,
@@ -57,9 +59,10 @@ export default async function BlogPage() {
                     {featuredPost && (
                         <Link href={`/blog/${featuredPost.slug}`} className="group block cursor-pointer">
                             <div className="relative h-[400px] w-full rounded-2xl overflow-hidden mb-6">
-                                <img
+                                <Image
                                     src={featuredPost.cover_image_url || '/placeholder-blog.jpg'}
                                     alt={featuredPost.title}
+                                    fill
                                     className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700"
                                 />
                                 <div className="absolute top-4 right-4">
