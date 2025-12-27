@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { FaInfoCircle, FaBriefcase, FaImages, FaTags, FaQuestionCircle, FaHome, FaEnvelope } from 'react-icons/fa';
 import { GlassButton } from "@/components/ui/GlassButton";
 import { SupArtLogo } from "@/components/ui/SupArtLogo";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 // Nav Links Data
 const desktopNavLinks = [
@@ -108,6 +109,11 @@ const Header: React.FC = () => {
                 </a>
               </li>
             ))}
+            <li>
+              <div className="flex flex-col items-center justify-center w-14 h-14">
+                <ThemeToggle />
+              </div>
+            </li>
           </ul>
         </nav>
       </>
@@ -145,6 +151,9 @@ const Header: React.FC = () => {
                   </span>
                 </a>
               ))}
+              <div className="pl-2 border-l border-white/10 ml-1">
+                <ThemeToggle />
+              </div>
             </div>
           </nav>
         </div>
