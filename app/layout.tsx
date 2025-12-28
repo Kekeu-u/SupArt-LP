@@ -52,7 +52,7 @@ export default function RootLayout({
         "priceRange": "$$$",
         "address": {
             "@type": "PostalAddress",
-            "addressLocality": "São Paulo",
+            "addressLocality": "Santa Catarina",
             "addressCountry": "BR"
         },
         "sameAs": [

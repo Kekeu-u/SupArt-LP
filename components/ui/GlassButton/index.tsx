@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './GlassButton.module.css';
+import styles from './styles.module.css';
 import { cn } from '@/lib/utils';
 
 interface GlassButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

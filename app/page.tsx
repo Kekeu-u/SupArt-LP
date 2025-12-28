@@ -13,11 +13,12 @@ import { DevPanel } from "@/components/layout/DevPanel";
 import { Solutions } from "@/components/sections/features/Solutions";
 import { BlogPreview } from "@/components/sections/features/BlogPreview";
 import { Testimonials } from "@/components/sections/social/Testimonials";
-import { ShinyButton } from "@/components/sections/hero/ShinyButton";
+import { ShinyButton } from "@/components/ui/ShinyButton";
 import { siteConfig, footerLinks } from "@/data";
 import { HeroLogo } from "@/components/sections/hero/HeroLogo";
 import { useI18n } from "@/lib/i18n";
 import { PremiumDivider } from "@/components/ui/PremiumDivider";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 // Registrar plugin
 if (typeof window !== "undefined") {
@@ -160,6 +161,11 @@ export default function Home() {
             {/* DevPanel - só aparece em desenvolvimento */}
             <DevPanel />
 
+            {/* Floating Theme Toggle - Home Page Only */}
+            <div className="fixed top-6 right-6 z-[60]">
+                <ThemeToggle />
+            </div>
+
             <main ref={mainRef} className="min-h-screen bg-transparent text-[var(--color-apple-black)] overflow-x-hidden selection:bg-[var(--color-apple-blue)] selection:text-white">
 
                 {/* ═══════════════════════════════════════════
@@ -268,7 +274,7 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     SOLUTIONS SECTION
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10 bg-[var(--color-apple-off-white)]/80 backdrop-blur-sm">
+                <div className="section-reveal relative z-10 bg-[var(--color-apple-off-white)]/80 dark:bg-black/80 backdrop-blur-sm transition-colors duration-500">
                     <Solutions />
                 </div>
 
@@ -277,23 +283,23 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     BLOG PREVIEW
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10">
+                <div className="section-reveal relative z-10 bg-transparent dark:bg-black/50 transition-colors duration-500">
                     <BlogPreview />
                 </div>
 
                 {/* ═══════════════════════════════════════════
                     FOOTER
                     ═══════════════════════════════════════════ */}
-                <footer className="bg-[var(--color-apple-off-white)] py-32 border-t border-black/5">
+                <footer className="bg-[var(--color-apple-off-white)] dark:bg-black py-32 border-t border-black/5 dark:border-white/10 transition-colors duration-500">
                     <div className="max-w-7xl mx-auto px-6">
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
                             <div className="col-span-2 md:col-span-1">
-                                <h4 className="font-semibold mb-6">{siteConfig.name}</h4>
-                                <p className="text-sm text-[var(--color-apple-gray)] leading-relaxed max-w-xs">
+                                <h4 className="font-semibold mb-6 dark:text-white">{siteConfig.name}</h4>
+                                <p className="text-sm text-[var(--color-apple-gray)] dark:text-gray-400 leading-relaxed max-w-xs">
                                     {siteConfig.description[locale]}
                                 </p>
                                 {/* Availability Badge */}
-                                <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-xs font-medium">
+                                <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium">
                                     <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                                     {siteConfig.availability[locale]}
                                 </div>
@@ -301,11 +307,11 @@ export default function Home() {
 
                             {footerLinks.map((col, i) => (
                                 <div key={i}>
-                                    <h4 className="font-semibold mb-6 text-sm">{col.title[locale]}</h4>
+                                    <h4 className="font-semibold mb-6 text-sm dark:text-white">{col.title[locale]}</h4>
                                     <ul className="space-y-4">
                                         {col.links.map((link) => (
                                             <li key={link.label.en}>
-                                                <a href={link.href} className="text-sm text-[var(--color-apple-gray)] hover:text-[var(--color-apple-black)] transition-colors">
+                                                <a href={link.href} className="text-sm text-[var(--color-apple-gray)] dark:text-gray-400 hover:text-[var(--color-apple-black)] dark:hover:text-white transition-colors">
                                                     {link.label[locale]}
                                                 </a>
                                             </li>
@@ -315,11 +321,11 @@ export default function Home() {
                             ))}
                         </div>
 
-                        <div className="pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-4">
-                            <p className="text-xs text-[var(--color-apple-gray)]">
+                        <div className="pt-8 border-t border-black/5 dark:border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+                            <p className="text-xs text-[var(--color-apple-gray)] dark:text-gray-500">
                                 {siteConfig.copyright[locale]}
                             </p>
-                            <p className="text-xs text-[var(--color-apple-gray)]">
+                            <p className="text-xs text-[var(--color-apple-gray)] dark:text-gray-500">
                                 {siteConfig.location}
                             </p>
                         </div>

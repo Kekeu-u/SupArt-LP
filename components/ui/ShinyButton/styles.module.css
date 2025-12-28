@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 
-@property --gradient-angle {
+/* @property --gradient-angle {
   syntax: "<angle>";
   initial-value: 0deg;
   inherits: false;
@@ -22,7 +22,7 @@
   syntax: "<color>";
   initial-value: #8484ff;
   inherits: false;
-}
+} */
 
 .shinyCta {
   --gradient-angle: 0deg;
@@ -131,6 +131,7 @@
 }
 
 @keyframes breathe {
+
   0%,
   100% {
     transform: translate(-50%, -50%) scale(1);

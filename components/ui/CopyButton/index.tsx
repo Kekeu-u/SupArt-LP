@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import styles from './CopyButton.module.css';
+import styles from './styles.module.css';
 import { FaMarkdown, FaCheck } from 'react-icons/fa';
 
 interface CopyButtonProps {

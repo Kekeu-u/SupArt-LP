@@ -4,10 +4,10 @@ export const siteConfig = {
         en: "Premium digital experiences that convert. AI-powered design & development.",
         pt: "Experiências digitais premium que convertem. Design & desenvolvimento com IA.",
     },
-    location: "São Paulo, Brazil",
+    location: "Santa Catarina, Brasil",
     copyright: {
-        en: "© 2025 SupArt Agency. All rights reserved.",
-        pt: "© 2025 SupArt Agency. Todos os direitos reservados.",
+        en: "© 2026 SupArt Agency. All rights reserved.",
+        pt: "© 2026 SupArt Agency. Todos os direitos reservados.",
     },
     social: {
         instagram: "https://instagram.com/supartagency",

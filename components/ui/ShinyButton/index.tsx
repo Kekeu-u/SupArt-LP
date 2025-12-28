@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './ShinyButton.module.css';
+import styles from './styles.module.css';
 import { cn } from '@/lib/utils';
 
 interface ShinyButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

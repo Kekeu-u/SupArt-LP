@@ -1,0 +1,123 @@
+/* -------------------------------------------------------------------------- */
+/* ANIMATIONS & EFFECTS */
+/* -------------------------------------------------------------------------- */
+
+/* Custom Properties for Animation */
+@property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@property --gradient-angle-offset {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@property --gradient-percent {
+    syntax: "<percentage>";
+    initial-value: 20%;
+    inherits: false;
+}
+
+@property --gradient-shine {
+    syntax: "<color>";
+    initial-value: #8484ff;
+    inherits: false;
+}
+
+/* Keyframes */
+@keyframes border-spin {
+    to {
+        --gradient-angle: 360deg;
+    }
+}
+
+@keyframes shimmer {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes breathe {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.20);
+    }
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes check-draw {
+    0% {
+        stroke-dashoffset: 24;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes gradient-mesh-flow {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    25% {
+        background-position: 50% 0%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    75% {
+        background-position: 50% 100%;
+    }
+}
+
+/* Utilities */
+.animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-check {
+    stroke-dasharray: 24;
+    animation: check-draw 0.3s ease-out forwards;
+}
+
+/* Shiny Border Utility for Cards/Sections in Dark Mode */
+.dark .shiny-border {
+    --gradient-angle: 0deg;
+    --gradient-angle-offset: 0deg;
+    --gradient-percent: 20%;
+    --gradient-shine: #8484ff;
+
+    position: relative;
+    border: 2px solid transparent;
+    background: linear-gradient(#000000, #000000) padding-box,
+        conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)), transparent 0%, #1d4ed8 5%, var(--gradient-shine) 15%, #1d4ed8 30%, transparent 40%, transparent 100%) border-box;
+    animation: border-spin 4s linear infinite;
+    box-shadow: inset 0 0 20px rgba(29, 78, 216, 0.2);
+    /* Inner blue glow */
+}

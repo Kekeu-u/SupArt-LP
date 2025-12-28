@@ -1,4 +1,24 @@
 @import "tailwindcss";
+@import "./typography.css";
+@import "./animations.css";
+
+@property --gradient-angle-offset {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --gradient-percent {
+  syntax: "<percentage>";
+  initial-value: 20%;
+  inherits: false;
+}
+
+@property --gradient-shine {
+  syntax: "<color>";
+  initial-value: #8484ff;
+  inherits: false;
+}
 
 @theme {
   /* P3 Colors - Apple Style */
@@ -7,23 +27,85 @@
   --color-apple-gray: oklch(0.55 0 0);
   --color-apple-blue: oklch(0.55 0.2 250);
   --color-apple-red: oklch(0.6 0.2 20);
-
-  /* Semantic Colors */
-  --color-background: var(--color-apple-off-white);
-  --color-foreground: var(--color-apple-black);
-  --color-muted: var(--color-apple-gray);
-
-  /* Border Radius */
-  --radius-apple: 32px;
-
-  /* Fonts */
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
+
+@keyframes shimmer {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes breathe {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.20);
+  }
+}
+
+
+/* Dark Mode Overrides */
+.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+  --color-apple-off-white: #000000;
+  /* Override for bg usage */
+  --color-apple-black: #ffffff;
+  /* Override for text usage */
+  --color-apple-gray: #a1a1aa;
+
+  /* Background Pattern - Dots */
+  background-color: #000000;
+  background-image: radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.15) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Shiny Border Utility for Cards/Sections in Dark Mode */
+.dark .shiny-border {
+  --gradient-angle: 0deg;
+  --gradient-angle-offset: 0deg;
+  --gradient-percent: 20%;
+  --gradient-shine: #8484ff;
+
+  position: relative;
+  border: 2px solid transparent;
+  background: linear-gradient(#000000, #000000) padding-box,
+    conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)), transparent 0%, #1d4ed8 5%, var(--gradient-shine) 15%, #1d4ed8 30%, transparent 40%, transparent 100%) border-box;
+  animation: border-spin 4s linear infinite;
+  box-shadow: inset 0 0 20px rgba(29, 78, 216, 0.2);
+  /* Inner blue glow */
+}
+
+/* Add a subtle blue beam effect to the body edges in dark mode (optional, per "feixe de luz") */
+.dark body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow: inset 0 0 100px rgba(29, 78, 216, 0.15);
+  /* Subtle global blue vignette */
+  opacity: 0.5;
+}
+
 
 @layer utilities {
   .glass-panel {
     @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-lg;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  }
+
+  /* Dark mode glass panel override */
+  .dark .glass-panel {
+    @apply bg-black/40 border-white/10;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
   }
 
   .text-balance {
@@ -146,6 +228,8 @@ body {
   font-feature-settings: 'ss01' 1, 'cv11' 1;
   overflow-x: hidden;
   max-width: 100vw;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  /* Smooth transition */
 }
 
 ::-webkit-scrollbar {
@@ -212,6 +296,13 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Dark mode blog typography overrides */
+.dark .blog-article {
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a1a1aa;
+  --color-border: #333333;
+}
+
 .blog-article p {
   font-size: 1.0625rem;
   line-height: 1.75;
@@ -258,6 +349,11 @@ body {
   background: linear-gradient(135deg, oklch(0.97 0.02 280) 0%, oklch(0.98 0.01 220) 100%);
   border-radius: 12px;
   border-left: 3px solid oklch(0.55 0.25 280);
+}
+
+.dark .blog-article blockquote {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  border-left-color: #8484ff;
 }
 
 .blog-article blockquote::before {
@@ -336,12 +432,21 @@ body {
   background: linear-gradient(180deg, transparent 60%, oklch(0.90 0.10 280) 60%);
 }
 
+.dark .blog-article strong {
+  background: linear-gradient(180deg, transparent 60%, rgba(132, 132, 255, 0.3) 60%);
+}
+
 .blog-article a {
   color: oklch(0.50 0.25 280);
   text-decoration: none;
   font-weight: 500;
   border-bottom: 2px solid oklch(0.90 0.10 280);
   transition: all 0.2s ease;
+}
+
+.dark .blog-article a {
+  color: #8484ff;
+  border-bottom-color: rgba(132, 132, 255, 0.3);
 }
 
 .blog-article a:hover {
@@ -381,12 +486,21 @@ body {
   background: white;
 }
 
+.dark .blog-article td {
+  background: #1a1a1a;
+  border-bottom-color: #333;
+}
+
 .blog-article tbody tr:last-child td {
   border-bottom: none;
 }
 
 .blog-article tbody tr:hover td {
   background: oklch(0.98 0.01 280);
+}
+
+.dark .blog-article tbody tr:hover td {
+  background: #2a2a2a;
 }
 
 .blog-article hr {
