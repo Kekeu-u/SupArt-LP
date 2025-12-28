@@ -21,10 +21,10 @@ export const ProjectShowcase = () => {
                 viewport={{ once: true }}
                 className="mb-12 text-center"
             >
-                <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">
+                <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4 text-gray-900 dark:text-white">
                     {content.title[locale]}
                 </h2>
-                <p className="text-lg text-[var(--color-apple-gray)] max-w-xl mx-auto">
+                <p className="text-lg text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
                     {content.subtitle[locale]}
                 </p>
             </motion.div>

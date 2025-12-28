@@ -18,29 +18,32 @@ export const BlogPreview = () => {
         },
         subtitle: {
             en: "Learn strategies that leading companies use to dominate their markets.",
-            pt: "Aprenda as estratégias que empresas líderes usam para dominar seus mercados."
+            pt: "Estratégias validadas de Design, IA e Vendas para escalar sua operação."
         },
         posts: [
             {
-                category: { en: "Landing Pages", pt: "Landing Pages" },
-                title: { en: "How to Create High-Converting Landing Pages", pt: "Como Criar Landing Pages de Alta Conversão" },
-                excerpt: { en: "Essential strategies and elements", pt: "Estratégias e elementos essenciais" },
+                slug: "clientes-2k-custam-mais-que-15k",
+                category: { en: "Business", pt: "Negócios" },
+                title: { en: "Why $2k Clients Cost More Than $15k Clients", pt: "Por Que Clientes de R$2k Custam Mais que Clientes de R$15k" },
+                excerpt: { en: "The math behind high-ticket positioning.", pt: "A matemática por trás do posicionamento High-Ticket e como atrair os melhores projetos." },
                 gradient: "from-purple-500 to-blue-600",
                 textGradient: "group-hover:from-purple-600 group-hover:to-blue-600",
                 icon: FaRocket,
             },
             {
-                category: { en: "Marketing", pt: "Marketing" },
-                title: { en: "15 Mental Triggers that Increase Sales by 300%", pt: "15 Gatilhos Mentais que Aumentam Vendas em 300%" },
-                excerpt: { en: "Powerful psychological triggers", pt: "Gatilhos psicológicos poderosos" },
+                slug: "5-automacoes-eliminam-10-horas-semana",
+                category: { en: "Automation", pt: "Automação" },
+                title: { en: "5 Automations That Eliminate 10 Hours/Week", pt: "As 5 Automações que Eliminam 10 Horas/Semana da sua Agência" },
+                excerpt: { en: "Scale your operation without hiring more people.", pt: "Escalando sua operação operacional sem precisar contratar mais gente imediatamente." },
                 gradient: "from-pink-500 to-purple-600",
                 textGradient: "group-hover:from-pink-600 group-hover:to-purple-600",
                 icon: SiGoogleanalytics,
             },
             {
-                category: { en: "SEO", pt: "SEO" },
-                title: { en: "SEO for Landing Pages: Rank on Google in 30 Days", pt: "SEO para Landing Pages: Ranquear no Google em 30 Dias" },
-                excerpt: { en: "Proven strategies and technical checklist", pt: "Estratégias comprovadas e checklist técnico" },
+                slug: "roi-design-alta-fidelidade",
+                category: { en: "Design", pt: "Design" },
+                title: { en: "The ROI of High-Fidelity Design", pt: "O ROI do Design de Alta Fidelidade: Convertendo Visitantes em Fãs" },
+                excerpt: { en: "How premium aesthetics drive conversion.", pt: "Como a estética premium aumenta a percepção de valor e a taxa de conversão." },
                 gradient: "from-teal-500 to-green-600",
                 textGradient: "group-hover:from-teal-600 group-hover:to-green-600",
                 icon: FaLightbulb,
@@ -48,15 +51,15 @@ export const BlogPreview = () => {
         ],
         cta: {
             en: "Explore Our Blog",
-            pt: "Conheça Nosso Blog"
+            pt: "Ler Todos os Artigos"
         }
     };
 
     return (
-        <section className="relative py-20 bg-transparent z-20">
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
-                <div className="absolute inset-0" style={{
+        <section className="relative py-20 z-20 bg-white dark:bg-transparent transition-colors duration-500">
+            {/* Background Pattern - Subtle in Light, Visible in Dark */}
+            <div className="absolute inset-0 pointer-events-none text-gray-200 dark:text-white/5">
+                <div className="absolute inset-0 opacity-40 dark:opacity-100" style={{
                     backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
                     backgroundSize: '32px 32px'
                 }} />
@@ -71,10 +74,10 @@ export const BlogPreview = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-12"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold text-[var(--color-apple-black)] dark:text-white mb-4">
+                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                         {content.title[locale]}
                     </h2>
-                    <p className="text-lg text-[var(--color-apple-gray)] dark:text-gray-400 max-w-2xl mx-auto">
+                    <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
                         {content.subtitle[locale]}
                     </p>
                 </motion.div>
@@ -92,9 +95,8 @@ export const BlogPreview = () => {
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                 className="h-full"
                             >
-                                <a href="/blog" className="block h-full no-underline">
+                                <a href={`/blog/${post.slug}`} className="block h-full no-underline">
                                     <PremiumCard
-                                        variant="transparent"
                                         className="h-full p-8 flex flex-col group bg-white dark:bg-white/5 border border-black/5 dark:border-white/10 shadow-xl transition-all duration-500 hover:-translate-y-1 hover:border-purple-500/30 dark:hover:border-purple-500/50"
                                     >
                                         {/* Icon */}
@@ -108,12 +110,12 @@ export const BlogPreview = () => {
                                         </span>
 
                                         {/* Title */}
-                                        <h3 className={`text-xl font-bold text-[var(--color-apple-black)] dark:text-white mb-3 bg-gradient-to-r ${post.textGradient} group-hover:text-transparent group-hover:bg-clip-text transition-all duration-300 line-clamp-2 leading-tight`}>
+                                        <h3 className={`text-xl font-bold text-gray-900 dark:text-white mb-3 bg-gradient-to-r ${post.textGradient} group-hover:text-transparent group-hover:bg-clip-text transition-all duration-300 line-clamp-2 leading-tight`}>
                                             {post.title[locale]}
                                         </h3>
 
                                         {/* Excerpt */}
-                                        <p className="text-sm text-[var(--color-apple-gray)] dark:text-gray-400 line-clamp-3 mb-6 flex-grow leading-relaxed">
+                                        <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-3 mb-6 flex-grow leading-relaxed">
                                             {post.excerpt[locale]}
                                         </p>
 

@@ -12,10 +12,10 @@ export const Testimonials = () => {
     <section className="py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
             {t("Client Highlights", "Destaques dos Clientes")}
           </h2>
-          <p className="text-[var(--color-apple-gray)] max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             {t(
               "See what our partners say about our work.",
               "Veja o que nossos parceiros dizem sobre nosso trabalho."
@@ -31,14 +31,14 @@ export const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2, duration: 0.5 }}
-              className="group relative p-8 rounded-3xl border border-white/20 bg-white/10 backdrop-blur-md shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+              className="group relative p-8 rounded-3xl border border-gray-200 dark:border-white/20 bg-gray-50 dark:bg-white/10 backdrop-blur-md shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
             >
               {/* Glassmorphism Gradient Overlay */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
               <div className="relative z-10 flex flex-col h-full">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white/20">
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-gray-200 dark:border-white/20">
                     <Image
                       src={testimonial.image}
                       alt={testimonial.name}
@@ -47,14 +47,14 @@ export const Testimonials = () => {
                     />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-sm">{testimonial.name}</h4>
-                    <p className="text-xs text-[var(--color-apple-gray)]">
+                    <h4 className="font-semibold text-sm text-gray-900 dark:text-white">{testimonial.name}</h4>
+                    <p className="text-xs text-gray-600 dark:text-gray-400">
                       {testimonial.role[locale]}
                     </p>
                   </div>
                 </div>
 
-                <p className="text-sm leading-relaxed text-[var(--color-apple-gray)] mb-6 flex-grow">
+                <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-300 mb-6 flex-grow">
                   "{testimonial.content[locale]}"
                 </p>
 

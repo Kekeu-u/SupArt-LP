@@ -247,7 +247,7 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     TECH STACK SECTION
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10 bg-[var(--color-apple-off-white)]/80 backdrop-blur-sm">
+                <div className="section-reveal relative z-10 bg-white dark:bg-[var(--color-apple-off-white)]/80 dark:backdrop-blur-sm">
                     <TechStackMarquee />
                 </div>
 
@@ -256,7 +256,7 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     PROJECT SHOWCASE SECTION
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10 bg-[var(--color-apple-off-white)]/80 backdrop-blur-sm">
+                <div className="section-reveal relative z-10 bg-white dark:bg-[var(--color-apple-off-white)]/80 dark:backdrop-blur-sm">
                     <ProjectShowcase />
                 </div>
 
@@ -274,7 +274,7 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     SOLUTIONS SECTION
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10 bg-[var(--color-apple-off-white)]/80 dark:bg-black/80 backdrop-blur-sm transition-colors duration-500">
+                <div className="section-reveal relative z-10">
                     <Solutions />
                 </div>
 
@@ -283,7 +283,7 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     BLOG PREVIEW
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10 bg-transparent dark:bg-black/50 transition-colors duration-500">
+                <div className="section-reveal relative z-10">
                     <BlogPreview />
                 </div>
 

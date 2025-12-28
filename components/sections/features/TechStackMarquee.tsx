@@ -77,7 +77,7 @@ const TechCard = ({ tech, index, isExpanded, onToggle, locale }: {
                         <motion.h3
                             animate={{ fontSize: isExpanded ? 18 : 13 }}
                             transition={{ duration: 0.3, ease }}
-                            className="font-semibold text-gray-900 leading-tight"
+                            className="font-semibold text-gray-900 dark:text-white leading-tight"
                         >
                             {tech.name}
                         </motion.h3>
@@ -85,7 +85,7 @@ const TechCard = ({ tech, index, isExpanded, onToggle, locale }: {
                         <motion.p
                             animate={{ fontSize: isExpanded ? 13 : 10 }}
                             transition={{ duration: 0.3, ease }}
-                            className="text-gray-500 leading-tight mt-0.5"
+                            className="text-gray-500 dark:text-gray-400 leading-tight mt-0.5"
                         >
                             {tech.description[locale]}
                         </motion.p>
@@ -103,7 +103,7 @@ const TechCard = ({ tech, index, isExpanded, onToggle, locale }: {
                                 className="overflow-hidden"
                             >
                                 <div className="mt-3 pt-3 border-t border-gray-100 space-y-3">
-                                    <p className="text-xs text-gray-600 leading-relaxed">
+                                    <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
                                         {tech.detail[locale]}
                                     </p>
 
@@ -225,7 +225,7 @@ export const TechStackMarquee = () => {
                     className="text-center mb-6"
                 >
                     <div className="flex items-center justify-center gap-3 mb-2">
-                        <span className="text-[10px] font-medium text-[var(--color-apple-gray)] uppercase tracking-widest">
+                        <span className="text-[10px] font-medium text-gray-600 dark:text-gray-400 uppercase tracking-widest">
                             Powered by
                         </span>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" className="h-6 w-auto">
@@ -249,7 +249,7 @@ export const TechStackMarquee = () => {
                             </defs>
                         </svg>
                     </div>
-                    <p className="text-sm md:text-base text-[var(--color-apple-gray)]">
+                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-400">
                         {headerText}
                     </p>
                 </motion.div>
@@ -309,10 +309,10 @@ export const TechStackMarquee = () => {
                             whileHover={{ scale: 1.1 }}
                             transition={{ duration: 0.3, ease }}
                         >
-                            <div className="text-lg sm:text-xl md:text-2xl font-bold text-[var(--color-apple-black)] group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+                            <div className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-white group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
                                 {stat.value}
                             </div>
-                            <div className="text-[9px] sm:text-[10px] text-[var(--color-apple-gray)] uppercase tracking-wide">{stat.label}</div>
+                            <div className="text-[9px] sm:text-[10px] text-gray-600 dark:text-gray-400 uppercase tracking-wide">{stat.label}</div>
                         </motion.div>
                     ))}
                 </motion.div>
