@@ -4,8 +4,8 @@ import type { NextRequest } from 'next/server';
 // 🔐 Modo de manutenção ATIVADO (apenas em produção)
 const MAINTENANCE_MODE_ENABLED = process.env.NODE_ENV === 'production';
 
-// 🔐 Bypass secreto: acesse /??? para desbloquear o site
-const BYPASS_PATH = '/???';
+// 🔐 Bypass secreto: acesse /supart-unlock para desbloquear o site
+const BYPASS_PATH = '/supart-unlock';
 
 export function middleware(request: NextRequest) {
     // Se manutenção está desativada, permite tudo
