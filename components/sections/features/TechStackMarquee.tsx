@@ -46,11 +46,11 @@ const TechCard = ({ tech, index, isExpanded, onToggle, locale }: {
             {/* Card container */}
             <div
                 className={`
-                    relative bg-white dark:bg-white/5 dark:backdrop-blur-xl rounded-xl border overflow-hidden
+                    relative bg-white/60 dark:bg-black/40 backdrop-blur-xl rounded-xl border overflow-hidden
                     transition-all duration-300 h-full min-h-[100px] sm:min-h-[120px]
                     ${isExpanded
-                        ? 'border-gray-200 dark:border-white/20 shadow-xl dark:shadow-white/5'
-                        : 'border-gray-100 dark:border-white/10 group-hover:border-gray-200 dark:group-hover:border-white/20 group-hover:shadow-lg'}
+                        ? 'border-purple-500/50 shadow-xl dark:shadow-purple-500/10'
+                        : 'border-white/40 dark:border-white/10 group-hover:border-purple-500/30 group-hover:shadow-lg'}
                 `}
             >
                 {/* Content */}
@@ -68,7 +68,7 @@ const TechCard = ({ tech, index, isExpanded, onToggle, locale }: {
                         className={`rounded-xl flex items-center justify-center bg-gradient-to-br ${tech.gradient} group-hover:scale-110 transition-transform duration-300 shadow-md`}
                     >
                         {Icon && (
-                            <Icon className="text-white w-1/2 h-1/2" />
+                            <Icon className="text-gray-600 dark:text-white w-1/2 h-1/2" />
                         )}
                     </motion.div>
 

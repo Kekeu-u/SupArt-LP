@@ -58,7 +58,7 @@ export const BlogPreview = () => {
     return (
         <section className="relative py-20 z-20 bg-white dark:bg-transparent transition-colors duration-500">
             {/* Background Pattern - Subtle in Light, Visible in Dark */}
-            <div className="absolute inset-0 pointer-events-none text-gray-200 dark:text-white/5">
+            <div className="absolute inset-0 pointer-events-none text-gray-100 dark:text-white/5">
                 <div className="absolute inset-0 opacity-40 dark:opacity-100" style={{
                     backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
                     backgroundSize: '32px 32px'
@@ -97,7 +97,7 @@ export const BlogPreview = () => {
                             >
                                 <a href={`/blog/${post.slug}`} className="block h-full no-underline">
                                     <PremiumCard
-                                        className="h-full p-8 flex flex-col group bg-white dark:bg-white/5 border border-black/5 dark:border-white/10 shadow-xl transition-all duration-500 hover:-translate-y-1 hover:border-purple-500/30 dark:hover:border-purple-500/50"
+                                        className="h-full p-8 flex flex-col group bg-white/60 dark:bg-white/5 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-xl transition-all duration-500 hover:-translate-y-1 hover:border-purple-500/30 dark:hover:border-purple-500/50"
                                     >
                                         {/* Icon */}
                                         <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${post.gradient} flex items-center justify-center mb-6 shadow-lg`}>
