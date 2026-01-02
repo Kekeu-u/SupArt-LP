@@ -62,7 +62,7 @@ export const BlogCard = ({ post }: { post: Post }) => {
                         <span className="text-xs text-gray-400">{new Date(post.published_at).toLocaleDateString('pt-BR')}</span>
                     </div>
 
-                    <h3 className="text-lg font-bold text-gray-900 leading-tight mb-3 group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white leading-tight mb-3 group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
                         {post.title}
                     </h3>
 

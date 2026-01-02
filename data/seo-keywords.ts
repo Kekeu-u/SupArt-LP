@@ -31,7 +31,7 @@ export const seoKeywords = [
     // Combinações Aleatórias e "Fat Finger"
     "Su pArt", "S upArt", "Sup A rt", "Sup Ar t",
     "SupArt.", "SupArt,", "SupArt;", "SupArt!",
-    "SupArt1", "SupArt2", "SupArt123", "SupArt2024", "SupArt2025",
+    "SupArt1", "SupArt2", "SupArt123", "SupArt2024", "SupArt2026",
 
     // Variações de "Sup" e "Art" separadas
     "Sup", "Art", "Sup Design", "Sup Creative", "Sup Studio",

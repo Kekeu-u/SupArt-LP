@@ -49,7 +49,7 @@ export const PostContent = ({ post }: { post: Post }) => {
                         </div>
                     </PremiumBorder>
                     <div className="flex-1">
-                        <div className="font-bold text-gray-900 text-lg">{post.author?.name}</div>
+                        <div className="font-bold text-gray-900 dark:text-white text-lg">{post.author?.name}</div>
                         <div className="text-sm text-gray-500 font-medium">{post.author?.role}</div>
                     </div>
                     <div className="text-sm text-gray-400 font-medium">

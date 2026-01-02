@@ -25,7 +25,7 @@ const LOGO_PATH = "M499.706 289.76c2.902-5.094 5.598-9.885 8.376-14.628 3.362-5.
 export function HeroLogo({ size = 200, className = "" }: HeroLogoProps) {
     return (
         <motion.div
-            className={`relative ${className}`}
+            className={`relative text-black dark:text-white ${className}`}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -42,7 +42,7 @@ export function HeroLogo({ size = 200, className = "" }: HeroLogoProps) {
                 <motion.path
                     d={LOGO_PATH}
                     fill="none"
-                    stroke="#000000"
+                    stroke="currentColor"
                     strokeWidth="8"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -59,7 +59,7 @@ export function HeroLogo({ size = 200, className = "" }: HeroLogoProps) {
                 <motion.path
                     d={LOGO_PATH}
                     fill="none"
-                    stroke="#000000"
+                    stroke="currentColor"
                     strokeWidth="3"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -73,7 +73,7 @@ export function HeroLogo({ size = 200, className = "" }: HeroLogoProps) {
                 {/* Fill que aparece depois do stroke */}
                 <motion.path
                     d={LOGO_PATH}
-                    fill="#000000"
+                    fill="currentColor"
                     stroke="none"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

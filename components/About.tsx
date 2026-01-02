@@ -2,21 +2,21 @@ import React from 'react';
 import { FaStar, FaCheckCircle } from 'react-icons/fa';
 
 const FeatureCard: React.FC<{ title: string; description: string }> = ({ title, description }) => (
-    <div className="bg-white/[.03] backdrop-blur-xl p-6 rounded-2xl border border-white/10 flex items-start space-x-4 transition-all duration-300 hover:-translate-y-2 hover:border-purple-400/50 hover:shadow-2xl hover:shadow-purple-500/10">
+    <div className="bg-white dark:bg-white/[.03] backdrop-blur-xl p-6 rounded-2xl border border-gray-200 dark:border-white/10 flex items-start space-x-4 transition-all duration-300 hover:-translate-y-2 hover:border-purple-400/50 hover:shadow-2xl hover:shadow-purple-500/10 shadow-sm dark:shadow-none">
         <div className="flex-shrink-0 bg-purple-500/10 p-2 rounded-full border border-purple-500/20">
             <FaCheckCircle className="h-6 w-6 text-purple-400" />
         </div>
         <div>
-            <h3 className="font-bold text-xl text-white mb-1">{title}</h3>
-            <p className="text-gray-300 text-pretty">{description}</p>
+            <h3 className="font-bold text-xl text-gray-900 dark:text-white mb-1">{title}</h3>
+            <p className="text-gray-600 dark:text-gray-300 text-pretty">{description}</p>
         </div>
     </div>
 );
 
 const StatItem: React.FC<{ value: number; label: string; prefix?: string; suffix?: string }> = ({ value, label, prefix, suffix }) => {
     return (
-        <div className="text-center bg-white/[.03] backdrop-blur-xl p-6 rounded-2xl border border-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/10">
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white">
+        <div className="text-center bg-white dark:bg-white/[.03] backdrop-blur-xl p-6 rounded-2xl border border-gray-200 dark:border-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/10 shadow-sm dark:shadow-none">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white">
                 {prefix || ''}{value}{suffix || ''}
             </h3>
             <p className="text-purple-300 mt-2 text-sm md:text-base">{label}</p>
@@ -35,8 +35,8 @@ const About: React.FC = () => {
             </div>
 
             <div className="container mx-auto text-center">
-                <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-pretty">Por que escolher a Sup<span className="text-glass-art">Art</span>?</h2>
-                <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-12 text-pretty">
+                <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900 dark:text-white text-pretty">Por que escolher a Sup<span className="text-glass-art">Art</span>?</h2>
+                <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12 text-pretty">
                     Somos especialistas em criar landing pages que não apenas impressionam visualmente, mas que são projetadas para converter visitantes em clientes. Entregamos qualidade e agilidade para o seu negócio decolar.
                 </p>
 

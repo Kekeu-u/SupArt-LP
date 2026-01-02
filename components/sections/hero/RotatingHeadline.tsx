@@ -28,14 +28,14 @@ export const RotatingHeadline = () => {
     return (
         <div className="relative">
             {/* Main line */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-[var(--color-apple-black)] leading-tight mb-2 text-balance text-center tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 dark:text-white leading-tight mb-2 text-balance text-center tracking-tight">
                 {prefix}
             </h1>
 
             {/* Rotating word */}
             <div className="text-center">
                 <span
-                    className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[var(--color-apple-gray)] inline-block transition-all ${isExiting
+                    className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-500 dark:text-gray-400 inline-block transition-all ${isExiting
                         ? 'opacity-0 -translate-y-4 blur-[3px]'
                         : 'opacity-100 translate-y-0 blur-0'
                         }`}
@@ -61,8 +61,8 @@ export const RotatingHeadline = () => {
                             }, 300);
                         }}
                         className={`h-1.5 rounded-full transition-all duration-500 ${index === currentIndex
-                            ? 'w-8 bg-[var(--color-apple-black)]'
-                            : 'w-1.5 bg-black/10 hover:bg-black/30'
+                            ? 'w-8 bg-gray-900 dark:bg-white'
+                            : 'w-1.5 bg-black/10 dark:bg-white/20 hover:bg-black/30 dark:hover:bg-white/40'
                             }`}
                     />
                 ))}

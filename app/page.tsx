@@ -166,7 +166,7 @@ export default function Home() {
                 <ThemeToggle />
             </div>
 
-            <main ref={mainRef} className="min-h-screen bg-transparent text-[var(--color-apple-black)] overflow-x-hidden selection:bg-[var(--color-apple-blue)] selection:text-white">
+            <main ref={mainRef} className="min-h-screen bg-transparent overflow-x-hidden selection:bg-[var(--color-apple-blue)] selection:text-white">
 
                 {/* ═══════════════════════════════════════════
                     HERO SECTION - Com Spline 3D Background
@@ -216,7 +216,7 @@ export default function Home() {
                             transition={{ duration: 0.4, ease: "easeOut" }}
                         >
                             <RotatingHeadline />
-                            <p className="text-lead text-[var(--color-apple-gray)] max-w-2xl mx-auto mt-5 mb-8">
+                            <p className="text-lead text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mt-5 mb-8">
                                 {heroSubtitle}
                             </p>
                         </motion.div>
@@ -247,7 +247,7 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     TECH STACK SECTION
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10 bg-white dark:bg-[var(--color-apple-off-white)]/80 dark:backdrop-blur-sm">
+                <div className="section-reveal relative z-10 bg-white dark:bg-black">
                     <TechStackMarquee />
                 </div>
 
@@ -256,7 +256,7 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     PROJECT SHOWCASE SECTION
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10 bg-white dark:bg-[var(--color-apple-off-white)]/80 dark:backdrop-blur-sm">
+                <div className="section-reveal relative z-10 bg-white dark:bg-black">
                     <ProjectShowcase />
                 </div>
 
@@ -265,7 +265,7 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     TESTIMONIALS SECTION
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10">
+                <div className="section-reveal relative z-10 bg-white dark:bg-black">
                     <Testimonials />
                 </div>
 
@@ -274,7 +274,7 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     SOLUTIONS SECTION
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10">
+                <div className="section-reveal relative z-10 bg-white dark:bg-black">
                     <Solutions />
                 </div>
 
@@ -283,7 +283,7 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     BLOG PREVIEW
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10">
+                <div className="section-reveal relative z-10 bg-white dark:bg-black">
                     <BlogPreview />
                 </div>
 
@@ -295,7 +295,7 @@ export default function Home() {
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
                             <div className="col-span-2 md:col-span-1">
                                 <h4 className="font-semibold mb-6 dark:text-white">{siteConfig.name}</h4>
-                                <p className="text-sm text-[var(--color-apple-gray)] dark:text-gray-400 leading-relaxed max-w-xs">
+                                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed max-w-xs">
                                     {siteConfig.description[locale]}
                                 </p>
                                 {/* Availability Badge */}
@@ -311,7 +311,7 @@ export default function Home() {
                                     <ul className="space-y-4">
                                         {col.links.map((link) => (
                                             <li key={link.label.en}>
-                                                <a href={link.href} className="text-sm text-[var(--color-apple-gray)] dark:text-gray-400 hover:text-[var(--color-apple-black)] dark:hover:text-white transition-colors">
+                                                <a href={link.href} className="text-sm text-gray-600 dark:text-gray-400 hover:text-[var(--color-apple-black)] dark:hover:text-white transition-colors">
                                                     {link.label[locale]}
                                                 </a>
                                             </li>
@@ -322,10 +322,10 @@ export default function Home() {
                         </div>
 
                         <div className="pt-8 border-t border-black/5 dark:border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-                            <p className="text-xs text-[var(--color-apple-gray)] dark:text-gray-500">
+                            <p className="text-xs text-gray-500 dark:text-gray-500">
                                 {siteConfig.copyright[locale]}
                             </p>
-                            <p className="text-xs text-[var(--color-apple-gray)] dark:text-gray-500">
+                            <p className="text-xs text-gray-500 dark:text-gray-500">
                                 {siteConfig.location}
                             </p>
                         </div>

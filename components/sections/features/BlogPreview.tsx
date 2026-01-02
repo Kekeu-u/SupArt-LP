@@ -74,7 +74,7 @@ export const BlogPreview = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-12"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+                    <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-4">
                         {content.title[locale]}
                     </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -110,7 +110,7 @@ export const BlogPreview = () => {
                                         </span>
 
                                         {/* Title */}
-                                        <h3 className={`text-xl font-bold text-gray-900 dark:text-white mb-3 bg-gradient-to-r ${post.textGradient} group-hover:text-transparent group-hover:bg-clip-text transition-all duration-300 line-clamp-2 leading-tight`}>
+                                        <h3 className={`text-xl font-bold text-black dark:text-white mb-3 group-hover:bg-gradient-to-r ${post.textGradient} group-hover:text-transparent group-hover:bg-clip-text transition-all duration-300 line-clamp-2 leading-tight`}>
                                             {post.title[locale]}
                                         </h3>
 
@@ -120,7 +120,7 @@ export const BlogPreview = () => {
                                         </p>
 
                                         {/* Arrow Icon */}
-                                        <div className={`mt-auto flex items-center text-sm font-bold text-gray-900 dark:text-white bg-gradient-to-r ${post.textGradient} group-hover:text-transparent group-hover:bg-clip-text transition-all`}>
+                                        <div className={`mt-auto flex items-center text-sm font-bold text-black dark:text-white group-hover:bg-gradient-to-r ${post.textGradient} group-hover:text-transparent group-hover:bg-clip-text transition-all`}>
                                             <span>{locale === "en" ? "Read more" : "Ler mais"}</span>
                                             <svg className="w-4 h-4 ml-2 text-current" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

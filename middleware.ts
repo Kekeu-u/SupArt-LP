@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-// 🔐 Modo de manutenção ATIVADO
-const MAINTENANCE_MODE_ENABLED = true;
+// 🔐 Modo de manutenção ATIVADO (apenas em produção)
+const MAINTENANCE_MODE_ENABLED = process.env.NODE_ENV === 'production';
 
 // 🔐 Bypass secreto: acesse /??? para desbloquear o site
 const BYPASS_PATH = '/???';
@@ -21,6 +21,8 @@ export function middleware(request: NextRequest) {
         response.cookies.set('maintenance_bypass', 'true', {
             maxAge: 60 * 60 * 24, // 24 horas
             httpOnly: true,
+            path: '/',
+            sameSite: 'lax',
         });
         return response;
     }

@@ -46,45 +46,45 @@ const Contact: React.FC = () => {
   return (
     <section id="contato" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
       <div className="container mx-auto max-w-4xl text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-pretty">Vamos Começar seu Projeto?</h2>
-        <p className="text-lg text-gray-300 mb-10 text-pretty">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900 dark:text-white text-pretty">Vamos Começar seu Projeto?</h2>
+        <p className="text-lg text-gray-600 dark:text-gray-300 mb-10 text-pretty">
           Preencha o formulário abaixo ou entre em contato pelo WhatsApp. Estamos prontos para transformar sua ideia em realidade.
         </p>
-        <div className="bg-white/[.03] backdrop-blur-xl rounded-2xl border border-white/10 p-8 md:p-12 text-left">
+        <div className="bg-white dark:bg-white/[.03] backdrop-blur-xl rounded-2xl border border-gray-200 dark:border-white/10 p-8 md:p-12 text-left shadow-xl dark:shadow-none">
           <form onSubmit={handleSubmit}>
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
-                <label htmlFor="name" className="block text-gray-300 mb-2">Nome</label>
+                <label htmlFor="name" className="block text-gray-700 dark:text-gray-300 mb-2">Nome</label>
                 <input
                   type="text"
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
-                  className="w-full bg-white/5 border border-white/20 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
+                  className="w-full bg-gray-50 dark:bg-white/5 border border-gray-300 dark:border-white/20 rounded-lg py-3 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-gray-300 mb-2">Email</label>
+                <label htmlFor="email" className="block text-gray-700 dark:text-gray-300 mb-2">Email</label>
                 <input
                   type="email"
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full bg-white/5 border border-white/20 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
+                  className="w-full bg-gray-50 dark:bg-white/5 border border-gray-300 dark:border-white/20 rounded-lg py-3 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
                 />
               </div>
             </div>
             <div className="mb-6">
-              <label htmlFor="message" className="block text-gray-300 mb-2">Sua Mensagem</label>
+              <label htmlFor="message" className="block text-gray-700 dark:text-gray-300 mb-2">Sua Mensagem</label>
               <textarea
                 id="message"
                 rows={5}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 required
-                className="w-full bg-white/5 border border-white/20 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
+                className="w-full bg-gray-50 dark:bg-white/5 border border-gray-300 dark:border-white/20 rounded-lg py-3 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
               ></textarea>
             </div>
             <div className="text-center">
@@ -96,19 +96,19 @@ const Contact: React.FC = () => {
                 {submission.loading ? 'Enviando...' : 'Enviar Mensagem'}
               </button>
             </div>
-             {submission.message && (
-                <p className={`text-center mt-4 ${submission.success ? 'text-green-400' : 'text-red-400'}`}>
-                    {submission.message}
-                </p>
+            {submission.message && (
+              <p className={`text-center mt-4 ${submission.success ? 'text-green-400' : 'text-red-400'}`}>
+                {submission.message}
+              </p>
             )}
           </form>
 
           <div className="flex items-center justify-center my-6">
-            <div className="flex-grow border-t border-white/20"></div>
+            <div className="flex-grow border-t border-gray-300 dark:border-white/20"></div>
             <span className="flex-shrink mx-4 text-gray-400">ou</span>
-            <div className="flex-grow border-t border-white/20"></div>
+            <div className="flex-grow border-t border-gray-300 dark:border-white/20"></div>
           </div>
-          
+
           <div className="text-center">
             <a
               href="https://wa.link/r35utl"

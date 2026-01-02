@@ -46,11 +46,11 @@ const TechCard = ({ tech, index, isExpanded, onToggle, locale }: {
             {/* Card container */}
             <div
                 className={`
-                    relative bg-white rounded-xl border overflow-hidden
+                    relative bg-white dark:bg-white/5 dark:backdrop-blur-xl rounded-xl border overflow-hidden
                     transition-all duration-300 h-full min-h-[100px] sm:min-h-[120px]
                     ${isExpanded
-                        ? 'border-gray-200 shadow-xl'
-                        : 'border-gray-100 group-hover:border-gray-200 group-hover:shadow-lg'}
+                        ? 'border-gray-200 dark:border-white/20 shadow-xl dark:shadow-white/5'
+                        : 'border-gray-100 dark:border-white/10 group-hover:border-gray-200 dark:group-hover:border-white/20 group-hover:shadow-lg'}
                 `}
             >
                 {/* Content */}
@@ -85,7 +85,7 @@ const TechCard = ({ tech, index, isExpanded, onToggle, locale }: {
                         <motion.p
                             animate={{ fontSize: isExpanded ? 13 : 10 }}
                             transition={{ duration: 0.3, ease }}
-                            className="text-gray-500 dark:text-gray-400 leading-tight mt-0.5"
+                            className="text-gray-600 dark:text-gray-400 leading-tight mt-0.5"
                         >
                             {tech.description[locale]}
                         </motion.p>
@@ -213,7 +213,7 @@ export const TechStackMarquee = () => {
     };
 
     return (
-        <section className="py-12 bg-[var(--color-apple-off-white)] overflow-x-hidden">
+        <section className="py-12 bg-[var(--color-apple-off-white)] dark:bg-black overflow-x-hidden transition-colors duration-500">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
 
                 {/* Header Compacto */}
@@ -249,15 +249,15 @@ export const TechStackMarquee = () => {
                             </defs>
                         </svg>
                     </div>
-                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-400">
+                    <p className="text-sm md:text-base text-gray-600 dark:text-white font-medium">
                         {headerText}
                     </p>
                 </motion.div>
 
                 {/* Marquee de Logos - Altura Reduzida */}
                 <div className="relative overflow-hidden mb-6 -mx-4 sm:-mx-6 lg:-mx-8">
-                    <div className="absolute inset-y-0 left-0 w-16 md:w-24 bg-gradient-to-r from-[var(--color-apple-off-white)] to-transparent z-10 pointer-events-none" />
-                    <div className="absolute inset-y-0 right-0 w-16 md:w-24 bg-gradient-to-l from-[var(--color-apple-off-white)] to-transparent z-10 pointer-events-none" />
+                    <div className="absolute inset-y-0 left-0 w-16 md:w-24 bg-gradient-to-r from-white dark:from-black to-transparent z-10 pointer-events-none" />
+                    <div className="absolute inset-y-0 right-0 w-16 md:w-24 bg-gradient-to-l from-white dark:from-black to-transparent z-10 pointer-events-none" />
 
                     <div className="flex overflow-hidden">
                         <motion.div
@@ -271,7 +271,7 @@ export const TechStackMarquee = () => {
                                     href={company.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="shrink-0 h-8 w-24 flex items-center justify-center grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+                                    className="shrink-0 h-8 w-24 flex items-center justify-center grayscale opacity-30 hover:grayscale-0 hover:opacity-100 dark:invert transition-all duration-500"
                                 >
                                     <img src={company.logo} alt={company.name} className="max-h-6 max-w-full w-auto object-contain" />
                                 </a>

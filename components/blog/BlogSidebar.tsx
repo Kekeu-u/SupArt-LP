@@ -55,7 +55,7 @@ export const BlogSidebar = async () => {
                                 />
                             </PremiumBorder>
                             <div className="flex-1 min-w-0">
-                                <h4 className="text-sm font-bold text-gray-900 line-clamp-2 group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300 mb-2">
+                                <h4 className="text-sm font-bold text-gray-900 dark:text-white line-clamp-2 group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300 mb-2">
                                     {post.title}
                                 </h4>
                                 <div className="flex items-center gap-2 mt-1.5">

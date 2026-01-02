@@ -48,6 +48,12 @@
 }
 
 
+/* Default Light Mode Variables */
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+}
+
 /* Dark Mode Overrides */
 .dark {
   --background: #000000;
