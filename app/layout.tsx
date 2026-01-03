@@ -4,6 +4,7 @@ import "./globals.css";
 import { seoKeywords } from "@/data/seo-keywords";
 import { I18nProvider } from "@/lib/i18n";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { Preloader } from "@/components/ui/Preloader";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -78,6 +79,7 @@ export default function RootLayout({
                         enableSystem
                         disableTransitionOnChange
                     >
+                        <Preloader />
                         {children}
                     </ThemeProvider>
                 </I18nProvider>

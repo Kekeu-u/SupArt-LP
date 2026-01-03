@@ -1,8 +1,24 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   reactStrictMode: true,
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PERFORMANCE OPTIMIZATIONS
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // Remove console.log em produção para bundle menor
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+  },
+
+  // Otimizações experimentais
+  experimental: {
+    // Otimiza imports de pacotes grandes (framer-motion, gsap)
+    optimizePackageImports: ["framer-motion", "gsap", "react-icons"],
+  },
+
+  // Configuração de imagens
   images: {
     remotePatterns: [
       {
@@ -26,3 +42,4 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+

@@ -2,23 +2,45 @@
 
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { ProjectShowcase } from "@/components/sections/showcase/ProjectShowcase";
+
+// ═══════════════════════════════════════════════════════════════════════════
+// LAZY IMPORTS - Carregados sob demanda para performance
+// ═══════════════════════════════════════════════════════════════════════════
+const ProjectShowcase = dynamic(
+    () => import("@/components/sections/showcase/ProjectShowcase").then((mod) => mod.ProjectShowcase),
+    { ssr: true }
+);
+const Solutions = dynamic(
+    () => import("@/components/sections/features/Solutions").then((mod) => mod.Solutions),
+    { ssr: true }
+);
+const BlogPreview = dynamic(
+    () => import("@/components/sections/features/BlogPreview").then((mod) => mod.BlogPreview),
+    { ssr: true }
+);
+const Testimonials = dynamic(
+    () => import("@/components/sections/social/Testimonials").then((mod) => mod.Testimonials),
+    { ssr: true }
+);
+
+// ═══════════════════════════════════════════════════════════════════════════
+// IMPORTS SÍNCRONOS - Críticos para First Paint
+// ═══════════════════════════════════════════════════════════════════════════
 import { TechStackMarquee } from "@/components/sections/features/TechStackMarquee";
 import { RotatingHeadline } from "@/components/sections/hero/RotatingHeadline";
 import { HeroChat } from "@/components/sections/hero/HeroChat";
 import { DevPanel } from "@/components/layout/DevPanel";
-import { Solutions } from "@/components/sections/features/Solutions";
-import { BlogPreview } from "@/components/sections/features/BlogPreview";
-import { Testimonials } from "@/components/sections/social/Testimonials";
 import { ShinyButton } from "@/components/ui/ShinyButton";
 import { siteConfig, footerLinks } from "@/data";
 import { HeroLogo } from "@/components/sections/hero/HeroLogo";
 import { useI18n } from "@/lib/i18n";
 import { PremiumDivider } from "@/components/ui/PremiumDivider";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { LazySpline } from "@/components/ui/LazySpline";
 
 // Registrar plugin
 if (typeof window !== "undefined") {
@@ -175,16 +197,11 @@ export default function Home() {
                     ref={heroRef}
                     className="hero-section relative min-h-screen flex flex-col items-center justify-center px-6 pb-24 overflow-hidden"
                 >
-                    {/* Spline 3D Background - Fixed Position to stay visible */}
+                    {/* Spline 3D Background - Lazy Loaded para performance */}
                     <div className="fixed top-0 left-0 w-full h-full -z-50 pointer-events-none">
-                        <iframe
+                        <LazySpline
                             src="https://my.spline.design/flowingribbon-TlkEaNrvCCNZuJBNJN3LXpRF"
-                            frameBorder="0"
-                            width="100%"
-                            height="100%"
-                            id="aura-spline"
-                            title="Spline 3D Background"
-                            style={{ pointerEvents: 'none' }}
+                            delay={800}
                         />
                     </div>
 
