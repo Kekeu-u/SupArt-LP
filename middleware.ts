@@ -41,6 +41,7 @@ export function middleware(request: NextRequest) {
     if (
         pathname.startsWith('/_next') ||
         pathname.startsWith('/api') ||
+        pathname.startsWith('/apresentacao-adesprs') || // ✅ Apresentação Cliente
         pathname.includes('.') // arquivos como .ico, .png, etc
     ) {
         return NextResponse.next();
