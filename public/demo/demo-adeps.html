@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADEPS - Captação de Patrocínio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        apple: {
+                            bg: '#F5F5F7',
+                            text: '#1D1D1F',
+                            gray: '#86868B',
+                            blue: '#0071E3',
+                        },
+                        brand: {
+                            500: '#E30000', // Red racing mais sóbrio
+                            600: '#C40000',
+                        }
+                    },
+                    boxShadow: {
+                        'apple': '0 4px 24px rgba(0,0,0,0.04)',
+                        'apple-hover': '0 8px 32px rgba(0,0,0,0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F5F5F7;
+            color: #1D1D1F;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .card-apple {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        .card-apple:active {
+            transform: scale(0.98);
+        }
+
+        .btn-primary {
+            background: #1D1D1F;
+            color: white;
+            border-radius: 999px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #333;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .chat-bubble {
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        @keyframes popIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .typing-dot {
+            animation: typing 1.4s infinite ease-in-out both;
+        }
+
+        .typing-dot:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+        @keyframes typing {
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0);
+            }
+
+            40% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body class="pb-24">
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-md mx-auto px-6 h-14 flex justify-between items-center">
+            <div class="text-lg font-semibold tracking-tight">ADEPS<span class="text-brand-500">.RS</span></div>
+            <button class="text-apple-text"><i class="fas fa-bars text-lg"></i></button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-12 px-6 max-w-md mx-auto text-center">
+        <div
+            class="inline-block px-4 py-1.5 mb-6 text-[11px] font-semibold tracking-wide text-gray-500 uppercase bg-white rounded-full shadow-sm border border-gray-100">
+            Lei de Incentivo ao Esporte
+        </div>
+
+        <h1 class="text-[40px] font-bold leading-[1.1] mb-6 tracking-tight text-apple-text">
+            Patrocine <br>
+            <span class="text-brand-500">sem custo.</span>
+        </h1>
+
+        <p class="text-apple-gray text-lg leading-relaxed mb-10 font-medium">
+            Transforme seu ICMS em esporte.<br>
+            Visibilidade para sua marca,<br>
+            impacto zero no caixa.
+        </p>
+
+        <div class="flex flex-col gap-4">
+            <button onclick="scrollToForm()" class="w-full py-4 btn-primary font-medium text-[17px]">
+                Simular Benefício
+            </button>
+            <button onclick="toggleChat()"
+                class="w-full py-4 bg-white text-apple-blue font-medium text-[17px] rounded-full shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+                <i class="fas fa-comment-alt text-sm"></i> Perguntar para IA
+            </button>
+        </div>
+    </section>
+
+    <!-- Stats (Apple Style Cards) -->
+    <section class="px-6 pb-12 max-w-md mx-auto">
+        <div class="grid grid-cols-2 gap-4">
+            <div class="card-apple p-6 text-center">
+                <div class="text-3xl font-bold text-apple-text mb-1">100%</div>
+                <div class="text-xs font-semibold text-apple-gray uppercase tracking-wide">Abatimento</div>
+            </div>
+            <div class="card-apple p-6 text-center">
+                <div class="text-3xl font-bold text-apple-text mb-1">40+</div>
+                <div class="text-xs font-semibold text-apple-gray uppercase tracking-wide">Eventos</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Preview -->
+    <section class="px-6 pb-12 max-w-md mx-auto">
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-2xl font-bold text-apple-text">Projetos Abertos</h2>
+            <a href="#" class="text-apple-blue text-sm font-medium">Ver todos</a>
+        </div>
+
+        <div class="space-y-6">
+            <!-- Card 1: Competição -->
+            <div class="card-apple overflow-hidden group cursor-pointer">
+                <div class="h-48 relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&q=80&w=800"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        alt="Carro de corrida">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div
+                        class="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-black text-[10px] font-bold px-3 py-1.5 rounded-full shadow-sm">
+                        LEI DE INCENTIVO
+                    </div>
+                    <div class="absolute bottom-4 left-4 text-white">
+                        <h3 class="font-bold text-xl">Copa Tarumã de Marcas</h3>
+                        <p class="text-xs text-gray-300 mt-1">Automobilismo • Profissional</p>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <p class="text-apple-gray text-sm mb-6 leading-relaxed">O maior campeonato de turismo do sul. Sua
+                        marca na TV aberta e streaming para mais de 50 mil espectadores.</p>
+
+                    <div class="flex items-center gap-4 mb-2">
+                        <div class="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
+                            <div class="bg-brand-500 h-full w-[75%] rounded-full"></div>
+                        </div>
+                        <span class="text-xs font-bold text-apple-text">75%</span>
+                    </div>
+                    <div
+                        class="flex justify-between text-[11px] text-apple-gray font-medium uppercase tracking-wide mb-6">
+                        <span>R$ 450k Captados</span>
+                        <span>Meta: R$ 600k</span>
+                    </div>
+
+                    <button onclick="scrollToForm()"
+                        class="w-full py-3 bg-gray-50 text-apple-text font-semibold rounded-xl text-sm hover:bg-gray-100 transition-colors">
+                        Baixar Cota de Patrocínio
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 2: Social -->
+            <div class="card-apple overflow-hidden group cursor-pointer">
+                <div class="h-48 relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1516216628859-9bccecab13ca?auto=format&fit=crop&q=80&w=800"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        alt="Criança no Kart"
+                        onerror="this.src='https://placehold.co/800x600/EEE/31343C?text=Kart+Social'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div
+                        class="absolute top-4 right-4 bg-blue-500/90 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1.5 rounded-full shadow-sm">
+                        SOCIAL
+                    </div>
+                    <div class="absolute bottom-4 left-4 text-white">
+                        <h3 class="font-bold text-xl">Escola de Pilotos: Futuro</h3>
+                        <p class="text-xs text-gray-300 mt-1">Educacional • Inclusão</p>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <p class="text-apple-gray text-sm mb-6 leading-relaxed">Projeto social que leva disciplina e
+                        educação através do kartismo para 200 jovens de escolas públicas.</p>
+
+                    <div class="flex items-center gap-4 mb-2">
+                        <div class="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
+                            <div class="bg-blue-500 h-full w-[40%] rounded-full"></div>
+                        </div>
+                        <span class="text-xs font-bold text-apple-text">40%</span>
+                    </div>
+                    <div
+                        class="flex justify-between text-[11px] text-apple-gray font-medium uppercase tracking-wide mb-6">
+                        <span>R$ 80k Captados</span>
+                        <span>Meta: R$ 200k</span>
+                    </div>
+
+                    <button onclick="scrollToForm()"
+                        class="w-full py-3 bg-gray-50 text-apple-text font-semibold rounded-xl text-sm hover:bg-gray-100 transition-colors">
+                        Apoiar Projeto Social
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 3: Evento -->
+            <div class="card-apple overflow-hidden group cursor-pointer">
+                <div class="h-48 relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=800"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        alt="Evento Multidão">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div
+                        class="absolute top-4 right-4 bg-orange-500/90 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1.5 rounded-full shadow-sm">
+                        EVENTO
+                    </div>
+                    <div class="absolute bottom-4 left-4 text-white">
+                        <h3 class="font-bold text-xl">Festival de Velocidade RS</h3>
+                        <p class="text-xs text-gray-300 mt-1">Cultura • Lazer</p>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <p class="text-apple-gray text-sm mb-6 leading-relaxed">Um fim de semana de atrações no autódromo.
+                        Shows, exposições de clássicos e corridas para toda a família.</p>
+
+                    <div class="flex items-center gap-4 mb-2">
+                        <div class="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
+                            <div class="bg-orange-500 h-full w-[20%] rounded-full"></div>
+                        </div>
+                        <span class="text-xs font-bold text-apple-text">20%</span>
+                    </div>
+                    <div
+                        class="flex justify-between text-[11px] text-apple-gray font-medium uppercase tracking-wide mb-6">
+                        <span>R$ 60k Captados</span>
+                        <span>Meta: R$ 300k</span>
+                    </div>
+
+                    <button onclick="scrollToForm()"
+                        class="w-full py-3 bg-gray-50 text-apple-text font-semibold rounded-xl text-sm hover:bg-gray-100 transition-colors">
+                        Ver Oportunidades
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Form -->
+    <section id="contato" class="px-6 py-16 bg-white rounded-t-[40px] shadow-[0_-10px_40px_rgba(0,0,0,0.03)]">
+        <div class="max-w-md mx-auto">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold mb-3 text-apple-text">Simular</h2>
+                <p class="text-apple-gray text-base">Descubra seu potencial de isenção.</p>
+            </div>
+
+            <form class="space-y-5" onsubmit="event.preventDefault(); submitForm()">
+                <div class="group">
+                    <input type="text" required
+                        class="w-full bg-gray-50 border-0 rounded-2xl p-4 text-apple-text placeholder-gray-400 focus:ring-2 focus:ring-brand-500/20 focus:bg-white transition-all outline-none"
+                        placeholder="Nome da Empresa">
+                </div>
+
+                <div class="group">
+                    <input type="tel" required
+                        class="w-full bg-gray-50 border-0 rounded-2xl p-4 text-apple-text placeholder-gray-400 focus:ring-2 focus:ring-brand-500/20 focus:bg-white transition-all outline-none"
+                        placeholder="Seu WhatsApp">
+                </div>
+
+                <div class="group relative">
+                    <select
+                        class="w-full bg-gray-50 border-0 rounded-2xl p-4 text-apple-text appearance-none focus:ring-2 focus:ring-brand-500/20 focus:bg-white transition-all outline-none">
+                        <option value="" disabled selected>Média de ICMS Mensal</option>
+                        <option>Até R$ 10.000</option>
+                        <option>R$ 10k a R$ 50k</option>
+                        <option>R$ 50k a R$ 200k</option>
+                        <option>Acima de R$ 200k</option>
+                    </select>
+                    <i
+                        class="fas fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"></i>
+                </div>
+
+                <button type="submit"
+                    class="w-full py-4 bg-brand-600 text-white font-bold rounded-2xl shadow-lg shadow-brand-500/20 mt-6 flex items-center justify-center gap-2 active:scale-95 transition-transform">
+                    <span>Receber Simulação</span>
+                    <i class="fas fa-arrow-right text-sm"></i>
+                </button>
+
+                <p class="text-center text-[11px] text-gray-400 mt-6 flex items-center justify-center gap-1">
+                    <i class="fas fa-lock"></i> Dados protegidos e criptografados.
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Chat Widget -->
+    <div id="chat-widget"
+        class="fixed bottom-0 left-0 w-full h-[85vh] bg-white rounded-t-[32px] shadow-[0_-10px_60px_rgba(0,0,0,0.15)] transform translate-y-full transition-transform duration-500 cubic-bezier(0.32, 0.72, 0, 1) z-50 flex flex-col">
+        <!-- Chat Header -->
+        <div
+            class="px-6 py-5 border-b border-gray-100 flex justify-between items-center bg-white/80 backdrop-blur-md rounded-t-[32px] sticky top-0 z-10">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-black flex items-center justify-center shadow-md">
+                    <i class="fas fa-bolt text-white text-sm"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-apple-text text-sm">Assistente ADEPS</h3>
+                    <p class="text-[11px] text-green-500 font-medium flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Online
+                    </p>
+                </div>
+            </div>
+            <button onclick="toggleChat()"
+                class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 transition"><i
+                    class="fas fa-times"></i></button>
+        </div>
+
+        <!-- Chat Messages -->
+        <div class="flex-1 p-6 overflow-y-auto space-y-6 bg-white" id="chat-messages">
+            <!-- Bot Intro -->
+            <div class="flex gap-3 chat-bubble" style="animation-delay: 0.1s">
+                <div
+                    class="w-8 h-8 rounded-full bg-gray-100 flex-shrink-0 flex items-center justify-center text-xs text-gray-500">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div
+                    class="bg-gray-100 p-4 rounded-2xl rounded-tl-none text-[15px] text-apple-text leading-relaxed max-w-[85%]">
+                    Olá! Sou a IA da ADEPS. 🏎️<br><br>Posso te explicar como usar seu ICMS para patrocinar sem gastar
+                    nada. O que gostaria de saber?
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="flex flex-wrap gap-2 pl-11 chat-bubble" style="animation-delay: 0.3s">
+                <button onclick="sendMsg('Como funciona o ICMS?')"
+                    class="px-4 py-2.5 rounded-full bg-white border border-gray-200 text-[13px] font-medium text-apple-text shadow-sm hover:bg-gray-50 transition">Como
+                    funciona?</button>
+                <button onclick="sendMsg('Quais os benefícios?')"
+                    class="px-4 py-2.5 rounded-full bg-white border border-gray-200 text-[13px] font-medium text-apple-text shadow-sm hover:bg-gray-50 transition">Benefícios</button>
+                <button onclick="sendMsg('Quero falar com humano')"
+                    class="px-4 py-2.5 rounded-full bg-white border border-gray-200 text-[13px] font-medium text-apple-text shadow-sm hover:bg-gray-50 transition">Falar
+                    com humano</button>
+            </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="p-4 border-t border-gray-100 bg-white pb-8">
+            <div class="relative">
+                <input type="text" placeholder="Digite sua dúvida..."
+                    class="w-full bg-gray-50 border-0 rounded-full py-3.5 px-5 text-[15px] text-apple-text focus:ring-2 focus:ring-brand-500/10 focus:bg-white transition outline-none">
+                <button
+                    class="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 bg-brand-600 rounded-full flex items-center justify-center text-white text-xs shadow-md active:scale-90 transition-transform">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay p/ Chat -->
+    <div id="chat-overlay" onclick="toggleChat()"
+        class="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-500"></div>
+
+    <!-- WhatsApp FAB -->
+    <a href="https://wa.me/5551999999999" target="_blank"
+        class="fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-[0_8px_30px_rgba(37,211,102,0.4)] z-30 hover:scale-110 transition-transform">
+        <i class="fab fa-whatsapp text-2xl text-white"></i>
+    </a>
+
+    <script>
+        // Chat Logic
+        function toggleChat() {
+            const widget = document.getElementById('chat-widget');
+            const overlay = document.getElementById('chat-overlay');
+            const isHidden = widget.classList.contains('translate-y-full');
+
+            if (isHidden) {
+                widget.classList.remove('translate-y-full');
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+            } else {
+                widget.classList.add('translate-y-full');
+                overlay.classList.add('opacity-0');
+                setTimeout(() => overlay.classList.add('hidden'), 500);
+            }
+        }
+
+        function sendMsg(text) {
+            const chatBox = document.getElementById('chat-messages');
+
+            // User Msg
+            const userDiv = document.createElement('div');
+            userDiv.className = 'flex gap-3 chat-bubble flex-row-reverse';
+            userDiv.innerHTML = `
+                <div class="bg-brand-600 p-3.5 rounded-2xl rounded-tr-none text-[15px] text-white max-w-[85%] shadow-sm">
+                    ${text}
+                </div>
+            `;
+            chatBox.appendChild(userDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // Typing Indicator
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'flex gap-3 chat-bubble mt-4';
+            typingDiv.id = 'typing-indicator';
+            typingDiv.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-gray-100 flex-shrink-0 flex items-center justify-center text-xs text-gray-400"><i class="fas fa-robot"></i></div>
+                <div class="bg-gray-100 p-4 rounded-2xl rounded-tl-none flex gap-1 items-center h-10 w-16">
+                    <div class="w-1.5 h-1.5 bg-gray-400 rounded-full typing-dot"></div>
+                    <div class="w-1.5 h-1.5 bg-gray-400 rounded-full typing-dot"></div>
+                    <div class="w-1.5 h-1.5 bg-gray-400 rounded-full typing-dot"></div>
+                </div>
+            `;
+            chatBox.appendChild(typingDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // Bot Response (Simulated)
+            setTimeout(() => {
+                typingDiv.remove();
+                const botDiv = document.createElement('div');
+                botDiv.className = 'flex gap-3 chat-bubble';
+
+                let response = "Isso é interessante! O benefício fiscal permite abater 100% do valor investido diretamente do ICMS a pagar. Sua empresa não gasta nada extra.";
+                if (text.includes('humano')) response = "Claro! Vou chamar um especialista da ADEPS agora mesmo. Pode me passar seu WhatsApp?";
+
+                botDiv.innerHTML = `
+                    <div class="w-8 h-8 rounded-full bg-gray-100 flex-shrink-0 flex items-center justify-center text-xs text-gray-400"><i class="fas fa-robot"></i></div>
+                    <div class="bg-gray-100 p-4 rounded-2xl rounded-tl-none text-[15px] text-apple-text leading-relaxed max-w-[85%]">
+                        ${response}
+                    </div>
+                `;
+                chatBox.appendChild(botDiv);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 1500);
+        }
+
+        function scrollToForm() {
+            document.getElementById('contato').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function submitForm() {
+            const btn = document.querySelector('form button');
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Enviando...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check"></i> Enviado!';
+                btn.classList.remove('bg-brand-600');
+                btn.classList.add('bg-green-600');
+                alert('Simulação enviada! Em breve entraremos em contato.');
+            }, 2000);
+        }
+    </script>
+</body>
+
+</html>
