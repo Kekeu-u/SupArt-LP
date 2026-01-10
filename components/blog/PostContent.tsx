@@ -64,7 +64,7 @@ export const PostContent = ({ post }: { post: Post }) => {
 
             {/* Cover Image */}
             <div className="not-prose relative w-full h-[500px] rounded-2xl overflow-hidden mb-12 shadow-2xl">
-                <Image src={post.featured_image || '/placeholder-blog.jpg'} alt={post.title} fill className="object-cover" />
+                <Image src={post.featured_image || '/placeholder-blog.webp'} alt={post.title} fill className="object-cover" />
                 <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl" />
             </div>
 

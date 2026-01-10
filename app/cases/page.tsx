@@ -1,6 +1,7 @@
 "use client";
 
 import { PortfolioFull } from "@/components/sections/showcase/PortfolioFull";
+import { AIAgentsSection } from "@/components/sections/showcase/AIAgentsSection";
 import { Header } from "@/components/layout/Header";
 import { siteConfig, footerLinks } from "@/data";
 import { useI18n } from "@/lib/i18n";
@@ -13,6 +14,8 @@ export default function CasesPage() {
             <Header />
 
             <PortfolioFull />
+
+            <AIAgentsSection />
 
             {/* Footer - Reused from main page layout */}
             <footer className="bg-[var(--color-apple-off-white)] py-32 border-t border-black/5 text-[var(--color-apple-black)]">

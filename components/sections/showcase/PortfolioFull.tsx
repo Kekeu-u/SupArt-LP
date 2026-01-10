@@ -94,11 +94,12 @@ const FullscreenProjectCard: React.FC<{ project: typeof projects[0]; index: numb
     return (
         <section
             ref={sectionRef}
-            className={`relative min-h-screen w-full flex flex-col md:flex-row items-center overflow-hidden bg-gradient-to-br ${project.gradient}`}
+            className={`relative min-h-[100dvh] w-full flex flex-col md:flex-row items-center overflow-hidden bg-gradient-to-br ${project.gradient}`}
+            style={{ contentVisibility: "auto", containIntrinsicSize: "auto 100dvh" }}
         >
             {/* Content - Left Side (Desktop) / Top (Mobile) */}
             <div className="relative z-20 w-full md:w-[40%] h-full flex flex-col justify-center px-6 py-20 md:pl-20 md:pr-0 pointer-events-none">
-                <div ref={contentRef} className="pointer-events-auto">
+                <div ref={contentRef} className="pointer-events-auto will-change-transform">
                     {/* Category Badge */}
                     <span
                         className={`inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-sm font-medium text-white mb-6 border border-white/10`}
@@ -133,7 +134,7 @@ const FullscreenProjectCard: React.FC<{ project: typeof projects[0]; index: numb
             <div
                 className="absolute bottom-0 right-0 w-full md:w-[65%] h-[50vh] md:h-[85vh] z-10 overflow-hidden rounded-tl-[3rem] md:rounded-tl-[5rem] shadow-2xl border-t border-l border-white/10 bg-black/20 backdrop-blur-sm"
             >
-                <div ref={imageRef} className="relative w-full h-[120%] -top-[10%]">
+                <div ref={imageRef} className="relative w-full h-[120%] -top-[10%] will-change-transform">
                     <Image
                         src={project.image}
                         alt={project.title}
@@ -162,7 +163,7 @@ export const PortfolioFull = () => {
     const content = projectsSection;
 
     return (
-        <div id="portfolio" className="bg-white">
+        <div id="portfolio" className="bg-black">
             {/* Header Section */}
             <section className="relative py-20 md:py-32 bg-transparent text-center">
                 <div className="max-w-4xl mx-auto px-6">
@@ -180,12 +181,7 @@ export const PortfolioFull = () => {
                 <FullscreenProjectCard key={index} project={project} index={index} locale={locale} />
             ))}
 
-            {/* View More CTA */}
-            <div className="py-20 flex justify-center bg-transparent">
-                <ShinyButton href="/portfolio">
-                    {locale === "en" ? "View All Projects" : "Ver Todos os Projetos"}
-                </ShinyButton>
-            </div>
+
         </div>
     );
 };

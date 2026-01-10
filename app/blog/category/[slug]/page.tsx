@@ -76,7 +76,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                                     <div className="grid md:grid-cols-3 gap-6">
                                         <div className="relative h-48 md:h-full min-h-[200px]">
                                             <Image
-                                                src={post.cover_image_url || '/placeholder-blog.jpg'}
+                                                src={post.cover_image_url || '/placeholder-blog.webp'}
                                                 alt={post.title}
                                                 fill
                                                 className="object-cover group-hover:scale-105 transition-transform duration-500"

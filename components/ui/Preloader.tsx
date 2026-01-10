@@ -2,47 +2,49 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { HeroLogo } from "@/components/sections/hero/HeroLogo";
+import { HamsterLoader } from "@/components/ui/HamsterLoader";
 
 export function Preloader() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        // Simula um tempo mínimo de carregamento para garantir que a animação seja vista
-        // e para dar tempo de carregar recursos críticos
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 1500);
+        // Wait for page to be fully ready
+        const handleLoad = () => {
+            // Small delay to ensure smooth transition
+            setTimeout(() => setIsLoading(false), 300);
+        };
 
-        return () => clearTimeout(timer);
+        if (document.readyState === "complete") {
+            handleLoad();
+        } else {
+            window.addEventListener("load", handleLoad);
+            // Fallback timeout in case load event doesn't fire
+            const fallback = setTimeout(() => setIsLoading(false), 3000);
+            return () => {
+                window.removeEventListener("load", handleLoad);
+                clearTimeout(fallback);
+            };
+        }
     }, []);
 
     return (
         <AnimatePresence mode="wait">
             {isLoading && (
                 <motion.div
-                    className="fixed inset-0 z-[9999] flex items-center justify-center bg-white dark:bg-black"
+                    className="fixed inset-0 z-[9999] flex items-center justify-center bg-black"
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
                 >
                     <motion.div
-                        initial={{ scale: 0.8, opacity: 0 }}
+                        initial={{ scale: 0.9, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
-                        exit={{ scale: 1.2, opacity: 0 }}
-                        transition={{ duration: 0.5 }}
+                        exit={{ scale: 0.95, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
                     >
-                        <HeroLogo size={100} />
-                        <motion.div
-                            className="mt-8 h-1 w-32 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden mx-auto"
-                        >
-                            <motion.div
-                                className="h-full bg-black dark:bg-white"
-                                initial={{ width: "0%" }}
-                                animate={{ width: "100%" }}
-                                transition={{ duration: 1.5, ease: "easeInOut" }}
-                            />
-                        </motion.div>
+                        <div className="scale-75 md:scale-100">
+                            <HamsterLoader />
+                        </div>
                     </motion.div>
                 </motion.div>
             )}

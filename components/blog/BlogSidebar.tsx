@@ -48,7 +48,7 @@ export const BlogSidebar = async () => {
                         <Link key={post.slug} href={`/blog/${post.slug}`} className="flex gap-3 group">
                             <PremiumBorder className="relative w-20 h-20 rounded-xl overflow-hidden shrink-0">
                                 <Image
-                                    src={post.featured_image || '/placeholder-blog.jpg'}
+                                    src={post.featured_image || '/placeholder-blog.webp'}
                                     alt={post.title}
                                     fill
                                     className="object-cover group-hover:scale-110 transition-transform duration-500"

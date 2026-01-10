@@ -80,7 +80,7 @@ export const Header = () => {
       <header className="fixed top-0 left-0 w-full z-50 p-4">
         <div className="container mx-auto flex justify-between items-center">
           <a href="/" className="transition-transform duration-300 hover:scale-105">
-            <SupArtLogo className="h-12 w-12 border-2 border-white/10 shadow-lg" />
+            <SupArtLogo className="h-12 w-12 shadow-lg" />
           </a>
           <nav>
             <ul className="flex gap-x-4">
@@ -108,7 +108,7 @@ export const Header = () => {
             className="transition-transform duration-300 hover:scale-105"
             aria-label="Voltar para o topo"
           >
-            <SupArtLogo className="h-12 w-12 border-2 border-white/10 shadow-lg" />
+            <SupArtLogo className="h-12 w-12 shadow-lg" />
           </a>
         </div>
 
@@ -150,7 +150,7 @@ export const Header = () => {
             className={`transition-all duration-500 ease-in-out hover:scale-105 ${isScrolled ? "opacity-0 scale-95 h-0 invisible" : "opacity-100 scale-100 h-auto visible"
               }`}
           >
-            <SupArtLogo className="h-16 w-16 border-2 border-white/10 shadow-lg" />
+            <SupArtLogo className="h-16 w-16 shadow-lg" />
           </a>
 
           {/* Navigation Pill */}

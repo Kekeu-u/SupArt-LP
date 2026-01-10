@@ -23,7 +23,7 @@ export const projects: Project[] = [
             pt: "Transformando vidas através do esporte e educação.",
         },
         url: "https://adesprs.org.br/",
-        image: "/adesp-preview.png",
+        image: "/adesp-preview.webp",
         tags: [
             { label: { en: "Non-Profit", pt: "Non-Profit" } },
             { label: { en: "Institutional", pt: "Institucional" } },
@@ -38,7 +38,7 @@ export const projects: Project[] = [
             en: "Premium visual identity for Brazil's world champion captain.",
             pt: "Identidade visual premium para o capitão tetracampeão.",
         },
-        image: "/dunga-preview.png",
+        image: "/dunga-preview.webp",
         tags: [
             { label: { en: "Partnership", pt: "Parceria" } },
             { label: { en: "Strategic", pt: "Estratégica" }, variant: "highlight" },

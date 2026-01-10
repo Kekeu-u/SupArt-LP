@@ -31,7 +31,7 @@ export const BlogCard = ({ post }: { post: Post }) => {
                 {/* Image */}
                 <div className="relative h-48 w-full overflow-hidden">
                     <Image
-                        src={post.featured_image || '/placeholder-blog.jpg'}
+                        src={post.featured_image || '/placeholder-blog.webp'}
                         alt={post.title}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
