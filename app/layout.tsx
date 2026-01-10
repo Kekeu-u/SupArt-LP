@@ -4,6 +4,9 @@ import "./globals.css";
 import { seoKeywords } from "@/data/seo-keywords";
 import { I18nProvider } from "@/lib/i18n";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { SplineBackground } from "@/components/ui/SplineBackground";
+import { SmoothScroll } from "@/components/providers/SmoothScroll";
+import { Preloader } from "@/components/ui/Preloader";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -70,7 +73,7 @@ export default function RootLayout({
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
                 />
             </head>
-            <body className={`${inter.variable} antialiased`}>
+            <body className={`${inter.variable} antialiased bg-transparent`}>
                 <I18nProvider>
                     <ThemeProvider
                         attribute="class"
@@ -78,6 +81,9 @@ export default function RootLayout({
                         enableSystem
                         disableTransitionOnChange
                     >
+                        <SmoothScroll />
+                        <Preloader />
+                        <SplineBackground />
                         {children}
                     </ThemeProvider>
                 </I18nProvider>

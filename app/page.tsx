@@ -95,7 +95,8 @@ export default function Home() {
                     className="hero-section relative min-h-screen flex flex-col items-center justify-center px-6 pb-24 overflow-hidden"
                 >
                     {/* Background Gradiente Leve */}
-                    <div className="fixed top-0 left-0 w-full h-full -z-50 pointer-events-none bg-gradient-to-br from-purple-50 via-white to-blue-50 dark:from-black dark:via-gray-900 dark:to-black" />
+                    {/* Background Gradiente Leve - REMOVIDO para mostrar Spline */}
+                    {/* <div className="fixed top-0 left-0 w-full h-full -z-50 pointer-events-none bg-gradient-to-br from-purple-50 via-white to-blue-50 dark:from-black dark:via-gray-900 dark:to-black" /> */}
 
                     {/* Conteúdo Hero */}
                     <div className="relative z-10 text-center max-w-5xl mx-auto pointer-events-none">
@@ -148,7 +149,7 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     TECH STACK SECTION
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10 bg-white">
+                <div className="section-reveal relative z-10 bg-transparent">
                     <TechStackMarquee />
                 </div>
 
@@ -157,7 +158,7 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     PROJECT SHOWCASE SECTION
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10 bg-white">
+                <div className="section-reveal relative z-10 bg-transparent">
                     <ProjectShowcase />
                 </div>
 
@@ -166,7 +167,7 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     TESTIMONIALS SECTION
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10 bg-white">
+                <div className="section-reveal relative z-10 bg-transparent">
                     <Testimonials />
                 </div>
 
@@ -175,7 +176,7 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     SOLUTIONS SECTION
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10 bg-white">
+                <div className="section-reveal relative z-10 bg-transparent">
                     <Solutions />
                 </div>
 
@@ -184,7 +185,7 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     BLOG PREVIEW
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10 bg-white">
+                <div className="section-reveal relative z-10 bg-transparent">
                     <BlogPreview />
                 </div>
 
