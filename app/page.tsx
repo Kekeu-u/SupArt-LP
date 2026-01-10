@@ -95,7 +95,7 @@ export default function Home() {
                     className="hero-section relative min-h-screen flex flex-col items-center justify-center px-6 pb-24 overflow-hidden"
                 >
                     {/* Background Gradiente Leve */}
-                    <div className="fixed top-0 left-0 w-full h-full -z-50 pointer-events-none bg-gradient-to-br from-purple-50 via-white to-blue-50" />
+                    <div className="fixed top-0 left-0 w-full h-full -z-50 pointer-events-none bg-gradient-to-br from-purple-50 via-white to-blue-50 dark:from-black dark:via-gray-900 dark:to-black" />
 
                     {/* Conteúdo Hero */}
                     <div className="relative z-10 text-center max-w-5xl mx-auto pointer-events-none">
