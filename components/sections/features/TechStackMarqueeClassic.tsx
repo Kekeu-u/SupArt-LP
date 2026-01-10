@@ -18,9 +18,9 @@ const marqueeCompanies = [...companies, ...companies, ...companies];
 
 export const TechStackMarqueeClassic = () => {
     return (
-        <section className="py-24 bg-[var(--color-apple-off-white)] overflow-hidden border-b border-black/5">
+        <section className="py-24 bg-white overflow-hidden border-b border-black/5">
             <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
-                <div className="relative -mt-20 bg-[var(--color-apple-off-white)] inline-flex flex-col items-center justify-center gap-6 px-12 py-8 rounded-full z-20">
+                <div className="relative -mt-20 bg-white inline-flex flex-col items-center justify-center gap-6 px-12 py-8 rounded-full z-20">
                     <span className="text-base font-medium text-[var(--color-apple-gray)] uppercase tracking-widest">Powered by</span>
                     {/* Next.js Logo (Black) - Larger and more prominent */}
                     <div className="relative group">
@@ -84,8 +84,8 @@ export const TechStackMarqueeClassic = () => {
                 </motion.div>
 
                 {/* Gradient Masks for smooth fade edges */}
-                <div className="absolute inset-y-0 left-0 w-32 md:w-64 bg-gradient-to-r from-[var(--color-apple-off-white)] to-transparent z-10 pointer-events-none" />
-                <div className="absolute inset-y-0 right-0 w-32 md:w-64 bg-gradient-to-l from-[var(--color-apple-off-white)] to-transparent z-10 pointer-events-none" />
+                <div className="absolute inset-y-0 left-0 w-32 md:w-64 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+                <div className="absolute inset-y-0 right-0 w-32 md:w-64 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
             </div>
         </section>
     );

@@ -3,8 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { seoKeywords } from "@/data/seo-keywords";
 import { I18nProvider } from "@/lib/i18n";
-import { ThemeProvider } from "@/components/providers/ThemeProvider";
-import { Preloader } from "@/components/ui/Preloader";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -71,17 +69,9 @@ export default function RootLayout({
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
                 />
             </head>
-            <body>
+            <body className="light">
                 <I18nProvider>
-                    <ThemeProvider
-                        attribute="class"
-                        defaultTheme="system"
-                        enableSystem
-                        disableTransitionOnChange
-                    >
-                        <Preloader />
-                        {children}
-                    </ThemeProvider>
+                    {children}
                 </I18nProvider>
             </body>
         </html>

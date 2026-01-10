@@ -84,8 +84,8 @@ export const Header = () => {
           </a>
           <nav>
             <ul className="flex gap-x-4">
-              <li><a href="/" className="text-gray-900 dark:text-white hover:text-purple-400 transition-colors">Home</a></li>
-              <li><a href="/blog" className={`text-gray-900 dark:text-white hover:text-purple-400 transition-colors ${pathname === '/blog' ? 'text-purple-400' : ''}`}>Blog</a></li>
+              <li><a href="/" className="text-gray-900 hover:text-purple-400 transition-colors">Home</a></li>
+              <li><a href="/blog" className={`text-gray-900 hover:text-purple-400 transition-colors ${pathname === '/blog' ? 'text-purple-400' : ''}`}>Blog</a></li>
             </ul>
           </nav>
         </div>

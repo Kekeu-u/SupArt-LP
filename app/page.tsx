@@ -1,11 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 
 // ═══════════════════════════════════════════════════════════════════════════
 // LAZY IMPORTS - Carregados sob demanda para performance
@@ -32,109 +29,15 @@ const Testimonials = dynamic(
 // ═══════════════════════════════════════════════════════════════════════════
 import { TechStackMarquee } from "@/components/sections/features/TechStackMarquee";
 import { RotatingHeadline } from "@/components/sections/hero/RotatingHeadline";
-import { HeroChat } from "@/components/sections/hero/HeroChat";
 import { DevPanel } from "@/components/layout/DevPanel";
-import { ShinyButton } from "@/components/ui/ShinyButton";
 import { siteConfig, footerLinks } from "@/data";
 import { HeroLogo } from "@/components/sections/hero/HeroLogo";
 import { useI18n } from "@/lib/i18n";
 import { PremiumDivider } from "@/components/ui/PremiumDivider";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
-import { LazySpline } from "@/components/ui/LazySpline";
-
-// Registrar plugin
-if (typeof window !== "undefined") {
-    gsap.registerPlugin(ScrollTrigger);
-}
 
 export default function Home() {
     const { locale, t } = useI18n();
-    const [isChatActive, setIsChatActive] = useState(false);
     const mainRef = useRef<HTMLElement>(null);
-    const heroRef = useRef<HTMLElement>(null);
-
-    // ═══════════════════════════════════════════
-    // ANIMAÇÕES GSAP - IMPRESSIONANTES E LEVES
-    // ═══════════════════════════════════════════
-    useGSAP(
-        () => {
-            const mm = gsap.matchMedia();
-
-            // ─────────────────────────────────────
-            // ANIMAÇÕES DESKTOP
-            // ─────────────────────────────────────
-            mm.add("(min-width: 768px)", () => {
-                // Hero text parallax + fade
-                gsap.to(".hero-text", {
-                    y: "-15%",
-                    opacity: 0,
-                    filter: "blur(8px)",
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: mainRef.current,
-                        start: "top top",
-                        end: "35% top",
-                        scrub: 0.3,
-                    },
-                });
-
-                // Hero CTA parallax
-                gsap.to(".hero-cta", {
-                    y: "-25%",
-                    opacity: 0.3,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: mainRef.current,
-                        start: "top top",
-                        end: "40% top",
-                        scrub: 0.4,
-                    },
-                });
-
-                // Section reveals com perspectiva 3D
-                gsap.utils.toArray<HTMLElement>(".section-reveal").forEach((section) => {
-                    gsap.from(section, {
-                        y: 50,
-                        opacity: 0,
-                        duration: 0.8,
-                        ease: "power2.out",
-                        scrollTrigger: {
-                            trigger: section,
-                            start: "top 90%",
-                            end: "top 20%",
-                            toggleActions: "play none none reverse",
-                        },
-                    });
-                });
-            });
-
-            // ─────────────────────────────────────
-            // ANIMAÇÕES MOBILE (simplificadas)
-            // ─────────────────────────────────────
-            mm.add("(max-width: 767px)", () => {
-                gsap.to(".hero-text", {
-                    opacity: 0.5,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: mainRef.current,
-                        start: "top top",
-                        end: "30% top",
-                        scrub: 0.3,
-                    },
-                });
-            });
-
-            const timer = setTimeout(() => {
-                ScrollTrigger.refresh();
-            }, 1000);
-
-            return () => {
-                mm.revert();
-                clearTimeout(timer);
-            };
-        },
-        { scope: mainRef, dependencies: [] }
-    );
 
     const faqSchema = {
         "@context": "https://schema.org",
@@ -183,27 +86,16 @@ export default function Home() {
             {/* DevPanel - só aparece em desenvolvimento */}
             <DevPanel />
 
-            {/* Floating Theme Toggle - Home Page Only */}
-            <div className="fixed top-6 right-6 z-[60]">
-                <ThemeToggle />
-            </div>
-
             <main ref={mainRef} className="min-h-screen bg-transparent overflow-x-hidden selection:bg-[var(--color-apple-blue)] selection:text-white">
 
                 {/* ═══════════════════════════════════════════
                     HERO SECTION - Com Spline 3D Background
                     ═══════════════════════════════════════════ */}
                 <section
-                    ref={heroRef}
                     className="hero-section relative min-h-screen flex flex-col items-center justify-center px-6 pb-24 overflow-hidden"
                 >
-                    {/* Spline 3D Background - Lazy Loaded para performance */}
-                    <div className="fixed top-0 left-0 w-full h-full -z-50 pointer-events-none">
-                        <LazySpline
-                            src="https://my.spline.design/flowingribbon-TlkEaNrvCCNZuJBNJN3LXpRF"
-                            delay={800}
-                        />
-                    </div>
+                    {/* Background Gradiente Leve */}
+                    <div className="fixed top-0 left-0 w-full h-full -z-50 pointer-events-none bg-gradient-to-br from-purple-50 via-white to-blue-50" />
 
                     {/* Conteúdo Hero */}
                     <div className="relative z-10 text-center max-w-5xl mx-auto pointer-events-none">
@@ -211,11 +103,7 @@ export default function Home() {
                         <motion.div
                             className="mb-6 flex justify-center pointer-events-auto"
                             initial={{ opacity: 0, y: 20 }}
-                            animate={{
-                                opacity: isChatActive ? 0 : 1,
-                                y: isChatActive ? -20 : 0,
-                                scale: isChatActive ? 0.8 : 1,
-                            }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
                             transition={{ duration: 0.4, ease: "easeOut" }}
                         >
                             <HeroLogo size={140} />
@@ -224,16 +112,12 @@ export default function Home() {
                         {/* Texto do Hero */}
                         <motion.div
                             className="hero-text pointer-events-auto"
-                            initial={{ opacity: 1, y: 0 }}
-                            animate={{
-                                opacity: isChatActive ? 0 : 1,
-                                y: isChatActive ? -30 : 0,
-                                scale: isChatActive ? 0.95 : 1,
-                            }}
-                            transition={{ duration: 0.4, ease: "easeOut" }}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
                         >
                             <RotatingHeadline />
-                            <p className="text-lead text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mt-5 mb-8">
+                            <p className="text-lead text-gray-600 max-w-2xl mx-auto mt-5 mb-8">
                                 {heroSubtitle}
                             </p>
                         </motion.div>
@@ -264,7 +148,7 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     TECH STACK SECTION
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10 bg-white dark:bg-black">
+                <div className="section-reveal relative z-10 bg-white">
                     <TechStackMarquee />
                 </div>
 
@@ -273,7 +157,7 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     PROJECT SHOWCASE SECTION
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10 bg-white dark:bg-black">
+                <div className="section-reveal relative z-10 bg-white">
                     <ProjectShowcase />
                 </div>
 
@@ -282,7 +166,7 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     TESTIMONIALS SECTION
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10 bg-white dark:bg-black">
+                <div className="section-reveal relative z-10 bg-white">
                     <Testimonials />
                 </div>
 
@@ -291,7 +175,7 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     SOLUTIONS SECTION
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10 bg-white dark:bg-black">
+                <div className="section-reveal relative z-10 bg-white">
                     <Solutions />
                 </div>
 
@@ -300,23 +184,23 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     BLOG PREVIEW
                     ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10 bg-white dark:bg-black">
+                <div className="section-reveal relative z-10 bg-white">
                     <BlogPreview />
                 </div>
 
                 {/* ═══════════════════════════════════════════
                     FOOTER
                     ═══════════════════════════════════════════ */}
-                <footer className="bg-[var(--color-apple-off-white)] dark:bg-black py-32 border-t border-black/5 dark:border-white/10 transition-colors duration-500">
+                <footer className="bg-[var(--color-apple-off-white)] py-32 border-t border-black/5 transition-colors duration-500">
                     <div className="max-w-7xl mx-auto px-6">
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
                             <div className="col-span-2 md:col-span-1">
-                                <h4 className="font-semibold mb-6 dark:text-white">{siteConfig.name}</h4>
-                                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed max-w-xs">
+                                <h4 className="font-semibold mb-6">{siteConfig.name}</h4>
+                                <p className="text-sm text-gray-600 leading-relaxed max-w-xs">
                                     {siteConfig.description[locale]}
                                 </p>
                                 {/* Availability Badge */}
-                                <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium">
+                                <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-green-200 text-green-800 text-xs font-medium shadow-sm">
                                     <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                                     {siteConfig.availability[locale]}
                                 </div>
@@ -324,11 +208,11 @@ export default function Home() {
 
                             {footerLinks.map((col, i) => (
                                 <div key={i}>
-                                    <h4 className="font-semibold mb-6 text-sm dark:text-white">{col.title[locale]}</h4>
+                                    <h4 className="font-semibold mb-6 text-sm">{col.title[locale]}</h4>
                                     <ul className="space-y-4">
                                         {col.links.map((link) => (
                                             <li key={link.label.en}>
-                                                <a href={link.href} className="text-sm text-gray-600 dark:text-gray-400 hover:text-[var(--color-apple-black)] dark:hover:text-white transition-colors">
+                                                <a href={link.href} className="text-sm text-gray-600 hover:text-[var(--color-apple-black)] transition-colors">
                                                     {link.label[locale]}
                                                 </a>
                                             </li>
@@ -338,11 +222,11 @@ export default function Home() {
                             ))}
                         </div>
 
-                        <div className="pt-8 border-t border-black/5 dark:border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-                            <p className="text-xs text-gray-500 dark:text-gray-500">
+                        <div className="pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-4">
+                            <p className="text-xs text-gray-500">
                                 {siteConfig.copyright[locale]}
                             </p>
-                            <p className="text-xs text-gray-500 dark:text-gray-500">
+                            <p className="text-xs text-gray-500">
                                 {siteConfig.location}
                             </p>
                         </div>

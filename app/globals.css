@@ -96,68 +96,7 @@
   --blog-border-blockquote: oklch(0.55 0.25 280);
 }
 
-.dark {
-  /* Dark Mode Base */
-  --background: 0 0% 0%;
-  /* #000000 */
-  --foreground: 0 0% 98%;
-  /* #fafafa */
-
-  /* Card / Surfaces */
-  --card: 0 0% 3.9%;
-  /* #0a0a0a */
-  --card-foreground: 0 0% 98%;
-  --popover: 0 0% 3.9%;
-  --popover-foreground: 0 0% 98%;
-
-  /* Brand Colors */
-  --primary: 0 0% 98%;
-  --primary-foreground: 0 0% 9%;
-
-  --secondary: 0 0% 14.9%;
-  /* #262626 */
-  --secondary-foreground: 0 0% 98%;
-
-  --muted: 0 0% 14.9%;
-  --muted-foreground: 0 0% 63.9%;
-
-  --accent: 0 0% 14.9%;
-  --accent-foreground: 0 0% 98%;
-
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 98%;
-
-  /* Borders & Inputs */
-  --border: 0 0% 14.9%;
-  --input: 0 0% 14.9%;
-  --ring: 0 0% 83.1%;
-
-  /* Charts / Data */
-  --chart-1: 220 70% 50%;
-  --chart-2: 160 60% 45%;
-  --chart-3: 30 80% 55%;
-  --chart-4: 280 65% 60%;
-  --chart-5: 340 75% 55%;
-
-  /* Custom SupArt Variables - Dark */
-  --color-apple-off-white: #000000;
-  /* Inverted for bg usage */
-  --color-apple-black: #ffffff;
-  /* Inverted for text usage */
-  --color-apple-gray: #a1a1aa;
-
-  /* Blog Specific - Dark */
-  --blog-text-primary: #ffffff;
-  --blog-text-secondary: #a1a1aa;
-  --blog-border: #333333;
-  --blog-bg-blockquote: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
-  --blog-border-blockquote: #8484ff;
-
-  /* Background Pattern - Dots (Dark Only) */
-  background-color: #000000;
-  background-image: radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.15) 1px, transparent 0);
-  background-size: 24px 24px;
-}
+/* Dark mode removido - site forçado em light mode */
 
 /* Base Styles using Variables */
 body {
@@ -172,34 +111,14 @@ body {
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* Shiny Border Utility for Cards/Sections in Dark Mode */
-.dark .shiny-border {
-  --gradient-angle: 0deg;
-  --gradient-angle-offset: 0deg;
-  --gradient-percent: 20%;
-  --gradient-shine: #8484ff;
+/* Dark Mode Body Pattern */
 
-  position: relative;
-  border: 2px solid transparent;
-  background: linear-gradient(#000000, #000000) padding-box,
-    conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)), transparent 0%, #1d4ed8 5%, var(--gradient-shine) 15%, #1d4ed8 30%, transparent 40%, transparent 100%) border-box;
-  animation: border-spin 4s linear infinite;
-  box-shadow: inset 0 0 20px rgba(29, 78, 216, 0.2);
-}
+
+/* Shiny Border Utility for Cards/Sections in Dark Mode */
+
 
 /* Add a subtle blue beam effect to the body edges in dark mode */
-.dark body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-  box-shadow: inset 0 0 100px rgba(29, 78, 216, 0.15);
-  opacity: 0.5;
-}
+
 
 @layer utilities {
   .glass-panel {
@@ -208,10 +127,7 @@ body {
   }
 
   /* Dark mode glass panel override */
-  .dark .glass-panel {
-    @apply bg-black/40 border-white/10;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-  }
+  
 
   .text-balance {
     text-wrap: balance;
@@ -530,9 +446,7 @@ body {
   background: linear-gradient(180deg, transparent 60%, oklch(0.90 0.10 280) 60%);
 }
 
-.dark .blog-article strong {
-  background: linear-gradient(180deg, transparent 60%, rgba(132, 132, 255, 0.3) 60%);
-}
+
 
 .blog-article a {
   color: oklch(0.50 0.25 280);
@@ -542,10 +456,7 @@ body {
   transition: all 0.2s ease;
 }
 
-.dark .blog-article a {
-  color: #8484ff;
-  border-bottom-color: rgba(132, 132, 255, 0.3);
-}
+
 
 .blog-article a:hover {
   border-bottom-color: oklch(0.55 0.25 280);

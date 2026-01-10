@@ -147,7 +147,7 @@ export function LogoLoader({
  */
 export function PageLoader({ className = "" }: { className?: string }) {
     return (
-        <div className={`fixed inset-0 z-50 flex items-center justify-center bg-[var(--color-apple-off-white)]/95 backdrop-blur-sm ${className}`}>
+        <div className={`fixed inset-0 z-50 flex items-center justify-center bg-white/95/95 backdrop-blur-sm ${className}`}>
             <LogoLoader size={150} showText />
         </div>
     );

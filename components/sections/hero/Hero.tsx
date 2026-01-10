@@ -41,14 +41,14 @@ const Hero: React.FC = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center text-center px-4 sm:px-6 pt-28 md:pt-32 pb-16">
       <div className="container mx-auto relative z-10">
-        <h1 className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 dark:text-white leading-tight mb-4 text-pretty">
+        <h1 className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight mb-4 text-pretty">
           Sua Landing Page de Alta Conversão,
           <br />
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500 min-h-[60px] sm:min-h-[80px] md:min-h-[100px] inline-block">
             <span ref={typedEl}></span>
           </span>
         </h1>
-        <p className="hero-subtitle text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8 text-pretty">
+        <p className="hero-subtitle text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8 text-pretty">
           Transformamos suas ideias em uma poderosa ferramenta de vendas. Crie uma presença online impactante por um preço imbatível.
         </p>
         <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-center items-center">

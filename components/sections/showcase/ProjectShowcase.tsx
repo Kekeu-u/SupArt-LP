@@ -21,10 +21,10 @@ export const ProjectShowcase = () => {
                 viewport={{ once: true }}
                 className="mb-12 text-center"
             >
-                <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4 text-gray-900 dark:text-white">
+                <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4 text-gray-900">
                     {content.title[locale]}
                 </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
+                <p className="text-lg text-gray-600 max-w-xl mx-auto">
                     {content.subtitle[locale]}
                 </p>
             </motion.div>
@@ -33,15 +33,15 @@ export const ProjectShowcase = () => {
                 {/* Site 1 - Large Card - ADESP/RS */}
                 <BentoCard colSpan={2} className="p-0 overflow-hidden bg-transparent border-none shadow-none group/card">
                     <a href="/cases" className="block h-full w-full">
-                        <div className="relative h-full w-full overflow-hidden rounded-2xl bg-white/60 dark:bg-gradient-to-br dark:from-[#0d3320] dark:via-[#1a1a1a] dark:to-[#2d1515] backdrop-blur-xl border border-white/40 dark:border-white/10">
+                        <div className="relative h-full w-full overflow-hidden rounded-2xl bg-gradient-to-br from-[#0d3320] via-[#1a1a1a] to-[#2d1515] backdrop-blur-xl border border-white/10">
                             <div className="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
                             <div className="relative z-10 h-full flex flex-col p-5 md:p-6">
                                 <div className="flex items-center justify-between mb-3">
                                     <div className="flex items-center gap-2">
-                                        <span className="px-2.5 py-1 rounded-full bg-black/5 dark:bg-white/10 text-[10px] font-medium text-gray-600 dark:text-white/70 uppercase tracking-wider">
+                                        <span className="px-2.5 py-1 rounded-full bg-white/10 text-[10px] font-medium text-white/70 uppercase tracking-wider">
                                             Non-Profit
                                         </span>
-                                        <span className="px-2.5 py-1 rounded-full bg-black/5 dark:bg-white/10 text-[10px] font-medium text-gray-600 dark:text-white/70 uppercase tracking-wider">
+                                        <span className="px-2.5 py-1 rounded-full bg-white/10 text-[10px] font-medium text-white/70 uppercase tracking-wider">
                                             {locale === "en" ? "Institutional" : "Institucional"}
                                         </span>
                                     </div>
@@ -50,8 +50,8 @@ export const ProjectShowcase = () => {
                                     </div>
                                 </div>
                                 <div className="mb-4">
-                                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white tracking-tight mb-1.5">ADESP/RS</h3>
-                                    <p className="text-gray-600 dark:text-white/50 text-xs md:text-sm leading-relaxed">
+                                    <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight mb-1.5">ADESP/RS</h3>
+                                    <p className="text-gray-400 text-xs md:text-sm leading-relaxed">
                                         {locale === "en" ? "Transforming lives through sports and education." : "Transformando vidas através do esporte e educação."}
                                     </p>
                                 </div>
@@ -79,12 +79,12 @@ export const ProjectShowcase = () => {
                 {/* Site 2 - Dunga */}
                 <BentoCard colSpan={2} className="p-0 overflow-hidden bg-transparent border-none shadow-none group/card">
                     <a href="/cases" className="block h-full w-full">
-                        <div className="relative h-full w-full overflow-hidden rounded-2xl bg-white/60 dark:bg-gradient-to-br dark:from-amber-900 dark:via-[#1a1a1a] dark:to-stone-900 backdrop-blur-xl border border-white/40 dark:border-white/10">
+                        <div className="relative h-full w-full overflow-hidden rounded-2xl bg-gradient-to-br from-amber-900 via-[#1a1a1a] to-stone-900 backdrop-blur-xl border border-white/10">
                             <div className="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
                             <div className="relative h-full flex flex-col p-5 md:p-6">
                                 <div className="flex items-center justify-between mb-3">
                                     <div className="flex items-center gap-2">
-                                        <span className="px-2.5 py-1 rounded-full bg-black/5 dark:bg-white/10 text-[10px] font-medium text-gray-600 dark:text-white/70 uppercase tracking-wider">
+                                        <span className="px-2.5 py-1 rounded-full bg-white/10 text-[10px] font-medium text-white/70 uppercase tracking-wider">
                                             {locale === "en" ? "Partnership" : "Parceria"}
                                         </span>
                                     </div>
@@ -93,8 +93,8 @@ export const ProjectShowcase = () => {
                                     </div>
                                 </div>
                                 <div className="mb-4">
-                                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white tracking-tight mb-1.5">Dunga</h3>
-                                    <p className="text-gray-600 dark:text-white/50 text-xs md:text-sm leading-relaxed">
+                                    <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight mb-1.5">Dunga</h3>
+                                    <p className="text-gray-400 text-xs md:text-sm leading-relaxed">
                                         {locale === "en" ? "Premium visual identity for Brazil's world champion captain." : "Identidade visual premium para o capitão tetracampeão."}
                                     </p>
                                 </div>

@@ -25,7 +25,7 @@ const LOGO_PATH = "M499.706 289.76c2.902-5.094 5.598-9.885 8.376-14.628 3.362-5.
 export function HeroLogo({ size = 200, className = "" }: HeroLogoProps) {
     return (
         <motion.div
-            className={`relative text-black dark:text-white ${className}`}
+            className={`relative text-black ${className}`}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}

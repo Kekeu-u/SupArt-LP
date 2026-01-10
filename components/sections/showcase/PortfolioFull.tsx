@@ -162,7 +162,7 @@ export const PortfolioFull = () => {
     const content = projectsSection;
 
     return (
-        <div id="portfolio" className="bg-black">
+        <div id="portfolio" className="bg-white">
             {/* Header Section */}
             <section className="relative py-20 md:py-32 bg-transparent text-center">
                 <div className="max-w-4xl mx-auto px-6">

@@ -46,11 +46,11 @@ const TechCard = ({ tech, index, isExpanded, onToggle, locale }: {
             {/* Card container */}
             <div
                 className={`
-                    relative bg-white/60 dark:bg-black/40 backdrop-blur-xl rounded-xl border overflow-hidden
+                    relative bg-white rounded-xl border border-gray-100 overflow-hidden
                     transition-all duration-300 h-full min-h-[100px] sm:min-h-[120px]
                     ${isExpanded
-                        ? 'border-purple-500/50 shadow-xl dark:shadow-purple-500/10'
-                        : 'border-white/40 dark:border-white/10 group-hover:border-purple-500/30 group-hover:shadow-lg'}
+                        ? 'border-purple-500/50 shadow-xl'
+                        : 'hover:border-purple-500/30 hover:shadow-lg'}
                 `}
             >
                 {/* Content */}
@@ -65,10 +65,16 @@ const TechCard = ({ tech, index, isExpanded, onToggle, locale }: {
                             height: isExpanded ? 48 : 40,
                         }}
                         transition={{ duration: 0.3, ease }}
-                        className={`rounded-xl flex items-center justify-center bg-gradient-to-br ${tech.gradient} group-hover:scale-110 transition-transform duration-300 shadow-md`}
+                        className={`rounded-xl flex items-center justify-center bg-gray-50 group-hover:scale-110 transition-transform duration-300 border border-gray-100`}
                     >
                         {Icon && (
-                            <Icon className="text-gray-600 dark:text-white w-1/2 h-1/2" />
+                            <Icon className={`w-1/2 h-1/2 ${tech.name === "Next.js" ? "text-black" :
+                                tech.name === "React" ? "text-[#61DAFB]" :
+                                    tech.name === "TypeScript" ? "text-[#3178C6]" :
+                                        tech.name === "Tailwind" ? "text-[#06B6D4]" :
+                                            tech.name === "Framer" ? "text-[#0055FF]" :
+                                                tech.name === "Vercel" ? "text-black" : "text-gray-600"
+                                }`} />
                         )}
                     </motion.div>
 
@@ -77,7 +83,7 @@ const TechCard = ({ tech, index, isExpanded, onToggle, locale }: {
                         <motion.h3
                             animate={{ fontSize: isExpanded ? 18 : 13 }}
                             transition={{ duration: 0.3, ease }}
-                            className="font-semibold text-gray-900 dark:text-white leading-tight"
+                            className="font-semibold text-gray-900 leading-tight"
                         >
                             {tech.name}
                         </motion.h3>
@@ -85,7 +91,7 @@ const TechCard = ({ tech, index, isExpanded, onToggle, locale }: {
                         <motion.p
                             animate={{ fontSize: isExpanded ? 13 : 10 }}
                             transition={{ duration: 0.3, ease }}
-                            className="text-gray-600 dark:text-gray-400 leading-tight mt-0.5"
+                            className="text-gray-600 leading-tight mt-0.5"
                         >
                             {tech.description[locale]}
                         </motion.p>
@@ -103,7 +109,7 @@ const TechCard = ({ tech, index, isExpanded, onToggle, locale }: {
                                 className="overflow-hidden"
                             >
                                 <div className="mt-3 pt-3 border-t border-gray-100 space-y-3">
-                                    <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+                                    <p className="text-xs text-gray-600 leading-relaxed">
                                         {tech.detail[locale]}
                                     </p>
 
@@ -213,7 +219,7 @@ export const TechStackMarquee = () => {
     };
 
     return (
-        <section className="py-12 bg-[var(--color-apple-off-white)] dark:bg-black overflow-x-hidden transition-colors duration-500">
+        <section className="py-12 bg-[var(--color-apple-off-white)] overflow-x-hidden transition-colors duration-500">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
 
                 {/* Header Compacto */}
@@ -225,7 +231,7 @@ export const TechStackMarquee = () => {
                     className="text-center mb-6"
                 >
                     <div className="flex items-center justify-center gap-3 mb-2">
-                        <span className="text-[10px] font-medium text-gray-600 dark:text-gray-400 uppercase tracking-widest">
+                        <span className="text-[10px] font-medium text-gray-600 uppercase tracking-widest">
                             Powered by
                         </span>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" className="h-6 w-auto">
@@ -249,15 +255,15 @@ export const TechStackMarquee = () => {
                             </defs>
                         </svg>
                     </div>
-                    <p className="text-sm md:text-base text-gray-600 dark:text-white font-medium">
+                    <p className="text-sm md:text-base text-gray-600 font-medium">
                         {headerText}
                     </p>
                 </motion.div>
 
                 {/* Marquee de Logos - Altura Reduzida */}
                 <div className="relative overflow-hidden mb-6 -mx-4 sm:-mx-6 lg:-mx-8">
-                    <div className="absolute inset-y-0 left-0 w-16 md:w-24 bg-gradient-to-r from-white dark:from-black to-transparent z-10 pointer-events-none" />
-                    <div className="absolute inset-y-0 right-0 w-16 md:w-24 bg-gradient-to-l from-white dark:from-black to-transparent z-10 pointer-events-none" />
+                    <div className="absolute inset-y-0 left-0 w-16 md:w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+                    <div className="absolute inset-y-0 right-0 w-16 md:w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
                     <div className="flex overflow-hidden">
                         <motion.div
@@ -271,7 +277,7 @@ export const TechStackMarquee = () => {
                                     href={company.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="shrink-0 h-8 w-24 flex items-center justify-center grayscale opacity-30 hover:grayscale-0 hover:opacity-100 dark:invert transition-all duration-500"
+                                    className="shrink-0 h-8 w-24 flex items-center justify-center grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
                                 >
                                     <img src={company.logo} alt={company.name} className="max-h-6 max-w-full w-auto object-contain" />
                                 </a>
@@ -309,10 +315,10 @@ export const TechStackMarquee = () => {
                             whileHover={{ scale: 1.1 }}
                             transition={{ duration: 0.3, ease }}
                         >
-                            <div className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-white group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+                            <div className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
                                 {stat.value}
                             </div>
-                            <div className="text-[9px] sm:text-[10px] text-gray-600 dark:text-gray-400 uppercase tracking-wide">{stat.label}</div>
+                            <div className="text-[9px] sm:text-[10px] text-gray-600 uppercase tracking-wide">{stat.label}</div>
                         </motion.div>
                     ))}
                 </motion.div>
