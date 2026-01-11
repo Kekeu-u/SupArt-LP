@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PremiumBorder } from "@/components/ui/PremiumBorder";
+import { AIBadge } from "@/components/ui/AIBadge";
 
 interface Post {
     id: string;
@@ -38,6 +39,9 @@ export const BlogCard = ({ post }: { post: Post }) => {
                     />
                     {/* Gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                    {/* AI Badge */}
+                    <AIBadge position="bottom-left" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                     {/* Category tag with gradient */}
                     <div className="absolute top-3 right-3">
