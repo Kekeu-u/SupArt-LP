@@ -60,9 +60,9 @@ const Hero: React.FC = () => {
           </ShinyButton>
 
           <GlassButton
-            href="/blog"
+            href="/diagnostico"
           >
-            Visitar Blog
+            🔮 Diagnóstico Grátis
           </GlassButton>
         </div>
       </div>
