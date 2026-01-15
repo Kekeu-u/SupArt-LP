@@ -9,14 +9,14 @@ export default function MaintenancePage() {
             <div className="absolute inset-0 noise-texture opacity-[0.03] pointer-events-none" />
 
             {/* Animated Orbs */}
-            <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-radial from-purple-400/20 via-transparent to-transparent rounded-full blur-3xl animate-pulse-glow transform-gpu" />
+            <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-radial from-gray-400/20 via-transparent to-transparent rounded-full blur-3xl animate-pulse-glow transform-gpu" />
             <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-radial from-blue-400/15 via-transparent to-transparent rounded-full blur-3xl animate-pulse-glow transform-gpu" style={{ animationDelay: "1s" }} />
 
             {/* Content Card */}
             <div className="glass-panel rounded-[32px] p-8 md:p-12 max-w-lg mx-4 text-center relative z-10">
                 {/* Logo - SupIArt */}
                 <h1 className="headline-hero text-foreground mb-2">
-                    Sup<span className="bg-gradient-to-r from-purple-600 via-blue-500 to-cyan-400 bg-clip-text text-transparent italic font-bold">IA</span>rt
+                    Sup<span className="bg-gradient-to-r from-gray-600 via-blue-500 to-cyan-400 bg-clip-text text-transparent italic font-bold">IA</span>rt
                 </h1>
 
                 {/* Subtitle */}

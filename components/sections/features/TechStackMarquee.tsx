@@ -49,8 +49,8 @@ const TechCard = ({ tech, index, isExpanded, onToggle, locale }: {
                     relative bg-white rounded-xl border border-gray-100 overflow-hidden
                     transition-all duration-300 h-full min-h-[100px] sm:min-h-[120px]
                     ${isExpanded
-                        ? 'border-purple-500/50 shadow-xl'
-                        : 'hover:border-purple-500/30 hover:shadow-lg'}
+                        ? 'border-gray-400 shadow-xl'
+                        : 'hover:border-gray-400 hover:shadow-lg'}
                 `}
             >
                 {/* Content */}
@@ -219,7 +219,7 @@ export const TechStackMarquee = () => {
     };
 
     return (
-        <section className="py-12 bg-[var(--color-apple-off-white)] overflow-x-hidden transition-colors duration-500">
+        <section className="py-12 bg-white overflow-x-hidden transition-colors duration-500">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
 
                 {/* Header Compacto */}
@@ -315,7 +315,7 @@ export const TechStackMarquee = () => {
                             whileHover={{ scale: 1.1 }}
                             transition={{ duration: 0.3, ease }}
                         >
-                            <div className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+                            <div className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 group-hover:text-gray-600 transition-all duration-300">
                                 {stat.value}
                             </div>
                             <div className="text-[9px] sm:text-[10px] text-gray-600 uppercase tracking-wide">{stat.label}</div>

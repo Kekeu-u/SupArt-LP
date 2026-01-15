@@ -35,20 +35,20 @@ export default async function BlogPage() {
     const otherPosts = posts.filter(p => p.id !== featuredPost?.id);
 
     return (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-12">
             {/* Page Header */}
             <div className="text-center mb-16 space-y-4">
                 <div className="inline-block">
-                    <span className="text-xs font-bold uppercase tracking-wider text-purple-300 bg-purple-900/50 backdrop-blur-sm px-3 py-1 rounded-full mb-4 inline-block">
+                    <span className="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-3 py-1 rounded-full mb-4 inline-block">
                         Impulsionado por IA
                     </span>
                 </div>
-                <h1 className="text-5xl md:text-6xl font-bold mb-4 tracking-tight bg-gradient-to-r from-white via-purple-300 to-pink-300 bg-clip-text text-transparent">
+                <h1 className="text-5xl md:text-6xl font-bold mb-4 tracking-tight text-gray-900">
                     Insights & Inovação
                 </h1>
-                <p className="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">
+                <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
                     Explore o futuro do design digital, tecnologia e inteligência artificial.
-                    <span className="block mt-1 text-purple-400 font-semibold">Conteúdo premium para mentes criativas.</span>
+                    <span className="block mt-1 text-blue-600 font-semibold">Conteúdo premium para mentes criativas.</span>
                 </p>
             </div>
 
@@ -71,10 +71,10 @@ export default async function BlogPage() {
                                 </div>
                             </div>
                             <div className="space-y-3">
-                                <h2 className="text-3xl font-bold text-white group-hover:text-purple-300 transition-colors leading-tight">
+                                <h2 className="text-3xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors leading-tight">
                                     {featuredPost.title}
                                 </h2>
-                                <p className="text-gray-300 leading-relaxed line-clamp-3">
+                                <p className="text-gray-600 leading-relaxed line-clamp-3">
                                     {featuredPost.excerpt}
                                 </p>
                                 <div className="flex items-center gap-3 pt-2">

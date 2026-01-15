@@ -28,12 +28,14 @@ const Testimonials = dynamic(
 // IMPORTS SÍNCRONOS - Críticos para First Paint
 // ═══════════════════════════════════════════════════════════════════════════
 import { TechStackMarquee } from "@/components/sections/features/TechStackMarquee";
-import { RotatingHeadline } from "@/components/sections/hero/RotatingHeadline";
 import { DevPanel } from "@/components/layout/DevPanel";
 import { siteConfig, footerLinks } from "@/data";
 import { HeroLogo } from "@/components/sections/hero/HeroLogo";
+import { RotatingHeadline } from "@/components/hero/RotatingHeadline";
 import { useI18n } from "@/lib/i18n";
 import { PremiumDivider } from "@/components/ui/PremiumDivider";
+import { Method } from "@/components/sections/Method";
+import { DiagnosticSection } from "@/components/sections/DiagnosticSection";
 
 export default function Home() {
     const { locale, t } = useI18n();
@@ -71,8 +73,8 @@ export default function Home() {
     };
 
     const heroSubtitle = t(
-        "We transform your digital presence into a high-fidelity cinematic experience.",
-        "Transformamos sua presença digital em uma experiência cinematográfica de alta fidelidade."
+        "We transform businesses with Elite Design and AI. From strategy to automation.",
+        "Transformamos negócios com Design de Elite e IA. Da estratégia à automação."
     );
 
     const ctaText = t("Start Project", "Iniciar Projeto");
@@ -89,58 +91,35 @@ export default function Home() {
             <main ref={mainRef} className="min-h-screen bg-transparent overflow-x-hidden selection:bg-[var(--color-apple-blue)] selection:text-white">
 
                 {/* ═══════════════════════════════════════════
-                    HERO SECTION - Com Spline 3D Background
+                    HERO SECTION - REFATORADO (3 camadas)
                     ═══════════════════════════════════════════ */}
-                <section
-                    className="hero-section relative min-h-screen flex flex-col items-center justify-center px-6 pb-24 overflow-hidden"
-                >
-                    {/* Background Gradiente Leve */}
-                    {/* Background Gradiente Leve - REMOVIDO para mostrar Spline */}
-                    {/* <div className="fixed top-0 left-0 w-full h-full -z-50 pointer-events-none bg-gradient-to-br from-purple-50 via-white to-blue-50 dark:from-black dark:via-gray-900 dark:to-black" /> */}
-
-                    {/* Conteúdo Hero */}
-                    <div className="relative z-10 text-center max-w-5xl mx-auto pointer-events-none">
-                        {/* Logo Animada */}
-                        <motion.div
-                            className="mb-6 flex justify-center pointer-events-auto"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            transition={{ duration: 0.4, ease: "easeOut" }}
+                <section id="home" className="relative min-h-screen flex items-center justify-center px-8 md:px-16">
+                    {/* Camada única de conteúdo */}
+                    <motion.div
+                        className="text-center max-w-4xl mx-auto mt-[10vh]"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                    >
+                        <HeroLogo size={100} className="mx-auto mb-4" />
+                        <RotatingHeadline />
+                        <p className="text-lg md:text-xl text-gray-600 max-w-xl mx-auto mb-6 leading-relaxed">
+                            {heroSubtitle}
+                        </p>
+                        <a
+                            href="#method"
+                            className="inline-block px-6 py-3 rounded-full bg-black text-white font-semibold text-base hover:bg-gray-800 transition-all hover:scale-105 shadow-lg"
                         >
-                            <HeroLogo size={140} />
-                        </motion.div>
-
-                        {/* Texto do Hero */}
-                        <motion.div
-                            className="hero-text pointer-events-auto"
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
-                        >
-                            <RotatingHeadline />
-                            <p className="text-lead text-gray-600 max-w-2xl mx-auto mt-5 mb-8">
-                                {heroSubtitle}
-                            </p>
-                        </motion.div>
-
-                        {/* Shiny CTA Removed as per user request */}
-                    </div>
+                            {t("Understand how it works", "Entender como funciona")}
+                        </a>
+                    </motion.div>
 
                     {/* Scroll Indicator */}
-                    <motion.div
-                        className="absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-auto hidden md:block"
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 1.5, duration: 0.5 }}
-                    >
-                        <motion.div
-                            className="w-6 h-10 rounded-full border-2 border-black/20 flex items-start justify-center p-1"
-                            animate={{ y: [0, 5, 0] }}
-                            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                        >
+                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block">
+                        <div className="w-6 h-10 rounded-full border-2 border-black/20 flex items-start justify-center p-1 animate-bounce">
                             <div className="w-1.5 h-3 rounded-full bg-black/30" />
-                        </motion.div>
-                    </motion.div>
+                        </div>
+                    </div>
                 </section>
 
                 {/* ═══════════════════════════════════════════
@@ -152,6 +131,26 @@ export default function Home() {
                 <div className="section-reveal relative z-10 bg-transparent">
                     <TechStackMarquee />
                 </div>
+
+                <PremiumDivider className="my-0" />
+
+                {/* ═══════════════════════════════════════════
+                    METHOD SECTION
+                    ═══════════════════════════════════════════ */}
+                <div className="section-reveal relative z-10 bg-transparent">
+                    <Method />
+                </div>
+
+                <PremiumDivider className="my-0" />
+
+                {/* ═══════════════════════════════════════════
+                    SOLUTIONS SECTION
+                    ═══════════════════════════════════════════ */}
+                <div className="section-reveal relative z-10 bg-transparent">
+                    <Solutions />
+                </div>
+
+
 
                 <PremiumDivider className="my-0" />
 
@@ -173,20 +172,22 @@ export default function Home() {
 
                 <PremiumDivider className="my-0" />
 
-                {/* ═══════════════════════════════════════════
-                    SOLUTIONS SECTION
-                    ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10 bg-transparent">
-                    <Solutions />
-                </div>
 
-                <PremiumDivider className="my-0" />
 
                 {/* ═══════════════════════════════════════════
                     BLOG PREVIEW
                     ═══════════════════════════════════════════ */}
                 <div className="section-reveal relative z-10 bg-transparent">
                     <BlogPreview />
+                </div>
+
+                <PremiumDivider className="my-0" />
+
+                {/* ═══════════════════════════════════════════
+                    DIAGNOSTIC SECTION
+                    ═══════════════════════════════════════════ */}
+                <div className="section-reveal relative z-10 bg-transparent">
+                    <DiagnosticSection />
                 </div>
 
                 {/* ═══════════════════════════════════════════

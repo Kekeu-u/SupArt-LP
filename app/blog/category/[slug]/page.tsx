@@ -62,7 +62,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                 <div className="lg:col-span-8">
                     <div className="mb-10">
                         <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                            Tópico: <span className="text-purple-600">{category.name}</span>
+                            Tópico: <span className="text-gray-600">{category.name}</span>
                         </h1>
                         <p className="text-gray-500">
                             {posts.length} {posts.length === 1 ? 'artigo encontrado' : 'artigos encontrados'}
@@ -72,7 +72,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                     <div className="grid gap-8">
                         {posts.map((post) => (
                             <Link key={post.slug} href={`/blog/${post.slug}`} className="block group">
-                                <PremiumCard className="overflow-hidden bg-white border border-gray-100 hover:border-purple-200 transition-all duration-300">
+                                <PremiumCard className="overflow-hidden bg-white border border-gray-100 hover:border-gray-300 transition-all duration-300">
                                     <div className="grid md:grid-cols-3 gap-6">
                                         <div className="relative h-48 md:h-full min-h-[200px]">
                                             <Image
@@ -84,7 +84,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                                         </div>
                                         <div className="p-6 md:col-span-2 flex flex-col justify-center">
                                             <div className="flex items-center gap-2 mb-3">
-                                                <span className="px-2 py-1 rounded-full bg-purple-50 text-purple-600 text-xs font-bold uppercase tracking-wider">
+                                                <span className="px-2 py-1 rounded-full bg-gray-100 text-gray-600 text-xs font-bold uppercase tracking-wider">
                                                     {post.category?.name}
                                                 </span>
                                                 <span className="text-xs text-gray-400">•</span>
@@ -92,7 +92,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                                                     {new Date(post.published_at).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}
                                                 </span>
                                             </div>
-                                            <h2 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors">
+                                            <h2 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-gray-600 transition-colors">
                                                 {post.title}
                                             </h2>
                                             <p className="text-gray-600 line-clamp-2 mb-4">

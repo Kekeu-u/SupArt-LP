@@ -2,38 +2,34 @@ import React from 'react';
 
 const StepCard: React.FC<{ number: string; title: string; description: string }> = ({ number, title, description }) => (
   <div className="relative pl-16">
-    <div className="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-pink-600 text-white font-bold text-xl border-2 border-purple-500/50">
+    <div className="absolute left-0 top-0 flex items-center justify-center w-12 h-12 rounded-full bg-black text-white font-bold text-xl">
       {number}
     </div>
-    <div className="bg-white dark:bg-white/[.03] backdrop-blur-xl p-6 rounded-2xl border border-gray-200 dark:border-white/10 transition-all duration-300 hover:border-purple-400/50 shadow-sm dark:shadow-none">
-      <h3 className="font-bold text-xl text-gray-900 dark:text-white mb-1 text-pretty">{title}</h3>
-      <p className="text-gray-600 dark:text-gray-300 text-pretty">{description}</p>
+    <div className="bg-gray-50 p-6 rounded-2xl border border-gray-200 transition-all duration-300 hover:border-gray-400 hover:shadow-md">
+      <h3 className="font-bold text-xl text-gray-900 mb-1">{title}</h3>
+      <p className="text-gray-600">{description}</p>
     </div>
   </div>
 );
 
-const Process: React.FC = () => {
-  return (
-    <section id="processo" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
-      <div className="container mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900 dark:text-white text-pretty">Nosso Processo é Simples e Transparente</h2>
-        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-16 text-pretty">
-          Em apenas 4 passos, tiramos sua ideia do papel e a colocamos no ar, pronta para gerar resultados.
-        </p>
-        <div className="relative max-w-2xl mx-auto text-left">
-          {/* Connecting line */}
-          <div className="hidden sm:block absolute top-6 left-6 w-0.5 h-[calc(100%-3rem)] bg-gradient-to-b from-purple-600 via-purple-800 to-transparent -translate-x-1/2"></div>
-
-          <div className="space-y-12">
-            <StepCard number="1" title="Reunião de Briefing" description="Entendemos seus objetivos, público-alvo e identidade visual para alinhar o projeto." />
-            <StepCard number="2" title="Criação e Desenvolvimento" description="Nossa equipe de especialistas desenvolve o design e codifica sua landing page com as melhores práticas." />
-            <StepCard number="3" title="Revisão e Ajustes" description="Você recebe uma prévia para revisar e solicitar os ajustes finos necessários." />
-            <StepCard number="4" title="Lançamento e Suporte" description="Publicamos sua página no seu domínio e oferecemos suporte para qualquer dúvida." />
-          </div>
+const Process: React.FC = () => (
+  <section id="processo" className="py-16 md:py-20 px-6">
+    <div className="max-w-3xl mx-auto text-center">
+      <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Nosso Processo é Simples e Transparente</h2>
+      <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-16">
+        Em apenas 4 passos, tiramos sua ideia do papel e a colocamos no ar.
+      </p>
+      <div className="relative max-w-2xl mx-auto text-left">
+        <div className="hidden sm:block absolute top-6 left-6 w-0.5 h-[calc(100%-3rem)] bg-gray-300 -translate-x-1/2" />
+        <div className="space-y-12">
+          <StepCard number="1" title="Reunião de Briefing" description="Entendemos seus objetivos, público-alvo e identidade visual." />
+          <StepCard number="2" title="Criação e Desenvolvimento" description="Nossa equipe desenvolve o design e codifica sua landing page." />
+          <StepCard number="3" title="Revisão e Ajustes" description="Você recebe uma prévia para revisar e solicitar ajustes." />
+          <StepCard number="4" title="Lançamento e Suporte" description="Publicamos sua página e oferecemos suporte." />
         </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Process;

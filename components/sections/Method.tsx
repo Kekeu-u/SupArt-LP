@@ -1,0 +1,56 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { useI18n } from "@/lib/i18n";
+import { FaUserPlus, FaPhoneAlt, FaBrain, FaFileContract } from "react-icons/fa";
+
+const steps = [
+    { icon: FaUserPlus, title: { en: "Registration", pt: "Cadastro" }, description: { en: "Click on 'Hire AI Consultation' and fill out the form.", pt: "Clique em 'Contratar Consulta de IA' e preencha o formulário." } },
+    { icon: FaPhoneAlt, title: { en: "Contact", pt: "Contato" }, description: { en: "Our team contacts you to understand your moment and confirm hiring.", pt: "Nossa equipe entra em contato para entender seu momento e confirmar a contratação." } },
+    { icon: FaBrain, title: { en: "AI Consultation", pt: "Consulta de IA" }, description: { en: "We map your pains and opportunities. You leave with total clarity.", pt: "Mapeamos suas dores e oportunidades. Você sai com total clareza." } },
+    { icon: FaFileContract, title: { en: "Proposal", pt: "Proposta" }, description: { en: "We present the ideal solutions: analysis, consulting, or agent development.", pt: "Apresentamos as soluções ideais: análise, consultoria ou desenvolvimento de agentes." } }
+];
+
+export const Method = () => {
+    const { locale, t } = useI18n();
+
+    return (
+        <section id="method" className="py-20 px-8 md:px-16 lg:px-24 bg-white">
+            {/* Header */}
+            <motion.div
+                className="text-center mb-16 max-w-3xl mx-auto"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+            >
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+                    {t("The SupArt Method", "O Método SupArt")}
+                </h2>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                    {t("AI at the center of your business requires method.", "IA no centro do seu negócio exige método.")}
+                </p>
+            </motion.div>
+
+            {/* Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                {steps.map((step, i) => (
+                    <motion.article
+                        key={i}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.1 }}
+                        className="bg-gray-50 border border-gray-200 p-6 rounded-xl hover:border-gray-400 hover:shadow-md transition-all group"
+                    >
+                        <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                            <step.icon className="text-white text-xl" />
+                        </div>
+                        <span className="text-xs font-bold text-gray-400 mb-2 block">0{i + 1}</span>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title[locale]}</h3>
+                        <p className="text-gray-600 text-sm leading-relaxed">{step.description[locale]}</p>
+                    </motion.article>
+                ))}
+            </div>
+        </section>
+    );
+};

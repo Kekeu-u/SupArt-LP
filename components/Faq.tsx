@@ -25,48 +25,41 @@ const FaqItem: React.FC<{
   answer: string;
   isOpen: boolean;
   onClick: () => void;
-}> = ({ question, answer, isOpen, onClick }) => {
-  return (
-    <div className="border-b border-gray-200 dark:border-white/10">
-      <button
-        onClick={onClick}
-        className="w-full text-left py-6 flex justify-between items-center transition-colors duration-300 hover:text-purple-300"
-        aria-expanded={isOpen}
-      >
-        <span className="text-lg font-semibold text-gray-900 dark:text-white text-pretty">{question}</span>
-        <span className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
-          <FaChevronDown className="w-5 h-5 text-purple-400" />
-        </span>
-      </button>
-      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-96' : 'max-h-0'}`}>
-        <p className="text-gray-600 dark:text-gray-300 pb-6 pr-6 text-pretty">{answer}</p>
-      </div>
+}> = ({ question, answer, isOpen, onClick }) => (
+  <div className="border-b border-gray-200">
+    <button
+      onClick={onClick}
+      className="w-full text-left py-6 flex justify-between items-center transition-colors duration-300 hover:text-gray-600"
+      aria-expanded={isOpen}
+    >
+      <span className="text-lg font-semibold text-gray-900">{question}</span>
+      <span className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+        <FaChevronDown className="w-5 h-5 text-gray-400" />
+      </span>
+    </button>
+    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-96' : 'max-h-0'}`}>
+      <p className="text-gray-600 pb-6 pr-6">{answer}</p>
     </div>
-  );
-};
+  </div>
+);
 
 const Faq: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const handleClick = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
   return (
-    <section id="faq" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
-      <div className="container mx-auto max-w-3xl">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4 text-gray-900 dark:text-white text-pretty">Dúvidas Frequentes</h2>
-        <p className="text-lg text-gray-600 dark:text-gray-300 text-center max-w-2xl mx-auto mb-12 text-pretty">
+    <section id="faq" className="py-16 md:py-20 px-6">
+      <div className="max-w-3xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">Dúvidas Frequentes</h2>
+        <p className="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-12">
           Respondemos algumas das perguntas mais comuns para te ajudar a decidir.
         </p>
-        <div className="bg-white dark:bg-white/[.03] backdrop-blur-xl p-4 sm:p-8 rounded-2xl border border-gray-200 dark:border-white/10 shadow-sm dark:shadow-none">
+        <div className="bg-gray-50 p-6 md:p-8 rounded-2xl border border-gray-200">
           {faqData.map((item, index) => (
             <FaqItem
               key={index}
-              question={item.question}
-              answer={item.answer}
+              {...item}
               isOpen={openIndex === index}
-              onClick={() => handleClick(index)}
+              onClick={() => setOpenIndex(openIndex === index ? null : index)}
             />
           ))}
         </div>

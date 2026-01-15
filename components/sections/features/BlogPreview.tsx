@@ -26,8 +26,8 @@ export const BlogPreview = () => {
                 category: { en: "Business", pt: "Negócios" },
                 title: { en: "Why $2k Clients Cost More Than $15k Clients", pt: "Por Que Clientes de R$2k Custam Mais que Clientes de R$15k" },
                 excerpt: { en: "The math behind high-ticket positioning.", pt: "A matemática por trás do posicionamento High-Ticket e como atrair os melhores projetos." },
-                gradient: "from-purple-500 to-blue-600",
-                textGradient: "group-hover:from-purple-600 group-hover:to-blue-600",
+                gradient: "from-blue-500 to-cyan-600",
+                textGradient: "group-hover:from-blue-600 group-hover:to-cyan-600",
                 icon: FaRocket,
             },
             {
@@ -35,8 +35,8 @@ export const BlogPreview = () => {
                 category: { en: "Automation", pt: "Automação" },
                 title: { en: "5 Automations That Eliminate 10 Hours/Week", pt: "As 5 Automações que Eliminam 10 Horas/Semana da sua Agência" },
                 excerpt: { en: "Scale your operation without hiring more people.", pt: "Escalando sua operação operacional sem precisar contratar mais gente imediatamente." },
-                gradient: "from-pink-500 to-purple-600",
-                textGradient: "group-hover:from-pink-600 group-hover:to-purple-600",
+                gradient: "from-gray-500 to-slate-600",
+                textGradient: "group-hover:from-gray-600 group-hover:to-slate-600",
                 icon: SiGoogleanalytics,
             },
             {
@@ -44,8 +44,8 @@ export const BlogPreview = () => {
                 category: { en: "Design", pt: "Design" },
                 title: { en: "The ROI of High-Fidelity Design", pt: "O ROI do Design de Alta Fidelidade: Convertendo Visitantes em Fãs" },
                 excerpt: { en: "How premium aesthetics drive conversion.", pt: "Como a estética premium aumenta a percepção de valor e a taxa de conversão." },
-                gradient: "from-teal-500 to-green-600",
-                textGradient: "group-hover:from-teal-600 group-hover:to-green-600",
+                gradient: "from-teal-500 to-emerald-600",
+                textGradient: "group-hover:from-teal-600 group-hover:to-emerald-600",
                 icon: FaLightbulb,
             }
         ],
@@ -56,10 +56,10 @@ export const BlogPreview = () => {
     };
 
     return (
-        <section className="relative py-20 z-20 bg-white dark:bg-transparent transition-colors duration-500">
+        <section className="relative py-20 z-20 bg-white transition-colors duration-500">
             {/* Background Pattern - Subtle in Light, Visible in Dark */}
             <div className="absolute inset-0 pointer-events-none text-gray-100/5">
-                <div className="absolute inset-0 opacity-40 dark:opacity-100" style={{
+                <div className="absolute inset-0 opacity-40" style={{
                     backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
                     backgroundSize: '32px 32px'
                 }} />
@@ -97,7 +97,7 @@ export const BlogPreview = () => {
                             >
                                 <a href={`/blog/${post.slug}`} className="block h-full no-underline">
                                     <PremiumCard
-                                        className="h-full p-8 flex flex-col group bg-white/60/5 backdrop-blur-xl border border-white/40 shadow-xl transition-all duration-500 hover:-translate-y-1 hover:border-purple-500/30 dark:hover:border-purple-500/50"
+                                        className="h-full p-8 flex flex-col group bg-white/60/5 backdrop-blur-xl border border-white/40 shadow-xl transition-all duration-500 hover:-translate-y-1 hover:border-gray-500/30 dark:hover:border-gray-500/50"
                                     >
                                         {/* Icon */}
                                         <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${post.gradient} flex items-center justify-center mb-6 shadow-lg`}>

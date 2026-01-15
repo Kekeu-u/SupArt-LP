@@ -162,7 +162,7 @@ export function DevPanel() {
 
             {/* Painel Expandido */}
             {isOpen && (
-                <div className="absolute bottom-14 right-0 w-64 bg-black/90 backdrop-blur-xl rounded-xl border border-white/10 p-4 shadow-2xl">
+                <div className="absolute bottom-14 right-0 w-64 bg-[#1c1c1e]/90 backdrop-blur-xl rounded-xl border border-white/10 p-4 shadow-2xl">
                     <div className="flex justify-between items-center mb-3 pb-2 border-b border-white/10">
                         <span className="text-white/70 font-semibold">DevPanel</span>
                         <button

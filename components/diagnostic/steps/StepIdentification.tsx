@@ -53,7 +53,7 @@ export function StepIdentification({ data, onNext, isFirst }: StepProps) {
     const inputClasses = `
     w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl
     text-white placeholder:text-gray-500
-    focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500
+    focus:outline-none focus:ring-2 focus:ring-gray-500/50 focus:border-gray-500
     transition-all duration-200
   `;
 
@@ -175,7 +175,7 @@ export function StepIdentification({ data, onNext, isFirst }: StepProps) {
             <div className="flex justify-end pt-4">
                 <button
                     type="submit"
-                    className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl hover:opacity-90 transition-opacity"
+                    className="px-8 py-3 bg-gradient-to-r from-gray-600 to-pink-600 text-white font-semibold rounded-xl hover:opacity-90 transition-opacity"
                 >
                     Próximo →
                 </button>

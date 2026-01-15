@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
         <h1 className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight mb-4 text-pretty">
           Sua Landing Page de Alta Conversão,
           <br />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500 min-h-[60px] sm:min-h-[80px] md:min-h-[100px] inline-block">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-500 to-pink-500 min-h-[60px] sm:min-h-[80px] md:min-h-[100px] inline-block">
             <span ref={typedEl}></span>
           </span>
         </h1>

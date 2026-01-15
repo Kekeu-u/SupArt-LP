@@ -57,7 +57,7 @@ export function StepPriorities({ data, onNext, onBack, isSubmitting }: StepProps
             {/* Instructions */}
             <div className="text-center p-4 bg-white/5 rounded-xl border border-white/10">
                 <p className="text-gray-300">
-                    Selecione até <span className="text-purple-400 font-semibold">3 prioridades</span> e arraste para ordenar
+                    Selecione até <span className="text-gray-400 font-semibold">3 prioridades</span> e arraste para ordenar
                 </p>
                 <p className="text-sm text-gray-500 mt-1">
                     Selecionadas: {selectedPriorities.length}/3
@@ -80,7 +80,7 @@ export function StepPriorities({ data, onNext, onBack, isSubmitting }: StepProps
                 w-full text-left px-4 py-3 rounded-xl
                 transition-all duration-200
                 ${isSelected
-                                    ? 'bg-gradient-to-r from-purple-600/30 to-pink-600/30 border border-purple-500 text-white'
+                                    ? 'bg-gradient-to-r from-gray-600/30 to-pink-600/30 border border-gray-500 text-white'
                                     : isDisabled
                                         ? 'bg-white/5 border border-white/5 text-gray-600 cursor-not-allowed'
                                         : 'bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10'
@@ -90,7 +90,7 @@ export function StepPriorities({ data, onNext, onBack, isSubmitting }: StepProps
                             <div className="flex items-center gap-3">
                                 <div className={`
                   w-5 h-5 rounded flex items-center justify-center shrink-0
-                  ${isSelected ? 'bg-purple-500 text-white' : 'bg-white/10'}
+                  ${isSelected ? 'bg-gray-500 text-white' : 'bg-white/10'}
                 `}>
                                     {isSelected && (
                                         <span className="text-xs font-bold">
@@ -123,9 +123,9 @@ export function StepPriorities({ data, onNext, onBack, isSubmitting }: StepProps
                             >
                                 <motion.div
                                     layout
-                                    className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-purple-500/50 rounded-xl"
+                                    className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-gray-600/20 to-pink-600/20 border border-gray-500/50 rounded-xl"
                                 >
-                                    <div className="w-6 h-6 rounded-full bg-purple-500 flex items-center justify-center text-white text-sm font-bold shrink-0">
+                                    <div className="w-6 h-6 rounded-full bg-gray-500 flex items-center justify-center text-white text-sm font-bold shrink-0">
                                         {index + 1}
                                     </div>
                                     <span className="text-white">{getPriorityLabel(value)}</span>
@@ -154,7 +154,7 @@ export function StepPriorities({ data, onNext, onBack, isSubmitting }: StepProps
                 <button
                     type="submit"
                     disabled={isSubmitting || selectedPriorities.length === 0}
-                    className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center gap-2"
+                    className="px-8 py-3 bg-gradient-to-r from-gray-600 to-pink-600 text-white font-semibold rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center gap-2"
                 >
                     {isSubmitting ? (
                         <>

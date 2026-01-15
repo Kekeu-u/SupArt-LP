@@ -42,7 +42,7 @@ interface ParallaxBackgroundProps {
 // Layers default se não fornecidos
 const DEFAULT_LAYERS: ParallaxLayer[] = [
     {
-        className: "bg-gradient-radial from-purple-500/20 via-purple-600/10 to-transparent",
+        className: "bg-gradient-radial from-gray-500/20 via-gray-600/10 to-transparent",
         speed: 0.2,
         opacity: 0.7,
         blur: 60,
@@ -84,7 +84,7 @@ const DEFAULT_LAYERS: ParallaxLayer[] = [
  * // Com layers customizados
  * <ParallaxBackground
  *   layers={[
- *     { speed: 0.2, className: "bg-purple-500/20 blur-3xl" },
+ *     { speed: 0.2, className: "bg-gray-500/20 blur-3xl" },
  *     { speed: 0.5, className: "bg-pink-500/20 blur-2xl" },
  *   ]}
  * >
@@ -166,7 +166,7 @@ export function ParallaxBackground({
                 <div
                     className="
                         absolute inset-0 
-                        bg-gradient-conic from-purple-500/10 via-pink-500/5 via-blue-500/10 to-purple-500/10
+                        bg-gradient-conic from-gray-500/10 via-pink-500/5 via-blue-500/10 to-gray-500/10
                         opacity-50
                         pointer-events-none
                     "

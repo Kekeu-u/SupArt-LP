@@ -80,7 +80,7 @@ export const technologies: Technology[] = [
     {
         name: "Framer",
         letter: "F",
-        gradient: "from-purple-600 via-pink-500 to-purple-400",
+        gradient: "from-gray-600 via-pink-500 to-gray-400",
         description: { en: "Animations", pt: "Animações" },
         detail: {
             en: "Fluid animations and gestures for React with declarative API.",

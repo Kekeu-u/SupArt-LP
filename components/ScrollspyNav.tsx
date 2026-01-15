@@ -94,7 +94,7 @@ const ScrollspyNav: React.FC = () => {
               href={`#${item.id}`}
               onClick={(e) => handleNavClick(e, item.id)}
               className={`flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${
-                activeSection === item.id ? 'text-purple-400 scale-110 bg-white/10' : 'text-gray-400 hover:text-white hover:bg-white/5'
+                activeSection === item.id ? 'text-gray-400 scale-110 bg-white/10' : 'text-gray-400 hover:text-white hover:bg-white/5'
               }`}
               aria-label={`Ir para a seção ${item.label}`}
             >

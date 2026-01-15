@@ -263,7 +263,7 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
                                 >
                                     <div
                                         className={`max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${message.role === "user"
-                                            ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-br-md"
+                                            ? "bg-gradient-to-r from-gray-600 to-blue-600 text-white rounded-br-md"
                                             : "bg-gray-100 text-gray-700 rounded-bl-md"
                                             }`}
                                     >
@@ -293,7 +293,7 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
                         {/* Input Area - Shrink 0 para nunca encolher */}
                         <div className="shrink-0 p-4 border-t border-gray-100 bg-white/50">
                             <form onSubmit={handleSubmit}>
-                                <div className="flex items-center gap-2 bg-gray-50 rounded-2xl px-4 border border-gray-100 focus-within:border-purple-200 transition-colors">
+                                <div className="flex items-center gap-2 bg-gray-50 rounded-2xl px-4 border border-gray-100 focus-within:border-gray-300 transition-colors">
                                     <input
                                         ref={inputRef}
                                         type="text"
@@ -307,7 +307,7 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
                                     <button
                                         type="submit"
                                         disabled={!isReady || !input.trim()}
-                                        className="shrink-0 w-9 h-9 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl flex items-center justify-center text-white disabled:opacity-30 transition-opacity shadow-sm"
+                                        className="shrink-0 w-9 h-9 bg-gradient-to-r from-gray-600 to-blue-600 rounded-xl flex items-center justify-center text-white disabled:opacity-30 transition-opacity shadow-sm"
                                     >
                                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M12 5l7 7-7 7" />
@@ -365,7 +365,7 @@ export const HeroChat = ({ onStateChange }: HeroChatProps) => {
                                     />
                                     <button
                                         type="submit"
-                                        className="shrink-0 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center text-white hover:opacity-90 transition-opacity shadow-lg shadow-purple-500/20"
+                                        className="shrink-0 rounded-xl bg-gradient-to-r from-gray-600 to-blue-600 flex items-center justify-center text-white hover:opacity-90 transition-opacity shadow-lg shadow-gray-500/20"
                                         style={{
                                             width: 'clamp(2.5rem, 5vw, 2.75rem)',
                                             height: 'clamp(2.5rem, 5vw, 2.75rem)',

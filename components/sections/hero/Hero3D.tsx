@@ -187,7 +187,7 @@ export function Hero3D({
                 <div className="absolute inset-0 bg-gradient-mesh opacity-60" />
 
                 {/* Orbs de luz */}
-                <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-gradient-radial from-purple-400/30 via-purple-500/10 to-transparent blur-3xl transform-gpu animate-float-slow" />
+                <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-gradient-radial from-gray-400/30 via-gray-500/10 to-transparent blur-3xl transform-gpu animate-float-slow" />
                 <div className="absolute top-1/2 right-1/4 w-[450px] h-[450px] rounded-full bg-gradient-radial from-blue-400/25 via-cyan-400/10 to-transparent blur-3xl transform-gpu animate-float-medium" />
                 <div className="absolute bottom-1/4 left-1/3 w-[300px] h-[300px] rounded-full bg-gradient-radial from-pink-400/20 to-transparent blur-2xl transform-gpu animate-float-fast" />
             </div>

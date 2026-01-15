@@ -25,7 +25,7 @@ const LOGO_PATH = "M499.706 289.76c2.902-5.094 5.598-9.885 8.376-14.628 3.362-5.
 export function HeroLogo({ size = 200, className = "" }: HeroLogoProps) {
     return (
         <motion.div
-            className={`relative text-black ${className}`}
+            className={`relative flex justify-center items-center text-black ${className}`}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -37,6 +37,7 @@ export function HeroLogo({ size = 200, className = "" }: HeroLogoProps) {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 className="overflow-visible"
+                preserveAspectRatio="xMidYMid meet"
             >
                 {/* Glow de fundo */}
                 <motion.path

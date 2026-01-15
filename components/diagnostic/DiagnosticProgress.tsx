@@ -20,7 +20,7 @@ export function DiagnosticProgress({
             {/* Progress Bar Container */}
             <div className="relative h-2 bg-white/10 rounded-full overflow-hidden">
                 <motion.div
-                    className="absolute inset-y-0 left-0 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 rounded-full"
+                    className="absolute inset-y-0 left-0 bg-gradient-to-r from-gray-500 via-pink-500 to-gray-600 rounded-full"
                     initial={{ width: 0 }}
                     animate={{ width: `${progress}%` }}
                     transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -44,9 +44,9 @@ export function DiagnosticProgress({
                   w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium
                   transition-colors duration-300
                   ${isCompleted
-                                        ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
+                                        ? 'bg-gradient-to-r from-gray-500 to-pink-500 text-white'
                                         : isActive
-                                            ? 'bg-white/20 text-white border-2 border-purple-500'
+                                            ? 'bg-white/20 text-white border-2 border-gray-500'
                                             : 'bg-white/10 text-gray-500'
                                     }
                 `}

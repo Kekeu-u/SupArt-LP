@@ -67,7 +67,7 @@ export function StepCurrentSituation({ data, onNext, onBack }: StepProps) {
     const inputClasses = `
     w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl
     text-white placeholder:text-gray-500
-    focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500
+    focus:outline-none focus:ring-2 focus:ring-gray-500/50 focus:border-gray-500
     transition-all duration-200
   `;
 
@@ -129,7 +129,7 @@ export function StepCurrentSituation({ data, onNext, onBack }: StepProps) {
                 flex items-center gap-2 p-3 rounded-xl cursor-pointer
                 transition-all duration-200
                 ${formState.social_channels.includes(option.value)
-                                    ? 'bg-purple-500/20 border border-purple-500'
+                                    ? 'bg-gray-500/20 border border-gray-500'
                                     : 'bg-white/5 border border-white/10 hover:bg-white/10'
                                 }
               `}
@@ -197,7 +197,7 @@ export function StepCurrentSituation({ data, onNext, onBack }: StepProps) {
                 </button>
                 <button
                     type="submit"
-                    className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl hover:opacity-90 transition-opacity"
+                    className="px-8 py-3 bg-gradient-to-r from-gray-600 to-pink-600 text-white font-semibold rounded-xl hover:opacity-90 transition-opacity"
                 >
                     Próximo →
                 </button>

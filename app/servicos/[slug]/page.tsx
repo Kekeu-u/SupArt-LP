@@ -136,7 +136,7 @@ export default function ServicePage({ params }: Props) {
                 </div>
 
                 {/* Background Glow */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-radial from-purple-900/30 to-transparent pointer-events-none" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-radial from-gray-900/30 to-transparent pointer-events-none" />
             </section>
         </main>
     );

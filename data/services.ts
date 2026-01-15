@@ -39,7 +39,7 @@ export const services: Service[] = [
             en: "Custom Quote",
             pt: "Sob Consulta",
         },
-        gradient: "from-purple-500/10 to-pink-500/10",
+        gradient: "from-gray-500/10 to-pink-500/10",
         features: {
             en: ["Websites & Landing Pages", "Brand Creation", "Visual Identity", "SEO Strategies"],
             pt: ["Criação de Sites e LPs", "Criação de Marcas", "Identidades Visuais", "Estratégias de SEO"],

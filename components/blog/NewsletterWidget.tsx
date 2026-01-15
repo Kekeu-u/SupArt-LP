@@ -43,19 +43,19 @@ export const NewsletterWidget = () => {
     };
 
     return (
-        <div className="relative rounded-2xl border border-purple-500/20 bg-gradient-to-br from-purple-50/50 via-white/80 to-blue-50/50 backdrop-blur-sm p-6 overflow-hidden">
+        <div className="relative rounded-2xl border border-gray-200 bg-gradient-to-br from-gray-50/50 via-white/80 to-gray-50/50 backdrop-blur-sm p-6 overflow-hidden">
             {/* Animated gradient background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-blue-500/5 animate-pulse pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-500/5 via-transparent to-blue-500/5 animate-pulse pointer-events-none" />
 
             <div className="relative">
                 <div className="flex items-center gap-2 mb-2">
-                    <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
-                    <h3 className="text-lg font-bold bg-gradient-to-r from-purple-900 to-blue-900 bg-clip-text text-transparent">Newsletter Premium</h3>
+                    <h3 className="text-lg font-bold text-gray-900">Newsletter Premium</h3>
                 </div>
                 <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                    <span className="font-semibold text-purple-700">Insights de IA</span> direto no seu inbox.
+                    <span className="font-semibold text-gray-700">Insights de IA</span> direto no seu inbox.
                     <span className="block text-xs text-gray-500 mt-1">+ de 70 mil leitores 🚀</span>
                 </p>
 
@@ -66,13 +66,13 @@ export const NewsletterWidget = () => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         disabled={status === "loading" || status === "success"}
-                        className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-sm focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-500/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed bg-white/80 backdrop-blur-sm"
+                        className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-sm focus:outline-none focus:border-gray-500 focus:ring-4 focus:ring-gray-500/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed bg-white/80 backdrop-blur-sm"
                     />
 
                     <button
                         type="submit"
                         disabled={status === "loading" || status === "success"}
-                        className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-xl text-sm font-bold hover:from-purple-500 hover:to-blue-500 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg shadow-purple-500/25 flex items-center justify-center gap-2"
+                        className="w-full bg-gradient-to-r from-gray-600 to-blue-600 text-white py-3 rounded-xl text-sm font-bold hover:from-gray-500 hover:to-blue-500 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg shadow-gray-500/25 flex items-center justify-center gap-2"
                     >
                         {status === "loading" && (
                             <svg className="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">

@@ -24,7 +24,7 @@ export const TechStackMarqueeClassic = () => {
                     <span className="text-base font-medium text-[var(--color-apple-gray)] uppercase tracking-widest">Powered by</span>
                     {/* Next.js Logo (Black) - Larger and more prominent */}
                     <div className="relative group">
-                        <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                        <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-gray-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 180 180"

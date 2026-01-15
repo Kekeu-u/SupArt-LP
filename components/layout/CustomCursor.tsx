@@ -95,7 +95,7 @@ function getOuterStyles(state: CursorState): string {
         case "click":
             return "border-white scale-75 bg-white/20";
         case "magnetic":
-            return "border-purple-400 scale-200 bg-purple-400/10";
+            return "border-gray-400 scale-200 bg-gray-400/10";
         case "hidden":
             return "opacity-0 scale-0";
         default:
@@ -110,7 +110,7 @@ function getInnerStyles(state: CursorState): string {
         case "click":
             return "bg-white scale-150";
         case "magnetic":
-            return "bg-purple-400 scale-200";
+            return "bg-gray-400 scale-200";
         case "hidden":
             return "opacity-0 scale-0";
         default:

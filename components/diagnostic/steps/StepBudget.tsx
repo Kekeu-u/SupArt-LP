@@ -70,7 +70,7 @@ export function StepBudget({ data, onNext, onBack }: StepProps) {
                 text-left px-4 py-3 rounded-xl
                 transition-all duration-200
                 ${formState.budget_range === option.value
-                                    ? 'bg-gradient-to-r from-purple-600/30 to-pink-600/30 border border-purple-500 text-white'
+                                    ? 'bg-gradient-to-r from-gray-600/30 to-pink-600/30 border border-gray-500 text-white'
                                     : 'bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10'
                                 }
               `}
@@ -97,7 +97,7 @@ export function StepBudget({ data, onNext, onBack }: StepProps) {
                 text-left px-4 py-3 rounded-xl
                 transition-all duration-200
                 ${formState.timeline === option.value
-                                    ? 'bg-gradient-to-r from-purple-600/30 to-pink-600/30 border border-purple-500 text-white'
+                                    ? 'bg-gradient-to-r from-gray-600/30 to-pink-600/30 border border-gray-500 text-white'
                                     : 'bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10'
                                 }
               `}
@@ -124,7 +124,7 @@ export function StepBudget({ data, onNext, onBack }: StepProps) {
                 w-full text-left px-4 py-3 rounded-xl
                 transition-all duration-200
                 ${formState.has_briefing === option.value
-                                    ? 'bg-gradient-to-r from-purple-600/30 to-pink-600/30 border border-purple-500 text-white'
+                                    ? 'bg-gradient-to-r from-gray-600/30 to-pink-600/30 border border-gray-500 text-white'
                                     : 'bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10'
                                 }
               `}
@@ -146,7 +146,7 @@ export function StepBudget({ data, onNext, onBack }: StepProps) {
                 </button>
                 <button
                     type="submit"
-                    className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl hover:opacity-90 transition-opacity"
+                    className="px-8 py-3 bg-gradient-to-r from-gray-600 to-pink-600 text-white font-semibold rounded-xl hover:opacity-90 transition-opacity"
                 >
                     Próximo →
                 </button>

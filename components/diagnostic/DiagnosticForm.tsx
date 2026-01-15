@@ -143,56 +143,54 @@ export function DiagnosticForm({ onComplete }: DiagnosticFormProps) {
     };
 
     return (
-        <div className="w-full max-w-2xl mx-auto px-4">
+        <div className="w-full max-w-2xl mx-auto px-4 py-6">
             {/* Header */}
-            <div className="text-center mb-8">
-                <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
-                    🔮 Diagnóstico Digital Gratuito
-                </h1>
-                <p className="text-gray-400">
-                    Descubra oportunidades ocultas para sua presença digital
-                </p>
-            </div>
-
-            {/* Progress Bar */}
-            <DiagnosticProgress
-                currentStep={currentStep}
-                totalSteps={totalSteps}
-                stepTitles={STEP_TITLES}
-            />
-
-            {/* Step Title */}
-            <div className="text-center mt-8 mb-6">
-                <h2 className="text-xl md:text-2xl font-semibold text-white">
-                    {STEP_TITLES[currentStep]}
-                </h2>
-                <p className="text-gray-400 mt-1">
-                    {STEP_SUBTITLES[currentStep]}
-                </p>
-            </div>
-
-            {/* Form Container */}
-            <div className="relative overflow-hidden">
-                <AnimatePresence mode="wait" custom={currentStep}>
-                    <motion.div
-                        key={currentStep}
-                        custom={currentStep}
-                        variants={slideVariants}
-                        initial="enter"
-                        animate="center"
-                        exit="exit"
-                        transition={{ duration: 0.3, ease: 'easeInOut' }}
-                        className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-6 md:p-8"
-                    >
-                        {renderStep()}
-                    </motion.div>
-                </AnimatePresence>
-            </div>
-
-            {/* Step Counter */}
-            <div className="text-center mt-4 text-sm text-gray-500">
-                Etapa {currentStep + 1} de {totalSteps}
-            </div>
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
+                🔮 Diagnóstico Digital Gratuito
+            </h1>
+            <p className="text-gray-400">
+                Descubra oportunidades ocultas para sua presença digital
+            </p>
         </div>
+
+            {/* Progress Bar */ }
+    <DiagnosticProgress
+        currentStep={currentStep}
+        totalSteps={totalSteps}
+        stepTitles={STEP_TITLES}
+    />
+
+    {/* Step Title */ }
+    <div className="text-center mt-8 mb-6">
+        <h2 className="text-xl md:text-2xl font-semibold text-white">
+            {STEP_TITLES[currentStep]}
+        </h2>
+        <p className="text-gray-400 mt-1">
+            {STEP_SUBTITLES[currentStep]}
+        </p>
+    </div>
+
+    {/* Form Container */ }
+    <div className="relative overflow-hidden">
+        <AnimatePresence mode="wait" custom={currentStep}>
+            <motion.div
+                key={currentStep}
+                custom={currentStep}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-6 md:p-8"
+            >
+                {renderStep()}
+            </motion.div>
+        </AnimatePresence>
+    </div>
+
+    {/* Step Counter */ }
+                Etapa { currentStep + 1 } de { totalSteps }
+            </div >
+        </div >
     );
 }

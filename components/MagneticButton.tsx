@@ -151,7 +151,7 @@ function MagneticGlow({ variant }: { variant: string }) {
         <span
             className="
                 absolute inset-0 rounded-full
-                bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-purple-500/20
+                bg-gradient-to-r from-gray-500/20 via-pink-500/20 to-gray-500/20
                 opacity-0 group-hover:opacity-100
                 blur-xl transition-opacity duration-500
                 -z-10
@@ -168,11 +168,11 @@ function getVariantClasses(variant: string): string {
     switch (variant) {
         case "primary":
             return cn(
-                "bg-gradient-to-r from-purple-600 to-pink-600",
-                "hover:from-purple-500 hover:to-pink-500",
+                "bg-gradient-to-r from-gray-600 to-pink-600",
+                "hover:from-gray-500 hover:to-pink-500",
                 "text-white",
-                "shadow-lg shadow-purple-500/30",
-                "hover:shadow-xl hover:shadow-purple-500/40",
+                "shadow-lg shadow-gray-500/30",
+                "hover:shadow-xl hover:shadow-gray-500/40",
                 "rounded-full",
                 "group"
             );

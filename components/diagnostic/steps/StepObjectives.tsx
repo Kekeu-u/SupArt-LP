@@ -84,7 +84,7 @@ export function StepObjectives({ data, onNext, onBack }: StepProps) {
                 w-full text-left px-4 py-3 rounded-xl
                 transition-all duration-200
                 ${formState.main_goal === option.value
-                                    ? 'bg-gradient-to-r from-purple-600/30 to-pink-600/30 border border-purple-500 text-white'
+                                    ? 'bg-gradient-to-r from-gray-600/30 to-pink-600/30 border border-gray-500 text-white'
                                     : 'bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10'
                                 }
               `}
@@ -110,7 +110,7 @@ export function StepObjectives({ data, onNext, onBack }: StepProps) {
                 flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer
                 transition-all duration-200
                 ${formState.pain_points.includes(option.value)
-                                    ? 'bg-purple-500/20 border border-purple-500'
+                                    ? 'bg-gray-500/20 border border-gray-500'
                                     : 'bg-white/5 border border-white/10 hover:bg-white/10'
                                 }
               `}
@@ -118,7 +118,7 @@ export function StepObjectives({ data, onNext, onBack }: StepProps) {
                             <div className={`
                 w-5 h-5 rounded flex items-center justify-center
                 ${formState.pain_points.includes(option.value)
-                                    ? 'bg-purple-500 text-white'
+                                    ? 'bg-gray-500 text-white'
                                     : 'bg-white/10'
                                 }
               `}>
@@ -157,7 +157,7 @@ export function StepObjectives({ data, onNext, onBack }: StepProps) {
                     className="
             w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl
             text-white placeholder:text-gray-500
-            focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500
+            focus:outline-none focus:ring-2 focus:ring-gray-500/50 focus:border-gray-500
             transition-all duration-200 resize-none
           "
                 />
@@ -174,7 +174,7 @@ export function StepObjectives({ data, onNext, onBack }: StepProps) {
                 </button>
                 <button
                     type="submit"
-                    className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl hover:opacity-90 transition-opacity"
+                    className="px-8 py-3 bg-gradient-to-r from-gray-600 to-pink-600 text-white font-semibold rounded-xl hover:opacity-90 transition-opacity"
                 >
                     Próximo →
                 </button>

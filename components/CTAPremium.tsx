@@ -183,7 +183,7 @@ export function CTAPremium({
                 "transform-gpu transition-all duration-300",
 
                 // Gradient background
-                "bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600",
+                "bg-gradient-to-r from-gray-600 via-pink-600 to-gray-600",
                 "bg-[length:200%_100%]",
 
                 // Hover effects
@@ -191,8 +191,8 @@ export function CTAPremium({
                 "hover:bg-[position:100%_0]",
 
                 // Glow base
-                "shadow-lg shadow-purple-500/40",
-                "hover:shadow-xl hover:shadow-purple-500/50",
+                "shadow-lg shadow-gray-500/40",
+                "hover:shadow-xl hover:shadow-gray-500/50",
 
                 // States
                 state === "loading" && "animate-pulse pointer-events-none",
@@ -221,7 +221,7 @@ export function CTAPremium({
             <span
                 className="
                     absolute -inset-1
-                    bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500
+                    bg-gradient-to-r from-gray-500 via-pink-500 to-gray-500
                     rounded-full opacity-0
                     animate-pulse-glow
                     blur-xl -z-10
