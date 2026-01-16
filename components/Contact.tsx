@@ -13,7 +13,7 @@ const Contact: React.FC = () => {
    */
   const enviarLeadParaDashboard = async () => {
     const endpoint = 'https://dash.supart.com.br/api/external/lead-ingest';
-    const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+    const apiKey = process.env.NEXT_PUBLIC_LEAD_API_KEY;
 
     if (!apiKey) {
       console.error('API Key não configurada no .env do site');
