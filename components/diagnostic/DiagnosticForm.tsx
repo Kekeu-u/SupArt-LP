@@ -88,7 +88,8 @@ export function DiagnosticForm({ onComplete }: DiagnosticFormProps) {
             onComplete?.(finalData);
         } catch (error) {
             console.error('Erro ao enviar:', error);
-            alert('Erro ao enviar o diagnóstico. Tente novamente.');
+            const errorMessage = error instanceof Error ? error.message : 'Erro desconhecido';
+            alert(`Erro ao enviar: ${errorMessage}`);
         } finally {
             setIsSubmitting(false);
         }

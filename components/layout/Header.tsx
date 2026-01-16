@@ -109,25 +109,35 @@ export const Header = () => {
     { href: "#contact", label: t("nav.contact", "Contato"), icon: FaEnvelope },
   ];
 
+  const isLightMode = pathname.startsWith("/blog");
+
+  // Base classes
   const headerContainerClasses = "fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] md:w-[90%] transition-all duration-300";
-  const glassClasses = "bg-transparent backdrop-blur-2xl border border-white/10";
+
+  // Theme-specific classes
+  const glassClasses = isLightMode
+    ? "bg-white/80 backdrop-blur-xl border border-gray-200 shadow-sm" // Light Mode
+    : "bg-transparent backdrop-blur-2xl border border-white/10";      // Dark Mode (Default)
+
   const innerClasses = `relative flex items-center justify-between px-[5%] py-2 rounded-2xl ${glassClasses} transition-all duration-300`;
 
   const getNavLinkClasses = (href: string) => {
     let isActive = false;
 
     if (href.startsWith("/")) {
-      // Link externo (ex: /blog) - ativo se pathname começa com ele
       isActive = pathname.startsWith(href);
     } else if (href.startsWith("#") && isHomePage) {
-      // Link de seção (#home, #solutions, etc) - só ativo na home
       isActive = activeSection === href.substring(1);
     }
 
     const baseClasses = "flex items-center gap-x-2 px-4 py-2 rounded-lg transition-all duration-300 text-sm font-medium";
-    const stateClasses = isActive
-      ? "bg-black/5 text-black font-semibold"
-      : "text-gray-600 hover:bg-black/5";
+
+    // Theme-specific state classes
+    const activeText = isLightMode ? "text-black bg-black/5" : "text-white bg-white/10";
+    const inactiveText = isLightMode ? "text-gray-600 hover:bg-black/5" : "text-gray-300 hover:bg-white/10";
+
+    const stateClasses = isActive ? `${activeText} font-semibold` : inactiveText;
+
     return `${baseClasses} ${stateClasses}`;
   };
 
@@ -136,7 +146,7 @@ export const Header = () => {
       <div className={innerClasses}>
         <a
           href="/"
-          className="flex-shrink-0 transition-transform duration-300 hover:scale-105"
+          className={`flex-shrink-0 transition-transform duration-300 hover:scale-105 ${isLightMode ? 'text-black' : 'text-white'}`}
           aria-label="SupArt Agency Home"
         >
           <SupArtLogo className="h-8 w-8 md:h-10 md:w-10" />
@@ -161,8 +171,6 @@ export const Header = () => {
             Entender como funciona
           </GlassButton>
         </div>
-
-
       </div>
     </header>
   );

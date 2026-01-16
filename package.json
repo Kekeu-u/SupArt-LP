@@ -11,7 +11,7 @@
     "clean": "rimraf .next .swc node_modules/.cache"
   },
   "dependencies": {
-    "@ai-sdk/google": "^3.0.1",
+    "@ai-sdk/google": "^3.0.10",
     "@ai-sdk/react": "^3.0.3",
     "@google/generative-ai": "^0.24.1",
     "@gsap/react": "^2.1.2",

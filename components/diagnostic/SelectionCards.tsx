@@ -10,7 +10,7 @@ interface SelectionOption {
 }
 
 interface SelectionCardsProps {
-    options: SelectionOption[];
+    options: readonly SelectionOption[] | SelectionOption[];
     value: string;
     onChange: (value: string) => void;
     columns?: 2 | 3 | 4;
@@ -35,7 +35,7 @@ export function SelectionCards({ options, value, onChange, columns = 2 }: Select
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         className={`
-                            relative p-4 rounded-xl text-left transition-all duration-200
+                            relative p-4 rounded-xl text-left transition-colors duration-200
                             border-2 cursor-pointer
                             ${isSelected
                                 ? 'bg-gradient-to-br from-purple-500/20 to-pink-500/20 border-purple-500 shadow-lg shadow-purple-500/20'

@@ -17,7 +17,7 @@ export default function DiagnosticIntroPage() {
             <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gray-500/10 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
 
-            <div className="relative z-10 max-w-2xl w-full text-center flex flex-col items-center">
+            <div className="relative z-10 max-w-2xl w-full text-center flex flex-col items-center pt-32">
                 {/* Logo */}
                 <div className="mb-8">
                     <SupArtLogo className="h-12 w-12 md:h-16 md:w-16" />
@@ -47,8 +47,8 @@ export default function DiagnosticIntroPage() {
                     <button
                         onClick={() => setAccepted(!accepted)}
                         className={`flex items-center gap-3 px-6 py-3 rounded-xl transition-all ${accepted
-                                ? "bg-blue-500/20 border border-blue-500/50"
-                                : "bg-white/5 border border-white/10 hover:bg-white/10"
+                            ? "bg-blue-500/20 border border-blue-500/50"
+                            : "bg-white/5 border border-white/10 hover:bg-white/10"
                             }`}
                     >
                         {accepted ? (
@@ -74,8 +74,8 @@ export default function DiagnosticIntroPage() {
                         <button
                             disabled={!accepted}
                             className={`w-full font-bold py-4 px-8 rounded-full text-lg transition-all transform shadow-lg ${accepted
-                                    ? "bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white hover:scale-[1.02] active:scale-[0.98] shadow-blue-500/20 cursor-pointer"
-                                    : "bg-gray-800 text-gray-500 cursor-not-allowed"
+                                ? "bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white hover:scale-[1.02] active:scale-[0.98] shadow-blue-500/20 cursor-pointer"
+                                : "bg-gray-800 text-gray-500 cursor-not-allowed"
                                 }`}
                         >
                             Iniciar

@@ -83,7 +83,7 @@ export function StepCurrentSituation({ data, onNext, onBack }: StepProps) {
                     Tem um site hoje? <span className="text-pink-500">*</span>
                 </label>
                 <SelectionCards
-                    options={WEBSITE_STATUS_OPTIONS.map(o => ({ ...o }))}
+                    options={WEBSITE_STATUS_OPTIONS}
                     value={formState.has_website}
                     onChange={(value) => {
                         setFormState(prev => ({ ...prev, has_website: value }));
@@ -169,7 +169,7 @@ export function StepCurrentSituation({ data, onNext, onBack }: StepProps) {
                     Já investe em tráfego pago?
                 </label>
                 <SelectionCards
-                    options={PAID_TRAFFIC_OPTIONS.map(o => ({ ...o }))}
+                    options={PAID_TRAFFIC_OPTIONS}
                     value={formState.uses_paid_traffic}
                     onChange={(value) => setFormState(prev => ({ ...prev, uses_paid_traffic: value }))}
                     columns={3}

@@ -55,6 +55,7 @@ export function StepIdentification({ data, onNext, isFirst }: StepProps) {
     text-white placeholder:text-gray-500
     focus:outline-none focus:ring-2 focus:ring-gray-500/50 focus:border-gray-500
     transition-all duration-200
+    [&>option]:bg-black [&>option]:text-white
   `;
 
     const labelClasses = 'block text-sm font-medium text-gray-300 mb-2';
