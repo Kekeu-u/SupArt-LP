@@ -80,7 +80,8 @@ export function DiagnosticForm({ onComplete }: DiagnosticFormProps) {
             const data = await response.json();
 
             if (!response.ok) {
-                throw new Error(data.error || 'Erro ao enviar diagnóstico');
+                const fullError = [data.error, data.details, data.code, data.hint].filter(Boolean).join(' | ');
+                throw new Error(fullError || 'Erro ao enviar diagnóstico');
             }
 
             setResult(data);

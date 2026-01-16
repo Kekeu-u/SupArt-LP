@@ -52,15 +52,6 @@ export function DiagnosticSuccess({ result }: DiagnosticSuccessProps) {
                     Em breve você receberá um email com sua análise personalizada
                 </p>
 
-                {/* Score Badge */}
-                <div className="inline-block mb-8">
-                    <div className="bg-white/10 rounded-xl px-6 py-4">
-                        <p className="text-sm text-gray-400 mb-1">Seu Score de Prioridade</p>
-                        <p className="text-4xl font-bold bg-gradient-to-r from-gray-400 to-pink-400 bg-clip-text text-transparent">
-                            {result.urgency_score}/10
-                        </p>
-                    </div>
-                </div>
 
                 {/* Recommended Products */}
                 {result.recommended_products.length > 0 && (
@@ -99,7 +90,7 @@ export function DiagnosticSuccess({ result }: DiagnosticSuccessProps) {
                 {/* CTA */}
                 <div className="space-y-4">
                     <a
-                        href="https://wa.me/5511999999999?text=Olá! Acabei de fazer o diagnóstico no site e gostaria de agendar uma consultoria."
+                        href="https://wa.me/5551992327127?text=Olá! Acabei de preencher o diagnóstico no site da SupArt e gostaria de agendar uma consultoria gratuita."
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center gap-2 w-full md:w-auto px-8 py-4 bg-gradient-to-r from-gray-600 to-pink-600 text-white font-semibold rounded-xl hover:opacity-90 transition-opacity"
