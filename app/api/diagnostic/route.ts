@@ -103,9 +103,9 @@ export async function POST(req: Request) {
             .single();
 
         if (dbError) {
-            console.error('Erro no Supabase:', dbError);
+            console.error('Erro no Supabase:', JSON.stringify(dbError, null, 2));
             return NextResponse.json(
-                { error: 'Erro ao salvar diagnóstico', details: dbError.message },
+                { error: 'Erro ao salvar diagnóstico', details: dbError.message, code: dbError.code, hint: dbError.hint },
                 { status: 500 }
             );
         }
