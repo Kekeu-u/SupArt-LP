@@ -21,9 +21,9 @@ export const REFERRAL_OPTIONS = [
 ] as const;
 
 export const WEBSITE_STATUS_OPTIONS = [
-    { value: 'none', label: 'Não tenho site' },
-    { value: 'outdated', label: 'Tenho, mas está desatualizado' },
-    { value: 'active', label: 'Tenho e funciona bem' },
+    { value: 'none', label: 'Não tenho site', icon: '🚫' },
+    { value: 'outdated', label: 'Tenho, mas está desatualizado', icon: '⚠️' },
+    { value: 'active', label: 'Tenho e funciona bem', icon: '✅' },
 ] as const;
 
 export const SOCIAL_CHANNELS_OPTIONS = [
@@ -36,9 +36,9 @@ export const SOCIAL_CHANNELS_OPTIONS = [
 ] as const;
 
 export const PAID_TRAFFIC_OPTIONS = [
-    { value: 'never', label: 'Nunca investi' },
-    { value: 'failed', label: 'Já tentei sem sucesso' },
-    { value: 'active', label: 'Invisto ativamente' },
+    { value: 'never', label: 'Nunca investi', icon: '🆕' },
+    { value: 'failed', label: 'Já tentei sem sucesso', icon: '😕' },
+    { value: 'active', label: 'Invisto ativamente', icon: '💰' },
 ] as const;
 
 export const GOAL_OPTIONS = [
@@ -59,18 +59,18 @@ export const PAIN_POINTS_OPTIONS = [
 ] as const;
 
 export const BUDGET_OPTIONS = [
-    { value: 'up_to_3k', label: 'Até R$ 3.000/mês' },
-    { value: '3k_to_8k', label: 'R$ 3.000 - R$ 8.000/mês' },
-    { value: '8k_to_15k', label: 'R$ 8.000 - R$ 15.000/mês' },
-    { value: 'above_15k', label: 'Acima de R$ 15.000/mês' },
-    { value: 'prefer_not', label: 'Prefiro não dizer' },
+    { value: 'up_to_3k', label: 'Até R$ 3.000/mês', icon: '💵' },
+    { value: '3k_to_8k', label: 'R$ 3.000 - R$ 8.000/mês', icon: '💰' },
+    { value: '8k_to_15k', label: 'R$ 8.000 - R$ 15.000/mês', icon: '💎' },
+    { value: 'above_15k', label: 'Acima de R$ 15.000/mês', icon: '🚀' },
+    { value: 'prefer_not', label: 'Prefiro não dizer', icon: '🤐' },
 ] as const;
 
 export const TIMELINE_OPTIONS = [
-    { value: 'urgent', label: '🔥 Urgente (esta semana)' },
-    { value: '30_days', label: '⏱️ Próximos 30 dias' },
-    { value: '3_months', label: '📅 Próximos 3 meses' },
-    { value: 'researching', label: '🗓️ Estou só pesquisando' },
+    { value: 'urgent', label: 'Urgente (esta semana)', icon: '🔥' },
+    { value: '30_days', label: 'Próximos 30 dias', icon: '⏱️' },
+    { value: '3_months', label: 'Próximos 3 meses', icon: '📅' },
+    { value: 'researching', label: 'Estou só pesquisando', icon: '🔍' },
 ] as const;
 
 export const BRIEFING_OPTIONS = [

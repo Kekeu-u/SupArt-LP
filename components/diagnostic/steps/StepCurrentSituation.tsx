@@ -8,6 +8,7 @@ import {
     PAID_TRAFFIC_OPTIONS
 } from '@/lib/types/diagnostic';
 import type { DiagnosticFormData } from '@/lib/types/diagnostic';
+import { SelectionCards } from '../SelectionCards';
 
 interface StepProps {
     data: Partial<DiagnosticFormData>;
@@ -71,30 +72,27 @@ export function StepCurrentSituation({ data, onNext, onBack }: StepProps) {
     transition-all duration-200
   `;
 
-    const labelClasses = 'block text-sm font-medium text-gray-300 mb-2';
+    const labelClasses = 'block text-sm font-medium text-gray-300 mb-3';
     const errorClasses = 'text-red-400 text-xs mt-1';
 
     return (
         <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Tem site? */}
+            {/* Tem site? - Now using SelectionCards */}
             <div>
-                <label htmlFor="has_website" className={labelClasses}>
+                <label className={labelClasses}>
                     Tem um site hoje? <span className="text-pink-500">*</span>
                 </label>
-                <select
-                    id="has_website"
-                    name="has_website"
+                <SelectionCards
+                    options={WEBSITE_STATUS_OPTIONS.map(o => ({ ...o }))}
                     value={formState.has_website}
-                    onChange={handleChange}
-                    className={inputClasses}
-                >
-                    <option value="">Selecione uma opção</option>
-                    {WEBSITE_STATUS_OPTIONS.map(option => (
-                        <option key={option.value} value={option.value}>
-                            {option.label}
-                        </option>
-                    ))}
-                </select>
+                    onChange={(value) => {
+                        setFormState(prev => ({ ...prev, has_website: value }));
+                        if (errors.has_website) {
+                            setErrors(prev => ({ ...prev, has_website: '' }));
+                        }
+                    }}
+                    columns={3}
+                />
                 {errors.has_website && <p className={errorClasses}>{errors.has_website}</p>}
             </div>
 
@@ -165,25 +163,17 @@ export function StepCurrentSituation({ data, onNext, onBack }: StepProps) {
                 </div>
             )}
 
-            {/* Tráfego Pago */}
+            {/* Tráfego Pago - Now using SelectionCards */}
             <div>
-                <label htmlFor="uses_paid_traffic" className={labelClasses}>
+                <label className={labelClasses}>
                     Já investe em tráfego pago?
                 </label>
-                <select
-                    id="uses_paid_traffic"
-                    name="uses_paid_traffic"
+                <SelectionCards
+                    options={PAID_TRAFFIC_OPTIONS.map(o => ({ ...o }))}
                     value={formState.uses_paid_traffic}
-                    onChange={handleChange}
-                    className={inputClasses}
-                >
-                    <option value="">Selecione uma opção</option>
-                    {PAID_TRAFFIC_OPTIONS.map(option => (
-                        <option key={option.value} value={option.value}>
-                            {option.label}
-                        </option>
-                    ))}
-                </select>
+                    onChange={(value) => setFormState(prev => ({ ...prev, uses_paid_traffic: value }))}
+                    columns={3}
+                />
             </div>
 
             {/* Navigation */}

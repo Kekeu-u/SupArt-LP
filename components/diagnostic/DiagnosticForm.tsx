@@ -146,7 +146,7 @@ export function DiagnosticForm({ onComplete }: DiagnosticFormProps) {
         <div className="w-full max-w-2xl mx-auto px-4 py-6">
             {/* Header */}
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
-                🔮 Diagnóstico Digital Gratuito
+                Diagnóstico Digital <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Gratuito</span>
             </h1>
             <p className="text-gray-400">
                 Descubra oportunidades ocultas para sua presença digital

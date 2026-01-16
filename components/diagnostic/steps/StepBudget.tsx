@@ -8,6 +8,7 @@ import {
     BRIEFING_OPTIONS
 } from '@/lib/types/diagnostic';
 import type { DiagnosticFormData } from '@/lib/types/diagnostic';
+import { SelectionCards } from '../SelectionCards';
 
 interface StepProps {
     data: Partial<DiagnosticFormData>;
@@ -55,57 +56,31 @@ export function StepBudget({ data, onNext, onBack }: StepProps) {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Orçamento */}
+            {/* Orçamento - Now using SelectionCards */}
             <div>
                 <label className={labelClasses}>
                     Faixa de investimento mensal disponível <span className="text-pink-500">*</span>
                 </label>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    {BUDGET_OPTIONS.map(option => (
-                        <button
-                            key={option.value}
-                            type="button"
-                            onClick={() => handleSelect('budget_range', option.value)}
-                            className={`
-                text-left px-4 py-3 rounded-xl
-                transition-all duration-200
-                ${formState.budget_range === option.value
-                                    ? 'bg-gradient-to-r from-gray-600/30 to-pink-600/30 border border-gray-500 text-white'
-                                    : 'bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10'
-                                }
-              `}
-                        >
-                            {option.label}
-                        </button>
-                    ))}
-                </div>
+                <SelectionCards
+                    options={BUDGET_OPTIONS.map(o => ({ ...o }))}
+                    value={formState.budget_range}
+                    onChange={(value) => handleSelect('budget_range', value)}
+                    columns={2}
+                />
                 {errors.budget_range && <p className={errorClasses}>{errors.budget_range}</p>}
             </div>
 
-            {/* Timeline */}
+            {/* Timeline - Now using SelectionCards */}
             <div>
                 <label className={labelClasses}>
                     Quando pretende começar? <span className="text-pink-500">*</span>
                 </label>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    {TIMELINE_OPTIONS.map(option => (
-                        <button
-                            key={option.value}
-                            type="button"
-                            onClick={() => handleSelect('timeline', option.value)}
-                            className={`
-                text-left px-4 py-3 rounded-xl
-                transition-all duration-200
-                ${formState.timeline === option.value
-                                    ? 'bg-gradient-to-r from-gray-600/30 to-pink-600/30 border border-gray-500 text-white'
-                                    : 'bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10'
-                                }
-              `}
-                        >
-                            {option.label}
-                        </button>
-                    ))}
-                </div>
+                <SelectionCards
+                    options={TIMELINE_OPTIONS.map(o => ({ ...o }))}
+                    value={formState.timeline}
+                    onChange={(value) => handleSelect('timeline', value)}
+                    columns={2}
+                />
                 {errors.timeline && <p className={errorClasses}>{errors.timeline}</p>}
             </div>
 
