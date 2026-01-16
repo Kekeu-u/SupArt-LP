@@ -1,7 +1,6 @@
 import { google } from '@ai-sdk/google';
 import { generateText } from 'ai';
 import { NextResponse } from 'next/server';
-import { Resend } from 'resend';
 import { supabase } from '@/lib/supabase';
 import {
     diagnosticFormSchema,
@@ -111,33 +110,8 @@ export async function POST(req: Request) {
             );
         }
 
-        // 5. Enviar notificação por email via Resend
-        if (process.env.RESEND_API_KEY) {
-            try {
-                const resend = new Resend(process.env.RESEND_API_KEY);
-                await resend.emails.send({
-                    from: 'SupArt Diagnóstico <noreply@supart.com.br>',
-                    to: process.env.NOTIFICATION_EMAIL || 'contato@supart.com.br',
-                    subject: `🔔 Novo Lead: ${data.full_name} (Score: ${urgency_score}/10)`,
-                    html: `
-                        <h2>Novo Diagnóstico Recebido!</h2>
-                        <p><strong>Nome:</strong> ${data.full_name}</p>
-                        <p><strong>Email:</strong> ${data.email}</p>
-                        <p><strong>WhatsApp:</strong> ${data.phone}</p>
-                        <p><strong>Empresa:</strong> ${data.company_name || 'Não informado'}</p>
-                        <p><strong>Objetivo:</strong> ${data.main_goal}</p>
-                        <p><strong>Budget:</strong> ${data.budget_range}</p>
-                        <p><strong>Timeline:</strong> ${data.timeline}</p>
-                        <p><strong>Score de Urgência:</strong> ${urgency_score}/10</p>
-                        <hr/>
-                        <p><strong>Produtos Recomendados:</strong> ${recommended_products.join(', ')}</p>
-                        ${ai_analysis?.summary ? `<p><strong>Análise IA:</strong> ${ai_analysis.summary}</p>` : ''}
-                    `,
-                });
-            } catch (emailError) {
-                console.error('Erro ao enviar email:', emailError);
-            }
-        }
+        // 5. Enviar email com diagnóstico (TODO: implementar com Resend)
+        // await sendDiagnosticEmail(insertedData.email, ai_analysis);
 
         // 6. Webhook Discord (opcional)
         if (process.env.DISCORD_WEBHOOK_URL) {
