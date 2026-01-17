@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-  FaHome, 
-  FaInfoCircle, 
-  FaBriefcase, 
-  FaImages, 
-  FaCommentDots, 
-  FaTags, 
-  FaQuestionCircle, 
-  FaEnvelope 
+import {
+  FaHome,
+  FaInfoCircle,
+  FaBriefcase,
+  FaImages,
+  FaCommentDots,
+  FaTags,
+  FaQuestionCircle,
+  FaEnvelope
 } from 'react-icons/fa';
 
 const navItems = [
@@ -33,13 +33,13 @@ const ScrollspyNav: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      
+
       for (const item of navItems) {
         const section = document.getElementById(item.id);
         if (section) {
           const sectionTop = section.offsetTop;
           const sectionHeight = section.offsetHeight;
-          
+
           const offset = window.innerHeight * 0.4;
 
           if (scrollPosition >= sectionTop - offset && scrollPosition < sectionTop + sectionHeight - offset) {
@@ -65,11 +65,11 @@ const ScrollspyNav: React.FC = () => {
 
     if (activeItemEl) {
       const container = scrollContainerRef.current;
-      const targetScrollTop = 
-        activeItemEl.offsetTop - 
-        container.offsetHeight / 2 + 
+      const targetScrollTop =
+        activeItemEl.offsetTop -
+        container.offsetHeight / 2 +
         activeItemEl.offsetHeight / 2;
-      
+
       container.scrollTo({
         top: targetScrollTop,
         behavior: 'smooth'
@@ -84,23 +84,22 @@ const ScrollspyNav: React.FC = () => {
 
   return (
     <nav className="fixed top-1/2 right-2 sm:right-4 transform -translate-y-1/2 z-50">
-      <ul 
-        ref={scrollContainerRef} 
-        className="flex flex-col items-center justify-start gap-y-1 bg-black/20 backdrop-blur-lg p-2 rounded-full border border-white/10 max-h-[50vh] sm:max-h-[60vh] overflow-y-scroll no-scrollbar"
+      <ul
+        ref={scrollContainerRef}
+        className="flex flex-col items-center justify-start gap-y-1 p-2 max-h-[50vh] sm:max-h-[60vh] overflow-y-scroll no-scrollbar"
       >
         {navItems.map((item, index) => (
           <li key={item.id} ref={el => { itemRefs.current[index] = el; }} className="group relative">
             <a
               href={`#${item.id}`}
               onClick={(e) => handleNavClick(e, item.id)}
-              className={`flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${
-                activeSection === item.id ? 'text-gray-400 scale-110 bg-white/10' : 'text-gray-400 hover:text-white hover:bg-white/5'
-              }`}
+              className={`flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${activeSection === item.id ? 'text-gray-400 scale-110 bg-white/10' : 'text-gray-400 hover:text-white hover:bg-white/5'
+                }`}
               aria-label={`Ir para a seção ${item.label}`}
             >
               {item.icon}
             </a>
-             <span className="absolute right-full top-1/2 -translate-y-1/2 mr-4 px-3 py-1 bg-black text-white text-sm rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
+            <span className="absolute right-full top-1/2 -translate-y-1/2 mr-4 px-3 py-1 bg-black text-white text-sm rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
               {item.label}
             </span>
           </li>

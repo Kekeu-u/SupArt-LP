@@ -8,6 +8,7 @@ import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { Preloader } from "@/components/ui/Preloader";
 import { Header } from "@/components/layout/Header";
 
+
 const inter = Inter({
     subsets: ["latin"],
     variable: "--font-inter",
@@ -81,6 +82,7 @@ export default function RootLayout({
                         enableSystem
                         disableTransitionOnChange
                     >
+
                         <Header />
                         <SmoothScroll />
                         <Preloader />

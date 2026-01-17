@@ -35,6 +35,7 @@ const SECTIONS = ["home", "method", "solutions", "contact"] as const;
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isPastHero, setIsPastHero] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const pathname = usePathname();
   const { t } = useI18n();
@@ -51,6 +52,9 @@ export const Header = () => {
 
     const handleScroll = () => {
       setIsScrolled(window.scrollY > SCROLL_THRESHOLD);
+
+      // Detecta se passou do Hero (80% da altura da tela)
+      setIsPastHero(window.scrollY > window.innerHeight * 0.8);
 
       // Encontra a seção mais visível (de baixo para cima)
       let foundSection: string | null = null;
@@ -109,7 +113,7 @@ export const Header = () => {
     { href: "#contact", label: t("nav.contact", "Contato"), icon: FaEnvelope },
   ];
 
-  const isLightMode = pathname.startsWith("/blog");
+  const isLightMode = pathname.startsWith("/blog") || (isHomePage && isPastHero);
 
   // Base classes
   const headerContainerClasses = "fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] md:w-[90%] transition-all duration-300";

@@ -11,7 +11,7 @@ export const DiagnosticSection = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
-        <section id="contact" className="py-32 relative overflow-hidden">
+        <section id="contact" className="py-32 relative overflow-hidden bg-white">
 
 
             <div className="container mx-auto px-6 relative z-10">

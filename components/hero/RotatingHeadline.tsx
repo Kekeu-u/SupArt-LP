@@ -24,7 +24,7 @@ export const RotatingHeadline = () => {
 
     return (
         <div className="flex flex-col items-center justify-center text-center">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight">
                 {t("We make AI Agents", "Fazemos Agentes de IA")}
             </h1>
             <div className="h-12 sm:h-16 md:h-20 overflow-hidden flex items-center justify-center">
@@ -35,7 +35,7 @@ export const RotatingHeadline = () => {
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: -40, opacity: 0 }}
                         transition={{ duration: 0.5, ease: "easeOut" }}
-                        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 pb-2"
+                        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-100 via-gray-400 to-gray-100 pb-2"
                     >
                         {phrases[index][locale]}
                     </motion.span>

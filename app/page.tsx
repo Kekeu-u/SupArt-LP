@@ -37,6 +37,8 @@ import { PremiumDivider } from "@/components/ui/PremiumDivider";
 import { Method } from "@/components/sections/Method";
 import { DiagnosticSection } from "@/components/sections/DiagnosticSection";
 
+import { VideoBackground } from "@/components/ui/VideoBackground";
+
 export default function Home() {
     const { locale, t } = useI18n();
     const mainRef = useRef<HTMLElement>(null);
@@ -93,7 +95,8 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     HERO SECTION - REFATORADO (3 camadas)
                     ═══════════════════════════════════════════ */}
-                <section id="home" className="relative min-h-screen flex items-center justify-center px-8 md:px-16">
+                <section id="home" className="relative min-h-screen flex items-center justify-center px-8 md:px-16 overflow-hidden">
+                    <VideoBackground />
                     {/* Camada única de conteúdo */}
                     <motion.div
                         className="text-center max-w-4xl mx-auto mt-[10vh]"
@@ -103,12 +106,12 @@ export default function Home() {
                     >
                         <HeroLogo size={100} className="mx-auto mb-4" />
                         <RotatingHeadline />
-                        <p className="text-lg md:text-xl text-gray-600 max-w-xl mx-auto mb-6 leading-relaxed">
+                        <p className="text-lg md:text-xl text-gray-300 max-w-xl mx-auto mb-6 leading-relaxed">
                             {heroSubtitle}
                         </p>
                         <a
                             href="#method"
-                            className="inline-block px-6 py-3 rounded-full bg-black text-white font-semibold text-base hover:bg-gray-800 transition-all hover:scale-105 shadow-lg"
+                            className="inline-block px-6 py-3 rounded-full bg-white text-black font-semibold text-base hover:bg-gray-200 transition-all hover:scale-105 shadow-lg"
                         >
                             {t("Understand how it works", "Entender como funciona")}
                         </a>
