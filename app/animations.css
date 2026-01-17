@@ -121,3 +121,98 @@
     box-shadow: inset 0 0 20px rgba(29, 78, 216, 0.2);
     /* Inner blue glow */
 }
+
+/* -------------------------------------------------------------------------- */
+/* FLOAT ANIMATIONS - Para orbs e partículas do Hero3D                       */
+/* -------------------------------------------------------------------------- */
+
+@keyframes float-slow {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1) translateZ(0);
+    }
+
+    50% {
+        transform: translateY(-20px) scale(1.05) translateZ(0);
+    }
+}
+
+@keyframes float-medium {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg) translateZ(0);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(3deg) translateZ(0);
+    }
+}
+
+@keyframes float-fast {
+
+    0%,
+    100% {
+        transform: translateY(0) translateZ(0);
+    }
+
+    50% {
+        transform: translateY(-10px) translateZ(0);
+    }
+}
+
+@keyframes float-particle {
+
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: translateY(0) translateX(0) translateZ(0);
+    }
+
+    25% {
+        opacity: 0.5;
+        transform: translateY(-30px) translateX(10px) translateZ(0);
+    }
+
+    50% {
+        opacity: 0.3;
+        transform: translateY(-50px) translateX(-5px) translateZ(0);
+    }
+
+    75% {
+        opacity: 0.6;
+        transform: translateY(-30px) translateX(15px) translateZ(0);
+    }
+}
+
+.animate-float-slow {
+    animation: float-slow 8s ease-in-out infinite;
+    will-change: transform;
+}
+
+.animate-float-medium {
+    animation: float-medium 6s ease-in-out infinite;
+    will-change: transform;
+}
+
+.animate-float-fast {
+    animation: float-fast 4s ease-in-out infinite;
+    will-change: transform;
+}
+
+.animate-float-particle {
+    animation: float-particle 15s ease-in-out infinite;
+    will-change: transform, opacity;
+}
+
+/* Respeita preferências de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+
+    .animate-float-slow,
+    .animate-float-medium,
+    .animate-float-fast,
+    .animate-float-particle {
+        animation: none;
+    }
+}
