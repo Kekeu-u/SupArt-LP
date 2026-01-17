@@ -110,8 +110,38 @@ export async function POST(req: Request) {
             );
         }
 
-        // 5. Enviar email com diagnóstico (TODO: implementar com Resend)
-        // await sendDiagnosticEmail(insertedData.email, ai_analysis);
+        // 5. Notificar via Dash API (envia email via Resend)
+        if (process.env.DASH_API_URL && process.env.LEAD_INGEST_API_KEY) {
+            try {
+                const dashResponse = await fetch(`${process.env.DASH_API_URL}/api/external/lead-ingest`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-api-key': process.env.LEAD_INGEST_API_KEY,
+                    },
+                    body: JSON.stringify({
+                        source: 'diagnostic',
+                        lead: {
+                            full_name: data.full_name,
+                            email: data.email,
+                            phone: data.phone,
+                            company_name: data.company_name,
+                            main_goal: data.main_goal,
+                            budget_range: data.budget_range,
+                            timeline: data.timeline,
+                            urgency_score,
+                            recommended_products,
+                        },
+                    }),
+                });
+
+                if (!dashResponse.ok) {
+                    console.error('Erro ao notificar Dash:', await dashResponse.text());
+                }
+            } catch (dashError) {
+                console.error('Erro ao conectar com Dash API:', dashError);
+            }
+        }
 
         // 6. Webhook Discord (opcional)
         if (process.env.DISCORD_WEBHOOK_URL) {
