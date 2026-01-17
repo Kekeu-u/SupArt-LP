@@ -39,7 +39,7 @@ export function VideoBackground() {
                 poster="/background-main.png"
                 className="absolute inset-0 w-full h-full object-cover"
             >
-                <source src="/video-bg.webm" type="video/webm" />
+                <source src="/Video-Bg.webm" type="video/webm" />
                 {/* Fallback message */}
                 Seu navegador não suporta vídeos.
             </video>
