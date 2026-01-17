@@ -122,15 +122,33 @@ export async function POST(req: Request) {
                     body: JSON.stringify({
                         source: 'diagnostic',
                         lead: {
+                            // Etapa 1: Identificação
                             full_name: data.full_name,
                             email: data.email,
                             phone: data.phone,
                             company_name: data.company_name,
+                            role: data.role,
+                            referral_source: data.referral_source,
+                            // Etapa 2: Situação Atual
+                            has_website: data.has_website,
+                            website_url: data.website_url,
+                            social_channels: data.social_channels,
+                            uses_paid_traffic: data.uses_paid_traffic,
+                            instagram_handle: data.instagram_handle,
+                            // Etapa 3: Objetivos & Dores
                             main_goal: data.main_goal,
+                            pain_points: data.pain_points,
+                            challenge_description: data.challenge_description,
+                            // Etapa 4: Orçamento & Timeline
                             budget_range: data.budget_range,
                             timeline: data.timeline,
+                            has_briefing: data.has_briefing,
+                            // Etapa 5: Prioridades
+                            priorities: data.priorities,
+                            // Dados calculados
                             urgency_score,
                             recommended_products,
+                            ai_analysis,
                         },
                     }),
                 });
