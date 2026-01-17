@@ -56,9 +56,9 @@ export const BlogPreview = () => {
     };
 
     return (
-        <section className="relative py-20 z-20 bg-white transition-colors duration-500">
-            {/* Background Pattern - Subtle in Light, Visible in Dark */}
-            <div className="absolute inset-0 pointer-events-none text-gray-100/5">
+        <section className="relative py-24 z-20 bg-white transition-colors duration-500">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 pointer-events-none text-gray-200/30">
                 <div className="absolute inset-0 opacity-40" style={{
                     backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
                     backgroundSize: '32px 32px'
@@ -74,16 +74,16 @@ export const BlogPreview = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-12"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                         {content.title[locale]}
                     </h2>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                    <p className="text-lg text-gray-500 max-w-2xl mx-auto">
                         {content.subtitle[locale]}
                     </p>
                 </motion.div>
 
                 {/* Blog Preview Grid */}
-                <div className="grid md:grid-cols-3 gap-8 mb-10">
+                <div className="grid md:grid-cols-3 gap-8 mb-12">
                     {content.posts.map((post, index) => {
                         const Icon = post.icon;
                         return (
@@ -97,7 +97,7 @@ export const BlogPreview = () => {
                             >
                                 <a href={`/blog/${post.slug}`} className="block h-full no-underline">
                                     <PremiumCard
-                                        className="h-full p-8 flex flex-col group bg-white/60/5 backdrop-blur-xl border border-white/40 shadow-xl transition-all duration-500 hover:-translate-y-1 hover:border-gray-500/30 dark:hover:border-gray-500/50"
+                                        className="h-full p-8 flex flex-col group bg-white/80 backdrop-blur-xl border border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.04)] transition-all duration-500 hover:-translate-y-1 hover:shadow-lg"
                                     >
                                         {/* Icon */}
                                         <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${post.gradient} flex items-center justify-center mb-6 shadow-lg`}>
@@ -110,17 +110,17 @@ export const BlogPreview = () => {
                                         </span>
 
                                         {/* Title */}
-                                        <h3 className={`text-xl font-bold text-black mb-3 group-hover:bg-gradient-to-r ${post.textGradient} group-hover:text-transparent group-hover:bg-clip-text transition-all duration-300 line-clamp-2 leading-tight`}>
+                                        <h3 className={`text-xl font-bold text-gray-900 mb-3 group-hover:bg-gradient-to-r ${post.textGradient} group-hover:text-transparent group-hover:bg-clip-text transition-all duration-300 line-clamp-2 leading-tight`}>
                                             {post.title[locale]}
                                         </h3>
 
                                         {/* Excerpt */}
-                                        <p className="text-sm text-gray-600 line-clamp-3 mb-6 flex-grow leading-relaxed">
+                                        <p className="text-sm text-gray-500 line-clamp-3 mb-6 flex-grow leading-relaxed">
                                             {post.excerpt[locale]}
                                         </p>
 
                                         {/* Arrow Icon */}
-                                        <div className={`mt-auto flex items-center text-sm font-bold text-black group-hover:bg-gradient-to-r ${post.textGradient} group-hover:text-transparent group-hover:bg-clip-text transition-all`}>
+                                        <div className={`mt-auto flex items-center text-sm font-bold text-gray-900 group-hover:bg-gradient-to-r ${post.textGradient} group-hover:text-transparent group-hover:bg-clip-text transition-all`}>
                                             <span>{locale === "en" ? "Read more" : "Ler mais"}</span>
                                             <svg className="w-4 h-4 ml-2 text-current" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

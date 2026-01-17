@@ -35,6 +35,7 @@ import { RotatingHeadline } from "@/components/hero/RotatingHeadline";
 import { useI18n } from "@/lib/i18n";
 import { PremiumDivider } from "@/components/ui/PremiumDivider";
 import { Method } from "@/components/sections/Method";
+import { AiAgents } from "@/components/sections/AiAgents";
 import { DiagnosticSection } from "@/components/sections/DiagnosticSection";
 
 import { VideoBackground } from "@/components/ui/VideoBackground";
@@ -75,8 +76,8 @@ export default function Home() {
     };
 
     const heroSubtitle = t(
-        "We transform businesses with Elite Design and AI. From strategy to automation.",
-        "Transformamos negócios com Design de Elite e IA. Da estratégia à automação."
+        "Design that sells. Automation that scales. Strategy that converts.",
+        "Design que vende. Automação que escala. Estratégia que converte."
     );
 
     const ctaText = t("Start Project", "Iniciar Projeto");
@@ -97,30 +98,24 @@ export default function Home() {
                     ═══════════════════════════════════════════ */}
                 <section id="home" className="relative min-h-screen flex items-center justify-center px-8 md:px-16 overflow-hidden">
                     <VideoBackground />
-                    {/* Camada única de conteúdo */}
+                    {/* Camada única de conteúdo - removido mt-[10vh] para centralizar verticalmente */}
                     <motion.div
-                        className="text-center max-w-4xl mx-auto mt-[10vh]"
+                        className="text-center max-w-4xl mx-auto px-4"
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, ease: "easeOut" }}
                     >
-                        <HeroLogo size={100} className="mx-auto mb-4" />
+                        <HeroLogo size={80} className="mx-auto mb-2 md:mb-4 w-16 h-16 md:w-24 md:h-24" />
                         <RotatingHeadline />
-                        <p className="text-lg md:text-xl text-gray-300 max-w-xl mx-auto mb-6 leading-relaxed">
+                        <p className="text-base md:text-xl text-gray-300 max-w-xl mx-auto mt-2 leading-relaxed">
                             {heroSubtitle}
                         </p>
-                        <a
-                            href="#method"
-                            className="inline-block px-6 py-3 rounded-full bg-white text-black font-semibold text-base hover:bg-gray-200 transition-all hover:scale-105 shadow-lg"
-                        >
-                            {t("Understand how it works", "Entender como funciona")}
-                        </a>
                     </motion.div>
 
                     {/* Scroll Indicator */}
                     <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block">
-                        <div className="w-6 h-10 rounded-full border-2 border-black/20 flex items-start justify-center p-1 animate-bounce">
-                            <div className="w-1.5 h-3 rounded-full bg-black/30" />
+                        <div className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-1 animate-bounce">
+                            <div className="w-1.5 h-3 rounded-full bg-white/50" />
                         </div>
                     </div>
                 </section>
@@ -142,6 +137,15 @@ export default function Home() {
                     ═══════════════════════════════════════════ */}
                 <div className="section-reveal relative z-10 bg-transparent">
                     <Method />
+                </div>
+
+                <PremiumDivider className="my-0" />
+
+                {/* ═══════════════════════════════════════════
+                    AI AGENTS SECTION
+                    ═══════════════════════════════════════════ */}
+                <div className="section-reveal relative z-10 bg-transparent">
+                    <AiAgents />
                 </div>
 
                 <PremiumDivider className="my-0" />

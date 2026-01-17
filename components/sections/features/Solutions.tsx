@@ -1,50 +1,22 @@
 "use client";
 
-import { useRef } from "react";
 import { motion } from "framer-motion";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import { services } from "@/data";
 import { useI18n } from "@/lib/i18n";
 import { ShinyButton } from "@/components/ui/ShinyButton";
 
-if (typeof window !== "undefined") {
-    gsap.registerPlugin(ScrollTrigger);
-}
-
 export function Solutions() {
     const { locale } = useI18n();
-    const sectionRef = useRef<HTMLElement>(null);
-
-    useGSAP(() => {
-        const mm = gsap.matchMedia();
-        mm.add("(min-width: 768px)", () => {
-            gsap.fromTo(".service-card",
-                { y: 80, opacity: 0 },
-                {
-                    y: 0, opacity: 1,
-                    stagger: 0.1,
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: "top 80%",
-                        end: "center 60%",
-                        scrub: 0.5
-                    }
-                }
-            );
-        });
-        return () => mm.revert();
-    }, { scope: sectionRef });
 
     return (
-        <section ref={sectionRef} id="solutions" className="py-24 px-8 md:px-16 lg:px-24 bg-white">
+        <section id="solutions" className="py-24 px-8 md:px-16 lg:px-24 bg-white">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
                     className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16"
                 >
                     {locale === "en" ? "Solutions" : "Soluções"}
@@ -53,35 +25,38 @@ export function Solutions() {
                 {/* Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {services.map((service, i) => (
-                        <article
+                        <motion.article
                             key={i}
-                            className="service-card group bg-gray-50 border border-gray-200 p-6 rounded-xl hover:border-gray-400 hover:shadow-lg transition-all"
-                            style={{ opacity: 0 }}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4, delay: i * 0.1, ease: "easeOut" }}
+                            className="service-card group bg-white/80 backdrop-blur-xl border border-gray-100 p-6 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex flex-col"
                         >
-                            {/* Features */}
-                            <div className="h-32 mb-4 flex flex-wrap gap-1 items-center justify-center">
+                            {/* Features as Pills */}
+                            <div className="h-28 mb-4 flex flex-wrap gap-1.5 items-start justify-center content-start">
                                 {service.features[locale].slice(0, 3).map((f, idx) => (
-                                    <span key={idx} className="px-2 py-1 rounded-full bg-gray-200 text-xs text-gray-600">
+                                    <span key={idx} className="px-2.5 py-1 rounded-full bg-gray-100 text-xs text-gray-600 font-medium">
                                         {f}
                                     </span>
                                 ))}
                             </div>
 
                             <h3 className="text-xl font-bold text-gray-900 mb-2">{service.title[locale]}</h3>
-                            <p className="text-gray-600 text-sm mb-4 leading-relaxed">{service.desc[locale]}</p>
+                            <p className="text-gray-500 text-sm mb-4 leading-relaxed flex-grow">{service.desc[locale]}</p>
 
-                            <div className="flex items-center justify-between mt-auto">
+                            <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
                                 <span className="text-sm font-semibold text-gray-900">{service.price[locale]}</span>
-                                <button className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <button className="w-8 h-8 rounded-full bg-gray-900 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     →
                                 </button>
                             </div>
-                        </article>
+                        </motion.article>
                     ))}
                 </div>
 
                 {/* CTA */}
-                <div className="mt-12 flex justify-center">
+                <div className="mt-16 flex justify-center">
                     <ShinyButton href="#contact">
                         {locale === "en" ? "Talk to us" : "Fale com a gente"}
                     </ShinyButton>

@@ -15,7 +15,7 @@ export const Method = () => {
     const { locale, t } = useI18n();
 
     return (
-        <section id="method" className="py-20 px-8 md:px-16 lg:px-24 bg-white">
+        <section id="method" className="py-24 px-8 md:px-16 lg:px-24 bg-[#F5F5F7]">
             {/* Header */}
             <motion.div
                 className="text-center mb-16 max-w-3xl mx-auto"
@@ -26,7 +26,7 @@ export const Method = () => {
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
                     {t("The SupArt Method", "O Método SupArt")}
                 </h2>
-                <p className="text-lg text-gray-600 leading-relaxed">
+                <p className="text-lg text-gray-500 leading-relaxed">
                     {t("AI at the center of your business requires method.", "IA no centro do seu negócio exige método.")}
                 </p>
             </motion.div>
@@ -40,14 +40,25 @@ export const Method = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.1 }}
-                        className="bg-gray-50 border border-gray-200 p-6 rounded-xl hover:border-gray-400 hover:shadow-md transition-all group"
+                        className="group bg-white/80 backdrop-blur-xl border border-white/50 p-8 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-all duration-300"
                     >
-                        <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                        {/* Icon */}
+                        <div className="w-12 h-12 bg-gray-900 rounded-xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300">
                             <step.icon className="text-white text-xl" />
                         </div>
-                        <span className="text-xs font-bold text-gray-400 mb-2 block">0{i + 1}</span>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title[locale]}</h3>
-                        <p className="text-gray-600 text-sm leading-relaxed">{step.description[locale]}</p>
+
+                        {/* Number */}
+                        <span className="text-xs font-bold text-gray-400 mb-2 block tracking-wider">
+                            0{i + 1}
+                        </span>
+
+                        {/* Content */}
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">
+                            {step.title[locale]}
+                        </h3>
+                        <p className="text-gray-500 text-sm leading-relaxed">
+                            {step.description[locale]}
+                        </p>
                     </motion.article>
                 ))}
             </div>

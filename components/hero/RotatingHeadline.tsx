@@ -5,10 +5,9 @@ import { useState, useEffect } from "react";
 import { useI18n } from "@/lib/i18n";
 
 const phrases = [
-    { en: "work for you", pt: "trabalharem por você" },
-    { en: "scale your business", pt: "escalarem seu negócio" },
-    { en: "serve your clients", pt: "atenderem seus clientes" },
-    { en: "automate your sales", pt: "automatizarem suas vendas" },
+    { en: "Elite Design", pt: "Design de Elite" },
+    { en: "Premium Strategy", pt: "Estratégia Premium" },
+    { en: "Total Automation", pt: "Automação Total" },
 ];
 
 export const RotatingHeadline = () => {
@@ -23,19 +22,20 @@ export const RotatingHeadline = () => {
     }, []);
 
     return (
-        <div className="flex flex-col items-center justify-center text-center">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight">
-                {t("We make AI Agents", "Fazemos Agentes de IA")}
+        <div className="flex flex-col items-center justify-center text-center gap-0">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-none tracking-tight">
+                {t("Your brand deserves", "Sua marca merece")}
             </h1>
-            <div className="h-12 sm:h-16 md:h-20 overflow-hidden flex items-center justify-center">
+            {/* Container compacto para mobile */}
+            <div className="relative h-12 sm:h-16 md:h-20 flex items-center justify-center w-full">
                 <AnimatePresence mode="wait">
                     <motion.span
                         key={index}
-                        initial={{ y: 40, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: -40, opacity: 0 }}
-                        transition={{ duration: 0.5, ease: "easeOut" }}
-                        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-100 via-gray-400 to-gray-100 pb-2"
+                        initial={{ opacity: 0, filter: "blur(8px)", y: -15 }}
+                        animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                        exit={{ opacity: 0, filter: "blur(10px)", y: -15 }}
+                        transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+                        className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-violet-300 via-pink-300 to-violet-300 absolute whitespace-nowrap pb-1"
                     >
                         {phrases[index][locale]}
                     </motion.span>
@@ -44,3 +44,4 @@ export const RotatingHeadline = () => {
         </div>
     );
 };
+
