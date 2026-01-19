@@ -37,8 +37,8 @@ import { PremiumDivider } from "@/components/ui/PremiumDivider";
 import { Method } from "@/components/sections/Method";
 import { AiAgents } from "@/components/sections/AiAgents";
 import { DiagnosticSection } from "@/components/sections/DiagnosticSection";
-
 import { VideoBackground } from "@/components/ui/VideoBackground";
+import { Footer } from "@/components/layout/Footer";
 
 export default function Home() {
     const { locale, t } = useI18n();
@@ -80,8 +80,6 @@ export default function Home() {
         "Design que vende. Automação que escala. Estratégia que converte."
     );
 
-    const ctaText = t("Start Project", "Iniciar Projeto");
-
     return (
         <>
             <script
@@ -94,20 +92,20 @@ export default function Home() {
             <main ref={mainRef} className="min-h-screen bg-transparent overflow-x-hidden selection:bg-[var(--color-apple-blue)] selection:text-white">
 
                 {/* ═══════════════════════════════════════════
-                    HERO SECTION - REFATORADO (3 camadas)
+                    HERO SECTION - ORIGINAL RESTORED
                     ═══════════════════════════════════════════ */}
-                <section id="home" className="relative min-h-screen flex items-center justify-center px-8 md:px-16 overflow-hidden">
+                <section id="home" className="relative min-h-screen flex flex-col items-center justify-start pt-32 md:pt-40 px-8 md:px-16 overflow-hidden">
                     <VideoBackground />
-                    {/* Camada única de conteúdo - removido mt-[10vh] para centralizar verticalmente */}
+                    {/* Camada única de conteúdo */}
                     <motion.div
-                        className="text-center max-w-4xl mx-auto px-4"
+                        className="text-center max-w-5xl mx-auto px-4"
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, ease: "easeOut" }}
                     >
-                        <HeroLogo size={80} className="mx-auto mb-2 md:mb-4 w-16 h-16 md:w-24 md:h-24" />
+                        <HeroLogo size={110} className="mx-auto mb-6 w-24 h-24 md:w-32 md:h-32" />
                         <RotatingHeadline />
-                        <p className="text-base md:text-xl text-gray-300 max-w-xl mx-auto mt-2 leading-relaxed">
+                        <p className="text-lg md:text-2xl text-gray-300 max-w-2xl mx-auto mt-4 leading-relaxed font-light tracking-wide">
                             {heroSubtitle}
                         </p>
                     </motion.div>
@@ -121,10 +119,7 @@ export default function Home() {
                 </section>
 
                 {/* ═══════════════════════════════════════════
-                    TECH STACK SECTION
-                    ═══════════════════════════════════════════ */}
-                {/* ═══════════════════════════════════════════
-                    TECH STACK SECTION
+                    SECTIONS BELOW
                     ═══════════════════════════════════════════ */}
                 <div className="section-reveal relative z-10 bg-transparent">
                     <TechStackMarquee />
@@ -132,116 +127,46 @@ export default function Home() {
 
                 <PremiumDivider className="my-0" />
 
-                {/* ═══════════════════════════════════════════
-                    METHOD SECTION
-                    ═══════════════════════════════════════════ */}
                 <div className="section-reveal relative z-10 bg-transparent">
                     <Method />
                 </div>
 
                 <PremiumDivider className="my-0" />
 
-                {/* ═══════════════════════════════════════════
-                    AI AGENTS SECTION
-                    ═══════════════════════════════════════════ */}
                 <div className="section-reveal relative z-10 bg-transparent">
                     <AiAgents />
                 </div>
 
                 <PremiumDivider className="my-0" />
 
-                {/* ═══════════════════════════════════════════
-                    SOLUTIONS SECTION
-                    ═══════════════════════════════════════════ */}
                 <div className="section-reveal relative z-10 bg-transparent">
                     <Solutions />
                 </div>
 
+                <PremiumDivider className="my-0" />
 
+                <div className="section-reveal relative z-10 bg-transparent">
+                    <DiagnosticSection />
+                </div>
 
                 <PremiumDivider className="my-0" />
 
-                {/* ═══════════════════════════════════════════
-                    PROJECT SHOWCASE SECTION
-                    ═══════════════════════════════════════════ */}
                 <div className="section-reveal relative z-10 bg-transparent">
                     <ProjectShowcase />
                 </div>
 
                 <PremiumDivider className="my-0" />
 
-                {/* ═══════════════════════════════════════════
-                    TESTIMONIALS SECTION
-                    ═══════════════════════════════════════════ */}
                 <div className="section-reveal relative z-10 bg-transparent">
                     <Testimonials />
                 </div>
 
-                <PremiumDivider className="my-0" />
-
-
-
-                {/* ═══════════════════════════════════════════
-                    BLOG PREVIEW
-                    ═══════════════════════════════════════════ */}
                 <div className="section-reveal relative z-10 bg-transparent">
                     <BlogPreview />
                 </div>
 
-                <PremiumDivider className="my-0" />
-
-                {/* ═══════════════════════════════════════════
-                    DIAGNOSTIC SECTION
-                    ═══════════════════════════════════════════ */}
-                <div className="section-reveal relative z-10 bg-transparent">
-                    <DiagnosticSection />
-                </div>
-
-                {/* ═══════════════════════════════════════════
-                    FOOTER
-                    ═══════════════════════════════════════════ */}
-                <footer className="bg-[var(--color-apple-off-white)] py-32 border-t border-black/5 transition-colors duration-500">
-                    <div className="max-w-7xl mx-auto px-6">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
-                            <div className="col-span-2 md:col-span-1">
-                                <h4 className="font-semibold mb-6">{siteConfig.name}</h4>
-                                <p className="text-sm text-gray-600 leading-relaxed max-w-xs">
-                                    {siteConfig.description[locale]}
-                                </p>
-                                {/* Availability Badge */}
-                                <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-green-200 text-green-800 text-xs font-medium shadow-sm">
-                                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                                    {siteConfig.availability[locale]}
-                                </div>
-                            </div>
-
-                            {footerLinks.map((col, i) => (
-                                <div key={i}>
-                                    <h4 className="font-semibold mb-6 text-sm">{col.title[locale]}</h4>
-                                    <ul className="space-y-4">
-                                        {col.links.map((link) => (
-                                            <li key={link.label.en}>
-                                                <a href={link.href} className="text-sm text-gray-600 hover:text-[var(--color-apple-black)] transition-colors">
-                                                    {link.label[locale]}
-                                                </a>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-4">
-                            <p className="text-xs text-gray-500">
-                                {siteConfig.copyright[locale]}
-                            </p>
-                            <p className="text-xs text-gray-500">
-                                {siteConfig.location}
-                            </p>
-                        </div>
-                    </div>
-                </footer>
             </main>
+            <Footer />
         </>
     );
 }

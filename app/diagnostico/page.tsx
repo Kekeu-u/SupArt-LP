@@ -20,7 +20,7 @@ export default function DiagnosticIntroPage() {
             <div className="relative z-10 max-w-2xl w-full text-center flex flex-col items-center pt-32">
                 {/* Logo */}
                 <div className="mb-8">
-                    <SupArtLogo className="h-12 w-12 md:h-16 md:w-16" />
+                    <SupArtLogo className="h-20 w-20 md:h-24 md:w-24" />
                 </div>
 
                 {/* Headline */}

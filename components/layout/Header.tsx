@@ -115,15 +115,15 @@ export const Header = () => {
 
   const isLightMode = pathname.startsWith("/blog") || (isHomePage && isPastHero);
 
-  // Base classes
-  const headerContainerClasses = "fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] md:w-[90%] transition-all duration-300";
+  // Base classes - added min-h for consistent height
+  const headerContainerClasses = "fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50 w-[98%] md:w-[90%] transition-all duration-300";
 
   // Theme-specific classes
   const glassClasses = isLightMode
     ? "bg-white/80 backdrop-blur-xl border border-gray-200 shadow-sm" // Light Mode
     : "bg-transparent backdrop-blur-2xl border border-white/10";      // Dark Mode (Default)
 
-  const innerClasses = `relative flex items-center justify-between px-[5%] py-2 rounded-2xl ${glassClasses} transition-all duration-300`;
+  const innerClasses = `relative flex items-center justify-between px-2 md:px-[5%] py-1.5 md:py-2 rounded-xl md:rounded-2xl ${glassClasses} transition-all duration-300`;
 
   const getNavLinkClasses = (href: string) => {
     let isActive = false;
@@ -156,23 +156,24 @@ export const Header = () => {
           <SupArtLogo className="h-8 w-8 md:h-10 md:w-10" />
         </a>
 
-        <nav className="hidden md:flex items-center gap-x-1 absolute left-1/2 -translate-x-1/2">
+        <nav className="flex items-center gap-1 md:gap-x-2 absolute left-1/2 -translate-x-1/2">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={(e) => handleLinkClick(e, link.href)}
-              className={getNavLinkClasses(link.href)}
+              className={getNavLinkClasses(link.href).replace("px-4 py-2", "px-2 py-2 sm:px-3 md:px-5 md:py-2.5")}
+              title={link.label}
             >
-              <link.icon className="text-xs" />
-              <span>{link.label}</span>
+              <link.icon className="text-lg sm:text-base md:text-base" />
+              <span className="hidden sm:inline text-xs md:text-sm lg:text-base">{link.label}</span>
             </a>
           ))}
         </nav>
 
         <div className="flex-shrink-0">
           <GlassButton href="/diagnostico">
-            Entender como funciona
+            Entender <span className="hidden sm:inline">como funciona</span>
           </GlassButton>
         </div>
       </div>
