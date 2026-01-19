@@ -121,7 +121,7 @@ export const Header = () => {
   // Theme-specific classes
   const glassClasses = isLightMode
     ? "bg-white/80 backdrop-blur-xl border border-gray-200 shadow-sm" // Light Mode
-    : "bg-transparent backdrop-blur-2xl border border-white/10";      // Dark Mode (Default)
+    : "bg-black/20 backdrop-blur-2xl border border-white/10";      // Dark Mode (Default)
 
   const innerClasses = `relative flex items-center justify-between px-2 md:px-[5%] py-1.5 md:py-2 rounded-xl md:rounded-2xl ${glassClasses} transition-all duration-300`;
 
@@ -153,7 +153,7 @@ export const Header = () => {
           className={`flex-shrink-0 transition-transform duration-300 hover:scale-105 ${isLightMode ? 'text-black' : 'text-white'}`}
           aria-label="SupArt Agency Home"
         >
-          <SupArtLogo className="h-8 w-8 md:h-10 md:w-10" />
+          <SupArtLogo className="h-[30px] w-[30px] md:h-10 md:w-10" />
         </a>
 
         <nav className="flex items-center gap-1 md:gap-x-2 absolute left-1/2 -translate-x-1/2">
@@ -173,7 +173,7 @@ export const Header = () => {
 
         <div className="flex-shrink-0">
           <GlassButton href="/diagnostico">
-            Entender <span className="hidden sm:inline">como funciona</span>
+            <span className="hidden sm:inline">Entender</span> <span className="hidden lg:inline">como funciona</span>
           </GlassButton>
         </div>
       </div>
