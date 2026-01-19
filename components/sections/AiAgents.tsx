@@ -9,6 +9,7 @@ import { AIOrchestrator } from '../ui/AIOrchestrator';
 import { PhoneMockup } from '../ui/PhoneMockup';
 import { AIAgentsHeadline } from '../ui/AIAgentsHeadline';
 import { AIFlowDiagram } from '../ui/AIFlowDiagram';
+import { CircularPlayButton } from '../ui/CircularPlayButton';
 
 const features = [
     { icon: FaClock, label: '24h Auto-Response' },
@@ -52,18 +53,28 @@ export const AiAgents = () => {
                 <div className="flex flex-row items-start justify-between gap-4 lg:gap-12 mb-8 lg:mb-16">
 
                     {/* Wrapper: Text Content - aligned left, z-10 to overlap phone */}
+                    {/* Wrapper: Text Content - aligned left, z-10 to overlap phone */}
                     <motion.div
-                        className="flex items-start justify-start flex-1 z-10"
+                        className="flex flex-col items-start justify-start flex-1 z-20 overflow-visible"
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                     >
                         <AIAgentsHeadline />
+
+                        {/* Demo Button - Moved inside text col, bottom-right, overlapping phone */}
+                        <div className="w-full flex justify-end mt-4 lg:mt-8 pr-0 -mr-16 lg:-mr-12 relative z-30">
+                            <div className="transform scale-[0.6] sm:scale-75 lg:scale-100 origin-right">
+                                <CircularPlayButton href="/demo" size={130} />
+                            </div>
+                        </div>
                     </motion.div>
+
+
 
                     {/* Wrapper: Smartphone - size prop controls internal scale */}
                     <motion.div
-                        className="shrink-0 -ml-8 lg:ml-0"
+                        className="shrink-0 -ml-8 lg:ml-0 z-10"
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -79,7 +90,7 @@ export const AiAgents = () => {
                 </div>
 
                 {/* ===== ROW 2 & 3: ORCHESTRATOR + FLOW DIAGRAM ===== */}
-                <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-20 mb-8 lg:mb-16">
+                <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-8 mb-8 lg:mb-16">
                     {/* Orchestrator - Left on Desktop */}
                     <motion.div
                         className="flex justify-center shrink-0"
@@ -123,6 +134,6 @@ export const AiAgents = () => {
                     ))}
                 </motion.div>
             </div>
-        </section>
+        </section >
     );
 };

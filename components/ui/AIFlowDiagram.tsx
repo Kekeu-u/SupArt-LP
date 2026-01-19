@@ -11,13 +11,13 @@ export const AIFlowDiagram = ({ className = '' }: AIFlowDiagramProps) => {
     return (
         <div className={`flex flex-row items-center gap-3 lg:gap-8 ${className}`}>
             {/* Flow items container - aligned to center */}
-            <div className="flex items-center gap-6 lg:gap-8">
+            <div className="flex items-center gap-3 sm:gap-4 lg:gap-10">
                 {/* Specialists Column */}
                 <div className="flex flex-col gap-1.5 lg:gap-6 flex-shrink-0">
                     {/* Specialist 1 - Dr. Francisco */}
                     <motion.div
                         whileHover={{ scale: 1.05 }}
-                        className="bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg lg:rounded-2xl p-1.5 lg:p-5 w-[90px] lg:w-64 shadow-lg shadow-purple-500/20 border border-white/10"
+                        className="bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg lg:rounded-2xl p-1.5 lg:p-5 w-[90px] lg:w-52 shadow-lg shadow-purple-500/20 border border-white/10"
                     >
                         <div className="flex items-center gap-1 lg:gap-3 mb-1 lg:mb-3">
                             <div className="w-4 h-4 lg:w-10 lg:h-10 rounded-full bg-white/20 flex items-center justify-center text-[8px] lg:text-lg shadow-inner shrink-0 leading-none">👨‍⚕️</div>
@@ -36,7 +36,7 @@ export const AIFlowDiagram = ({ className = '' }: AIFlowDiagramProps) => {
                     {/* Specialist 2 - Dr. Roberto */}
                     <motion.div
                         whileHover={{ scale: 1.05 }}
-                        className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg lg:rounded-2xl p-1.5 lg:p-5 w-[90px] lg:w-64 shadow-lg shadow-emerald-500/20 border border-white/10"
+                        className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg lg:rounded-2xl p-1.5 lg:p-5 w-[90px] lg:w-52 shadow-lg shadow-emerald-500/20 border border-white/10"
                     >
                         <div className="flex items-center gap-1 lg:gap-3 mb-1 lg:mb-3">
                             <div className="w-4 h-4 lg:w-10 lg:h-10 rounded-full bg-white/20 flex items-center justify-center text-[8px] lg:text-lg shadow-inner shrink-0 leading-none">👨‍⚕️</div>
@@ -55,7 +55,7 @@ export const AIFlowDiagram = ({ className = '' }: AIFlowDiagramProps) => {
                     {/* Specialist 3 - Dra. Janaína */}
                     <motion.div
                         whileHover={{ scale: 1.05 }}
-                        className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg lg:rounded-2xl p-1.5 lg:p-5 w-[90px] lg:w-64 shadow-lg shadow-blue-500/20 border border-white/10"
+                        className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg lg:rounded-2xl p-1.5 lg:p-5 w-[90px] lg:w-52 shadow-lg shadow-blue-500/20 border border-white/10"
                     >
                         <div className="flex items-center gap-1 lg:gap-3 mb-1 lg:mb-3">
                             <div className="w-4 h-4 lg:w-10 lg:h-10 rounded-full bg-white/20 flex items-center justify-center text-[8px] lg:text-lg shadow-inner shrink-0 leading-none">👩‍⚕️</div>
@@ -98,6 +98,11 @@ export const AIFlowDiagram = ({ className = '' }: AIFlowDiagramProps) => {
                             </p>
                         </div>
                     ))}
+                </div>
+
+                {/* Connecting arrow - NEW */}
+                <div className="flex-shrink-0 text-emerald-400 animate-pulse px-0.5">
+                    <FaArrowRight className="w-2.5 h-2.5 lg:w-6 lg:h-6" />
                 </div>
 
                 {/* Final flow: Calendar + Success - Balanced with Specialists (w-[90px]) */}
