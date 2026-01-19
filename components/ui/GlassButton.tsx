@@ -22,15 +22,26 @@ export const GlassButton: React.FC<GlassButtonProps> = ({
     transition: "all 300ms ease",
   };
 
-  const containerClasses = `relative z-10 rounded-full ${className}`;
-  const buttonClasses = "cursor-pointer relative rounded-full outline-none focus:outline-none flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white hover:scale-[0.98] active:scale-[0.95] transition-transform";
+  // Wrapper handles positioning
+  const containerClasses = `relative z-10 rounded-full`;
+
+  // Inner element handles visual style and interaction
+  // Using 'clsx' or template literal to allow overriding default px-4 py-2 if specified in className
+  const defaultPadding = className.includes('px-') ? '' : 'px-4';
+  const defaultPaddingY = className.includes('py-') ? '' : 'py-2';
+
+  const buttonClasses = `cursor-pointer relative rounded-full outline-none focus:outline-none flex items-center gap-2 ${defaultPadding} ${defaultPaddingY} text-sm font-semibold text-white hover:scale-[0.98] active:scale-[0.95] transition-transform ${className}`;
 
   const content = (
     <>
-      <span>{children}</span>
+      {children}
       <FaExternalLinkAlt className="text-xs text-blue-400" />
     </>
   );
+
+  // Note: content changes to remove span wrapper around children to allow flex gap to work directly on text nodes if needed, 
+  // but existing usage passes spans.
+  // Actually, keeping content logic same, just updating classes.
 
   return (
     <div className={containerClasses}>

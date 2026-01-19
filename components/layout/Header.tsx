@@ -172,8 +172,8 @@ export const Header = () => {
         </nav>
 
         <div className="flex-shrink-0">
-          <GlassButton href="/diagnostico">
-            <span className="hidden sm:inline">Entender</span> <span className="hidden lg:inline">como funciona</span>
+          <GlassButton href="/diagnostico" className="px-3 sm:px-4">
+            <span className="hidden sm:inline">Entender </span><span className="hidden lg:inline">como funciona</span>
           </GlassButton>
         </div>
       </div>
