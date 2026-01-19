@@ -113,15 +113,26 @@ export const Header = () => {
     { href: "#contact", label: t("nav.contact", "Contato"), icon: FaEnvelope },
   ];
 
-  const isLightMode = pathname.startsWith("/blog") || (isHomePage && isPastHero);
+  // Force dark mode unless on specific light pages (prevent white header on dark LP sections)
+  // Removed (isHomePage && isPastHero) to keep Dark Mode consistency
+  const isLightMode = pathname.startsWith("/blog");
+
+  // Determine background based on scroll state
+  let glassClasses = "";
+
+  if (isLightMode) {
+    glassClasses = isScrolled
+      ? "bg-white/90 backdrop-blur-xl border border-gray-200 shadow-sm"
+      : "bg-white/80 backdrop-blur-xl border border-gray-200/50 shadow-sm";
+  } else {
+    // Dark Mode Logic
+    glassClasses = isScrolled
+      ? "bg-[#0A0A0A]/60 backdrop-blur-xl border border-white/10 shadow-lg" // Scrolled: Dark Glass
+      : "bg-transparent border border-transparent"; // Top: Full Transparency
+  }
 
   // Base classes - added min-h for consistent height
   const headerContainerClasses = "fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50 w-[98%] md:w-[90%] transition-all duration-300";
-
-  // Theme-specific classes
-  const glassClasses = isLightMode
-    ? "bg-white/80 backdrop-blur-xl border border-gray-200 shadow-sm" // Light Mode
-    : "bg-black/20 backdrop-blur-2xl border border-white/10";      // Dark Mode (Default)
 
   const innerClasses = `relative flex items-center justify-between px-2 md:px-[5%] py-1.5 md:py-2 rounded-xl md:rounded-2xl ${glassClasses} transition-all duration-300`;
 
@@ -172,7 +183,7 @@ export const Header = () => {
         </nav>
 
         <div className="flex-shrink-0">
-          <GlassButton href="/diagnostico" className="px-3 sm:px-4">
+          <GlassButton href="/diagnostico" className="pl-2.5 pr-3 sm:px-4">
             <span className="hidden sm:inline">Entender </span><span className="hidden lg:inline">como funciona</span>
           </GlassButton>
         </div>

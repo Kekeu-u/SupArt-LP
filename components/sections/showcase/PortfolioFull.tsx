@@ -163,7 +163,14 @@ export const PortfolioFull = () => {
     const content = projectsSection;
 
     return (
-        <div id="portfolio" className="bg-black">
+        <div id="portfolio" className="relative bg-black overflow-hidden" style={{ contentVisibility: "auto", containIntrinsicSize: "auto 100dvh" }}>
+            {/* Background Texture & Glows (Restored from Backup) */}
+            <div className="absolute inset-0 bg-black pointer-events-none" />
+            <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
+
+            {/* Ambient Glows */}
+            <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-gray-900/20 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-emerald-900/10 rounded-full blur-[120px] pointer-events-none" />
             {/* Header Section */}
             <section className="relative py-20 md:py-32 bg-transparent text-center">
                 <div className="max-w-4xl mx-auto px-6">

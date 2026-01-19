@@ -11,13 +11,7 @@ export const AIAgentsSection = () => {
             className="relative min-h-[100dvh] flex flex-col justify-center py-32 px-6 overflow-hidden"
             style={{ contentVisibility: "auto", containIntrinsicSize: "auto 100dvh" }}
         >
-            {/* Background Elements */}
-            <div className="absolute inset-0 bg-black pointer-events-none" />
-            <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
-
-            {/* Ambient Glows */}
-            <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-gray-900/20 rounded-full blur-[120px] pointer-events-none" />
-            <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-emerald-900/10 rounded-full blur-[120px] pointer-events-none" />
+            {/* Background removed as requested - elements moved to ver-depois/textura-secao.txt */}
 
             <div className="relative z-10 max-w-7xl mx-auto">
                 {/* Section Header */}
