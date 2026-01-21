@@ -9,7 +9,7 @@ export default function DiagnosticIntroPage() {
     const [accepted, setAccepted] = useState(false);
 
     return (
-        <main className="min-h-screen bg-black flex flex-col items-center justify-center px-4 relative overflow-hidden">
+        <main className="min-h-[90vh] bg-black flex flex-col items-center justify-center px-4 relative overflow-hidden">
             {/* Background Gradient */}
             <div className="absolute inset-0 bg-gradient-to-b from-gray-900/20 via-black to-black pointer-events-none" />
 
@@ -17,10 +17,10 @@ export default function DiagnosticIntroPage() {
             <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gray-500/10 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
 
-            <div className="relative z-10 max-w-2xl w-full text-center flex flex-col items-center pt-32">
+            <div className="relative z-10 max-w-2xl w-full text-center flex flex-col items-center pt-16">
                 {/* Logo */}
-                <div className="mb-8">
-                    <SupArtLogo className="h-20 w-20 md:h-24 md:w-24" />
+                <div className="mb-6">
+                    <SupArtLogo className="h-16 w-16 md:h-20 md:w-20 text-white" />
                 </div>
 
                 {/* Headline */}

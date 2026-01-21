@@ -2,7 +2,7 @@ import React from "react";
 
 export const SupArtLogo = ({ className = "w-8 h-8" }: { className?: string }) => {
     return (
-        <div className={`relative flex items-center justify-center text-white mix-blend-difference ${className}`}>
+        <div className={`relative flex items-center justify-center ${className}`}>
             <svg
                 viewBox="290 270 450 540"
                 fill="none"
