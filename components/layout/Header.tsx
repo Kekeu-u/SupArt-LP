@@ -16,9 +16,8 @@ import {
   FaLayerGroup,
   FaEnvelope,
   FaBlog,
-  FaExternalLinkAlt,
 } from "react-icons/fa";
-import { useI18n } from "@/lib/i18n";
+import { useI18n, Locale } from "@/lib/i18n";
 
 interface NavLink {
   href: string;
@@ -32,6 +31,40 @@ const HEADER_HEIGHT = 120;
 
 // Ordem correta das seções na página (de cima para baixo)
 const SECTIONS = ["home", "method", "solutions", "contact"] as const;
+
+// Componente de Toggle de Idioma
+const LanguageToggle = ({ isLightMode }: { isLightMode: boolean }) => {
+  const { locale, setLocale } = useI18n();
+
+  const handleToggle = () => {
+    const newLocale: Locale = locale === "en" ? "pt" : "en";
+    setLocale(newLocale);
+  };
+
+  const baseClasses = "relative flex items-center gap-0.5 p-0.5 rounded-full text-xs font-medium transition-all duration-300 cursor-pointer";
+  const themeClasses = isLightMode
+    ? "bg-gray-100 border border-gray-200"
+    : "bg-white/10 border border-white/20";
+
+  const activeClasses = isLightMode
+    ? "bg-white text-gray-900 shadow-sm"
+    : "bg-white/20 text-white";
+
+  const inactiveClasses = isLightMode
+    ? "text-gray-500 hover:text-gray-700"
+    : "text-gray-400 hover:text-white";
+
+  return (
+    <div className={`${baseClasses} ${themeClasses}`} onClick={handleToggle} role="button" tabIndex={0}>
+      <span className={`px-2 py-1 rounded-full transition-all duration-200 ${locale === "en" ? activeClasses : inactiveClasses}`}>
+        EN
+      </span>
+      <span className={`px-2 py-1 rounded-full transition-all duration-200 ${locale === "pt" ? activeClasses : inactiveClasses}`}>
+        PT
+      </span>
+    </div>
+  );
+};
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -106,16 +139,15 @@ export const Header = () => {
   };
 
   const navLinks: NavLink[] = [
-    { href: "#home", label: t("nav.home", "Home"), icon: FaHome },
-    { href: "#method", label: t("nav.method", "Método"), icon: FaProjectDiagram },
-    { href: "#solutions", label: t("nav.solutions", "Soluções"), icon: FaLayerGroup },
+    { href: "#home", label: t("Home", "Início"), icon: FaHome },
+    { href: "#method", label: t("Method", "Método"), icon: FaProjectDiagram },
+    { href: "#solutions", label: t("Solutions", "Soluções"), icon: FaLayerGroup },
     { href: "/blog", label: "Blog", icon: FaBlog },
-    { href: "#contact", label: t("nav.contact", "Contato"), icon: FaEnvelope },
+    { href: "#contact", label: t("Contact", "Contato"), icon: FaEnvelope },
   ];
 
   // Force dark mode unless on specific light pages (prevent white header on dark LP sections)
-  // Removed (isHomePage && isPastHero) to keep Dark Mode consistency
-  const isLightMode = pathname.startsWith("/blog");
+  const isLightMode = pathname.startsWith("/blog") || pathname.startsWith("/presentations");
 
   // Determine background based on scroll state
   let glassClasses = "";
@@ -182,9 +214,11 @@ export const Header = () => {
           ))}
         </nav>
 
-        <div className="flex-shrink-0">
+        <div className="flex-shrink-0 flex items-center gap-2 md:gap-3">
+          <LanguageToggle isLightMode={isLightMode} />
           <GlassButton href="/diagnostico" className="pl-2.5 pr-3 sm:px-4">
-            <span className="hidden sm:inline">Entender </span><span className="hidden lg:inline">como funciona</span>
+            <span className="hidden sm:inline">{t("Learn", "Entender")} </span>
+            <span className="hidden lg:inline">{t("How It Works", "como funciona")}</span>
           </GlassButton>
         </div>
       </div>
