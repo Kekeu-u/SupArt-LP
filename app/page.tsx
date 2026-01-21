@@ -94,25 +94,27 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     HERO SECTION - ORIGINAL RESTORED
                     ═══════════════════════════════════════════ */}
-                <section id="home" className="relative min-h-[90vh] flex flex-col items-center justify-start pt-24 md:pt-32 px-8 md:px-16 overflow-hidden">
+                <section id="home" className="relative h-screen flex flex-col items-center justify-center px-4 overflow-hidden">
                     <VideoBackground />
                     {/* Camada única de conteúdo */}
                     <motion.div
-                        className="text-center max-w-5xl mx-auto px-4"
+                        className="text-center w-full max-w-[90vw] md:max-w-4xl mx-auto z-10"
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, ease: "easeOut" }}
                     >
-                        <HeroLogo size={110} className="mx-auto mb-4 w-20 h-20 md:w-28 md:h-28" />
+                        <HeroLogo size={110} className="mx-auto mb-6 w-24 h-24 md:w-32 md:h-32" />
                         <RotatingHeadline />
-                        <p className="text-base md:text-xl text-gray-400 max-w-3xl mx-auto mt-3 leading-relaxed font-light tracking-wide whitespace-nowrap overflow-hidden">
-                            <span className="shimmer-silver inline-block">{heroSubtitle}</span>
-                        </p>
+                        <div className="w-full overflow-hidden py-2">
+                            <p className="text-base md:text-xl text-gray-400 max-w-full mx-auto leading-relaxed font-light tracking-wide whitespace-nowrap">
+                                <span className="shimmer-silver inline-block px-4">{heroSubtitle}</span>
+                            </p>
+                        </div>
                     </motion.div>
 
-                    {/* Scroll Indicator */}
-                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block">
-                        <div className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-1 animate-bounce">
+                    {/* Scroll Indicator - Posicionado com bottom-safe */}
+                    <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-20">
+                        <div className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-1 animate-bounce backdrop-blur-sm">
                             <div className="w-1.5 h-3 rounded-full bg-white/50" />
                         </div>
                     </div>

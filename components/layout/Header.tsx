@@ -32,39 +32,7 @@ const HEADER_HEIGHT = 120;
 // Ordem correta das seções na página (de cima para baixo)
 const SECTIONS = ["home", "method", "solutions", "contact"] as const;
 
-// Componente de Toggle de Idioma
-const LanguageToggle = ({ isLightMode }: { isLightMode: boolean }) => {
-  const { locale, setLocale } = useI18n();
 
-  const handleToggle = () => {
-    const newLocale: Locale = locale === "en" ? "pt" : "en";
-    setLocale(newLocale);
-  };
-
-  const baseClasses = "relative flex items-center gap-0.5 p-0.5 rounded-full text-xs font-medium transition-all duration-300 cursor-pointer";
-  const themeClasses = isLightMode
-    ? "bg-gray-100 border border-gray-200"
-    : "bg-white/10 border border-white/20";
-
-  const activeClasses = isLightMode
-    ? "bg-white text-gray-900 shadow-sm"
-    : "bg-white/20 text-white";
-
-  const inactiveClasses = isLightMode
-    ? "text-gray-500 hover:text-gray-700"
-    : "text-gray-400 hover:text-white";
-
-  return (
-    <div className={`${baseClasses} ${themeClasses}`} onClick={handleToggle} role="button" tabIndex={0}>
-      <span className={`px-2 py-1 rounded-full transition-all duration-200 ${locale === "en" ? activeClasses : inactiveClasses}`}>
-        EN
-      </span>
-      <span className={`px-2 py-1 rounded-full transition-all duration-200 ${locale === "pt" ? activeClasses : inactiveClasses}`}>
-        PT
-      </span>
-    </div>
-  );
-};
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -215,7 +183,6 @@ export const Header = () => {
         </nav>
 
         <div className="flex-shrink-0 flex items-center gap-2 md:gap-3">
-          <LanguageToggle isLightMode={isLightMode} />
           <GlassButton href="/diagnostico" className="pl-2.5 pr-3 sm:px-4">
             <span className="hidden sm:inline">{t("Learn", "Entender")} </span>
             <span className="hidden lg:inline">{t("How It Works", "como funciona")}</span>
