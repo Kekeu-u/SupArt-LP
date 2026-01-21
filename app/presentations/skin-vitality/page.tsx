@@ -298,14 +298,16 @@ export default function SkinVitalityPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <a
-                                href="mailto:hello@supart.com.br?subject=Skin%20Vitality%20-%20AI%20Automation%20Interest&body=Hi%20SupArt%20team,%0A%0AI'd%20like%20to%20learn%20more%20about%20the%20AI%20automation%20solution%20for%20Skin%20Vitality.%0A%0ABest%20regards"
+                                href="https://wa.me/5519994056297?text=Hi%20Mayran!%20I%20just%20saw%20the%20AI%20automation%20proposal%20for%20Skin%20Vitality%20and%20I%27d%20like%20to%20schedule%20a%20quick%20call%20to%20learn%20more."
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl transition-all shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:scale-105"
                             >
-                                <i className="fas fa-calendar-alt"></i>
+                                <i className="fab fa-whatsapp text-xl"></i>
                                 Schedule a 10-min Call
                             </a>
                             <a
-                                href="tel:+1416969XXXX"
+                                href="tel:+5519994056297"
                                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-gray-900 font-bold rounded-xl border-2 border-gray-200 hover:border-purple-500 transition-all hover:scale-105"
                             >
                                 <i className="fas fa-phone text-green-500"></i>
