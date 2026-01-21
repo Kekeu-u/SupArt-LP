@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, Reorder } from 'framer-motion';
 import { step5Schema, PRIORITY_OPTIONS } from '@/lib/types/diagnostic';
 import type { DiagnosticFormData } from '@/lib/types/diagnostic';
@@ -19,6 +19,11 @@ export function StepPriorities({ data, onNext, onBack, isSubmitting }: StepProps
         data.priorities || []
     );
     const [errors, setErrors] = useState<string>('');
+
+    // 🐛 FIX: Sincronizar estado local com prop data quando ela mudar
+    useEffect(() => {
+        setSelectedPriorities(data.priorities || []);
+    }, [data]);
 
     const handleToggle = (value: string) => {
         setSelectedPriorities(prev => {

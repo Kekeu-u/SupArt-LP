@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
-import { step3Schema, GOAL_OPTIONS, PAIN_POINTS_OPTIONS } from '@/lib/types/diagnostic';
+import { useState, useEffect } from 'react';
+import { step3Schema, GOAL_OPTIONS, PAIN_POINTS_OPTIONS, BOTTLENECK_OPTIONS } from '@/lib/types/diagnostic';
 import type { DiagnosticFormData } from '@/lib/types/diagnostic';
+import { SelectionCards } from '../SelectionCards';
 
 interface StepProps {
     data: Partial<DiagnosticFormData>;
@@ -17,9 +18,20 @@ export function StepObjectives({ data, onNext, onBack }: StepProps) {
     const [formState, setFormState] = useState({
         main_goal: data.main_goal || '',
         pain_points: data.pain_points || [],
+        biggest_bottleneck: data.biggest_bottleneck || '',
         challenge_description: data.challenge_description || '',
     });
     const [errors, setErrors] = useState<Record<string, string>>({});
+
+    // 🐛 FIX: Sincronizar estado local com prop data quando ela mudar
+    useEffect(() => {
+        setFormState({
+            main_goal: data.main_goal || '',
+            pain_points: data.pain_points || [],
+            biggest_bottleneck: data.biggest_bottleneck || '',
+            challenge_description: data.challenge_description || '',
+        });
+    }, [data]);
 
     const handleGoalSelect = (value: string) => {
         setFormState(prev => ({ ...prev, main_goal: value }));
@@ -141,6 +153,25 @@ export function StepObjectives({ data, onNext, onBack }: StepProps) {
                 {errors.pain_points && <p className={errorClasses}>{errors.pain_points}</p>}
             </div>
 
+            {/* 🤖 NOVO: Maior Gargalo */}
+            <div>
+                <label className={labelClasses}>
+                    Qual seu maior gargalo operacional? <span className="text-pink-500">*</span>
+                </label>
+                <SelectionCards
+                    options={BOTTLENECK_OPTIONS}
+                    value={formState.biggest_bottleneck}
+                    onChange={(value) => {
+                        setFormState(prev => ({ ...prev, biggest_bottleneck: value }));
+                        if (errors.biggest_bottleneck) {
+                            setErrors(prev => ({ ...prev, biggest_bottleneck: '' }));
+                        }
+                    }}
+                    columns={2}
+                />
+                {errors.biggest_bottleneck && <p className={errorClasses}>{errors.biggest_bottleneck}</p>}
+            </div>
+
             {/* Descrição do desafio */}
             <div>
                 <label htmlFor="challenge_description" className={labelClasses}>
@@ -152,7 +183,7 @@ export function StepObjectives({ data, onNext, onBack }: StepProps) {
                     name="challenge_description"
                     value={formState.challenge_description}
                     onChange={handleChange}
-                    placeholder="Ex: Preciso de um site que transmita a qualidade dos meus serviços e gere leads qualificados..."
+                    placeholder="Ex: Preciso automatizar meu atendimento para não perder leads enquanto durmo..."
                     rows={3}
                     className="
             w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl

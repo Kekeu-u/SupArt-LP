@@ -20,6 +20,13 @@ export const REFERRAL_OPTIONS = [
     { value: 'other', label: 'Outro' },
 ] as const;
 
+export const DECISION_MAKER_OPTIONS = [
+    { value: 'final', label: 'Sim, sou o decisor final', icon: '👑' },
+    { value: 'joint', label: 'Decido em conjunto (Sócios/Diretoria)', icon: '🤝' },
+    { value: 'influencer', label: 'Pesquiso para o decisor aprovar', icon: '🕵️' },
+    { value: 'no', label: 'Não tenho poder de decisão', icon: '❌' },
+] as const;
+
 export const WEBSITE_STATUS_OPTIONS = [
     { value: 'none', label: 'Não tenho site', icon: '🚫' },
     { value: 'outdated', label: 'Tenho, mas está desatualizado', icon: '⚠️' },
@@ -35,10 +42,38 @@ export const SOCIAL_CHANNELS_OPTIONS = [
     { value: 'none', label: 'Nenhuma', icon: '❌' },
 ] as const;
 
-export const PAID_TRAFFIC_OPTIONS = [
-    { value: 'never', label: 'Nunca investi', icon: '🆕' },
-    { value: 'failed', label: 'Já tentei sem sucesso', icon: '😕' },
-    { value: 'active', label: 'Invisto ativamente', icon: '💰' },
+// ═══════════════════════════════════════════
+// 🤖 OPÇÕES FOCADAS EM AUTOMAÇÃO
+// ═══════════════════════════════════════════
+
+export const ATTENDANCES_OPTIONS = [
+    { value: '0_50', label: '0 - 50 atendimentos/mês', icon: '📊' },
+    { value: '51_200', label: '51 - 200 atendimentos/mês', icon: '📈' },
+    { value: '201_500', label: '201 - 500 atendimentos/mês', icon: '🚀' },
+    { value: '500_plus', label: 'Mais de 500/mês', icon: '🔥' },
+] as const;
+
+export const COMMUNICATION_CHANNEL_OPTIONS = [
+    { value: 'whatsapp', label: 'WhatsApp', icon: '📱' },
+    { value: 'instagram_dm', label: 'Instagram Direct', icon: '📸' },
+    { value: 'phone', label: 'Telefone', icon: '📞' },
+    { value: 'email', label: 'Email', icon: '📧' },
+    { value: 'mixed', label: 'Vários canais', icon: '🔄' },
+] as const;
+
+export const AUTOMATION_LEVEL_OPTIONS = [
+    { value: 'none', label: 'Nenhuma automação', icon: '❌' },
+    { value: 'basic', label: 'Respostas automáticas básicas', icon: '🤖' },
+    { value: 'intermediate', label: 'Bot simples (menu, FAQ)', icon: '⚡' },
+    { value: 'advanced', label: 'Fluxos automatizados completos', icon: '🚀' },
+] as const;
+
+export const BOTTLENECK_OPTIONS = [
+    { value: 'slow_response', label: 'Atendimento demorado', icon: '⏳' },
+    { value: 'lost_leads', label: 'Perda de leads/oportunidades', icon: '💸' },
+    { value: 'manual_followup', label: 'Follow-up 100% manual', icon: '✏️' },
+    { value: 'manual_scheduling', label: 'Agendamentos manuais', icon: '📅' },
+    { value: 'no_reports', label: 'Falta de relatórios/métricas', icon: '📊' },
 ] as const;
 
 export const GOAL_OPTIONS = [
@@ -73,11 +108,7 @@ export const TIMELINE_OPTIONS = [
     { value: 'researching', label: 'Estou só pesquisando', icon: '🔍' },
 ] as const;
 
-export const BRIEFING_OPTIONS = [
-    { value: 'complete', label: 'Sim, tenho praticamente tudo definido' },
-    { value: 'partial', label: 'Tenho algumas ideias' },
-    { value: 'need_help', label: 'Preciso de ajuda com isso' },
-] as const;
+// BRIEFING_OPTIONS removido - não é relevante para qualifying de automação
 
 export const PRIORITY_OPTIONS = [
     { value: 'design', label: '🎨 Design cinematográfico e marcante' },
@@ -103,21 +134,26 @@ export const step1Schema = z.object({
     company_name: z.string().optional(),
     role: z.string().optional(),
     referral_source: z.string().optional(),
+    decision_maker: z.string().min(1, 'Selecione seu nível de decisão'),
 });
 
-// Etapa 2: Situação Atual
+// Etapa 2: Situação Atual + Automação
 export const step2Schema = z.object({
     has_website: z.string().min(1, 'Selecione uma opção'),
     website_url: z.string().url().optional().or(z.literal('')),
     social_channels: z.array(z.string()).default([]),
-    uses_paid_traffic: z.string().optional(),
     instagram_handle: z.string().optional(),
+    // Novos campos focados em automação
+    attendances_per_month: z.string().min(1, 'Selecione o volume de atendimentos'),
+    main_communication_channel: z.string().min(1, 'Selecione o canal principal'),
+    automation_level: z.string().min(1, 'Selecione o nível de automação'),
 });
 
 // Etapa 3: Objetivos & Dores
 export const step3Schema = z.object({
     main_goal: z.string().min(1, 'Selecione seu objetivo principal'),
     pain_points: z.array(z.string()).min(1, 'Selecione pelo menos uma dor'),
+    biggest_bottleneck: z.string().min(1, 'Selecione seu maior gargalo'),
     challenge_description: z.string().optional(),
 });
 
@@ -125,7 +161,6 @@ export const step3Schema = z.object({
 export const step4Schema = z.object({
     budget_range: z.string().min(1, 'Selecione uma faixa de investimento'),
     timeline: z.string().min(1, 'Selecione quando pretende começar'),
-    has_briefing: z.string().optional(),
 });
 
 // Etapa 5: Prioridades
@@ -189,7 +224,11 @@ export function calculateUrgencyScore(data: DiagnosticFormData): number {
     else if (data.budget_range === '8k_to_15k') score += 1;
     else if (data.budget_range === 'prefer_not') score -= 1;
 
-    // Decisor (role)
+    // Decisor (Authority - BANT)
+    if (data.decision_maker === 'final') score += 2;
+    if (data.decision_maker === 'joint') score += 1;
+
+    // Role bonus
     if (data.role === 'ceo') score += 1;
 
     // Clamp entre 1 e 10

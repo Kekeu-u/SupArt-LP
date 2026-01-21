@@ -1,11 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
     step2Schema,
     WEBSITE_STATUS_OPTIONS,
     SOCIAL_CHANNELS_OPTIONS,
-    PAID_TRAFFIC_OPTIONS
+    ATTENDANCES_OPTIONS,
+    COMMUNICATION_CHANNEL_OPTIONS,
+    AUTOMATION_LEVEL_OPTIONS
 } from '@/lib/types/diagnostic';
 import type { DiagnosticFormData } from '@/lib/types/diagnostic';
 import { SelectionCards } from '../SelectionCards';
@@ -24,10 +26,26 @@ export function StepCurrentSituation({ data, onNext, onBack }: StepProps) {
         has_website: data.has_website || '',
         website_url: data.website_url || '',
         social_channels: data.social_channels || [],
-        uses_paid_traffic: data.uses_paid_traffic || '',
         instagram_handle: data.instagram_handle || '',
+        // Novos campos focados em automação
+        attendances_per_month: data.attendances_per_month || '',
+        main_communication_channel: data.main_communication_channel || '',
+        automation_level: data.automation_level || '',
     });
     const [errors, setErrors] = useState<Record<string, string>>({});
+
+    // 🐛 FIX: Sincronizar estado local com prop data quando ela mudar
+    useEffect(() => {
+        setFormState({
+            has_website: data.has_website || '',
+            website_url: data.website_url || '',
+            social_channels: data.social_channels || [],
+            instagram_handle: data.instagram_handle || '',
+            attendances_per_month: data.attendances_per_month || '',
+            main_communication_channel: data.main_communication_channel || '',
+            automation_level: data.automation_level || '',
+        });
+    }, [data]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -77,7 +95,7 @@ export function StepCurrentSituation({ data, onNext, onBack }: StepProps) {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Tem site? - Now using SelectionCards */}
+            {/* Tem site? - Using SelectionCards */}
             <div>
                 <label className={labelClasses}>
                     Tem um site hoje? <span className="text-pink-500">*</span>
@@ -163,17 +181,65 @@ export function StepCurrentSituation({ data, onNext, onBack }: StepProps) {
                 </div>
             )}
 
-            {/* Tráfego Pago - Now using SelectionCards */}
+            {/* ═══════════════════════════════════════════ */}
+            {/* 🤖 NOVOS CAMPOS FOCADOS EM AUTOMAÇÃO */}
+            {/* ═══════════════════════════════════════════ */}
+
+            {/* Volume de Atendimentos Mensal */}
             <div>
                 <label className={labelClasses}>
-                    Já investe em tráfego pago?
+                    Quantos atendimentos você faz por mês? <span className="text-pink-500">*</span>
                 </label>
                 <SelectionCards
-                    options={PAID_TRAFFIC_OPTIONS}
-                    value={formState.uses_paid_traffic}
-                    onChange={(value) => setFormState(prev => ({ ...prev, uses_paid_traffic: value }))}
+                    options={ATTENDANCES_OPTIONS}
+                    value={formState.attendances_per_month}
+                    onChange={(value) => {
+                        setFormState(prev => ({ ...prev, attendances_per_month: value }));
+                        if (errors.attendances_per_month) {
+                            setErrors(prev => ({ ...prev, attendances_per_month: '' }));
+                        }
+                    }}
+                    columns={2}
+                />
+                {errors.attendances_per_month && <p className={errorClasses}>{errors.attendances_per_month}</p>}
+            </div>
+
+            {/* Canal Principal de Comunicação */}
+            <div>
+                <label className={labelClasses}>
+                    Canal principal de atendimento <span className="text-pink-500">*</span>
+                </label>
+                <SelectionCards
+                    options={COMMUNICATION_CHANNEL_OPTIONS}
+                    value={formState.main_communication_channel}
+                    onChange={(value) => {
+                        setFormState(prev => ({ ...prev, main_communication_channel: value }));
+                        if (errors.main_communication_channel) {
+                            setErrors(prev => ({ ...prev, main_communication_channel: '' }));
+                        }
+                    }}
                     columns={3}
                 />
+                {errors.main_communication_channel && <p className={errorClasses}>{errors.main_communication_channel}</p>}
+            </div>
+
+            {/* Nível de Automação Atual */}
+            <div>
+                <label className={labelClasses}>
+                    Qual o nível de automação atual? <span className="text-pink-500">*</span>
+                </label>
+                <SelectionCards
+                    options={AUTOMATION_LEVEL_OPTIONS}
+                    value={formState.automation_level}
+                    onChange={(value) => {
+                        setFormState(prev => ({ ...prev, automation_level: value }));
+                        if (errors.automation_level) {
+                            setErrors(prev => ({ ...prev, automation_level: '' }));
+                        }
+                    }}
+                    columns={2}
+                />
+                {errors.automation_level && <p className={errorClasses}>{errors.automation_level}</p>}
             </div>
 
             {/* Navigation */}

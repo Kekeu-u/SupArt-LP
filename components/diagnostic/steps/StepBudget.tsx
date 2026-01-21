@@ -1,11 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
     step4Schema,
     BUDGET_OPTIONS,
-    TIMELINE_OPTIONS,
-    BRIEFING_OPTIONS
+    TIMELINE_OPTIONS
 } from '@/lib/types/diagnostic';
 import type { DiagnosticFormData } from '@/lib/types/diagnostic';
 import { SelectionCards } from '../SelectionCards';
@@ -23,9 +22,16 @@ export function StepBudget({ data, onNext, onBack }: StepProps) {
     const [formState, setFormState] = useState({
         budget_range: data.budget_range || '',
         timeline: data.timeline || '',
-        has_briefing: data.has_briefing || '',
     });
     const [errors, setErrors] = useState<Record<string, string>>({});
+
+    // 🐛 FIX: Sincronizar estado local com prop data quando ela mudar
+    useEffect(() => {
+        setFormState({
+            budget_range: data.budget_range || '',
+            timeline: data.timeline || '',
+        });
+    }, [data]);
 
     const handleSelect = (field: string, value: string) => {
         setFormState(prev => ({ ...prev, [field]: value }));
@@ -56,7 +62,7 @@ export function StepBudget({ data, onNext, onBack }: StepProps) {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Orçamento - Now using SelectionCards */}
+            {/* Orçamento - Using SelectionCards */}
             <div>
                 <label className={labelClasses}>
                     Faixa de investimento mensal disponível <span className="text-pink-500">*</span>
@@ -70,7 +76,7 @@ export function StepBudget({ data, onNext, onBack }: StepProps) {
                 {errors.budget_range && <p className={errorClasses}>{errors.budget_range}</p>}
             </div>
 
-            {/* Timeline - Now using SelectionCards */}
+            {/* Timeline - Using SelectionCards */}
             <div>
                 <label className={labelClasses}>
                     Quando pretende começar? <span className="text-pink-500">*</span>
@@ -82,32 +88,6 @@ export function StepBudget({ data, onNext, onBack }: StepProps) {
                     columns={2}
                 />
                 {errors.timeline && <p className={errorClasses}>{errors.timeline}</p>}
-            </div>
-
-            {/* Briefing */}
-            <div>
-                <label className={labelClasses}>
-                    Já tem um briefing ou referências visuais?
-                </label>
-                <div className="space-y-2">
-                    {BRIEFING_OPTIONS.map(option => (
-                        <button
-                            key={option.value}
-                            type="button"
-                            onClick={() => handleSelect('has_briefing', option.value)}
-                            className={`
-                w-full text-left px-4 py-3 rounded-xl
-                transition-all duration-200
-                ${formState.has_briefing === option.value
-                                    ? 'bg-gradient-to-r from-gray-600/30 to-pink-600/30 border border-gray-500 text-white'
-                                    : 'bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10'
-                                }
-              `}
-                        >
-                            {option.label}
-                        </button>
-                    ))}
-                </div>
             </div>
 
             {/* Navigation */}

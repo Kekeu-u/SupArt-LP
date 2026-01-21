@@ -13,7 +13,7 @@ export const maxDuration = 60; // Aumentado para permitir análise IA
 
 // Prompt para análise do Gemini
 const generateAnalysisPrompt = (data: DiagnosticFormData) => `
-Você é um consultor de marketing digital da SupArt Agency analisando um lead potencial.
+Você é um consultor de automação e IA da SupArt Agency analisando um lead potencial para soluções de automação de atendimento.
 
 ## Dados do Cliente:
 - **Nome**: ${data.full_name}
@@ -24,8 +24,13 @@ Você é um consultor de marketing digital da SupArt Agency analisando um lead p
 - **Site**: ${data.has_website}
 - **URL**: ${data.website_url || 'Não informado'}
 - **Redes Sociais**: ${data.social_channels?.join(', ') || 'Nenhuma'}
-- **Tráfego Pago**: ${data.uses_paid_traffic || 'Não informado'}
 - **Instagram**: ${data.instagram_handle || 'Não informado'}
+
+## Métricas de Automação (IMPORTANTE):
+- **Volume de Atendimentos/mês**: ${data.attendances_per_month || 'Não informado'}
+- **Canal Principal**: ${data.main_communication_channel || 'Não informado'}
+- **Nível de Automação Atual**: ${data.automation_level || 'Não informado'}
+- **Maior Gargalo**: ${data.biggest_bottleneck || 'Não informado'}
 
 ## Objetivos:
 - **Objetivo Principal**: ${data.main_goal}
@@ -35,7 +40,6 @@ Você é um consultor de marketing digital da SupArt Agency analisando um lead p
 ## Orçamento:
 - **Faixa**: ${data.budget_range}
 - **Timeline**: ${data.timeline}
-- **Briefing**: ${data.has_briefing || 'Não informado'}
 
 ## Prioridades (Top 3):
 ${data.priorities?.map((p, i) => `${i + 1}. ${p}`).join('\n') || 'Não informado'}
@@ -44,11 +48,11 @@ ${data.priorities?.map((p, i) => `${i + 1}. ${p}`).join('\n') || 'Não informado
 
 Gere uma análise em JSON com a seguinte estrutura (responda APENAS o JSON, sem markdown):
 {
-  "summary": "Parágrafo resumindo a situação atual e potencial do cliente",
+  "summary": "Parágrafo resumindo a situação atual e potencial de automação do cliente",
   "strengths": ["Ponto forte 1", "Ponto forte 2"],
-  "opportunities": ["Oportunidade 1 com recomendação", "Oportunidade 2 com recomendação"],
-  "recommendation": "Texto explicando porque o produto recomendado é ideal para este cliente",
-  "product_match": "Nome do produto SupArt mais adequado"
+  "opportunities": ["Oportunidade de automação 1", "Oportunidade de automação 2"],
+  "recommendation": "Texto explicando porque a solução de automação recomendada é ideal para este cliente",
+  "product_match": "Nome do produto SupArt mais adequado (ex: Chat SDR com IA, Ecossistema Digital, Acelerador de Leads)"
 }
 `;
 
@@ -129,20 +133,23 @@ export async function POST(req: Request) {
                             company_name: data.company_name,
                             role: data.role,
                             referral_source: data.referral_source,
-                            // Etapa 2: Situação Atual
+                            decision_maker: data.decision_maker, // BANT: Authority
+                            // Etapa 2: Situação Atual + Automação
                             has_website: data.has_website,
                             website_url: data.website_url,
                             social_channels: data.social_channels,
-                            uses_paid_traffic: data.uses_paid_traffic,
                             instagram_handle: data.instagram_handle,
+                            attendances_per_month: data.attendances_per_month,
+                            main_communication_channel: data.main_communication_channel,
+                            automation_level: data.automation_level,
                             // Etapa 3: Objetivos & Dores
                             main_goal: data.main_goal,
                             pain_points: data.pain_points,
+                            biggest_bottleneck: data.biggest_bottleneck,
                             challenge_description: data.challenge_description,
                             // Etapa 4: Orçamento & Timeline
                             budget_range: data.budget_range,
                             timeline: data.timeline,
-                            has_briefing: data.has_briefing,
                             // Etapa 5: Prioridades
                             priorities: data.priorities,
                             // Dados calculados

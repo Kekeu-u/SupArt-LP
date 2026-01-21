@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { step1Schema, ROLE_OPTIONS, REFERRAL_OPTIONS } from '@/lib/types/diagnostic';
+import { useState, useEffect } from 'react';
+import { step1Schema, ROLE_OPTIONS, REFERRAL_OPTIONS, DECISION_MAKER_OPTIONS } from '@/lib/types/diagnostic';
 import type { DiagnosticFormData } from '@/lib/types/diagnostic';
 
 interface StepProps {
@@ -21,8 +21,22 @@ export function StepIdentification({ data, onNext, isFirst }: StepProps) {
         company_name: data.company_name || '',
         role: data.role || '',
         referral_source: data.referral_source || '',
+        decision_maker: data.decision_maker || '',
     });
     const [errors, setErrors] = useState<Record<string, string>>({});
+
+    // 🐛 FIX: Sincronizar estado local com prop data quando ela mudar
+    useEffect(() => {
+        setFormState({
+            full_name: data.full_name || '',
+            email: data.email || '',
+            phone: data.phone || '',
+            company_name: data.company_name || '',
+            role: data.role || '',
+            referral_source: data.referral_source || '',
+            decision_maker: data.decision_maker || '',
+        });
+    }, [data]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -170,6 +184,34 @@ export function StepIdentification({ data, onNext, isFirst }: StepProps) {
                         </option>
                     ))}
                 </select>
+            </div>
+
+            {/* 🔥 NOVO: Decisor (Authority) */}
+            <div>
+                <label htmlFor="decision_maker" className={labelClasses}>
+                    Qual seu papel na tomada de decisão? <span className="text-pink-500">*</span>
+                </label>
+                <div className="space-y-2">
+                    {/* Reusing the option logic from other steps roughly or just select for simplicity first, 
+                        Plan said "select field", but let's make it look like a select to match context. 
+                        Wait, Plan said "select field". Let's stick to select to match the others above.
+                    */}
+                    <select
+                        id="decision_maker"
+                        name="decision_maker"
+                        value={formState.decision_maker}
+                        onChange={handleChange}
+                        className={inputClasses}
+                    >
+                        <option value="">Selecione uma opção</option>
+                        {DECISION_MAKER_OPTIONS.map(option => (
+                            <option key={option.value} value={option.value}>
+                                {option.label}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                {errors.decision_maker && <p className={errorClasses}>{errors.decision_maker}</p>}
             </div>
 
             {/* Navigation */}
