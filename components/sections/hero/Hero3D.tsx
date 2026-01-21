@@ -127,7 +127,7 @@ export function Hero3D({
                 // Animação de entrada inicial
                 gsap.from(contentRef.current, {
                     y: 50,
-                    opacity: 0,
+                    autoAlpha: 0,
                     scale: 0.95,
                     duration: DURATION.cinematic,
                     ease: EASING.cinematic,
@@ -154,7 +154,7 @@ export function Hero3D({
                 // Animação de entrada
                 gsap.from(contentRef.current, {
                     y: 30,
-                    opacity: 0,
+                    autoAlpha: 0,
                     duration: DURATION.slow,
                     ease: EASING.smooth,
                     delay: 0.1,
@@ -198,7 +198,7 @@ export function Hero3D({
             {/* Main Content com efeito 3D */}
             <div
                 ref={contentRef}
-                className="relative z-10 text-center px-6 max-w-5xl mx-auto transform-gpu"
+                className="relative z-10 text-center px-6 max-w-5xl mx-auto transform-gpu invisible"
                 style={{
                     transformStyle: "preserve-3d",
                     willChange: "transform, opacity, filter",

@@ -29,7 +29,7 @@ export const RotatingHeadline = () => {
 
             {/* Rotating word */}
             <div className="h-[1.2em] overflow-visible flex items-center justify-center relative w-full">
-                <AnimatePresence mode="wait">
+                <AnimatePresence>
                     <motion.span
                         key={currentIndex}
                         initial={{ y: -40, opacity: 0, filter: "blur(8px)" }}
