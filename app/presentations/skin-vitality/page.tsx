@@ -296,7 +296,7 @@ export default function SkinVitalityPage() {
                         <p className="text-gray-500 text-lg mb-10">
                             Let&apos;s schedule a quick 10-minute call to see how this fits Skin Vitality&apos;s needs.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <div className="flex justify-center">
                             <a
                                 href="https://wa.me/5519994056297?text=Hi%20Mayran!%20I%20just%20saw%20the%20AI%20automation%20proposal%20for%20Skin%20Vitality%20and%20I%27d%20like%20to%20schedule%20a%20quick%20call%20to%20learn%20more."
                                 target="_blank"
@@ -305,13 +305,6 @@ export default function SkinVitalityPage() {
                             >
                                 <i className="fab fa-whatsapp text-xl"></i>
                                 Schedule a 10-min Call
-                            </a>
-                            <a
-                                href="tel:+5519994056297"
-                                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-gray-900 font-bold rounded-xl border-2 border-gray-200 hover:border-purple-500 transition-all hover:scale-105"
-                            >
-                                <i className="fas fa-phone text-green-500"></i>
-                                Call Us Directly
                             </a>
                         </div>
                     </div>
