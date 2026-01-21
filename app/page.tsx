@@ -105,9 +105,9 @@ export default function Home() {
                     >
                         <HeroLogo size={110} className="mx-auto mb-6 w-24 h-24 md:w-32 md:h-32" />
                         <RotatingHeadline />
-                        <div className="w-full overflow-hidden py-2">
-                            <p className="text-base md:text-xl text-gray-400 max-w-full mx-auto leading-relaxed font-light tracking-wide whitespace-nowrap">
-                                <span className="shimmer-silver inline-block px-4">{heroSubtitle}</span>
+                        <div className="w-full py-2">
+                            <p className="text-sm sm:text-base md:text-xl text-gray-400 max-w-full mx-auto leading-relaxed font-light tracking-wide md:whitespace-nowrap px-4">
+                                <span className="shimmer-silver inline-block">{heroSubtitle}</span>
                             </p>
                         </div>
                     </motion.div>
