@@ -14,6 +14,7 @@ const STATIC_ROUTES = [
     'ferramentas',
     'maintenance',
     'politica-de-privacidade',
+    'presentations',
     'servicos',
     'test-agent',
     'api',
