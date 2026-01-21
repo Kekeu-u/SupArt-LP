@@ -4,8 +4,10 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { SupArtLogo } from "@/components/ui/SupArtLogo";
 import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
+import { useI18n } from "@/lib/i18n";
 
 export default function DiagnosticIntroPage() {
+    const { t } = useI18n();
     const [accepted, setAccepted] = useState(false);
 
     return (
@@ -25,21 +27,26 @@ export default function DiagnosticIntroPage() {
 
                 {/* Headline */}
                 <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
-                    Sua jornada para se tornar uma empresa AI First começa agora
+                    {t(
+                        "Your journey to becoming an AI First company starts now",
+                        "Sua jornada para se tornar uma empresa AI First começa agora"
+                    )}
                 </h1>
 
                 {/* Subtext */}
                 <p className="text-gray-400 text-lg md:text-xl mb-12 max-w-xl mx-auto leading-relaxed">
-                    Para entender como a IA pode trabalhar pela sua empresa, precisamos de algumas informações rápidas.
-                    Após o envio, um especialista da SupArt entrará em contato.
+                    {t(
+                        "To understand how AI can work for your business, we need some quick information. After submission, a SupArt specialist will contact you.",
+                        "Para entender como a IA pode trabalhar pela sua empresa, precisamos de algumas informações rápidas. Após o envio, um especialista da SupArt entrará em contato."
+                    )}
                 </p>
 
                 {/* Agreement */}
                 <div className="flex flex-col items-center gap-6 w-full max-w-md">
                     <p className="text-gray-500 text-sm">
-                        Ao clicar em "Iniciar", você concorda com nossa{" "}
+                        {t('By clicking "Start", you agree to our ', 'Ao clicar em "Iniciar", você concorda com nossa ')}
                         <Link href="/politica-de-privacidade" className="text-blue-500 hover:text-blue-400 transition-colors underline underline-offset-2">
-                            Política de Privacidade
+                            {t("Privacy Policy", "Política de Privacidade")}
                         </Link>.
                     </p>
 
@@ -57,7 +64,7 @@ export default function DiagnosticIntroPage() {
                             <FaRegCircle className="text-xl text-gray-500" />
                         )}
                         <span className={`font-medium ${accepted ? "text-blue-400" : "text-gray-400"}`}>
-                            Eu aceito os termos
+                            {t("I accept the terms", "Eu aceito os termos")}
                         </span>
                     </button>
 
@@ -78,7 +85,7 @@ export default function DiagnosticIntroPage() {
                                 : "bg-gray-800 text-gray-500 cursor-not-allowed"
                                 }`}
                         >
-                            Iniciar
+                            {t("Start", "Iniciar")}
                         </button>
                     </Link>
                 </div>
@@ -86,7 +93,7 @@ export default function DiagnosticIntroPage() {
 
             {/* Footer */}
             <div className="absolute bottom-6 text-gray-600 text-xs">
-                © 2026 Desenvolvido por SupArt Agency
+                {t("© 2026 Developed by SupArt Agency", "© 2026 Desenvolvido por SupArt Agency")}
             </div>
         </main>
     );

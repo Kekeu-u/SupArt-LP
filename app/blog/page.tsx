@@ -1,5 +1,6 @@
 import { BlogCard } from "@/components/blog/BlogCard";
 import { BlogSidebar } from "@/components/blog/BlogSidebar";
+import { BlogHero } from "@/components/blog/BlogHero";
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 import Image from "next/image";
@@ -37,24 +38,12 @@ export default async function BlogPage() {
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-12">
             {/* Page Header */}
-            <div className="text-center mb-16 space-y-4">
-                <div className="inline-block">
-                    <span className="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-3 py-1 rounded-full mb-4 inline-block">
-                        Impulsionado por IA
-                    </span>
-                </div>
-                <h1 className="text-5xl md:text-6xl font-bold mb-4 tracking-tight text-gray-900">
-                    Insights & Inovação
-                </h1>
-                <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
-                    Explore o futuro do design digital, tecnologia e inteligência artificial.
-                    <span className="block mt-1 text-blue-600 font-semibold">Conteúdo premium para mentes criativas.</span>
-                </p>
-            </div>
+            <BlogHero />
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
                 {/* Main Content */}
                 <div className="lg:col-span-8 space-y-12">
+                    {/* ... (featured post) */}
                     {featuredPost && (
                         <Link href={`/blog/${featuredPost.slug}`} className="group block cursor-pointer">
                             <div className="relative h-[400px] w-full rounded-2xl overflow-hidden mb-6">

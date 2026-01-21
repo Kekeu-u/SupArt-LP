@@ -1,11 +1,18 @@
-'use client';
+// ... (imports)
+import { useI18n } from '@/lib/i18n';
 
 interface AIAgentsHeadlineProps {
     className?: string;
 }
 
 export const AIAgentsHeadline = ({ className = '' }: AIAgentsHeadlineProps) => {
-    const features = ['Memória Contextual', 'Agendamento Inteligente', 'CRM Integrado'];
+    const { t } = useI18n();
+
+    const features = [
+        t('Context Memory', 'Memória Contextual'),
+        t('Smart Scheduling', 'Agendamento Inteligente'),
+        t('Integrated CRM', 'CRM Integrado')
+    ];
 
     return (
         <div className={`space-y-4 lg:space-y-8 ${className}`}>
@@ -13,14 +20,16 @@ export const AIAgentsHeadline = ({ className = '' }: AIAgentsHeadlineProps) => {
             <div className="space-y-2 lg:space-y-4">
                 <h2 className="text-3xl sm:text-4xl lg:text-7xl xl:text-8xl font-bold leading-tight tracking-tight text-white">
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400">
-                        Seu Business
+                        {t('Your Business', 'Seu Business')}
                     </span>
                     <br />
-                    <span className="text-white drop-shadow-sm">No Piloto</span>
+                    <span className="text-white drop-shadow-sm">{t('On Auto', 'No Piloto')}</span>
                     <br />
-                    <span className="text-white drop-shadow-sm">Automático</span>
+                    <span className="text-white drop-shadow-sm">{t('Pilot', 'Automático')}</span>
                 </h2>
-                <p className="text-gray-400 text-sm sm:text-base lg:text-2xl font-light tracking-wide">Sistema Multi-Agente com IA</p>
+                <p className="text-gray-400 text-sm sm:text-base lg:text-2xl font-light tracking-wide">
+                    {t('AI Multi-Agent System', 'Sistema Multi-Agente com IA')}
+                </p>
             </div>
 
             {/* Feature list */}

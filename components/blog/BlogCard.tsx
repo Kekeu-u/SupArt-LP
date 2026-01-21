@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { PremiumBorder } from "@/components/ui/PremiumBorder";
 import { AIBadge } from "@/components/ui/AIBadge";
+import { useI18n } from "@/lib/i18n";
 
 interface Post {
     id: string;
@@ -22,6 +25,8 @@ interface Post {
 }
 
 export const BlogCard = ({ post }: { post: Post }) => {
+    const { t, locale } = useI18n();
+
     return (
         <Link href={`/blog/${post.slug}`} className="group block h-full">
             <div className="relative h-full flex flex-col rounded-2xl overflow-hidden border border-gray-200/50 bg-white/80 backdrop-blur-sm hover:bg-white/90 transition-all duration-500 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:border-gray-500/30 hover:-translate-y-1">
@@ -55,7 +60,6 @@ export const BlogCard = ({ post }: { post: Post }) => {
                 <div className="relative p-6 flex flex-col flex-1">
                     <div className="flex items-center gap-2 mb-3">
                         {/* Avatar with gradient ring */}
-                        {/* Avatar with gradient ring */}
                         <PremiumBorder className="relative w-8 h-8 rounded-full p-[2px]">
                             <div className="relative w-full h-full rounded-full overflow-hidden bg-white">
                                 <Image src={post.author?.avatar_url || '/placeholder-avatar.jpg'} alt={post.author?.name} fill className="object-cover" />
@@ -63,7 +67,9 @@ export const BlogCard = ({ post }: { post: Post }) => {
                         </PremiumBorder>
                         <span className="text-xs text-gray-600 font-semibold">{post.author?.name}</span>
                         <span className="text-xs text-gray-300">•</span>
-                        <span className="text-xs text-gray-400">{new Date(post.published_at).toLocaleDateString('pt-BR')}</span>
+                        <span className="text-xs text-gray-400">
+                            {new Date(post.published_at).toLocaleDateString(locale === 'en' ? 'en-US' : 'pt-BR')}
+                        </span>
                     </div>
 
                     <h3 className="text-lg font-bold text-gray-900 leading-tight mb-3 group-hover:bg-gradient-to-r group-hover:from-gray-600 group-hover:to-blue-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
@@ -82,7 +88,7 @@ export const BlogCard = ({ post }: { post: Post }) => {
                             {post.read_time}
                         </span>
                         <span className="text-xs font-bold bg-gradient-to-r from-gray-600 to-blue-600 bg-clip-text text-transparent flex items-center gap-1.5 group-hover:gap-2.5 transition-all duration-300">
-                            Ler mais
+                            {t("Read more", "Ler mais")}
                             <svg className="w-3 h-3 text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M5 12h14" />
                                 <path d="M12 5l7 7-7 7" />

@@ -50,26 +50,35 @@ export default function Home() {
         "mainEntity": [
             {
                 "@type": "Question",
-                "name": "What does SupArt do?",
+                "name": t("What does SupArt do?", "O que a SupArt faz?"),
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "We are an agency specialized in combining Premium Design, Artificial Intelligence, and Marketing Strategy to scale businesses worldwide."
+                    "text": t(
+                        "We are an agency specialized in combining Premium Design, Artificial Intelligence, and Marketing Strategy to scale businesses worldwide.",
+                        "Somos uma agência especializada em combinar Design Premium, Inteligência Artificial e Estratégia de Marketing para escalar negócios globalmente."
+                    )
                 }
             },
             {
                 "@type": "Question",
-                "name": "How can AI help my business?",
+                "name": t("How can AI help my business?", "Como a IA pode ajudar meu negócio?"),
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "We use AI to automate sales (SDR), generate content at scale, and create unique visuals, reducing costs and increasing efficiency."
+                    "text": t(
+                        "We use AI to automate sales (SDR), generate content at scale, and create unique visuals, reducing costs and increasing efficiency.",
+                        "Usamos IA para automatizar vendas (SDR), gerar conteúdo em escala e criar visuais únicos, reduzindo custos e aumentando a eficiência."
+                    )
                 }
             },
             {
                 "@type": "Question",
-                "name": "Do you work with international clients?",
+                "name": t("Do you work with international clients?", "Vocês atendem clientes internacionais?"),
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes, our operation is 100% remote and we serve clients across Brazil, USA, Europe, and worldwide."
+                    "text": t(
+                        "Yes, our operation is 100% remote and we serve clients across Brazil, USA, Europe, and worldwide.",
+                        "Sim, nossa operação é 100% remota e atendemos clientes no Brasil, EUA, Europa e em todo o mundo."
+                    )
                 }
             }
         ]
