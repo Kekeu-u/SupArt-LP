@@ -94,7 +94,7 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     HERO SECTION - ORIGINAL RESTORED
                     ═══════════════════════════════════════════ */}
-                <section id="home" className="relative min-h-screen flex flex-col items-center justify-start pt-32 md:pt-40 px-8 md:px-16 overflow-hidden">
+                <section id="home" className="relative min-h-[90vh] flex flex-col items-center justify-start pt-24 md:pt-32 px-8 md:px-16 overflow-hidden">
                     <VideoBackground />
                     {/* Camada única de conteúdo */}
                     <motion.div
@@ -103,10 +103,10 @@ export default function Home() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, ease: "easeOut" }}
                     >
-                        <HeroLogo size={110} className="mx-auto mb-6 w-24 h-24 md:w-32 md:h-32" />
+                        <HeroLogo size={110} className="mx-auto mb-4 w-20 h-20 md:w-28 md:h-28" />
                         <RotatingHeadline />
-                        <p className="text-lg md:text-2xl text-gray-300 max-w-2xl mx-auto mt-4 leading-relaxed font-light tracking-wide">
-                            {heroSubtitle}
+                        <p className="text-base md:text-xl text-gray-400 max-w-3xl mx-auto mt-3 leading-relaxed font-light tracking-wide whitespace-nowrap overflow-hidden">
+                            <span className="shimmer-silver inline-block">{heroSubtitle}</span>
                         </p>
                     </motion.div>
 
