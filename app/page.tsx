@@ -103,11 +103,11 @@ export default function Home() {
                 {/* ═══════════════════════════════════════════
                     HERO SECTION - ORIGINAL RESTORED
                     ═══════════════════════════════════════════ */}
-                <section id="home" className="relative h-screen flex flex-col items-center justify-center px-4 overflow-hidden">
+                <section id="home" className="relative h-screen flex flex-col items-center justify-start md:justify-center px-4 overflow-hidden pt-32 md:pt-0">
                     <VideoBackground />
                     {/* Camada única de conteúdo */}
                     <motion.div
-                        className="text-center w-full max-w-[90vw] md:max-w-4xl mx-auto z-10 -mt-32 md:-mt-20"
+                        className="text-center w-full max-w-[90vw] md:max-w-4xl mx-auto z-10"
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, ease: "easeOut" }}

@@ -39,8 +39,9 @@ export const BentoCard = ({
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
             className={cn(
+                "will-change-transform translate-z-0", // Hardware acceleration
                 colSpan === 2 && "md:col-span-2",
                 colSpan === 3 && "md:col-span-2 lg:col-span-3",
                 colSpan === 4 && "md:col-span-2 lg:col-span-4",
@@ -54,8 +55,8 @@ export const BentoCard = ({
                     className
                 )}
             >
-                {/* Hover Effect Layer */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                {/* Hover Effect Layer - Optimized */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none will-change-[opacity]" />
 
                 {children}
             </PremiumCard>

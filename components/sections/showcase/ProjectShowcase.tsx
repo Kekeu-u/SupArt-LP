@@ -34,7 +34,7 @@ export const ProjectShowcase = () => {
                     {/* Site 1 - Large Card - ADESP/RS */}
                     <BentoCard colSpan={2} className="p-0 overflow-hidden bg-transparent border-none shadow-none group/card">
                         <a href="/cases" className="block h-full w-full">
-                            <div className="relative h-full w-full overflow-hidden rounded-2xl bg-gradient-to-br from-[#0d3320] via-[#1a1a1a] to-[#2d1515] backdrop-blur-xl border border-white/10">
+                            <div className="relative h-full w-full overflow-hidden rounded-2xl bg-gradient-to-br from-[#0d3320] via-[#1a1a1a] to-[#2d1515] backdrop-blur-md border border-white/5 will-change-transform">
                                 <div className="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
                                 <div className="relative z-10 h-full flex flex-col p-5 md:p-6">
                                     <div className="flex items-center justify-between mb-3">
@@ -80,7 +80,7 @@ export const ProjectShowcase = () => {
                     {/* Site 2 - Dunga */}
                     <BentoCard colSpan={2} className="p-0 overflow-hidden bg-transparent border-none shadow-none group/card">
                         <a href="/cases" className="block h-full w-full">
-                            <div className="relative h-full w-full overflow-hidden rounded-2xl bg-gradient-to-br from-amber-900 via-[#1a1a1a] to-stone-900 backdrop-blur-xl border border-white/10">
+                            <div className="relative h-full w-full overflow-hidden rounded-2xl bg-gradient-to-br from-amber-900 via-[#1a1a1a] to-stone-900 backdrop-blur-md border border-white/5 will-change-transform">
                                 <div className="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
                                 <div className="relative h-full flex flex-col p-5 md:p-6">
                                     <div className="flex items-center justify-between mb-3">
