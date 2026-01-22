@@ -54,30 +54,33 @@ export const AiAgents = () => {
 
                     {/* Wrapper: Text Content - aligned left, z-10 to overlap phone */}
                     <motion.div
-                        className="flex flex-col items-start justify-start flex-1 z-10 gap-6"
+                        className="flex flex-col items-start justify-start flex-1 z-10"
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                     >
                         <AIAgentsHeadline />
-
-                        {/* CTA Button - Circular Play */}
-                        <CircularPlayButton href="/demo" size={120} />
                     </motion.div>
 
-                    {/* Wrapper: Smartphone - size prop controls internal scale */}
+                    {/* Wrapper: Smartphone with Play Button overlay */}
                     <motion.div
-                        className="shrink-0 -ml-8 lg:ml-0"
+                        className="shrink-0 -ml-8 lg:ml-0 relative"
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                     >
-                        {/* Mobile: sm, Desktop: lg - className for layout only */}
+                        {/* Mobile: sm, Desktop: lg */}
                         <div className="lg:hidden">
                             <PhoneMockup size="sm" className="rotate-[3deg] hover:rotate-0 transition-transform duration-700" />
                         </div>
                         <div className="hidden lg:block">
                             <PhoneMockup size="lg" className="rotate-[3deg] hover:rotate-0 transition-transform duration-700" />
+                        </div>
+
+                        {/* CircularPlayButton - positioned at bottom left corner, overlapping */}
+                        <div className="absolute -bottom-8 -left-8 lg:-bottom-10 lg:-left-10 z-20">
+                            <CircularPlayButton href="/demo" size={100} className="lg:hidden" />
+                            <CircularPlayButton href="/demo" size={140} className="hidden lg:block" />
                         </div>
                     </motion.div>
                 </div>
