@@ -38,9 +38,10 @@ export const Method = () => {
                         key={i}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
+                        whileHover={{ y: -5 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.1 }}
-                        className="group bg-white/80 backdrop-blur-xl border border-white/50 p-8 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-all duration-300"
+                        className="group bg-white/80 backdrop-blur-xl border border-white/50 p-8 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.04)] transition-shadow duration-300"
                     >
                         {/* Icon */}
                         <div className="w-12 h-12 bg-gray-900 rounded-xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300">

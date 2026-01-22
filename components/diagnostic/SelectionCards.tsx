@@ -1,11 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useI18n } from '@/lib/i18n';
 
 interface SelectionOption {
     value: string;
-    label: { en: string; pt: string } | string;
+    label: string;
     icon?: string;
     description?: string;
 }
@@ -18,21 +17,14 @@ interface SelectionCardsProps {
 }
 
 export function SelectionCards({ options, value, onChange, columns = 2 }: SelectionCardsProps) {
-    const { locale } = useI18n();
-
     const gridCols = {
-        2: 'grid-cols-1 sm:grid-cols-2',
-        3: 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3',
+        2: 'grid-cols-2',
+        3: 'grid-cols-2 md:grid-cols-3',
         4: 'grid-cols-2 md:grid-cols-4',
     };
 
-    const getLabel = (label: { en: string; pt: string } | string): string => {
-        if (typeof label === 'string') return label;
-        return locale === 'en' ? label.en : label.pt;
-    };
-
     return (
-        <div className={`grid ${gridCols[columns]} gap-2 sm:gap-3`}>
+        <div className={`grid ${gridCols[columns]} gap-3`}>
             {options.map((option) => {
                 const isSelected = value === option.value;
                 return (
@@ -43,7 +35,7 @@ export function SelectionCards({ options, value, onChange, columns = 2 }: Select
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         className={`
-                            relative p-3 sm:p-4 min-h-[44px] rounded-xl text-left transition-colors duration-200
+                            relative p-4 rounded-xl text-left transition-colors duration-200
                             border-2 cursor-pointer
                             ${isSelected
                                 ? 'bg-gradient-to-br from-purple-500/20 to-pink-500/20 border-purple-500 shadow-lg shadow-purple-500/20'
@@ -66,12 +58,12 @@ export function SelectionCards({ options, value, onChange, columns = 2 }: Select
 
                         {/* Icon */}
                         {option.icon && (
-                            <span className="text-xl sm:text-2xl mb-1 sm:mb-2 block">{option.icon}</span>
+                            <span className="text-2xl mb-2 block">{option.icon}</span>
                         )}
 
                         {/* Label */}
-                        <span className={`text-sm sm:text-base font-medium block ${isSelected ? 'text-white' : 'text-gray-200'}`}>
-                            {getLabel(option.label)}
+                        <span className={`font-medium block ${isSelected ? 'text-white' : 'text-gray-200'}`}>
+                            {option.label}
                         </span>
 
                         {/* Description */}

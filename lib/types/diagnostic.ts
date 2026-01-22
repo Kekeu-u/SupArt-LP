@@ -69,28 +69,28 @@ export const AUTOMATION_LEVEL_OPTIONS = [
 ] as const;
 
 export const BOTTLENECK_OPTIONS = [
-    { value: 'slow_response', label: { en: 'Slow response time', pt: 'Atendimento demorado' }, icon: '⏳' },
-    { value: 'lost_leads', label: { en: 'Losing leads/opportunities', pt: 'Perda de leads/oportunidades' }, icon: '💸' },
-    { value: 'manual_followup', label: { en: '100% manual follow-up', pt: 'Follow-up 100% manual' }, icon: '✏️' },
-    { value: 'manual_scheduling', label: { en: 'Manual scheduling', pt: 'Agendamentos manuais' }, icon: '📅' },
-    { value: 'no_reports', label: { en: 'Lack of reports/metrics', pt: 'Falta de relatórios/métricas' }, icon: '📊' },
+    { value: 'slow_response', label: 'Atendimento demorado', icon: '⏳' },
+    { value: 'lost_leads', label: 'Perda de leads/oportunidades', icon: '💸' },
+    { value: 'manual_followup', label: 'Follow-up 100% manual', icon: '✏️' },
+    { value: 'manual_scheduling', label: 'Agendamentos manuais', icon: '📅' },
+    { value: 'no_reports', label: 'Falta de relatórios/métricas', icon: '📊' },
 ] as const;
 
 export const GOAL_OPTIONS = [
-    { value: 'leads', label: { en: '🎯 Generate more leads/sales', pt: '🎯 Gerar mais leads/vendas' } },
-    { value: 'branding', label: { en: '🏆 Strengthen my brand', pt: '🏆 Fortalecer minha marca' } },
-    { value: 'launch', label: { en: '🚀 Launch product/service', pt: '🚀 Lançar produto/serviço' } },
-    { value: 'modernize', label: { en: '🔄 Modernize digital presence', pt: '🔄 Modernizar presença digital' } },
-    { value: 'automate', label: { en: '🤖 Automate processes', pt: '🤖 Automatizar processos' } },
+    { value: 'leads', label: '🎯 Gerar mais leads/vendas' },
+    { value: 'branding', label: '🏆 Fortalecer minha marca' },
+    { value: 'launch', label: '🚀 Lançar produto/serviço' },
+    { value: 'modernize', label: '🔄 Modernizar presença digital' },
+    { value: 'automate', label: '🤖 Automatizar processos' },
 ] as const;
 
 export const PAIN_POINTS_OPTIONS = [
-    { value: 'no_conversion', label: { en: 'Website doesn\'t convert', pt: 'Site/LP não converte' } },
-    { value: 'no_knowledge', label: { en: 'I don\'t know digital marketing', pt: 'Não sei fazer marketing digital' } },
-    { value: 'bad_agency', label: { en: 'Spent on agency with no results', pt: 'Gastei com agência e não deu resultado' } },
-    { value: 'unprofessional', label: { en: 'My brand looks unprofessional', pt: 'Minha marca não transmite profissionalismo' } },
-    { value: 'no_time', label: { en: 'No time to manage', pt: 'Não tenho tempo para gerenciar' } },
-    { value: 'other', label: { en: 'Other', pt: 'Outro' } },
+    { value: 'no_conversion', label: 'Site/LP não converte' },
+    { value: 'no_knowledge', label: 'Não sei fazer marketing digital' },
+    { value: 'bad_agency', label: 'Gastei com agência e não deu resultado' },
+    { value: 'unprofessional', label: 'Minha marca não transmite profissionalismo' },
+    { value: 'no_time', label: 'Não tenho tempo para gerenciar' },
+    { value: 'other', label: 'Outro' },
 ] as const;
 
 export const BUDGET_OPTIONS = [

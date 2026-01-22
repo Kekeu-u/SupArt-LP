@@ -91,13 +91,14 @@ export const BlogPreview = () => {
                                 key={index}
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
+                                whileHover={{ y: -5 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                 className="h-full"
                             >
                                 <a href={`/blog/${post.slug}`} className="block h-full no-underline">
                                     <PremiumCard
-                                        className="h-full p-8 flex flex-col group bg-white/80 backdrop-blur-xl border border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.04)] transition-all duration-500 hover:-translate-y-1 hover:shadow-lg"
+                                        className="h-full p-8 flex flex-col group bg-white/80 backdrop-blur-xl border border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.04)] transition-shadow duration-500 hover:shadow-lg"
                                     >
                                         {/* Icon */}
                                         <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${post.gradient} flex items-center justify-center mb-6 shadow-lg`}>

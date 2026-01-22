@@ -33,7 +33,7 @@ export const DoctorCard = ({
         >
             <motion.div
                 className={`
-          relative p-5 rounded-2xl bg-[#0d0d0d]/90 backdrop-blur-xl overflow-hidden transition-all duration-300
+          relative p-5 rounded-2xl bg-[#0d0d0d]/90 backdrop-blur-xl overflow-hidden
           ${isClickable ? 'cursor-pointer' : 'cursor-default'}
           ${isSelected
                         ? 'border-2 border-purple-500 shadow-[0_0_30px_rgba(107,70,193,0.4)]'
