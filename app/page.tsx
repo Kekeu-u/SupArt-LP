@@ -107,7 +107,7 @@ export default function Home() {
                     <VideoBackground />
                     {/* Camada única de conteúdo */}
                     <motion.div
-                        className="text-center w-full max-w-[90vw] md:max-w-4xl mx-auto z-10"
+                        className="text-center w-full max-w-[90vw] md:max-w-4xl mx-auto z-10 -mt-16 md:-mt-20"
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, ease: "easeOut" }}
@@ -121,11 +121,9 @@ export default function Home() {
                         </div>
                     </motion.div>
 
-                    {/* Scroll Indicator - Posicionado com bottom-safe */}
-                    <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-20">
-                        <div className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-1 animate-bounce backdrop-blur-sm">
-                            <div className="w-1.5 h-3 rounded-full bg-white/50" />
-                        </div>
+                    {/* Scroll Indicator - Posicionado com bottom-safe - DESKTOP ONLY */}
+                    <div className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 z-20 items-start justify-center p-1 animate-bounce backdrop-blur-sm rounded-full border-2 border-white/20 w-6 h-10">
+                        <div className="w-1.5 h-3 rounded-full bg-white/50" />
                     </div>
                 </section>
 
