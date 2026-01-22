@@ -78,9 +78,8 @@ export const AiAgents = () => {
                         </div>
 
                         {/* CircularPlayButton - positioned at bottom left corner, overlapping */}
-                        <div className="absolute -bottom-8 -left-8 lg:-bottom-12 lg:-left-12 z-20">
-                            <CircularPlayButton href="/demo" size={100} className="lg:hidden" />
-                            <CircularPlayButton href="/demo" size={160} className="hidden lg:block" />
+                        <div className="absolute -bottom-8 -left-6 lg:-bottom-10 lg:-left-10 z-20">
+                            <CircularPlayButton href="/demo" size={120} />
                         </div>
                     </motion.div>
                 </div>

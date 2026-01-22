@@ -34,9 +34,9 @@ export const CircularPlayButton: React.FC<CircularPlayButtonProps> = ({
                             fill="none"
                         />
                     </defs>
-                    <text className="fill-gray-300 font-medium uppercase tracking-wider" style={{ fontSize: 10 }}>
-                        <textPath href={`#${circleId}`}>
-                            VER DEMO • VER DEMO • VER DEMO • VER DEMO •
+                    <text className="fill-gray-300 font-medium uppercase" style={{ fontSize: 10, letterSpacing: '5.5px' }}>
+                        <textPath href={`#${circleId}`} startOffset="50%" textAnchor="middle">
+                            VER DEMO • VER DEMO • VER DEMO •
                         </textPath>
                     </text>
                 </svg>
