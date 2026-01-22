@@ -53,12 +53,21 @@ export const AiAgents = () => {
 
                     {/* Wrapper: Text Content - aligned left, z-10 to overlap phone */}
                     <motion.div
-                        className="flex items-start justify-start flex-1 z-10"
+                        className="flex flex-col items-start justify-start flex-1 z-10 gap-6"
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                     >
                         <AIAgentsHeadline />
+
+                        {/* CTA Button */}
+                        <a
+                            href="/demo"
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-full hover:opacity-90 transition-opacity shadow-lg shadow-purple-500/25"
+                        >
+                            <span>▶</span>
+                            {t("Watch Demo", "Ver Demonstração")}
+                        </a>
                     </motion.div>
 
                     {/* Wrapper: Smartphone - size prop controls internal scale */}
