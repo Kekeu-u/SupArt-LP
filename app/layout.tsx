@@ -30,11 +30,25 @@ export const metadata: Metadata = {
         siteName: "SupArt Agency",
         title: "SupArt Agency | Premium Digital Experiences",
         description: "AI-powered design & development agency creating high-converting digital experiences.",
+        images: [
+            {
+                url: "/open-graph.jpg", // Create this later if needed
+                width: 1200,
+                height: 630,
+                alt: "SupArt Agency",
+            },
+        ],
     },
     twitter: {
         card: "summary_large_image",
         title: "SupArt Agency",
         description: "Premium digital experiences that convert.",
+    },
+    icons: {
+        icon: [
+            { media: '(prefers-color-scheme: light)', url: '/icon-light.svg', type: 'image/svg+xml' },
+            { media: '(prefers-color-scheme: dark)', url: '/icon-dark.svg', type: 'image/svg+xml' },
+        ],
     },
 };
 

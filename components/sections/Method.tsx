@@ -5,8 +5,8 @@ import { useI18n } from "@/lib/i18n";
 import { FaUserPlus, FaPhoneAlt, FaBrain, FaFileContract } from "react-icons/fa";
 
 const steps = [
-    { icon: FaUserPlus, title: { en: "Registration", pt: "Cadastro" }, description: { en: "Click on 'Hire AI Consultation' and fill out the form.", pt: "Clique em 'Contratar Consulta de IA' e preencha o formulário." } },
-    { icon: FaPhoneAlt, title: { en: "Contact", pt: "Contato" }, description: { en: "Our team contacts you to understand your moment and confirm hiring.", pt: "Nossa equipe entra em contato para entender seu momento e confirmar a contratação." } },
+    { icon: FaUserPlus, title: { en: "Registration", pt: "Cadastro" }, description: { en: "Click on 'Hire AI Consultation' and fill out the form.", pt: "Clique em 'Entender como funciona' e preencha o formulário." } },
+    { icon: FaPhoneAlt, title: { en: "Contact", pt: "Contato" }, description: { en: "Our team contacts you to understand your moment and confirm hiring.", pt: "Nossa equipe entra em contato para entender seu momento e coletar dados para um diagnóstico." } },
     { icon: FaBrain, title: { en: "AI Consultation", pt: "Consulta de IA" }, description: { en: "We map your pains and opportunities. You leave with total clarity.", pt: "Mapeamos suas dores e oportunidades. Você sai com total clareza." } },
     { icon: FaFileContract, title: { en: "Proposal", pt: "Proposta" }, description: { en: "We present the ideal solutions: analysis, consulting, or agent development.", pt: "Apresentamos as soluções ideais: análise, consultoria ou desenvolvimento de agentes." } }
 ];

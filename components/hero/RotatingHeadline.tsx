@@ -27,7 +27,7 @@ export const RotatingHeadline = () => {
                 {t("Your brand deserves", "Sua marca merece")}
             </h1>
             {/* Container */}
-            <div className="relative h-12 sm:h-20 md:h-24 lg:h-28 flex items-start justify-center w-full overflow-visible mt-2 sm:mt-0">
+            <div className="relative h-16 sm:h-24 md:h-28 lg:h-36 flex items-start justify-center w-full overflow-visible mt-2 sm:mt-0 pb-4">
                 <AnimatePresence mode="wait">
                     <motion.span
                         key={index}

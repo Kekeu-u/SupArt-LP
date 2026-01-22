@@ -6,6 +6,8 @@ import { PremiumBorder } from "@/components/ui/PremiumBorder";
 import { NewsletterWidget } from "./NewsletterWidget";
 import { useI18n } from "@/lib/i18n";
 
+import { EyeProtectionToggle } from "./EyeProtectionToggle";
+
 interface Post {
     title: string;
     slug: string;
@@ -32,10 +34,10 @@ export const BlogSidebarView = ({ recentPosts, categories }: BlogSidebarViewProp
 
     return (
         <aside className="space-y-6">
-            {/* Recent Posts */}
+            {/* Recent Posts & Eye Protection */}
             <div className="relative rounded-2xl border border-gray-200/50 bg-white/80 backdrop-blur-sm p-6 hover:bg-white/90 transition-all duration-300">
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-gray-500/5 via-transparent to-blue-500/5 pointer-events-none" />
-                <h3 className="relative text-lg font-bold bg-gradient-to-r from-gray-900 to-blue-900 bg-clip-text text-transparent mb-5">
+                <h3 className="relative text-lg font-bold bg-gradient-to-r from-gray-900 to-blue-900 bg-clip-text text-transparent mb-5 pr-12">
                     {t("Recent Posts", "Posts Recentes")}
                 </h3>
                 <div className="relative space-y-5">

@@ -18,6 +18,7 @@ import {
   FaBlog,
 } from "react-icons/fa";
 import { useI18n, Locale } from "@/lib/i18n";
+import { EyeProtectionToggle } from "@/components/blog/EyeProtectionToggle";
 
 interface NavLink {
   href: string;
@@ -187,6 +188,13 @@ export const Header = () => {
             <span className="hidden sm:inline">{t("Learn", "Entender")} </span>
             <span className="hidden lg:inline">{t("How It Works", "como funciona")}</span>
           </GlassButton>
+
+          {/* Eye Toggle - Only on Blog - To the right of CTA */}
+          {pathname.startsWith('/blog') && (
+            <div className="hidden md:block">
+              <EyeProtectionToggle />
+            </div>
+          )}
         </div>
       </div>
     </header>

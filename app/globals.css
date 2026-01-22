@@ -84,12 +84,17 @@
   --color-apple-black: oklch(0.15 0 0);
   --color-apple-gray: oklch(0.55 0 0);
 
-  /* Blog Specific - Dark Compatible */
-  --blog-text-primary: oklch(0.90 0 0);
-  --blog-text-secondary: oklch(0.70 0 0);
-  --blog-border: oklch(0.20 0 0);
-  --blog-bg-blockquote: linear-gradient(135deg, oklch(0.10 0.02 280) 0%, oklch(0.12 0.01 220) 100%);
-  --blog-border-blockquote: oklch(0.55 0.25 280);
+  /* Blog Specific - Light Mode Default */
+  --blog-text-primary: #111827;
+  /* Gray 900 */
+  --blog-text-secondary: #374151;
+  /* Gray 700 */
+  --blog-border: #e5e7eb;
+  /* Gray 200 */
+  --blog-bg-blockquote: #f3f4f6;
+  /* Gray 100 */
+  --blog-border-blockquote: #d1d5db;
+  /* Gray 300 */
 }
 
 /* Dark mode removido - site forçado em light mode */
@@ -104,7 +109,100 @@ body {
   font-feature-settings: 'ss01' 1, 'cv11' 1;
   overflow-x: hidden;
   max-width: 100vw;
-  transition: background-color 0.5s ease, color 0.5s ease;
+  /* transition removed - sepia mode should be instant */
+}
+
+/* Sepia Mode - Refined Paper Texture & Ink */
+/* Sepia Mode - Refined Paper Texture & Ink */
+body.sepia-mode {
+  background-color: #f4ecd8 !important;
+  /* Warm old paper */
+  color: #2b251f !important;
+  /* Ink color */
+  transition: none !important;
+  /* Instant switch */
+}
+
+/* Texture Overlay - BEHIND everything */
+body.sepia-mode::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  /* Behind everything */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.06'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+/* Force Text Colors to 'Ink' - but not on buttons/badges/inputs */
+body.sepia-mode h1,
+body.sepia-mode h2,
+body.sepia-mode h3,
+body.sepia-mode h4,
+body.sepia-mode p,
+body.sepia-mode span:not([class*="bg-"]):not([class*="button"]),
+body.sepia-mode li,
+body.sepia-mode a:not([class*="bg-"]):not([class*="btn"]) {
+  color: #2b251f !important;
+}
+
+/* Restore button text visibility inside specific components */
+body.sepia-mode button span,
+body.sepia-mode [role="button"] span,
+body.sepia-mode .text-white,
+body.sepia-mode header a[href*="contato"],
+body.sepia-mode header button {
+  color: inherit !important;
+}
+
+/* Fix Header CTA specific - force white text on dark button */
+body.sepia-mode header a.bg-gray-900,
+body.sepia-mode header a[class*="bg-gray-900"] {
+  color: white !important;
+}
+
+/* Hide the fixed gradient backgrounds in blog layout */
+body.sepia-mode>div>div.fixed[class*="-z-"] {
+  display: none !important;
+}
+
+/* Force key containers to transparent */
+body.sepia-mode .min-h-screen,
+body.sepia-mode main {
+  background-color: transparent !important;
+}
+
+/* Sidebar cards - slightly see-through paper */
+body.sepia-mode aside>div {
+  background-color: rgba(244, 236, 216, 0.6) !important;
+  border-color: rgba(139, 119, 86, 0.2) !important;
+}
+
+/* Blog article table cells */
+body.sepia-mode .blog-article td {
+  background-color: rgba(244, 236, 216, 0.9) !important;
+  color: #2b251f !important;
+}
+
+/* Fix specific white backgrounds in blog content overlay */
+body.sepia-mode .not-prose[class*="bg-gradient"],
+body.sepia-mode blockquote {
+  background: rgba(244, 236, 216, 0.5) !important;
+  border-color: rgba(139, 119, 86, 0.2) !important;
+}
+
+/* Header must remain untouched/transparent */
+body.sepia-mode header {
+  background-color: transparent !important;
+}
+
+body.sepia-mode header>div {
+  background-color: transparent !important;
+  border-color: rgba(139, 119, 86, 0.1) !important;
 }
 
 /* Dark Mode Body Pattern */
@@ -366,10 +464,15 @@ body {
 
 .blog-article>p:first-of-type::first-letter {
   float: left;
-  font-size: 3.5rem;
-  line-height: 1;
+  font-size: 3.25rem;
+  /* Slight reduction for better fit */
+  line-height: 0.85;
+  /* Tighter line height */
   font-weight: 700;
   margin-right: 0.5rem;
+  margin-top: 0;
+  /* Reset margin top to avoid pushing down quotes */
+  padding-top: 0;
   background: linear-gradient(135deg, oklch(0.55 0.25 280), oklch(0.55 0.25 250));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -525,9 +628,9 @@ body {
 .blog-article td {
   padding: 0.75rem 1rem;
   font-size: 0.875rem;
-  color: var(--blog-text-primary);
-  border-bottom: 1px solid var(--blog-border);
-  background: hsl(var(--card));
+  color: #1a1a1a;
+  border-bottom: 1px solid #e5e7eb;
+  background: white;
 }
 
 .blog-article tbody tr:last-child td {
@@ -535,7 +638,7 @@ body {
 }
 
 .blog-article tbody tr:hover td {
-  background: hsl(var(--muted));
+  background: #f9fafb;
 }
 
 .blog-article hr {
@@ -594,8 +697,10 @@ body {
   }
 
   .blog-article>p:first-of-type::first-letter {
-    font-size: 2.75rem;
-    margin-right: 0.35rem;
+    font-size: 2.5rem;
+    margin-right: 0.5rem;
+    margin-top: 0.25rem;
+    line-height: 0.9;
   }
 
   .blog-article ul li,

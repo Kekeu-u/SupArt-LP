@@ -52,11 +52,10 @@ export const NewsletterWidget = () => {
                     <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
-                    <h3 className="text-lg font-bold text-gray-900">Newsletter Premium</h3>
+                    <h3 className="text-lg font-bold text-gray-900">Junte-se à Comunidade</h3>
                 </div>
                 <p className="text-sm text-gray-600 mb-4 leading-relaxed">
                     <span className="font-semibold text-gray-700">Insights de IA</span> direto no seu inbox.
-                    <span className="block text-xs text-gray-500 mt-1">+ de 70 mil leitores 🚀</span>
                 </p>
 
                 <form className="space-y-3" onSubmit={handleSubmit}>
