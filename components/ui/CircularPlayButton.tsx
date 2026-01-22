@@ -1,7 +1,6 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useId } from "react";
 import { FaPlay } from "react-icons/fa";
 import Link from "next/link";
 
@@ -16,17 +15,16 @@ export const CircularPlayButton: React.FC<CircularPlayButtonProps> = ({
     className = "",
     size = 140, // Default size
 }) => {
-    // Config for the text ring
-    const text = "VER DEMONSTRAÇÃO • VER DEMONSTRAÇÃO • ";
-    const radius = size / 2;
-    const fontSize = 12; // Adjust based on size
-    const letterSpacing = 3.1;
+    // Unique ID para evitar conflito quando há múltiplas instâncias
+    const id = useId().replace(/:/g, '');
+    const topCurveId = `topCurve-${id}`;
+    const bottomCurveId = `bottomCurve-${id}`;
 
     return (
         <Link href={href} className={`relative group block cursor-pointer ${className}`} style={{ width: size, height: size }}>
             {/* 1. Rotating Text Ring */}
             <div
-                className="absolute inset-0 w-full h-full pointer-events-none"
+                className="absolute inset-0 w-full h-full pointer-events-none animate-spin-slow"
                 style={{ transformOrigin: "center center" }}
             >
                 <svg
@@ -36,32 +34,30 @@ export const CircularPlayButton: React.FC<CircularPlayButtonProps> = ({
                     className="w-full h-full"
                     style={{ overflow: "visible" }}
                 >
-                    {/* Top Arc Path: Clockwise (Text sits outside) */}
+                    {/* Top Arc Path */}
                     <path
-                        id="topCurve"
+                        id={topCurveId}
                         d={`M ${size / 2 - (size / 2 - 15)},${size / 2} A ${size / 2 - 15},${size / 2 - 15} 0 0,1 ${size / 2 + (size / 2 - 15)},${size / 2}`}
                         fill="none"
                     />
 
-                    {/* Bottom Arc Path: Counter-clockwise (Text sits inside) 
-                        Radius increased by ~9px to make the 'inside' text match the 'outside' text's ring position.
-                    */}
+                    {/* Bottom Arc Path */}
                     <path
-                        id="bottomCurve"
+                        id={bottomCurveId}
                         d={`M ${size / 2 - (size / 2 - 15 + 9)},${size / 2} A ${size / 2 - 15 + 9},${size / 2 - 15 + 9} 0 0,0 ${size / 2 + (size / 2 - 15 + 9)},${size / 2}`}
                         fill="none"
                     />
 
                     {/* Top Text */}
                     <text className="fill-gray-300 font-medium tracking-[2.5px] uppercase text-[10px]" textAnchor="middle" dominantBaseline="auto">
-                        <textPath href="#topCurve" startOffset="50%">
+                        <textPath href={`#${topCurveId}`} startOffset="50%">
                             VER DEMONSTRAÇÃO •
                         </textPath>
                     </text>
 
                     {/* Bottom Text */}
                     <text className="fill-gray-300 font-medium tracking-[2.5px] uppercase text-[10px]" textAnchor="middle" dominantBaseline="auto">
-                        <textPath href="#bottomCurve" startOffset="50%">
+                        <textPath href={`#${bottomCurveId}`} startOffset="50%">
                             • VER DEMONSTRAÇÃO
                         </textPath>
                     </text>
@@ -74,11 +70,6 @@ export const CircularPlayButton: React.FC<CircularPlayButtonProps> = ({
                     className="relative flex items-center justify-center rounded-full bg-white text-black transition-transform duration-300 group-hover:scale-110 shadow-[0_0_20px_rgba(255,255,255,0.3)]"
                     style={{ width: size * 0.4, height: size * 0.4 }}
                 >
-                    {/* Glass/Gradient layer behind (optional, keeping it clean white for contrast per Apple Pro style or gradients if preferred)
-              Let's use the requested gradient style: Purple/Pink or clean White.
-              User mentioned "premium". Let's try a subtle gradient border or glow.
-           */}
-
                     {/* Active Gradient Background */}
                     <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 opacity-20 group-hover:opacity-100 transition-opacity duration-300 blur-md" />
 
