@@ -157,12 +157,6 @@ export default function Home() {
                 <PremiumDivider className="my-0" />
 
                 <div className="section-reveal relative z-10 bg-transparent">
-                    <DiagnosticSection />
-                </div>
-
-                <PremiumDivider className="my-0" />
-
-                <div className="section-reveal relative z-10 bg-transparent">
                     <ProjectShowcase />
                 </div>
 
@@ -174,6 +168,13 @@ export default function Home() {
 
                 <div className="section-reveal relative z-10 bg-transparent">
                     <BlogPreview />
+                </div>
+
+                <PremiumDivider className="my-0" />
+
+                {/* DiagnosticSection - Última seção antes do Footer */}
+                <div className="section-reveal relative z-10 bg-transparent">
+                    <DiagnosticSection />
                 </div>
 
             </main>
