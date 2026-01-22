@@ -9,6 +9,7 @@ import { AIOrchestrator } from '../ui/AIOrchestrator';
 import { PhoneMockup } from '../ui/PhoneMockup';
 import { AIAgentsHeadline } from '../ui/AIAgentsHeadline';
 import { AIFlowDiagram } from '../ui/AIFlowDiagram';
+import { CircularPlayButton } from '../ui/CircularPlayButton';
 
 const features = [
     { icon: FaClock, label: '24h Auto-Response' },
@@ -60,14 +61,8 @@ export const AiAgents = () => {
                     >
                         <AIAgentsHeadline />
 
-                        {/* CTA Button */}
-                        <a
-                            href="/demo"
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-full hover:opacity-90 transition-opacity shadow-lg shadow-purple-500/25"
-                        >
-                            <span>▶</span>
-                            {t("Watch Demo", "Ver Demonstração")}
-                        </a>
+                        {/* CTA Button - Circular Play */}
+                        <CircularPlayButton href="/demo" size={120} />
                     </motion.div>
 
                     {/* Wrapper: Smartphone - size prop controls internal scale */}
