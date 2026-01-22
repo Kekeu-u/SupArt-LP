@@ -34,9 +34,17 @@ export const CircularPlayButton: React.FC<CircularPlayButtonProps> = ({
                             fill="none"
                         />
                     </defs>
-                    <text className="fill-gray-300 font-medium uppercase" style={{ fontSize: 10, letterSpacing: '5.5px' }}>
-                        <textPath href={`#${circleId}`} startOffset="50%" textAnchor="middle">
-                            VER DEMO • VER DEMO • VER DEMO •
+                    <text className="fill-gray-300 font-medium uppercase" style={{ fontSize: 10 }}>
+                        {/* 
+                            lengthAdjust="spacingAndGlyphs" + textLength igual ao perímetro (2 * PI * radius)
+                            garante distribuição perfeita sem gaps ou sobreposição
+                        */}
+                        <textPath
+                            href={`#${circleId}`}
+                            textLength={2 * Math.PI * radius}
+                            lengthAdjust="spacing"
+                        >
+                            VER DEMO • VER DEMO • VER DEMO •&nbsp;
                         </textPath>
                     </text>
                 </svg>
