@@ -18,7 +18,7 @@ export const AIAgentsHeadline = ({ className = '' }: AIAgentsHeadlineProps) => {
         <div className={`space-y-4 lg:space-y-8 ${className}`}>
             {/* Headline */}
             <div className="space-y-2 lg:space-y-4">
-                <h2 className="text-3xl sm:text-4xl lg:text-7xl xl:text-8xl font-bold leading-tight tracking-tight text-white">
+                <h2 className="text-3xl sm:text-4xl lg:text-7xl xl:text-8xl font-extrabold leading-tight tracking-tight text-white">
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400">
                         {t('Your Business', 'Seu Business')}
                     </span>
