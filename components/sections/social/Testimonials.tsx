@@ -29,11 +29,12 @@ export const Testimonials = () => {
               key={testimonial.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2, duration: 0.5 }}
-              className="group relative p-8 rounded-3xl border border-gray-200 bg-gray-50/10 backdrop-blur-md shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+              whileHover={{ y: -5 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group relative p-8 rounded-3xl border border-gray-200 bg-gray-50/10 backdrop-blur-md shadow-xl hover:shadow-2xl"
             >
-              {/* Glassmorphism Gradient Overlay */}
+              {/* Glassmorphism Gradient Overlay - Mantendo CSS pois é opacidade apenas */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
               <div className="relative z-10 flex flex-col h-full">
