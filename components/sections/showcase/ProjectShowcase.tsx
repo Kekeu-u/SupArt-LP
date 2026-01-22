@@ -22,7 +22,7 @@ export const ProjectShowcase = () => {
                     viewport={{ once: true }}
                     className="mb-12 text-center"
                 >
-                    <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4 text-gray-900">
+                    <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 text-gray-900">
                         {content.title[locale]}
                     </h2>
                     <p className="text-lg text-gray-600 max-w-xl mx-auto">

@@ -17,7 +17,7 @@ export function Solutions() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16"
+                    className="text-3xl md:text-5xl font-extrabold text-center text-gray-900 mb-16 tracking-tight"
                 >
                     {locale === "en" ? "+Solutions" : "+Soluções"}
                 </motion.h2>

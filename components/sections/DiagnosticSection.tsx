@@ -19,7 +19,7 @@ export const DiagnosticSection = () => {
                     <span className="inline-block px-4 py-1.5 rounded-full bg-black/90 border border-black text-white text-xs font-bold uppercase tracking-widest mb-6">
                         {t("Start Now", "Comece Agora")}
                     </span>
-                    <h2 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900 tracking-tight drop-shadow-sm">
+                    <h2 className="text-4xl md:text-6xl font-extrabold mb-6 text-gray-900 tracking-tight drop-shadow-sm">
                         {t("Start your AI First Journey", "Comece sua Jornada AI First")}
                     </h2>
                     <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-10">
