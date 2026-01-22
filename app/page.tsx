@@ -114,11 +114,18 @@ export default function Home() {
                     >
                         <HeroLogo size={110} className="mx-auto mb-6 w-24 h-24 md:w-32 md:h-32" />
                         <RotatingHeadline />
-                        <div className="w-full py-2">
-                            <p className="text-sm sm:text-base md:text-xl text-gray-400 max-w-full mx-auto leading-relaxed font-light tracking-wide md:whitespace-nowrap px-4">
-                                <span className="shimmer-silver inline-block">{heroSubtitle}</span>
-                            </p>
-                        </div>
+                    </motion.div>
+
+                    {/* Subtitle - Posicionado na parte inferior (Mobile: onde estava o mouse | Desktop: acima do mouse) */}
+                    <motion.div
+                        className="absolute bottom-12 md:bottom-24 left-0 right-0 z-20 px-4 text-center"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+                    >
+                        <p className="text-sm sm:text-base md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed font-light tracking-wide">
+                            <span className="shimmer-silver inline-block">{heroSubtitle}</span>
+                        </p>
                     </motion.div>
 
                     {/* Scroll Indicator - Posicionado com bottom-safe - DESKTOP ONLY */}
