@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react';
 import { step3Schema, GOAL_OPTIONS, PAIN_POINTS_OPTIONS, BOTTLENECK_OPTIONS } from '@/lib/types/diagnostic';
 import type { DiagnosticFormData } from '@/lib/types/diagnostic';
-import { SelectionCards } from '../SelectionCards';
+import { ChipMultiSelect } from '../ChipMultiSelect';
+import { useI18n } from '@/lib/i18n';
 
 interface StepProps {
     data: Partial<DiagnosticFormData>;
@@ -15,6 +16,8 @@ interface StepProps {
 }
 
 export function StepObjectives({ data, onNext, onBack }: StepProps) {
+    const { t, locale } = useI18n();
+
     const [formState, setFormState] = useState({
         main_goal: data.main_goal || '',
         pain_points: data.pain_points || [],
@@ -23,7 +26,7 @@ export function StepObjectives({ data, onNext, onBack }: StepProps) {
     });
     const [errors, setErrors] = useState<Record<string, string>>({});
 
-    // 🐛 FIX: Sincronizar estado local com prop data quando ela mudar
+    // Sincronizar estado local com prop data quando ela mudar
     useEffect(() => {
         setFormState({
             main_goal: data.main_goal || '',
@@ -33,24 +36,27 @@ export function StepObjectives({ data, onNext, onBack }: StepProps) {
         });
     }, [data]);
 
-    const handleGoalSelect = (value: string) => {
+    const handleGoalSelect = (selected: string[]) => {
+        // Main goal é single select, pega o último selecionado
+        const value = selected[selected.length - 1] || '';
         setFormState(prev => ({ ...prev, main_goal: value }));
         if (errors.main_goal) {
             setErrors(prev => ({ ...prev, main_goal: '' }));
         }
     };
 
-    const handlePainPointToggle = (value: string) => {
-        setFormState(prev => {
-            const current = prev.pain_points;
-            if (current.includes(value)) {
-                return { ...prev, pain_points: current.filter(v => v !== value) };
-            } else {
-                return { ...prev, pain_points: [...current, value] };
-            }
-        });
+    const handlePainPointsChange = (selected: string[]) => {
+        setFormState(prev => ({ ...prev, pain_points: selected }));
         if (errors.pain_points) {
             setErrors(prev => ({ ...prev, pain_points: '' }));
+        }
+    };
+
+    const handleBottleneckSelect = (selected: string[]) => {
+        const value = selected[selected.length - 1] || '';
+        setFormState(prev => ({ ...prev, biggest_bottleneck: value }));
+        if (errors.biggest_bottleneck) {
+            setErrors(prev => ({ ...prev, biggest_bottleneck: '' }));
         }
     };
 
@@ -76,97 +82,59 @@ export function StepObjectives({ data, onNext, onBack }: StepProps) {
         onNext(formState);
     };
 
+    // Helper para obter label traduzido
+    const getLabel = (label: { en: string; pt: string } | string): string => {
+        if (typeof label === 'string') return label;
+        return locale === 'en' ? label.en : label.pt;
+    };
+
     const labelClasses = 'block text-sm font-medium text-gray-300 mb-3';
     const errorClasses = 'text-red-400 text-xs mt-2';
 
     return (
         <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Objetivo Principal */}
+            {/* Objetivo Principal - Single Select via Chips */}
             <div>
                 <label className={labelClasses}>
-                    Principal objetivo <span className="text-pink-500">*</span>
+                    {t('Main Goal', 'Objetivo Principal')} <span className="text-pink-500">*</span>
                 </label>
-                <div className="space-y-2">
-                    {GOAL_OPTIONS.map(option => (
-                        <button
-                            key={option.value}
-                            type="button"
-                            onClick={() => handleGoalSelect(option.value)}
-                            className={`
-                w-full text-left px-4 py-3 rounded-xl
-                transition-all duration-200
-                ${formState.main_goal === option.value
-                                    ? 'bg-gradient-to-r from-gray-600/30 to-pink-600/30 border border-gray-500 text-white'
-                                    : 'bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10'
-                                }
-              `}
-                        >
-                            {option.label}
-                        </button>
-                    ))}
-                </div>
+                <ChipMultiSelect
+                    options={GOAL_OPTIONS}
+                    selected={formState.main_goal ? [formState.main_goal] : []}
+                    onChange={handleGoalSelect}
+                    maxItems={1}
+                    columns={1}
+                />
                 {errors.main_goal && <p className={errorClasses}>{errors.main_goal}</p>}
             </div>
 
-            {/* Dores */}
+            {/* Dores - Multi Select */}
             <div>
                 <label className={labelClasses}>
-                    Maiores dores atuais <span className="text-pink-500">*</span>
-                    <span className="text-gray-500 text-xs ml-2">(selecione todas que se aplicam)</span>
+                    {t('Current Pain Points', 'Dores Atuais')} <span className="text-pink-500">*</span>
+                    <span className="text-gray-500 text-xs ml-2">
+                        {t('(select all that apply)', '(selecione todas que se aplicam)')}
+                    </span>
                 </label>
-                <div className="space-y-2">
-                    {PAIN_POINTS_OPTIONS.map(option => (
-                        <label
-                            key={option.value}
-                            className={`
-                flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer
-                transition-all duration-200
-                ${formState.pain_points.includes(option.value)
-                                    ? 'bg-gray-500/20 border border-gray-500'
-                                    : 'bg-white/5 border border-white/10 hover:bg-white/10'
-                                }
-              `}
-                        >
-                            <div className={`
-                w-5 h-5 rounded flex items-center justify-center
-                ${formState.pain_points.includes(option.value)
-                                    ? 'bg-gray-500 text-white'
-                                    : 'bg-white/10'
-                                }
-              `}>
-                                {formState.pain_points.includes(option.value) && (
-                                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                    </svg>
-                                )}
-                            </div>
-                            <input
-                                type="checkbox"
-                                checked={formState.pain_points.includes(option.value)}
-                                onChange={() => handlePainPointToggle(option.value)}
-                                className="sr-only"
-                            />
-                            <span className="text-sm text-white">{option.label}</span>
-                        </label>
-                    ))}
-                </div>
+                <ChipMultiSelect
+                    options={PAIN_POINTS_OPTIONS}
+                    selected={formState.pain_points}
+                    onChange={handlePainPointsChange}
+                    columns={2}
+                />
                 {errors.pain_points && <p className={errorClasses}>{errors.pain_points}</p>}
             </div>
 
-            {/* 🤖 NOVO: Maior Gargalo */}
+            {/* Maior Gargalo - Single Select */}
             <div>
                 <label className={labelClasses}>
-                    Qual seu maior gargalo operacional? <span className="text-pink-500">*</span>
+                    {t("What's your biggest bottleneck?", 'Qual seu maior gargalo operacional?')} <span className="text-pink-500">*</span>
                 </label>
-                <SelectionCards
+                <ChipMultiSelect
                     options={BOTTLENECK_OPTIONS}
-                    value={formState.biggest_bottleneck}
-                    onChange={(value) => {
-                        setFormState(prev => ({ ...prev, biggest_bottleneck: value }));
-                        if (errors.biggest_bottleneck) {
-                            setErrors(prev => ({ ...prev, biggest_bottleneck: '' }));
-                        }
-                    }}
+                    selected={formState.biggest_bottleneck ? [formState.biggest_bottleneck] : []}
+                    onChange={handleBottleneckSelect}
+                    maxItems={1}
                     columns={2}
                 />
                 {errors.biggest_bottleneck && <p className={errorClasses}>{errors.biggest_bottleneck}</p>}
@@ -175,22 +143,27 @@ export function StepObjectives({ data, onNext, onBack }: StepProps) {
             {/* Descrição do desafio */}
             <div>
                 <label htmlFor="challenge_description" className={labelClasses}>
-                    Descreva seu desafio em 1 frase
-                    <span className="text-gray-500 text-xs ml-2">(opcional)</span>
+                    {t('Describe your challenge in one sentence', 'Descreva seu desafio em 1 frase')}
+                    <span className="text-gray-500 text-xs ml-2">
+                        {t('(optional)', '(opcional)')}
+                    </span>
                 </label>
                 <textarea
                     id="challenge_description"
                     name="challenge_description"
                     value={formState.challenge_description}
                     onChange={handleChange}
-                    placeholder="Ex: Preciso automatizar meu atendimento para não perder leads enquanto durmo..."
+                    placeholder={t(
+                        "E.g.: I need to automate my customer service so I don't lose leads while I sleep...",
+                        "Ex: Preciso automatizar meu atendimento para não perder leads enquanto durmo..."
+                    )}
                     rows={3}
                     className="
-            w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl
-            text-white placeholder:text-gray-500
-            focus:outline-none focus:ring-2 focus:ring-gray-500/50 focus:border-gray-500
-            transition-all duration-200 resize-none
-          "
+                        w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl
+                        text-white placeholder:text-gray-500
+                        focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500
+                        transition-all duration-200 resize-none
+                    "
                 />
             </div>
 
@@ -201,13 +174,13 @@ export function StepObjectives({ data, onNext, onBack }: StepProps) {
                     onClick={onBack}
                     className="px-6 py-3 text-gray-400 hover:text-white transition-colors"
                 >
-                    ← Voltar
+                    ← {t('Back', 'Voltar')}
                 </button>
                 <button
                     type="submit"
-                    className="px-8 py-3 bg-gradient-to-r from-gray-600 to-pink-600 text-white font-semibold rounded-xl hover:opacity-90 transition-opacity"
+                    className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl hover:opacity-90 transition-opacity"
                 >
-                    Próximo →
+                    {t('Next', 'Próximo')} →
                 </button>
             </div>
         </form>
