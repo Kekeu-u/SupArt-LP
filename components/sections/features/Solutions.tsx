@@ -19,7 +19,7 @@ export function Solutions() {
                     transition={{ duration: 0.5 }}
                     className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16"
                 >
-                    {locale === "en" ? "Solutions" : "Soluções"}
+                    {locale === "en" ? "+Solutions" : "+Soluções"}
                 </motion.h2>
 
                 {/* Cards */}

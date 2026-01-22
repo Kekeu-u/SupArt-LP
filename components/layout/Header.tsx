@@ -109,7 +109,7 @@ export const Header = () => {
   const navLinks: NavLink[] = [
     { href: "#home", label: t("Home", "Início"), icon: FaHome },
     { href: "#method", label: t("Method", "Método"), icon: FaProjectDiagram },
-    { href: "#solutions", label: t("+Solutions", "+Soluções"), icon: FaLayerGroup },
+    { href: "#solutions", label: t("Solutions", "Soluções"), icon: FaLayerGroup },
     { href: "/blog", label: "Blog", icon: FaBlog },
     { href: "#contact", label: t("Contact", "Contato"), icon: FaEnvelope },
   ];
