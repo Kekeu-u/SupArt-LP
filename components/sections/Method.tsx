@@ -40,7 +40,11 @@ export const Method = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         whileHover={{ y: -5 }}
                         viewport={{ once: true }}
-                        transition={{ delay: i * 0.1 }}
+                        transition={{
+                            opacity: { delay: i * 0.1, duration: 0.5 },
+                            y: { delay: i * 0.1, duration: 0.5 },
+                            default: { duration: 0.2 } // Hover instantâneo
+                        }}
                         className="group bg-white/80 backdrop-blur-xl border border-white/50 p-8 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.04)] transition-shadow duration-300"
                     >
                         {/* Icon */}

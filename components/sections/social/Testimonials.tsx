@@ -31,7 +31,11 @@ export const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{ y: -5 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{
+                opacity: { delay: index * 0.1, duration: 0.5 },
+                y: { delay: index * 0.1, duration: 0.5 },
+                default: { duration: 0.2 } // Hover instantâneo
+              }}
               className="group relative p-8 rounded-3xl border border-gray-200 bg-gray-50/10 backdrop-blur-md shadow-xl hover:shadow-2xl"
             >
               {/* Glassmorphism Gradient Overlay - Mantendo CSS pois é opacidade apenas */}
