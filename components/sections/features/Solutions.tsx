@@ -29,9 +29,14 @@ export function Solutions() {
                             key={i}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
+                            whileHover={{ y: -5 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.4, delay: i * 0.1, ease: "easeOut" }}
-                            className="service-card group bg-white/80 backdrop-blur-xl border border-gray-100 p-6 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex flex-col"
+                            transition={{
+                                opacity: { delay: i * 0.1, duration: 0.4 },
+                                y: { delay: i * 0.1, duration: 0.4 },
+                                default: { duration: 0.2 }
+                            }}
+                            className="service-card group bg-white/80 backdrop-blur-xl border border-gray-100 p-6 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:shadow-lg flex flex-col"
                         >
                             {/* Features as Pills */}
                             <div className="h-28 mb-4 flex flex-wrap gap-1.5 items-start justify-center content-start">
