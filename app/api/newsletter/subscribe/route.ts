@@ -1,59 +1,84 @@
-import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { NextResponse } from 'next/server';
+import { z } from 'zod';
 
-export async function POST(request: Request) {
+const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
+
+const subscriptionSchema = z.object({
+    email: z.string().email('Email inválido'),
+});
+
+export async function POST(req: Request) {
     try {
-        const { email } = await request.json();
+        const body = await req.json();
 
-        if (!email || !email.includes('@')) {
+        // Validation
+        const result = subscriptionSchema.safeParse(body);
+        if (!result.success) {
             return NextResponse.json(
-                { error: 'Email inválido' },
+                { error: result.error.issues[0].message },
                 { status: 400 }
             );
         }
 
-        // Criar cliente Supabase
-        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-        const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+        const { email } = result.data;
 
-        if (!supabaseUrl || !supabaseKey) {
-            console.error('Missing Supabase environment variables');
-            return NextResponse.json(
-                { error: 'Configuração do servidor incompleta' },
-                { status: 500 }
-            );
-        }
-
-        const supabase = createClient(supabaseUrl, supabaseKey);
-
-        // Salvar no Supabase
-        const { error: dbError } = await supabase
+        // Check if already subscribed
+        const { data: existing } = await supabase
             .from('subscribers')
-            .insert([{ email }]);
+            .select('id, status')
+            .eq('email', email)
+            .single();
 
-        if (dbError) {
-            // Se for erro de duplicata (unique violation)
-            if (dbError.code === '23505') {
+        if (existing) {
+            if (existing.status === 'active') {
                 return NextResponse.json(
-                    { message: 'Este email já está cadastrado!' },
+                    { message: 'Você já faz parte da nossa comunidade VIP!' },
+                    { status: 200 }
+                );
+            } else {
+                // Re-activate
+                await supabase
+                    .from('subscribers')
+                    .update({ status: 'active', source: 'website-reactivation' })
+                    .eq('email', email);
+
+                return NextResponse.json(
+                    { message: 'Bem-vindo de volta à SupArt!' },
                     { status: 200 }
                 );
             }
+        }
 
-            console.error('Database error:', dbError);
+        // Insert new subscriber
+        const { error } = await supabase
+            .from('subscribers')
+            .insert({
+                email,
+                source: 'website-widget',
+                status: 'active'
+            });
+
+        if (error) {
+            console.error('Supabase error:', error);
             return NextResponse.json(
-                { error: 'Erro ao processar inscrição' },
+                { error: 'Erro ao salvar. Tente novamente.' },
                 { status: 500 }
             );
         }
 
-        // Sucesso
-        return NextResponse.json({
-            message: 'Inscrição realizada com sucesso! 🚀'
-        });
+        // FUTURE: Fire n8n Webhook here (await fetch('WEBHOOK_URL', ...))
 
-    } catch (error) {
-        console.error('Newsletter subscription error:', error);
+        return NextResponse.json(
+            { message: 'Inscrição confirmada! Verifique seu e-mail em breve.' },
+            { status: 201 }
+        );
+
+    } catch (err) {
+        console.error('API Error:', err);
         return NextResponse.json(
             { error: 'Erro interno do servidor' },
             { status: 500 }

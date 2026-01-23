@@ -1,0 +1,211 @@
+{
+    "name": "SupArt Newsletter Automation",
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "supart-subscribe",
+                "options": {}
+            },
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 2,
+            "position": [
+                0,
+                0
+            ],
+            "id": "webhook-trigger",
+            "name": "Webhook: Subscribe"
+        },
+        {
+            "parameters": {
+                "tableId": "subscribers",
+                "dataToSend": "defineBelow",
+                "fieldsToSend": {
+                    "values": [
+                        {
+                            "fieldName": "email",
+                            "fieldValue": "={{ $json.body.email }}"
+                        },
+                        {
+                            "fieldName": "status",
+                            "fieldValue": "active"
+                        },
+                        {
+                            "fieldName": "source",
+                            "fieldValue": "n8n-webhook-backup"
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "type": "n8n-nodes-base.supabase",
+            "typeVersion": 1,
+            "position": [
+                220,
+                0
+            ],
+            "id": "supabase-backup",
+            "name": "Supabase (Backup)",
+            "credentials": {
+                "supabaseApi": {
+                    "id": "W66QKXBdQOl85w4T",
+                    "name": "Supabase account"
+                }
+            },
+            "notes": "Optional: If Next.js fails, n8n saves it."
+        },
+        {
+            "parameters": {
+                "fromEmail": "SupArt <newsletter@supart.com.br>",
+                "toEmail": "={{ $json.body.email }}",
+                "subject": "Bem-vindo à elite da SupArt",
+                "html": "<html><body><h1>Bem-vindo!</h1><p>Obrigado por se inscrever.</p></body></html>",
+                "options": {}
+            },
+            "type": "n8n-nodes-base.resend",
+            "typeVersion": 1,
+            "position": [
+                440,
+                0
+            ],
+            "id": "send-welcome",
+            "name": "Send Welcome Email",
+            "notes": "Configure Resend Credential here"
+        },
+        {
+            "parameters": {
+                "triggerTimes": {
+                    "item": [
+                        {
+                            "mode": "everyWeek",
+                            "hour": 9,
+                            "weekday": "1"
+                        }
+                    ]
+                }
+            },
+            "type": "n8n-nodes-base.cron",
+            "typeVersion": 1,
+            "position": [
+                0,
+                400
+            ],
+            "id": "cron-weekly",
+            "name": "Weekly Trigger (Mon 9am)"
+        },
+        {
+            "parameters": {
+                "url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+                "options": {}
+            },
+            "type": "n8n-nodes-base.rssFeedRead",
+            "typeVersion": 1.4,
+            "position": [
+                220,
+                400
+            ],
+            "id": "read-rss",
+            "name": "Read TechCrunch AI"
+        },
+        {
+            "parameters": {
+                "promptType": "define",
+                "text": "={{ $json.content }}",
+                "options": {
+                    "systemMessage": "Você é um editor sênior da SupArt Agency. Resuma este artigo em 1 parágrafo denso e útil para donos de agência. Foco em ROI e utilidade prática. Tom: Premium, Minimalista, Direto."
+                }
+            },
+            "type": "@n8n/n8n-nodes-langchain.agent",
+            "typeVersion": 1.6,
+            "position": [
+                440,
+                400
+            ],
+            "id": "ai-curator",
+            "name": "AI Curator (Gemini)",
+            "credentials": {
+                "googlePalmApi": {
+                    "id": "0yCmLhsbnJeALMBS",
+                    "name": "Google Gemini(PaLM) Api account"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "modelName": "models/gemini-pro",
+                "options": {}
+            },
+            "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+            "typeVersion": 1,
+            "position": [
+                440,
+                600
+            ],
+            "id": "model-gemini",
+            "name": "Google Gemini Chat Model",
+            "credentials": {
+                "googlePalmApi": {
+                    "id": "0yCmLhsbnJeALMBS",
+                    "name": "Google Gemini(PaLM) Api account"
+                }
+            }
+        }
+    ],
+    "connections": {
+        "Webhook: Subscribe": {
+            "main": [
+                [
+                    {
+                        "node": "Supabase (Backup)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Supabase (Backup)": {
+            "main": [
+                [
+                    {
+                        "node": "Send Welcome Email",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Weekly Trigger (Mon 9am)": {
+            "main": [
+                [
+                    {
+                        "node": "Read RSS",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Read RSS": {
+            "main": [
+                [
+                    {
+                        "node": "AI Curator (Gemini)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Google Gemini Chat Model": {
+            "ai_languageModel": [
+                [
+                    {
+                        "node": "AI Curator (Gemini)",
+                        "type": "ai_languageModel",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    }
+}

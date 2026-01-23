@@ -29,9 +29,9 @@ export const NewsletterWidget = () => {
 
             if (response.ok) {
                 setStatus("success");
-                setMessage(data.message || "Inscrição realizada com sucesso!");
+                setMessage(data.message || "Bem-vindo à elite!");
                 setEmail("");
-                setTimeout(() => setStatus("idle"), 5000);
+                // Removed timeout to let the success message shine
             } else {
                 setStatus("error");
                 setMessage(data.error || "Erro ao se inscrever");

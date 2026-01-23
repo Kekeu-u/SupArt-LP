@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo à SupArt Agency</title>
+    <style>
+        /* Reset */
+        body, p, h1, h2, h3 { margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f4f4f5; }
+        
+        /* Container */
+        .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; overflow: hidden; }
+        
+        /* Dark Mode Support (Basic) */
+        @media (prefers-color-scheme: dark) {
+            body { background-color: #000000 !important; }
+            .container { background-color: #111111 !important; color: #e5e5e5 !important; }
+            h1, h2, h3 { color: #ffffff !important; }
+            .text-muted { color: #a1a1aa !important; }
+        }
+
+        /* Utilities */
+        .text-center { text-align: center; }
+        .text-muted { color: #666; font-size: 14px; }
+        .btn { display: inline-block; padding: 12px 24px; background-color: #000000; color: #ffffff !important; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 20px; }
+        .footer { padding: 40px 20px; font-size: 12px; color: #888; text-align: center; border-top: 1px solid #eaeaea; }
+        
+        /* Header Gradient */
+        .header-gradient {
+            background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%);
+            padding: 40px 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 20px; background-color: #f4f4f5;">
+    
+    <div class="container" style="border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+        
+        <!-- Header -->
+        <div class="header-gradient" style="border-bottom: 1px solid #f0f0f0;">
+            <h1 style="font-size: 24px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px;">SupArt Agency</h1>
+            <p style="font-size: 16px; color: #666;">High Fidelity Design + AI</p>
+        </div>
+
+        <!-- Content -->
+        <div style="padding: 40px 30px;">
+            <h2 style="font-size: 20px; margin-bottom: 20px;">Você agora faz parte da elite.</h2>
+            
+            <p style="margin-bottom: 16px;">Olá,</p>
+            
+            <p style="margin-bottom: 16px;">Obrigado por se inscrever na nossa newsletter. A maioria das agências entrega "sites". Nós entregamos <strong>experiências que convertem</strong>.</p>
+            
+            <p style="margin-bottom: 24px;">Toda semana, você receberá:</p>
+            
+            <ul style="margin-bottom: 30px; padding-left: 20px;">
+                <li style="margin-bottom: 10px;">🧠 <strong>3 Insights de IA</strong> curados para negócios</li>
+                <li style="margin-bottom: 10px;">🎨 <strong>2 Dicas de Design</strong> de alta fidelidade</li>
+                <li style="margin-bottom: 10px;">💼 <strong>1 Estratégia de Agência</strong> para escalar</li>
+            </ul>
+
+            <div style="background-color: #f9fafb; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; margin-bottom: 30px;">
+                <h3 style="font-size: 16px; margin-bottom: 8px;">🎁 Seu Presente de Boas-vindas</h3>
+                <p style="font-size: 14px; margin-bottom: 15px;">Dê o primeiro passo na automação do seu negócio.</p>
+                <a href="https://supart.com.br/resources/n8n-blueprint.json" class="btn" style="background: linear-gradient(to right, #2563eb, #4f46e5); border: none;">Baixar Blueprint n8n</a>
+            </div>
+
+            <p style="font-size: 14px; color: #666;">Se tiver alguma dúvida sobre design ou IA, basta responder a este e-mail. Eu leio tudo.</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2026 SupArt Agency. Todos os direitos reservados.</p>
+            <p style="margin-top: 10px;">
+                <a href="#" style="color: #888; text-decoration: underline;">Instagram</a> • 
+                <a href="#" style="color: #888; text-decoration: underline;">LinkedIn</a>
+            </p>
+            <p style="margin-top: 20px;">Não quer mais receber insights? <a href="{{unsubscribe_url}}" style="color: #888;">Cancelar inscrição</a>.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>

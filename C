@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arthur Growth Review | Cold Calling</title>
+</head>
+<body class="page">
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <div class="brand">SupArt</div>
+            <div class="topbar-meta">Relatorio interno</div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="hero section">
+            <div class="container hero-inner">
+                <span class="tag">Treinamento de Cold Calling</span>
+                <h1>Arthur Growth Review | Cold Calling</h1>
+                <p class="hero-subtitle">
+                    Evolucao registrada em uma sessao intensa de treino, com foco em transformar Arthur de iniciante
+                    nervoso em closer confiante, capaz de conduzir cold calls persuasivas e manter profissionalismo
+                    sob pressao.
+                </p>
+                <div class="hero-cards">
+                    <div class="card highlight">
+                        <h3>Avanco rapido</h3>
+                        <p>Saiu de "mal consegue comecar" para "quase uma call completa" em uma unica sessao.</p>
+                    </div>
+                    <div class="card highlight">
+                        <h3>Base solida</h3>
+                        <p>Hoje esta em torno de 60-70% do caminho de um closer junior funcional.</p>
+                    </div>
+                    <div class="card highlight">
+                        <h3>Pico de confianca</h3>
+                        <p>As tentativas 6-8 mostraram voz firme e estrutura quase pronta para o mundo real.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>Visao Geral do Treinamento</h2>
+                <div class="grid two-columns">
+                    <div class="card">
+                        <h3>Objetivo principal</h3>
+                        <p>
+                            Transformar Arthur de iniciante nervoso em closer confiante, capaz de fazer cold calls
+                            persuasivas, agendar reunioes e manter profissionalismo sob pressao.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>Metodologia aplicada</h3>
+                        <ul>
+                            <li>Pratica de roleplay sem roteiro (exposicao deliberada).</li>
+                            <li>Feedback em tempo real com correcoes estruturadas.</li>
+                            <li>Progressao de dificuldade (simples -> complexo).</li>
+                            <li>Gravacao e autoanalise (metacognicao).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>O que Arthur fez bem</h2>
+                <div class="grid two-columns">
+                    <div class="card positive">
+                        <h3>Adaptabilidade e desenrolo</h3>
+                        <p class="card-lead">
+                            Evidencia: improvisou apos erros e adaptou linguagem rapidamente.
+                        </p>
+                        <p>
+                            Quando foi corrigido sobre usar "senhor", ajustou para "voce". Ao ser questionado
+                            sobre "IA prospectou", encontrou explicacao simples: "a gente tem um robo que entrou no teu
+                            site".
+                        </p>
+                        <p class="card-note">
+                            Indicador: a 4a tentativa foi bem mais fluida que a 1a.
+                        </p>
+                    </div>
+                    <div class="card positive">
+                        <h3>Aceitacao de feedback</h3>
+                        <p class="card-lead">
+                            Evidencia: fez mais de 8 tentativas de abertura, ajustando cada uma.
+                        </p>
+                        <p>
+                            Mesmo com frustracao inicial, nao desistiu e manteve evolucao tentativa apos tentativa.
+                        </p>
+                        <p class="card-note">
+                            Indicador: persistencia crescente, saindo de resignacao para foco e determinacao.
+                        </p>
+                    </div>
+                    <div class="card positive">
+                        <h3>Consciencia situacional</h3>
+                        <p class="card-lead">
+                            Evidencia: comecou a perceber dores no funil sem precisar de prompt.
+                        </p>
+                        <ul>
+                            <li>"Detectei no seu site que voce tem um 'fale com a gente'."</li>
+                            <li>"Percebi que quem esta respondendo e um ser humano."</li>
+                            <li>Notou tempo de resposta (demorou alguns minutos).</li>
+                        </ul>
+                        <p class="card-note">
+                            Indicador: passou de "nao sei por onde comecar" para "identifiquei 2-3 possiveis dores".
+                        </p>
+                    </div>
+                    <div class="card positive">
+                        <h3>Inteligencia emocional</h3>
+                        <p class="card-lead">
+                            Evidencia: reconheceu bloqueios, pediu para recomecar e seguiu sem abandonar o processo.
+                        </p>
+                        <ul>
+                            <li>Reconheceu quando "quebrou" no inicio.</li>
+                            <li>Pediu para recomecar quando estava travado.</li>
+                            <li>Expressou frustracao sem abandonar o treino.</li>
+                            <li>Falou sobre TDAH, rotina, alimentacao e foco sem defensiva.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>Principais bloqueios identificados</h2>
+                <div class="grid two-columns">
+                    <div class="card warning">
+                        <h3>Perfeccionismo prematuro</h3>
+                        <p class="card-lead">Problema: travava tentando achar a frase perfeita antes de falar.</p>
+                        <ul>
+                            <li>Pausas longas para pensar demais.</li>
+                            <li>Ensaiar mentalmente cada palavra.</li>
+                            <li>Perda de naturalidade na voz.</li>
+                        </ul>
+                        <p>Impacto: soa robotico e cria distancia com o prospect.</p>
+                        <p>Causa provavel: ansiedade, medo de errar e necessidade de controle.</p>
+                        <p class="card-note">Reframe desejado: "Errar rapido > acertar devagar".</p>
+                    </div>
+                    <div class="card warning">
+                        <h3>Autossabotagem verbal</h3>
+                        <p class="card-lead">Problema: frases que diminuem credibilidade.</p>
+                        <ul>
+                            <li>"O cara falou pra eu fazer isso."</li>
+                            <li>"Eu nao tenho nada."</li>
+                            <li>"Deixa eu desenrolar aqui..."</li>
+                        </ul>
+                        <p>Impacto: cliente sente falta de conviccao e confianca.</p>
+                        <p class="card-note">Solucao desejada: script interno Abertura -> Dor -> Proximo passo.</p>
+                    </div>
+                    <div class="card warning">
+                        <h3>Inconsistencia de tom</h3>
+                        <p class="card-lead">Problema: oscilacao entre formal e informal sem criterio.</p>
+                        <ul>
+                            <li>"Boa tarde, senhor".</li>
+                            <li>"mano".</li>
+                            <li>Volta para "o senhor" no meio da call.</li>
+                        </ul>
+                        <p>Impacto: passa inseguranca, falta de identidade e profissionalismo.</p>
+                        <p class="card-note">Solucao desejada: persona jovem profissional, acessivel e confiante.</p>
+                    </div>
+                    <div class="card warning">
+                        <h3>Gaguejar e aflicao verbal</h3>
+                        <p class="card-lead">Problema: repeticoes e quebra de raciocinio sob pressao.</p>
+                        <ul>
+                            <li>Repeticao de palavras ("a nossa IA... a nossa IA...").</li>
+                            <li>Quebra de raciocinio.</li>
+                            <li>Sons de hesitacao.</li>
+                        </ul>
+                        <p>Impacto: derruba credibilidade imediatamente.</p>
+                        <p class="card-note">
+                            Solucao desejada: pratica diaria de voz (10 minutos) + treino progressivo.
+                        </p>
+                    </div>
+                    <div class="card warning">
+                        <h3>Falta de clareza sobre o produto</h3>
+                        <p class="card-lead">Problema: dificuldade em explicar a Supiarte de forma simples.</p>
+                        <p>
+                            Exemplo: ao ouvir "Como assim IA prospectou?", demorava para chegar em explicacao objetiva.
+                        </p>
+                        <p>Impacto: cliente perde confianca e atencao.</p>
+                        <p class="card-note">
+                            Solucao desejada: estudo focado de 30 minutos + 3 formas de explicar o produto (30s, 1min,
+                            3min).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>Progressao observada</h2>
+                <div class="grid two-columns">
+                    <div class="card">
+                        <h3>Timeline de melhoria</h3>
+                        <ol class="timeline">
+                            <li><strong>Tentativa 1:</strong> colapso inicial, forte nervosismo.</li>
+                            <li><strong>Tentativa 2:</strong> modo robo, muito decorado e sem naturalidade.</li>
+                            <li><strong>Tentativa 3:</strong> mais investigativa, uso de perguntas.</li>
+                            <li><strong>Tentativas 4-5:</strong> ganho de fluidez e melhor escuta.</li>
+                            <li><strong>Tentativas 6-8:</strong> pico de confianca e profissionalismo claro.</li>
+                        </ol>
+                    </div>
+                    <div class="card">
+                        <h3>Curva de aprendizado</h3>
+                        <p>
+                            Em uma sessao intensa, Arthur saiu de "mal consegue comecar" para "capaz de conduzir uma
+                            call quase completa". A tendencia e positiva e consistente quando ha estrutura e repeticao.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>Arthur vs padrao de mercado</h2>
+                <div class="card">
+                    <table class="kpi-table">
+                        <thead>
+                            <tr>
+                                <th>Aspecto</th>
+                                <th>Vendedor experiente</th>
+                                <th>Arthur (agora)</th>
+                                <th>Arthur (potencial 2-6 meses)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Abertura (tempo / natural)</td>
+                                <td>15-20s, bem natural</td>
+                                <td>25-30s, ainda tenso</td>
+                                <td>15-20s, natural</td>
+                            </tr>
+                            <tr>
+                                <td>Taxa de gaguejar</td>
+                                <td>&lt; 2%</td>
+                                <td>15-20%</td>
+                                <td>&lt; 5%</td>
+                            </tr>
+                            <tr>
+                                <td>Perguntas abertas / call</td>
+                                <td>3-4</td>
+                                <td>1-2</td>
+                                <td>3-4</td>
+                            </tr>
+                            <tr>
+                                <td>Objecao "nao tenho tempo"</td>
+                                <td>Converte ~70%</td>
+                                <td>Converte ~40%</td>
+                                <td>70%+</td>
+                            </tr>
+                            <tr>
+                                <td>Taxa de agendamento</td>
+                                <td>45-50%</td>
+                                <td>~30%</td>
+                                <td>50%+</td>
+                            </tr>
+                            <tr>
+                                <td>Confianca vocal (1-10)</td>
+                                <td>8-9</td>
+                                <td>~4-5</td>
+                                <td>7-8</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="table-note">
+                        Interpretacao: Arthur ja esta em torno de 60-70% do caminho de um closer junior funcional,
+                        considerando o pouco tempo de treino.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>Metodologia recomendada (proximas 2 semanas)</h2>
+                <div class="grid two-columns">
+                    <div class="card">
+                        <h3>Semana 1 - Fundacao</h3>
+                        <div class="plan-block">
+                            <h4>Dia 1-2: Controle vocal</h4>
+                            <ul>
+                                <li>Objetivo: reduzir gagueira.</li>
+                                <li>Atividade: gravar 5 aberturas de 15s por dia.</li>
+                                <li>Foco: respiracao, tom, energia.</li>
+                            </ul>
+                        </div>
+                        <div class="plan-block">
+                            <h4>Dia 3-4: Abertura natural</h4>
+                            <ul>
+                                <li>Objetivo: fluidez na primeira frase.</li>
+                                <li>Atividade: 5 tentativas de abertura com feedback.</li>
+                                <li>Metrica: pelo menos 3 de 5 sem travar.</li>
+                            </ul>
+                        </div>
+                        <div class="plan-block">
+                            <h4>Dia 5-7: Estrutura completa da call</h4>
+                            <ul>
+                                <li>Objetivo: dominar Abertura -> Dor -> Proximo passo.</li>
+                                <li>Atividade: 3 roleplays por dia.</li>
+                                <li>Meta: avancar ate proposta de agendar reuniao.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Semana 2 - Refinamento</h3>
+                        <div class="plan-block">
+                            <h4>Dia 8-10: Tratamento de objecoes</h4>
+                            <ul>
+                                <li>Objetivo: nao travar quando o cliente questiona.</li>
+                                <li>Atividade: simular 3-4 objecoes por dia.</li>
+                                <li>Tecnica: Responder + Redirecionar.</li>
+                            </ul>
+                        </div>
+                        <div class="plan-block">
+                            <h4>Dia 11-13: Calls reais de baixa pressao</h4>
+                            <ul>
+                                <li>Objetivo: transferir habilidade para o mundo real.</li>
+                                <li>Atividade: 5-10 ligacoes por dia.</li>
+                                <li>Meta: completar a call sem desligar/travar.</li>
+                            </ul>
+                        </div>
+                        <div class="plan-block">
+                            <h4>Dia 14: Revisao geral</h4>
+                            <ul>
+                                <li>Rever gravacoes e comparar antes x depois.</li>
+                                <li>Ajustar plano para o proximo mes.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>O que estudar / materiais</h2>
+                <div class="grid two-columns">
+                    <div class="card">
+                        <h3>Produto (Supiarte)</h3>
+                        <ul>
+                            <li>Entender claramente o que e automacao/chatbot na pratica.</li>
+                            <li>Explicar a "IA que prospecta" em linguagem simples.</li>
+                            <li>Ter exemplos de casos de uso.</li>
+                        </ul>
+                        <p class="card-note">Formato sugerido: 1 video curto (5-10 min) + 3 flashcards (30s, 1min, 3min).</p>
+                    </div>
+                    <div class="card">
+                        <h3>Tecnicas de cold call</h3>
+                        <ul>
+                            <li>Estrutura AIDA adaptada para 60-90s.</li>
+                            <li>Regra 70/30 (prospect fala 70%, vendedor 30%).</li>
+                            <li>Minimo de 3 perguntas abertas por call.</li>
+                            <li>Foco em Situacao -> Problema -> Impacto.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Gestao de TDAH na rotina</h3>
+                        <ul>
+                            <li>Rituais pre-call: respiracao, visualizacao, checklist rapido.</li>
+                            <li>Pomodoro: 25 min de calls, 5 min de pausa.</li>
+                            <li>Cafe da manha com boa proteina.</li>
+                            <li>Menos distracoes visuais e de notificacao.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Mentalidade (mindset)</h3>
+                        <ul>
+                            <li>"Nao estou incomodando, estou oferecendo solucao."</li>
+                            <li>"Objecao nao e rejeicao, e interesse com duvida."</li>
+                            <li>"Erro de hoje e experiencia de amanha."</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>Metricas de sucesso (30 dias)</h2>
+                <div class="card">
+                    <table class="kpi-table">
+                        <thead>
+                            <tr>
+                                <th>Metrica</th>
+                                <th>Hoje (estimado)</th>
+                                <th>1 semana</th>
+                                <th>2 semanas</th>
+                                <th>1 mes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tentativas por dia</td>
+                                <td>1-2</td>
+                                <td>5-8</td>
+                                <td>10-15</td>
+                                <td>15-20</td>
+                            </tr>
+                            <tr>
+                                <td>Taxa de gaguejar</td>
+                                <td>15-20%</td>
+                                <td>10%</td>
+                                <td>5%</td>
+                                <td>&lt; 2%</td>
+                            </tr>
+                            <tr>
+                                <td>Perguntas abertas por call</td>
+                                <td>1-2</td>
+                                <td>2-3</td>
+                                <td>3-4</td>
+                                <td>4-5</td>
+                            </tr>
+                            <tr>
+                                <td>Calls na faixa ideal (90-120s)</td>
+                                <td>~60%</td>
+                                <td>70%</td>
+                                <td>80%</td>
+                                <td>90%+</td>
+                            </tr>
+                            <tr>
+                                <td>Taxa de agendamento</td>
+                                <td>~30%</td>
+                                <td>35%</td>
+                                <td>45%</td>
+                                <td>55%+</td>
+                            </tr>
+                            <tr>
+                                <td>Confianca vocal (1-10)</td>
+                                <td>4</td>
+                                <td>6</td>
+                                <td>7,5</td>
+                                <td>8+</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>Projecao antes vs depois (30 dias)</h2>
+                <div class="grid two-columns">
+                    <div class="card">
+                        <h3>Hoje (baseline)</h3>
+                        <ul>
+                            <li>Confianca: ~4/10.</li>
+                            <li>Fluidez: muita hesitacao.</li>
+                            <li>Taxa de agendamento: ~30%.</li>
+                            <li>Conhecimento de produto: incompleto.</li>
+                            <li>Mentalidade: perfeccionismo e autocritica.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Semana 1</h3>
+                        <ul>
+                            <li>Confianca: ~5/10.</li>
+                            <li>Menos gaguejar, mais fluidez.</li>
+                            <li>Produto: compreensao melhor.</li>
+                            <li>Menos medo de errar.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Semana 2</h3>
+                        <ul>
+                            <li>Confianca: ~6,5/10.</li>
+                            <li>Objecoes ja nao travam totalmente.</li>
+                            <li>Taxa de agendamento: 40-45%.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Semana 3-4</h3>
+                        <ul>
+                            <li>Confianca: 7,5-8/10.</li>
+                            <li>Voz estavel e segura.</li>
+                            <li>Taxa de agendamento: 50-55%+ com consistencia.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>Proximos passos praticos</h2>
+                <div class="grid two-columns">
+                    <div class="card">
+                        <h3>Criar</h3>
+                        <ul>
+                            <li>1 video interno curto sobre produto.</li>
+                            <li>1 documento de objecoes e respostas.</li>
+                            <li>1 checklist pre-call imprimivel.</li>
+                            <li>1 planilha de tracking das calls.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Agendar</h3>
+                        <ul>
+                            <li>Semana 1: 2-3 sessoes rapidas de roleplay.</li>
+                            <li>Semana 2: 2 sessoes de analise de calls reais.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section closing">
+            <div class="container">
+                <h2>Mensagem final para o Arthur</h2>
+                <p>
+                    Voce comecou esse processo quase sem conseguir completar a primeira frase. Em pouco tempo de treino
+                    intenso, ja fez multiplas tentativas, aumentou sua fluidez, melhorou sua escuta e comecou a realmente
+                    vender, nao so recitar frases.
+                </p>
+                <p>
+                    Isso mostra que sua curva de aprendizado e rapida. Com constancia e execucao do plano, voce tem
+                    potencial real para se tornar um closer forte em poucos meses.
+                </p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
