@@ -27,7 +27,7 @@ export const RotatingHeadline = () => {
                 {t("Your brand deserves", "Sua marca merece")}
             </h1>
             {/* Container */}
-            <div className="relative h-16 sm:h-24 md:h-28 lg:h-36 flex items-start justify-center w-full overflow-visible mt-2 sm:mt-0 pb-4">
+            <div className="relative h-24 sm:h-32 md:h-36 lg:h-44 flex items-start justify-center w-full overflow-visible mt-2 sm:mt-0 pb-6">
                 <AnimatePresence mode="wait">
                     <motion.span
                         key={index}
@@ -35,7 +35,7 @@ export const RotatingHeadline = () => {
                         animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                         exit={{ opacity: 0, filter: "blur(12px)", y: -20 }}
                         transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
-                        className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-violet-300 via-pink-300 to-violet-300 absolute whitespace-nowrap"
+                        className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-violet-300 via-pink-300 to-violet-300 absolute whitespace-nowrap leading-normal"
                     >
                         {phrases[index][locale]}
                     </motion.span>

@@ -8,10 +8,12 @@ export const metadata: Metadata = {
 
 export default function SaborNilvaPage() {
     return (
-        <iframe
-            src="/apresentacao-sabornilva.html"
-            className="w-full h-screen border-0"
-            title="Proposta Comercial - Sabor Nilva"
-        />
+        <div className="pt-16 min-h-screen bg-[#F5F5F7]">
+            <iframe
+                src="/apresentacao-sabornilva.html"
+                className="w-full h-[calc(100vh-64px)] border-0"
+                title="Proposta Comercial - Sabor Nilva"
+            />
+        </div>
     )
 }

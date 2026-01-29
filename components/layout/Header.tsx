@@ -116,15 +116,22 @@ export const Header = () => {
   ];
 
   // Force dark mode unless on specific light pages (prevent white header on dark LP sections)
-  const isLightMode = pathname.startsWith("/blog") || pathname.startsWith("/presentations");
+  // Note: /sabornilva needs dark header even though page is light (client presentation)
+  const isLightMode = (pathname.startsWith("/blog") || pathname.startsWith("/presentations")) && !pathname.startsWith("/sabornilva");
 
   // Determine background based on scroll state
   let glassClasses = "";
+
+  // Special case: /sabornilva needs always-visible dark header (page has light background)
+  const needsAlwaysVisibleDarkHeader = pathname.startsWith("/sabornilva");
 
   if (isLightMode) {
     glassClasses = isScrolled
       ? "bg-white/90 backdrop-blur-xl border border-gray-200 shadow-sm"
       : "bg-white/80 backdrop-blur-xl border border-gray-200/50 shadow-sm";
+  } else if (needsAlwaysVisibleDarkHeader) {
+    // Always show dark glass on light-background presentation pages
+    glassClasses = "bg-[#0A0A0A]/90 backdrop-blur-xl border border-white/10 shadow-lg";
   } else {
     // Dark Mode Logic
     glassClasses = isScrolled
